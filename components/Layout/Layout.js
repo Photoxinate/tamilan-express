@@ -1,0 +1,25 @@
+import React from 'react';
+import Head from 'next/head';
+import styles from './Layout.module.css';
+import Footer from '../footer/footer';
+
+const Layout = (props) => {
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>Tamilan Express</title>
+            </Head>
+            
+
+            <main className={styles.main}>
+                {props.children}
+            </main>
+
+            <footer className={styles.footer}>
+                <Footer />
+            </footer>
+        </div>
+    );
+};
+
+export default Layout;
