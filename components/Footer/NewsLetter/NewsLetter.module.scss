@@ -1,0 +1,128 @@
+.container {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 2em;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+
+    @media(min-width: 1072px) {
+        padding: 3em;
+    }
+
+    .news {
+        display: flex;
+        align-items: center;
+        width: 80%;
+
+        .text {
+
+            h2 {
+                font-weight: 500;
+                margin-bottom: 6px;
+            }
+        }
+        
+
+        form {
+            display: flex;
+            margin: 0 3%;
+
+            input {
+                width: 300px;
+                height: 50px;
+                border: none;
+                border-radius: 5px 0 0 5px;
+                padding: 5px 15px;
+                font-size: 16px;
+
+                @media(min-width: 1072px) {
+                    width: 400px;
+                }
+            }
+    
+            button {
+                width: 25%;
+                height: 50px;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                padding: 5px 15px;
+                background-color: var(--accent);
+                color: var(--white);
+                cursor: pointer;
+                font-size: 16px;
+
+                &:hover {
+                    background-color: #f97f4f;
+                }
+            }
+
+        }
+        
+        
+    }
+
+    .social {
+        display: flex;
+        align-items: center;
+
+        a {
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            background-color: white;
+            margin: 0 10px;
+            border-radius: 5px;
+            justify-content: center;
+            color: var(--text-dark);
+            transition: background-color .3s ease-in;
+
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+    }
+
+}
+
+@media(max-width: 870px) {
+    .container {
+        flex-direction: column;
+
+        .news {
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+
+            .text {
+                h2 {
+                    margin-bottom: 10px;
+                }
+            }
+
+            form {
+                margin: 20px 0 50px;
+                width: 100%;
+                max-width: 600px;
+
+                input {
+                    width: 100%;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                button {
+                    border-radius: 0 10px 10px 0;                    
+                }
+            }
+        }
+
+        .social {
+            justify-content: center;
+
+            a {
+                margin: 0 20px;
+            }
+        }
+    }
+}
