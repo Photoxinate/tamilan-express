@@ -9,3 +9,5 @@ const Cart = (props) => {
         </div>
     )
 }
+
+export default Cart

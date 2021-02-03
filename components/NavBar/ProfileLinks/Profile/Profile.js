@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from '../ProfileLinks.module.scss'
 
-const Cart = (props) => {
+const Profile = (props) => {
 
     return(
         <div className={classes.profile}>
@@ -10,4 +10,4 @@ const Cart = (props) => {
     )
 }
 
-export default Cart
+export default Profile
