@@ -17,5 +17,12 @@
 
   .priceWrap {
     margin-top: 5px;
+    color: var(--accent);
+    .originalPrice{
+      margin-right: 10px;
+      display: inline;
+      text-decoration: line-through;
+      color: var(--text-light);
+    }
   }
 }

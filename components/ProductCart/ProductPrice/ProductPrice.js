@@ -1,16 +1,18 @@
-import React from 'react'
+import React from 'react';
 import classes from '../ProductCart.module.scss';
 
 const ProductPrice = (props) => {
-    let price
-    if(props.discount){
-        price = (props.price * props.discount)/100
-    }
+  let price;
+  price = (props.price * props.discount) / 100;
+  if (props.discount) {
     return (
-        <div className={classes.priceWrap}>
-            ${price}
-        </div>
-    )
-}
+      <div className={classes.priceWrap}>
+        <div className={classes.originalPrice}>${props.price}</div>${price}
+      </div>
+    );
+  } else {
+    return <div className={classes.priceWrap}>${price}</div>;
+  }
+};
 
-export default ProductPrice
+export default ProductPrice;
