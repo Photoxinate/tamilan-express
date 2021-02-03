@@ -23,12 +23,15 @@ const NavBar = (props) => {
     ]
 
     return(
-        <div className={classes.navBar}>
+        <div className={classes.navBarWrap}>
+            <div className={classes.navBar}>
             <Logo width="200px" />
             <SearchBar/>
             <NavLinks navLinks={navLinks}/>
             <ProfileLinks/>
         </div>
+        </div>
+        
     )
 }
 

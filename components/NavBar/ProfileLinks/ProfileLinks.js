@@ -1,6 +1,6 @@
 import React from 'react'
-import Cart from './Cart'
-import Profile from './Profile'
+import Cart from './Cart/Cart'
+import Profile from './Profile/Profile'
 import classes from './ProfileLinks.module.scss'
 
 const ProfileLinks = () => (

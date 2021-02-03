@@ -1,13 +1,15 @@
-import React from 'react'
-import classes from '../ProfileLinks.module.scss'
+import React from 'react';
+import { UserIcon } from '../../../Icons/Icons';
+import classes from '../ProfileLinks.module.scss';
 
 const Profile = (props) => {
+  return (
+    <div className={classes.profile}>
+      <button>
+        <UserIcon size="24" color="var(--white)" />
+      </button>
+    </div>
+  );
+};
 
-    return(
-        <div className={classes.profile}>
-            <img src='./icons/profile.svg' width="25px" height="25px"/>
-        </div>
-    )
-}
-
-export default Profile
+export default Profile;
