@@ -17,7 +17,7 @@ const product = {
 
 const ProductCart = (props) => {
   return (
-    <div className={classes.card}>
+    <div className={classes.prodCard}>
       <ProductImage img={product.img} alt={product.alt} />
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>

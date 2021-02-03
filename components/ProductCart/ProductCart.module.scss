@@ -1,10 +1,12 @@
-.card {
+.prodCard {
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   box-sizing: border-box;
   width: 200px;
   padding: 10px;
+  border-radius: 15px;
+  margin: 15px;
   transition: all 0.25s ease;
   cursor: pointer;
   .dataWrap {
