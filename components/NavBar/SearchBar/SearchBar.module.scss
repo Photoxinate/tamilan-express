@@ -1,5 +1,32 @@
 .wrap{
-    select{
-        
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input{
+        &:focus{
+            border: 2px solid #2684ff;
+        }
+        padding: 10px;
+        border: 2px solid #d8d8d8;
+        border-left: 0px;
+        border-right: 0px;
+        height: 40px;
+        width: 200px;
+    }
+    button{
+        &:hover{
+            color: var(--text-dark);
+            background-color: var(--accent); 
+        }
+        height: 40px;
+        padding: 10px;
+        color: var(--white);
+        background-color: var(--accent);
+        font-size: 16px;
+        text-align: center;
+        border-radius: 0px 4px 4px 0px;
+        border: 0px;
+        cursor: pointer;
+        transition: all 0.5s ease;
     }
 }

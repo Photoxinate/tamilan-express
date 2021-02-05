@@ -5,6 +5,8 @@ import Footer from '../footer/footer';
 import Header from '../Header/Header';
 import WhyUs from '../WhyUs/WhyUs';
 import NavBar from '../NavBar/NavBar';
+import ProductCart from '../ProductCart/ProductCart';
+
 
 const Layout = (props) => {
     return (
@@ -14,11 +16,12 @@ const Layout = (props) => {
             </Head>
             
             <Header />
-
+            <NavBar/>
             <main className={styles.main}>
                 {props.children}
-            </main>
 
+            </main>
+            <ProductCart/>
             <footer className={styles.footer}>
                 <WhyUs />
                 <Footer />
