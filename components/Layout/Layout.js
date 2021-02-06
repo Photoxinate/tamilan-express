@@ -18,7 +18,6 @@ const Layout = (props) => {
                 {props.children}
 
             </main>
-            <ProductCart/>
             <footer className={styles.footer}>
                 <Footer />
             </footer>

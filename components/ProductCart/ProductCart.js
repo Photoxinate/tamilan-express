@@ -3,22 +3,19 @@ import ProductImage from './ProductImage/ProductImage';
 import ProductData from './ProductData/ProductData'
 import ProductPrice from './ProductPrice/ProductPrice'
 import AddCartButton from '../UI/AddCartButton/AddCartButton'
+import DiscountLabel from './DiscountLabel/DiscountLabel'
+import {products} from '../../config/config'
 import classes from './ProductCart.module.scss';
 
-const product = {
-  category: 'Dairy and Milk',
-  name: 'Anchor',
-  alt: 'anchor image',
-  weight: '400g',
-  tamil: '',
-  price: '40.50',
-  discount: '40',
-};
-
 const ProductCart = (props) => {
+
+  const product = products[0]
+
+  const discountLabel = (product.discount)?<DiscountLabel discount={product.discount}/>:null
   return (
     <div className={classes.prodCard}>
       <ProductImage img={product.img} alt={product.alt} />
+      {discountLabel}
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
       <AddCartButton/>
