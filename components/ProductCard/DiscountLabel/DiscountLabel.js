@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from '../ProductCart.module.scss'
+import classes from '../ProductCard.module.scss'
 
 const DiscountLabel = ({discount}) => {
     return (

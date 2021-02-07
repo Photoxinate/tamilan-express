@@ -4,12 +4,14 @@ import ProductData from './ProductData/ProductData'
 import ProductPrice from './ProductPrice/ProductPrice'
 import AddCartButton from '../UI/AddCartButton/AddCartButton'
 import DiscountLabel from './DiscountLabel/DiscountLabel'
-import {products} from '../../config/config'
-import classes from './ProductCart.module.scss';
+import ProductModal from '../ProductModal/ProductModal'
+import classes from './ProductCard.module.scss';
 
-const ProductCart = (props) => {
+const ProductCard = ({product}) => {
 
-  const product = products[0]
+  const displayModal = () => {
+
+  }
 
   const discountLabel = (product.discount)?<DiscountLabel discount={product.discount}/>:null
   return (
@@ -18,9 +20,9 @@ const ProductCart = (props) => {
       {discountLabel}
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
-      <AddCartButton/>
+      <AddCartButton onClick={displayModal}/>
     </div>
   );
 };
 
-export default ProductCart
+export default ProductCard

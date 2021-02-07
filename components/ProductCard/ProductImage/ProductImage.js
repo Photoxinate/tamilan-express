@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from '../ProductCart.module.scss';
+import classes from '../ProductCard.module.scss';
 
 const ProductImage = (props) => (
   <div className={classes.imgWrap}>
-    <img width='100%' src='./product-images/anchor.png' alt={props.alt} />
+    <img width='100%' src={props.img} alt={props.alt} />
   </div>
 );
 
