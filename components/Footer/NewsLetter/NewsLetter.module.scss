@@ -1,3 +1,5 @@
+@import '../../../styles/common';
+
 .container {
     width: 100%;
     background-color: var(--primary);
@@ -5,10 +7,6 @@
     color: var(--white);
     display: flex;
     justify-content: space-between;
-
-    @media(min-width: 1072px) {
-        padding: 3em;
-    }
 
     .news {
         display: flex;

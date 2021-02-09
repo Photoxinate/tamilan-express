@@ -1,15 +1,40 @@
+@import '../../styles/common';
+
 .header {
-    padding: 10px 2em;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: black;
+
+    .container {
+        @extend %maxWidth;
+        padding: 10px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-size: 14px;
+
+        .select {
+            margin-left: 5px;
+        }
+    }
+    
+}
+
+@media (max-width: 850px) {
+    .header .container {
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 490px) {
-    .header {
+    .header .container {
         padding: 5px 10px;
-        font-size: 14px;
+        font-size: 11px;
         flex-direction: column;
+        text-align: center;
+
+        .select {
+            margin: 10px 0 3px;
+        }
     }
 }

@@ -54,9 +54,7 @@ const Footer = () => {
                             &nbsp; Powered by <a href='https://photoxinate.com'>Photoxinate.</a>
                         </p>
                     </div>
-                    <a className={classes.paypal} href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" >
-                        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_SbyPP_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark" />
-                    </a>
+                    <img className={classes.paypal} src="./Credit-Card-Icons.svg" border="0" alt="Available payments - paypal" />
                 </div>
             </div>
         </>

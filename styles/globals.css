@@ -48,6 +48,10 @@ strong {
   font-weight: 500;
 }
 
+.color-light {
+  color: var(--text-light);
+}
+
 .desktop-only {
   display: flex;
 }

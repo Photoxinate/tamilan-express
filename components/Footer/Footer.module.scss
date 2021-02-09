@@ -1,14 +1,12 @@
+@import '../../styles/common';
+
 .container {
-    padding: 2em;
     color: var(--text-dark);
 
-    @media(min-width: 1072px) {
-        padding: 3em;
-        padding-bottom: 20px;
-    }
-
     .links {
+        @extend %maxWidth;
         margin-bottom: 40px;
+        margin-top: 40px;
         display: flex;
         justify-content: space-between;
 
@@ -48,7 +46,10 @@
     }
 
     .copyright {
+        @extend %maxWidth;
+
         padding-top: 20px;
+        padding-bottom: 20px;
         border-top: 1px solid rgb(160, 160, 160);
         display: flex;
         justify-content: space-between;
@@ -64,12 +65,8 @@
             }
         }
 
-        .paypal:hover::before {
-            width: 0;
-        }
-
-        img {
-            height: 40px;
+        .paypal {
+            height: 32px;
         }
         
     }
@@ -78,24 +75,27 @@
 
     a {
         position: relative;
+        transition: width .4s cubic-bezier(0.51, 0.18, 0, 0.88);
 
         &:before {
             content: '';
             position: absolute;
-            right: 0;
+            left: 0;
             bottom: 0;
             display: inline-block;
             width: 0;
-            opacity: 0.2;
-            height: 40%;
-            background-color: currentColor;
+            height: 2px;
+            background-color: var(--primary);
             transition: width .4s cubic-bezier(0.51, 0.18, 0, 0.88);
             z-index: -2;
         }
         
         &:hover:before {
             width: 100%;
-            left: 0;
+        }
+
+        &:hover {
+            color: var(--primary) !important;
         }
 
     }
@@ -136,7 +136,6 @@
 
             .paypal {
                 margin-top: 10px;
-                width: 100%;
             }
         }
 
@@ -172,6 +171,10 @@
     
             .text {
                 display: block;
+            }
+
+            .paypal {
+                height: 28px;
             }
         }
 

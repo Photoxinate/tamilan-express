@@ -17,11 +17,11 @@ const Layout = (props) => {
             
             <Header />
             <NavBar/>
+            
             <main className={styles.main}>
                 {props.children}
-
             </main>
-            <ProductCart/>
+            
             <footer className={styles.footer}>
                 <WhyUs />
                 <Footer />
