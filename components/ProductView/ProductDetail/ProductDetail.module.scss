@@ -1,0 +1,23 @@
+.prodDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    .prodName{
+        font-size: 28px;
+        font-weight: 600;
+        color: #000;
+    }
+    .prodCategory{
+        margin: 10px 0px;
+        color: var(--text-light);
+        font-size: 18px;
+    }
+    .prodStock{
+        color: #30b619;
+    }
+    .itemWrap{
+        margin: 20px 0px;
+    }
+}

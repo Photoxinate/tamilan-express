@@ -1,0 +1,14 @@
+.prodDetail{
+    padding: 10px;
+    .prodName{
+        font-size: 22px;
+        color: #000;
+    }
+    .prodCategory{
+        color: var(--text-light);
+        font-size: 18px;
+    }
+    .prodStock{
+        color: #30b619;
+    }
+}

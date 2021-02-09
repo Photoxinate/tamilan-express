@@ -3,27 +3,26 @@ import ProductImage from './ProductImage/ProductImage';
 import ProductData from './ProductData/ProductData'
 import ProductPrice from './ProductPrice/ProductPrice'
 import AddCartButton from '../UI/AddCartButton/AddCartButton'
-import classes from './ProductCart.module.scss';
+import DiscountLabel from './DiscountLabel/DiscountLabel'
+import ProductModal from '../ProductModal/ProductModal'
+import classes from './ProductCard.module.scss';
 
-const product = {
-  category: 'Dairy and Milk',
-  name: 'Anchor',
-  alt: 'anchor image',
-  weight: '400g',
-  tamil: '',
-  price: '40.50',
-  discount: '40',
-};
+const ProductCard = ({product}) => {
 
-const ProductCart = (props) => {
+  const displayModal = () => {
+
+  }
+
+  const discountLabel = (product.discount)?<DiscountLabel discount={product.discount}/>:null
   return (
     <div className={classes.prodCard}>
       <ProductImage img={product.img} alt={product.alt} />
+      {discountLabel}
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
-      <AddCartButton/>
+      <AddCartButton onClick={displayModal}/>
     </div>
   );
 };
 
-export default ProductCart
+export default ProductCard

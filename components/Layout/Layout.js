@@ -5,7 +5,6 @@ import Footer from '../footer/footer';
 import Header from '../Header/Header';
 import WhyUs from '../WhyUs/WhyUs';
 import NavBar from '../NavBar/NavBar';
-import ProductCart from '../ProductCart/ProductCart';
 
 
 const Layout = (props) => {

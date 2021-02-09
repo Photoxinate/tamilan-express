@@ -1,0 +1,17 @@
+.priceWrap{
+    margin: 20px 0px;
+    color: var(--accent);
+
+    .originalPrice{
+        margin-right: 10px;
+        text-decoration: line-through;
+        color: var(--text-light);
+    }
+    .priceSave{
+        margin-left: 10px;
+        background-color: #30b715;
+        padding: 5px;
+        color: #fff;
+
+    }
+}
