@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Tamilan Express</title>
       </Head>
-    <ProductCarousel products={products} carouselTitle="Deals of the Day"/>
+      <ProductCarousel products={products} carouselTitle="Deals of the Day"/>
       <Category />
     </>
   )
