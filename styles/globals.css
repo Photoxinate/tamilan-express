@@ -40,9 +40,9 @@ input {
   font-family: 'Work Sans', sans-serif, -apple-system;
 }
 
-input:focus, input:active, button:focus, button:active {
-  outline: 2px #152b77;
-}
+/* input:focus, input:active, button:focus, button:active {
+  outline: solid 2px #000000;
+} */
 
 strong {
   font-weight: 500;

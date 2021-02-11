@@ -1,0 +1,46 @@
+@import '../../styles/common';
+
+.categories {
+    @extend %maxWidth;
+
+    .name {
+        display: flex;
+        margin: 30px;
+
+        svg {
+            fill: rgb(131, 131, 131);
+            align-self: flex-end;
+            transform: rotate(-90deg);
+        }
+    }
+
+    .body {
+        display: flex;
+
+        .products {
+            margin-left: 20px;
+            width: 75%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .categories {
+
+        .name {
+            margin: 10px;
+        }
+    
+        .body {
+            display: flex;
+            flex-direction: column;
+
+            .products {
+                margin-left: auto;
+                width: 100%;
+            }
+        }
+    }
+}

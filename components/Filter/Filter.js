@@ -15,19 +15,26 @@ const Filter = () => {
         {title: 'DImensions', options: [{name: '40x60cm', checked: false}, {name: '60x90cm', checked: true}, {name: '80x120cm', checked: false}] },
     ]
 
-    const showFilterHandler = () => {
-        setShowFilter(prev => !prev);
-    }
-
     const { width } = useWindowSize();
 
-    const style = width <= 768 ? showFilter ? {display: 'block', opacity: 1} : {display: 'none', opacity: 0} : undefined;
+    const isClickable = width <= 768;
+
+    const showFilterHandler = width <= 768 ? () => {
+        setShowFilter(prev => !prev);
+    } : undefined;
+
+    const keyFilterHandler = width <= 768 ? e => {
+        if(e.key === 'Enter')
+            setShowFilter(prev => !prev);
+    } : undefined;
+
+    const style = width <= 768 ? showFilter ? {display: 'block', height: '100%'} : {display: 'none', height: 0} : undefined;
 
     const filtersHTML = filters.map(filter => (<Item key={filter.title} title={filter.title} options={filter.options} />));
 
     return (
         <div className={classes.filter}>
-            <h3 onClick={showFilterHandler} >Filters</h3>
+            <h3 onClick={showFilterHandler} onKeyPress={keyFilterHandler} tabIndex={isClickable ? 0 : -1} role={isClickable ? 'button' : ''} >Filters</h3>
             <div className={classes.container} style={style}>
                 {filtersHTML}
             </div>
