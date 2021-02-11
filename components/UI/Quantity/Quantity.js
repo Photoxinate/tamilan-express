@@ -1,11 +1,12 @@
 import React from 'react';
+import classes from './Quantity.module.scss'
 
-const Quantity = () => {
+const Quantity = (props) => {
   return (
-    <div>
-      <label for="quantity">Quantity:</label>
-
-      <input type="number" id="quantity" name="quantity" min="1" max="5" />
+    <div className={classes.quantity}>
+      <button>Minus</button>
+      <input type="number" id="quantity" name="quantity" min="1" max={props.max}/>
+      <button>Plus</button>
     </div>
   );
 };

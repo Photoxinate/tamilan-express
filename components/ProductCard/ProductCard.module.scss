@@ -11,6 +11,10 @@
   transition: all 0.25s ease;
   cursor: pointer;
 
+  button{
+    margin-top: 10px;
+  }
+
   .discountLabel{
     position: absolute;
     top: 50%;
@@ -33,6 +37,24 @@
       display: inline;
       text-decoration: line-through;
       color: var(--text-light);
+    }
+  }
+}
+
+@media(max-width:768px){
+  .prodCard{
+    width: 25vw;
+
+    .discountLabel{
+      position: absolute;
+      top: 35%;
+  
+    }
+
+    .priceWrap {
+      .originalPrice{
+        display: block;
+      }
     }
   }
 }

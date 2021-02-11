@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    order: 3;
 
     button{
         &:hover{
@@ -19,4 +20,10 @@
         transition: all 0.5s ease;
     }
 
+}
+
+@media(max-width:768px){
+    .wrap{
+        order: 2;
+    }
 }

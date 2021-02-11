@@ -1,0 +1,19 @@
+.coupon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+
+  input {
+    width: 15vw;
+  }
+}
+
+@media(max-width:768px){
+    .coupon{
+        input{
+            width: 50vw;
+        }
+    }
+}

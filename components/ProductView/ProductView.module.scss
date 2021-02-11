@@ -4,12 +4,24 @@
     display: flex;
     padding: 10px;
     .imgWrap{
-        width: 50%;
+        flex: 50%;
         padding: 20px;
-
+        text-align: center;
         img{
             width: 400px;
             height: auto;
+        }
+    }
+}
+
+@media(max-width:768px){
+    .productView{
+        flex-direction: column;
+        .imgWrap{
+            flex: 100%;
+            img{
+                width: 80%;
+            }
         }
     }
 }

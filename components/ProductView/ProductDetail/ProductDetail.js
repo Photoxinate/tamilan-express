@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductPrice from '../ProductPrice/ProductPrice';
+import ProductBuy from '../ProductBuy/ProductBuy'
 import classes from './ProductDetail.module.scss';
 
 const ProductDetail = ({ productDetail }) => {
@@ -18,6 +19,8 @@ const ProductDetail = ({ productDetail }) => {
         Weight :{' '}
         <span className={classes.prodWeight}>{productDetail.weight}</span>
       </div>
+      <hr/>
+      <ProductBuy/>
     </div>
   );
 };
