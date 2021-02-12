@@ -15,7 +15,7 @@ const ProductCarousel = ({ products, carouselTitle }) => {
 
   const { width } = useWindowSize();
 
-  const slidesPerView = width <= 768 ? 3:5;
+  const slidesPerView = width <= 768 ? 2:5;
 
   return (
     <div className='carousel-wrap'>

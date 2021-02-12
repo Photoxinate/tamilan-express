@@ -6,7 +6,7 @@ const Logo = (props) => {
 
     return(
         <div className={classes.wrap}>
-            <img width={props.width} height="auto" src="./logo/photoxinatewhite.png"/>
+            <img width={props.width} height="auto" src="./logo/TamilanExpressLogo.png"/>
         </div>
     )
 }

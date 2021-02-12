@@ -13,7 +13,7 @@ const ProductCard = ({product}) => {
 
   }
 
-  const discountLabel = (product.discount)?<DiscountLabel discount={product.discount}/>:null
+  const discountLabel = (product.discount>0)?<DiscountLabel discount={product.discount}/>:null
   return (
     <div className={classes.prodCard}>
       <ProductImage img={product.img} alt={product.alt} />

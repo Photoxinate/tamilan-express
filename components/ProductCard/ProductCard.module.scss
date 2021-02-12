@@ -2,7 +2,7 @@
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
-  width: 15vw;
+  width: auto;
   position: relative;
   box-sizing: border-box;
   padding: 10px;
@@ -15,6 +15,10 @@
     margin-top: 10px;
   }
 
+  .imgWrap{
+    width: 200px;
+    height: 250px;
+  }
   .discountLabel{
     position: absolute;
     top: 50%;
@@ -43,7 +47,6 @@
 
 @media(max-width:768px){
   .prodCard{
-    width: 25vw;
 
     .discountLabel{
       position: absolute;
