@@ -11,7 +11,7 @@ const Footer = () => {
             <div className={classes.container}>
                 <div className={classes.links}>
                     <div className={classes.intro}>
-                        <img src='/logo/photoxinatewhite.png' />
+                        <img src='/logo/logo.png' />
                         <div className={classes.contact}>
                             <div className={classes.item}>
                                 <strong>Address: </strong> Toronto, Canada
@@ -46,15 +46,17 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className={classes.copyright}>
-                    <div>
-                        <p className={classes.text}>
-                            ©Tamilan Express. All Rights Reserved.
-                        </p>
-                        <p className={classes.text}>
-                            &nbsp; Powered by <a href='https://photoxinate.com'>Photoxinate.</a>
-                        </p>
+                    <div className={classes.content}>
+                        <div>
+                            <p className={classes.text}>
+                                ©Tamilan Express. All Rights Reserved.
+                            </p>
+                            <p className={classes.text}>
+                                &nbsp; Powered by <a href='https://photoxinate.com'>Photoxinate.</a>
+                            </p>
+                        </div>
+                        <img className={classes.paypal} src="./Credit-Card-Icons.svg" border="0" alt="Available payments - paypal" />
                     </div>
-                    <img className={classes.paypal} src="./Credit-Card-Icons.svg" border="0" alt="Available payments - paypal" />
                 </div>
             </div>
         </>
