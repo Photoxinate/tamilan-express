@@ -46,27 +46,29 @@
     }
 
     .copyright {
-        @extend %maxWidth;
-
         padding-top: 20px;
         padding-bottom: 20px;
-        border-top: 1px solid rgb(160, 160, 160);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        border-top: 1px solid rgb(189, 189, 189);
         color: var(--text-light);
 
-        .text {
-            display: inline;
+        .content {
+            @extend %maxWidth;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-            a {
-                color: var(--accent);
-                font-weight: 500;
+            .text {
+                display: inline;
+    
+                a {
+                    color: var(--accent);
+                    font-weight: 500;
+                }
             }
-        }
-
-        .paypal {
-            height: 32px;
+    
+            .paypal {
+                height: 32px;
+            }
         }
         
     }
@@ -129,7 +131,7 @@
             }
         }
 
-        .copyright {
+        .copyright  .content {
             flex-direction: column;
             font-size: 14px;
             text-align: center;
@@ -137,6 +139,7 @@
             .paypal {
                 margin-top: 10px;
             }
+            
         }
 
     }
@@ -167,7 +170,7 @@
             }
         }
 
-        .copyright {
+        .copyright .content {
     
             .text {
                 display: block;

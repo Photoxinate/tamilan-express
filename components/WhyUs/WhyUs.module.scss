@@ -1,56 +1,71 @@
 @import '../../styles/common';
 
-.container {
-    @extend %maxWidth;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    font-size: 22px;
-    font-weight: 500;
+.why {
+    margin-top: 30px;
     text-align: center;
+    background: aliceblue;
 
-    .items {
-        display: flex;
-        justify-content: space-between;
-        margin: 40px 20px;
-
-        .item {
-            width: 50%;
-            margin: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            align-items: center;
-
-            img {
-                width: 100%;
-            }
-        }
-    }
-}
-
-@media (max-width: 600px) {
     .container {
+        @extend %maxWidth;
+        padding-top: 3em;
+        padding-bottom: 1em;
+        
+        h1 {
+            display: inline;
+            font-size: 28px;
+            position: relative;
 
+            // &::after {
+            //     position: absolute;
+            //     content: "";
+            //     bottom: 0;
+            //     width: 20px;
+            //     height: 2px;
+            //     background-color: black;
+            // }
+        }
+    
         .items {
-            flex-direction: column ;
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 20px;
 
+            @media (max-width: 700px) {
+                flex-wrap: wrap;
+            }
+    
             .item {
-                width: 100%;
-                grid-template-columns: none;
-                grid-template-rows: repeat(2, 1fr);
-                margin: 20px auto;
+                width: calc(100% / 4);
+                margin: 5px;
+                padding: 20px;
+                font-weight: 500;
+                color: var(--text-light);
+                transition: all .3s ease-in;
 
-                img {
-                    width: 50%;
-                    margin: auto;
+                &:hover {
+                    color: black;
+                    transform: scale(1.1);
                 }
+    
+                img {
+                    width: 80%;
+                    max-width: 140px;
+                    margin-bottom: 20px;
+
+                    @media (max-width: 700px) {
+                        margin-bottom: 10px;
+                    }
+                }
+
+                @media (max-width: 700px) {
+                    width: calc(100% / 2 - 10px);
+                }
+
+                @media (max-width: 440px) {
+                    padding: 10px;
+                }
+    
             }
         }
-    } 
-}
-
-@media (max-width: 420px) {
-    .container {
-        font-size: 18px;
     }
 }

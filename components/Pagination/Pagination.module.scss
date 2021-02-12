@@ -1,0 +1,40 @@
+.pagination {
+    margin-top: 30px;
+
+    .count {
+        margin-left: 20px;
+        margin-bottom: 15px;
+        color: var(--text-light);
+    }
+
+    .pages {
+        display: flex;
+        justify-content: flex-end;
+
+        .page {
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;    
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            border: 1px solid rgb(216, 216, 216);
+
+            &.active {
+                background-color: var(--accent);
+                color: white;
+            }
+
+            &:not(.active):hover {
+                background-color: rgb(255, 236, 224);
+            }
+
+            @media (max-width: 600px) {
+                margin: 0 5px;  
+            }
+        }
+
+    }
+}
+
