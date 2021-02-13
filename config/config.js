@@ -18,7 +18,7 @@ export const products = [
     id:'002',
     category: 'Dairy and Milk',
     name: 'Nestamolt',
-    img:'https://supersavings.lk/wp-content/uploads/2020/07/nestomalt-440g.png',
+    img:'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',
     alt: 'anchor image',
     weight: '400g',
     tamil: '',

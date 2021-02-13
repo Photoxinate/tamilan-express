@@ -2,6 +2,7 @@
 
 .navBarWrap {
   width: 100%;
+  z-index: 20;
   .navBar {
     @extend %maxWidth;
     display: flex;

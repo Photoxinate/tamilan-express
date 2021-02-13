@@ -2,11 +2,11 @@
     button{
         &:hover{
             cursor: pointer;
-            border: 1px solid var(--accent);
             background-color: var(--text-white);
             color: var(--accent);
         }
         border: 0px;
+        border: 1px solid var(--accent);
         border-radius: 15px;
         font-weight: 600;
         background-color: var(--accent);

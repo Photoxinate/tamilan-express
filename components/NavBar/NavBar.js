@@ -9,7 +9,7 @@ const NavBar = (props) => {
   const navLinks = [
     {
       name: 'Home',
-      url: '/home',
+      url: '/',
     },
     {
       name: 'Categories',

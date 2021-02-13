@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductPrice from '../ProductPrice/ProductPrice';
+import Quantity from '../../UI/Quantity/Quantity'
 import ProductBuy from '../ProductBuy/ProductBuy'
 import classes from './ProductDetail.module.scss';
 
@@ -20,6 +21,7 @@ const ProductDetail = ({ productDetail }) => {
         <span className={classes.prodWeight}>{productDetail.weight}</span>
       </div>
       <hr/>
+      <Quantity  max='10'/>
       <ProductBuy/>
     </div>
   );

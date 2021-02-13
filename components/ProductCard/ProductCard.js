@@ -7,11 +7,9 @@ import DiscountLabel from './DiscountLabel/DiscountLabel'
 import ProductModal from '../ProductModal/ProductModal'
 import classes from './ProductCard.module.scss';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product, onClicked}) => {
 
-  const displayModal = () => {
-
-  }
+ 
 
   const discountLabel = (product.discount>0)?<DiscountLabel discount={product.discount}/>:null
   return (
@@ -20,7 +18,7 @@ const ProductCard = ({product}) => {
       {discountLabel}
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
-      <Button text='Add to Cart' onClick={displayModal}/>
+      <Button text='Add to Cart' onClicked={onClicked}/>
     </div>
   );
 };

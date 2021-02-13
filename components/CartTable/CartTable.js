@@ -1,5 +1,7 @@
 import React from 'react';
 import Product from './Product/Product';
+import Quantity from '../UI/Quantity/Quantity'
+import DeleteButton from '../UI/DeleteButton/DeleteButton'
 import classes from './CartTable.module.scss';
 
 const CartTable = (props) => {
@@ -14,9 +16,9 @@ const CartTable = (props) => {
           <div className={classes.col}>
             <Product product={product} />
           </div>
-          <div className={classes.col}>Quantity</div>
+          <div className={classes.col}><Quantity max='10'/></div>
           <div className={classes.col}>$ {product.price}</div>
-          <div className={classes.col}>Delete</div>
+          <div className={classes.col}><DeleteButton/></div>
         </div>
       ))}
     </div>

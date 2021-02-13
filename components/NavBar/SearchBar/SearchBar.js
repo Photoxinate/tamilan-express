@@ -26,8 +26,9 @@ const SearchBar = (props) => {
     control: (provided) => ({
       ...provided,
       height: 40,
-      minHeight: 40,
       cursor: 'pointer',
+      borderRadius: '4px 0px 0px 4px',
+
     }),
     indicatorSeparator: () => ({
       display: 'none',
@@ -35,21 +36,21 @@ const SearchBar = (props) => {
     placeholder: () => ({
       color: '#000',
     }),
+    valueContainer: (provided, state) => ({
+      ...provided,
+      height: 'inherit',
+    }),
   };
 
   return (
     <div className={classes.wrap}>
-      <Select
+      {/* <Select
         options={categories}
         styles={customStyles}
         defaultValue={selectedOption}
         onChange={setSelectedOption}
         placeholder ="Categories"
-        theme={theme => ({
-          ...theme,
-          borderRadius: '4px 0px 0px 4px',
-        })}
-      />
+      /> */}
       <input/>
       <button>Search</button>
     </div>

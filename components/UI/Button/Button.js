@@ -5,7 +5,7 @@ const Button = (props) => {
 
   return (
     <div className={classes.wrap}>
-      <button>{props.text}</button>
+      <button onClick={props.onClicked}>{props.text}</button>
     </div>
   );
 };
