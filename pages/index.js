@@ -19,7 +19,7 @@ export default function Home() {
       </Head>
       <ProductCarousel onClicked={showModal} products={products} carouselTitle="Deals of the Day"/>
       <Category />
-      <ProductModal show={show} />
+      <ProductModal show={show} setShow={setShow} />
     </>
   )
 }
