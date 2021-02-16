@@ -1,41 +1,82 @@
-.table{
-    width: 60%;
-    margin: 10px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    box-sizing: border-box;
+.table {
+  width: 60%;
+  margin: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  box-sizing: border-box;
 
-    .row{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        .col{
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            margin: 10px;
-            padding: 10px;
-            
-            &:nth-child(1){
-                flex: 50%;
-            }
-            &:nth-child(2){
-                flex: 20%;
-            }
-            &:nth-child(3){
-                flex: 20%;
-            }
-            &:nth-child(4){
-                flex: 10%;
-            }
-        }
+    .imgCol {
+      width: 30%;
+      img {
+        width: 100%;
+      }
     }
-}
 
-@media(max-width:768px){
-    .table{
-      width: 100%;
+    .detailCol {
+      width: 70%;
+      display: flex;
+      .col {
+        display: flex;
+        box-sizing: border-box;
+        align-items: center;
+        margin: 10px;
+        padding: 10px;
+
+        .price {
+          color: var(--accent);
+        }
+
+        &:nth-child(1) {
+          width: 30%;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        &:nth-child(2) {
+          width: 30%;
+        }
+        &:nth-child(3) {
+          width: 40%;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
     }
   }
+}
+
+@media (max-width: 1100px) {
+  .table {
+    width: 100%;
+    .row {
+      .imgCol {
+        width: 40%;
+      }
+      .detailCol {
+        width: 60%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        .col {
+          margin: 5px;
+          padding: 5px;
+          &:nth-child(1) {
+            width: 80%;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          &:nth-child(2) {
+            width: 80%;
+          }
+          &:nth-child(3) {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}

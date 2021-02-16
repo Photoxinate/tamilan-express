@@ -7,9 +7,10 @@ const initialState = {
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.ADD_TO_CART:
+            const newProduct = {...action.payload.product, qty:action.payload.qty}
             return{
                 ...state,
-                products: state.products.concat(action.payload.product)
+                products: state.products.concat(newProduct)
             }
            
  
@@ -19,6 +20,7 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 products: updatedProducts
             }
+         
     }
     return state;
 };

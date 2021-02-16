@@ -4,17 +4,19 @@ import classes from './Quantity.module.scss';
 
 const Quantity = (props) => {
   const quantityField = useRef(null);
-  const quantity = 1;
-
+  let qty = props.qty
   const increaseQuantity = () => {
     if (quantityField.current.value !== props.max) {
-      quantityField.current.value++;
+      // quantityField.current.value++
+      props.setQty(qty++)
     }
   };
 
   const decreaseQuantity = () => {
     if (quantityField.current.value !== '1') {
-      quantityField.current.value--;
+      // quantityField.current.value--
+      props.setQty(qty--)
+
     }
   };
 
@@ -28,7 +30,7 @@ const Quantity = (props) => {
         name="quantity"
         type="number"
         readOnly
-        value="1"
+        value={props.qty}
         min="1"
         size="2"
         max={props.max}

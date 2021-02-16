@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import Link from 'next/link'
@@ -11,10 +11,12 @@ const ProductDetail = (props) => {
 
   const product = props.product
 
-  const addToCart = (product) => {
-    props.onAddProduct(product)
+  const addToCart = (product, qty) => {
+    props.onAddProduct(product, qty)
     props.setShow(false)
   }
+
+  const [qty, setQty] = useState(1)
 
   return (
     <div className={classes.prodDetail}>
@@ -32,9 +34,9 @@ const ProductDetail = (props) => {
         <span className={classes.prodWeight}>{product.weight}</span>
       </div>
       <hr />
-      <Quantity max="10" />
+      <Quantity max={product.maxQuantity} qty={qty} setQty={setQty}/>
       <div className={classes.btnWrap}>
-        <Button text="Contniue Shopping" onClicked={() => addToCart(product)}/>
+        <Button text="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
         <Link href="/cart" passHref>
           <a>
             <Button text="Check Out" />
@@ -48,7 +50,7 @@ const ProductDetail = (props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      onAddProduct: (product) => dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product}}),
+      onAddProduct: (product, qty) => dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product, qty:qty}}),
       onRemoveProduct: (id) => dispatch({type: actionTypes.REMOVE_FROM_CART, payload:{id:id}}),
   }
 };
