@@ -3,7 +3,6 @@ import NavLink from './NavLink/NavLink';
 import classes from './NavLinks.module.scss';
 
 const NavLinks = ({ navLinks }) => {
-  console.log("LINKS:", navLinks);
   return (
     <div className={classes.wrap}>
       {navLinks.map((navLink, i) => (

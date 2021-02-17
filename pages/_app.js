@@ -1,4 +1,6 @@
-import Layout from '../components/Layout/Layout'
+import Layout from '../components/Layout/Layout';
+import { Provider } from 'next-auth/client';
+
 import '../styles/globals.css';
 // Import Swiper styles
 import 'swiper/swiper.scss';
@@ -8,10 +10,13 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 import '../components/ProductCarousel/ProductCarousel.css';
 
 function MyApp({ Component, pageProps }) {
+  
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Provider session={pageProps.session}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
   );
 }
 
