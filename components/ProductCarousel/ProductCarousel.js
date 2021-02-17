@@ -44,7 +44,6 @@ const ProductCarousel = ({ products, carouselTitle, onClicked }) => {
           <ProductCard product={product} />
         </SwiperSlide>
       ))}
-        <span slot="wrapper-end"><Button text='View More'/></span>
      </Swiper>
     </div>
     

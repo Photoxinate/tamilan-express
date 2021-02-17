@@ -3,7 +3,7 @@ import ProuctCard from '../ProductCard/ProductCard';
 import classes from './ProductContainer.module.scss';
 
 export const ProductContainer = (props) => {
-    const width = 100/props.itemsPerRow
+    const width = 100/(props.itemsPerRow + 1)
     const myStyle = {
         boxSizing:'border-box',
         width: width+'%',
@@ -12,7 +12,7 @@ export const ProductContainer = (props) => {
     }
   return (
     <div className={classes.container}>
-      {props.prodcuts.map((product, i) => (
+      {props.products.map((product, i) => (
         <div key={product.id} className={classes.wrap} style={myStyle}>
           <ProuctCard product={product} />
         </div>

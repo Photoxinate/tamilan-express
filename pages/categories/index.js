@@ -2,6 +2,7 @@ import React from 'react';
 import Filter from '../../components/Filter/Filter';
 import Pagination from '../../components/Pagination/Pagination';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductContainer from '../../components/ProductContainer/ProductContainer'
 import {products} from '../../config/config';
 import classes from './index.module.scss';
 
@@ -14,12 +15,13 @@ const index = () => {
             </div>
             <div className={classes.body}>
                 <Filter />
-                <div className={classes.container}>
+                <ProductContainer products={products} itemsPerRow={5}/>
+                {/* <div className={classes.container}>
                     <div className={classes.products}>
                         {products.map((product, i) => <ProductCard key={i} product={product} />)}
                     </div>
                     <Pagination />
-                </div>
+                </div> */}
             </div>
         </section>
     );
