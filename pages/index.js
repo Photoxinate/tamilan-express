@@ -1,25 +1,37 @@
-import React, { useState } from 'react'
+import React from 'react'
+import * as actionTypes from '../store/actions/actionTypes'
+import { connect } from 'react-redux';
 import Head from 'next/head'
 import {products} from '../config/config'
 import ProductCarousel from '../components/ProductCarousel/ProductCarousel'
 import Category from '../components/Category/Category'
 import ProductModal from '../components/ProductModal/ProductModal'
 
-export default function Home() {
-
-  const [show, setShow] = useState(false)
-
-  const showModal = () => {
-    setShow(true)
-  }
+const Home = (props) => {
   return (
     <>
       <Head>
         <title>Tamilan Express</title>
       </Head>
-      <ProductCarousel onClicked={showModal} products={products} carouselTitle="Deals of the Day"/>
+      <ProductCarousel products={products} carouselTitle="Deals of the Day"/>
       <Category />
-      <ProductModal show={show} setShow={setShow} />
+      <ProductModal isShowModal={props.isShowModal} product={props.modalProduct} closeModal={props.closeModal} />
     </>
   )
 }
+
+const mapStateToProps = state => {
+  return{
+    isShowModal: state.ui.isShowModal,
+    modalProduct: state.ui.modalProduct
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return{
+    showModal: (product) => dispatch({type:actionTypes.SHOW_MODAL, payload:{product:product}}),
+    closeModal: () => dispatch({type:actionTypes.CLOSE_MODAL})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

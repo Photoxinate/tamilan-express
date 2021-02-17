@@ -36,13 +36,12 @@ const ProductCarousel = ({ products, carouselTitle, onClicked }) => {
       spaceBetween={spaceBetween}
       slidesPerView={slidesPerView}
       navigation
-      pagination={{ clickable: true }}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
       {products.map((product, i) => (
         <SwiperSlide key={product.id}>
-          <ProductCard onClicked={onClicked} product={product} />
+          <ProductCard product={product} />
         </SwiperSlide>
       ))}
         <span slot="wrapper-end"><Button text='View More'/></span>

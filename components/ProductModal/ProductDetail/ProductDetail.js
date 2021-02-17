@@ -13,7 +13,7 @@ const ProductDetail = (props) => {
 
   const addToCart = (product, qty) => {
     props.onAddProduct(product, qty)
-    props.setShow(false)
+    props.closeModal()
   }
 
   const [qty, setQty] = useState(1)
@@ -52,6 +52,7 @@ const mapDispatchToProps = dispatch => {
   return {
       onAddProduct: (product, qty) => dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product, qty:qty}}),
       onRemoveProduct: (id) => dispatch({type: actionTypes.REMOVE_FROM_CART, payload:{id:id}}),
+      closeModal: () => dispatch({type: actionTypes.CLOSE_MODAL})
   }
 };
 

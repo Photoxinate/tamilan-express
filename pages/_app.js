@@ -1,7 +1,8 @@
 import Layout from '../components/Layout/Layout';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import cartReducer from '../store/reducers/cart';
+import CartReducer from '../store/reducers/cart';
+import UIReducer from '../store/reducers/UI';
 import '../styles/globals.css';
 // Import Swiper styles
 import 'swiper/swiper.scss';
@@ -10,7 +11,8 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
 const rootReducer = combineReducers({
-  prdCart: cartReducer,
+  prdCart: CartReducer,
+  ui:  UIReducer
 });
 
 const store = createStore(rootReducer);
