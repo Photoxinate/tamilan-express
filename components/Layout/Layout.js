@@ -11,11 +11,12 @@ const Layout = (props) => {
     return (
         <div className={styles.container}>
             <Head>
+                <meta name="google-signin-client_id" content="871485404239-c8vjp41smf7d13ecc07ndkp9qbq23bec.apps.googleusercontent.com.apps.googleusercontent.com" />
                 <title>Tamilan Express</title>
             </Head>
             
             <Header />
-            <NavBar/>
+            {/* <NavBar/> */}
             
             <main className={styles.main}>
                 {props.children}

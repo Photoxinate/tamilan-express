@@ -1,5 +1,6 @@
 import Layout from '../components/Layout/Layout';
 import { Provider } from 'react-redux';
+import { Provider as AuthProvider } from 'next-auth/client';
 import { createStore, combineReducers } from 'redux';
 import CartReducer from '../store/reducers/cart';
 import UIReducer from '../store/reducers/UI';
@@ -18,11 +19,14 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 
 function MyApp({ Component, pageProps }) {
+  
   return (
     <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AuthProvider session={pageProps.session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AuthProvider>
     </Provider>
   );
 }

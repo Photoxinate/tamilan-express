@@ -5,9 +5,14 @@ import Head from 'next/head'
 import {products} from '../config/config'
 import ProductCarousel from '../components/ProductCarousel/ProductCarousel'
 import Category from '../components/Category/Category'
+import { useSession, signin, signout } from 'next-auth/client' 
 import ProductModal from '../components/ProductModal/ProductModal'
 
 const Home = (props) => {
+
+
+  const [ session, loading ] = useSession();
+
   return (
     <>
       <Head>
@@ -15,6 +20,40 @@ const Home = (props) => {
       </Head>
       <ProductCarousel products={products} carouselTitle="Deals of the Day"/>
       <Category />
+      {!session && (
+          <>
+            <span >Not signed in</span>
+            <a
+              href={`/api/auth/signin`}
+              onClick={(e) => {
+                e.preventDefault()
+                signin()
+              }}
+            >
+              <button>Sign in</button>
+            </a>
+          </>
+        )}
+        {session && (
+          <>
+            <span
+              style={{ backgroundImage: `url(${session.user.image})` }}
+              
+            />
+            <span>
+              Signed in as <strong>{session.user.email}</strong>
+            </span>
+            <a
+              href={`/api/auth/signout`}
+              onClick={(e) => {
+                e.preventDefault()
+                signout()
+              }}
+            >
+              <button >Sign out</button>
+            </a>
+          </>
+        )}
       <ProductModal isShowModal={props.isShowModal} product={props.modalProduct} closeModal={props.closeModal} />
     </>
   )
