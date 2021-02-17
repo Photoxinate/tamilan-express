@@ -1,0 +1,8 @@
+@import '../../styles/_common.scss';
+
+
+.carouselWrap {
+    @extend %maxWidth;
+    width: 90vw;
+    margin: 20px auto;   
+}

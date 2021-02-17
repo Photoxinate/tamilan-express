@@ -1,0 +1,18 @@
+.wrap {
+  text-transform: uppercase;
+
+  button {
+    &:hover {
+      cursor: pointer;
+      background-color: #c0392b;
+      svg{
+          fill: white;
+      }
+    }
+
+    border: 0;
+    border-radius: 8px;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+  }
+}

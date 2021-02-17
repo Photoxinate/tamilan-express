@@ -8,19 +8,20 @@
         }
         padding: 10px;
         border: 2px solid #d8d8d8;
-        border-left: 0px;
-        border-right: 0px;
+        border-radius: 4px 0px 0px 4px;
         height: 40px;
-        width: 200px;
+        min-width: 250px;
     }
     button{
         &:hover{
             color: var(--text-dark);
-            background-color: var(--accent); 
+            background-color: #fff;
+            border: 1px solid var(--accent); 
         }
         height: 40px;
         padding: 10px;
         color: var(--white);
+        border: 1px solid var(--accent);
         background-color: var(--accent);
         font-size: 16px;
         text-align: center;
@@ -31,9 +32,17 @@
     }
 }
 
-@media(max-width:768px){
+@media(max-width:639px){
     .wrap{
         order: 3;
         margin: 20px auto;
+    }
+}
+
+@media(max-width:400px){
+    .wrap{
+        input{
+            min-width: 200px;
+        }
     }
 }

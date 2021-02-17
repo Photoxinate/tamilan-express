@@ -1,27 +1,39 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import useWindowSize from '../../hooks/useWindowDimensions';
+import Button from '../UI/Button/Button'
+import classes from './ProductCarousel.module.scss'
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-
-
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-const ProductCarousel = ({ products, carouselTitle }) => {
+const ProductCarousel = ({ products, carouselTitle, onClicked }) => {
 
   const { width } = useWindowSize();
 
-  const slidesPerView = width <= 768 ? 3:5;
+  let slidesPerView, spaceBetween
+  if(width <= 540){
+    slidesPerView = 2
+    spaceBetween = 5
+  }
+  else if(width <= 768){
+    slidesPerView = 3
+    spaceBetween = 5
+  }
+  else{
+    slidesPerView = 5
+    spaceBetween = 10
+  }
 
   return (
-    <div className='carousel-wrap'>
+    <div className={classes.carouselWrap}>
       <h2>{carouselTitle}</h2>
       <Swiper
-      spaceBetween={10}
+      spaceBetween={spaceBetween}
       slidesPerView={slidesPerView}
       navigation
       pagination={{ clickable: true }}
@@ -30,9 +42,10 @@ const ProductCarousel = ({ products, carouselTitle }) => {
     >
       {products.map((product, i) => (
         <SwiperSlide key={product.id}>
-          <ProductCard product={product} />
+          <ProductCard onClicked={onClicked} product={product} />
         </SwiperSlide>
       ))}
+        <span slot="wrapper-end"><Button text='View More'/></span>
      </Swiper>
     </div>
     

@@ -1,0 +1,23 @@
+.wrap{
+    margin: 5px;
+    padding: 5px;
+
+    img:hover{
+        cursor: pointer;
+    }
+}
+
+@media(max-width:768px){
+    .wrap{
+        img{
+            width: 150px;
+        }
+    }
+}
+@media(max-width:540px){
+    .wrap{
+        img{
+            width: 125px;
+        }
+    }
+}

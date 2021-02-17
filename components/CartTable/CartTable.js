@@ -1,23 +1,36 @@
 import React from 'react';
-import Product from './Product/Product';
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionTypes'
+import ProductRow from './ProductRow/ProductRow'
 import classes from './CartTable.module.scss';
 
 const CartTable = (props) => {
   return (
     <div className={classes.table}>
-        {props.products.map((product, i) => (
-            <div key={product.id} className={classes.row}>
-            <div className={classes.col}>
-              <Product product={product} />
-            </div>
-            <div className={classes.col}>Quantity</div>
-            <div className={classes.col}>$ {product.price}</div>
-            <div className={classes.col}>Delete</div>
-          </div>
-        ))}
-      
+      <div className={classes.row}>
+        <div className={classes.col}><h2>SHOPPING CART</h2></div>
+      </div>
+      <hr/>
+      {props.products.map((product, i) => (
+        <ProductRow key={product.id} onRemoveProduct={props.onRemoveProduct} product={product}/>
+      ))}
     </div>
   );
 };
 
-export default CartTable;
+const mapStateToProps = state => {
+  return {
+      products: state.prdCart.products,
+  }
+};
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+      onAddProduct: (product, qty) => dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product, qty:qty}}),
+      onRemoveProduct: (id) => dispatch({type: actionTypes.REMOVE_FROM_CART, payload:{id:id}}),
+  }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartTable);

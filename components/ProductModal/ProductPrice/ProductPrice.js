@@ -11,7 +11,7 @@ const ProductPrice = (props) => {
     return (
         <div className={classes.priceWrap}>
           <div className={classes.originalPrice}>${props.price}</div>${price}
-          <div className={classes.priceSave}>{savePrice}</div>
+          <span className={classes.priceSave}>SAVE&nbsp;{savePrice}</span>
         </div>
       );
   } else{
