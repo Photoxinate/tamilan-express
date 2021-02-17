@@ -16,7 +16,7 @@ const Layout = (props) => {
             </Head>
             
             <Header />
-            {/* <NavBar/> */}
+            <NavBar/>
             
             <main className={styles.main}>
                 {props.children}

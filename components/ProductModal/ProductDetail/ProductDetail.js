@@ -37,9 +37,9 @@ const ProductDetail = (props) => {
       <Quantity max={product.maxQuantity} qty={qty} setQty={setQty}/>
       <div className={classes.btnWrap}>
         <Button text="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
-        <Link href="/cart" passHref>
+        <Link href="/cart" >
           <a>
-            <Button text="Check Out" />
+            <Button text="Check Out" onClicked={() => addToCart(product, qty)}/>
           </a>
         </Link>
       </div>
