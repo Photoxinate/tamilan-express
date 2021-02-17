@@ -8,7 +8,7 @@ const ProductView = ({product}) => {
             <div className={classes.imgWrap}>
                 <img src={product.img} alt={product.alt}/>
             </div>
-            <ProductDetail productDetail={product}/>
+            <ProductDetail product={product}/>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as actionTypes from '../../store/actions/actionTypes'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { connect } from 'react-redux';
 import ProductImage from './ProductImage/ProductImage';
 import ProductData from './ProductData/ProductData'
@@ -11,24 +11,25 @@ import classes from './ProductCard.module.scss';
 
 const ProductCard = ({product, ...props}) => {
 
-  const router = useRouter()
   const discountLabel = (product.discount>0)?<DiscountLabel discount={product.discount}/>:null
 
-  const onClicked = () => {
-    router.push({
-      pathname: '/product/[pid]',
-      query: { pid: product.id },
-    })
+  const onClicked = (e) =>{
+    e.preventDefault();
+    props.showModal(product)
   }
+  
 
   return (
-    <div className={classes.prodCard} onClick={onClicked}>
+    <Link href={`/product/${encodeURIComponent(product.id)}`}>
+      <div className={classes.prodCard} >
       <ProductImage img={product.img} alt={product.alt} />
       {discountLabel}
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
-      <Button text='Add to Cart' onClicked={() => props.showModal(product)}/>
+      <Button text='Add to Cart' onClicked={onClicked}/>
     </div>
+    </Link>
+    
   );
 };
 
