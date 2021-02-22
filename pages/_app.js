@@ -5,12 +5,15 @@ import { createStore, combineReducers } from 'redux';
 import CartReducer from '../store/reducers/cart';
 import UIReducer from '../store/reducers/UI';
 import '../styles/globals.css';
+
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
+//import semantic ui styles
+import 'semantic-ui-css/semantic.min.css'
 const rootReducer = combineReducers({
   prdCart: CartReducer,
   ui:  UIReducer
