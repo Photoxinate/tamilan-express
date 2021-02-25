@@ -37,7 +37,7 @@ const customStyles = {
         height: height
     }),
     input: () => ({
-        height: height,
+        height: height/2,
         display: 'flex',
         alignItems: 'center',
         caretColor: 'transparent',

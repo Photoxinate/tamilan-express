@@ -15,13 +15,10 @@ const index = () => {
             </div>
             <div className={classes.body}>
                 <Filter />
-                <ProductContainer products={products} itemsPerRow={5}/>
-                {/* <div className={classes.container}>
-                    <div className={classes.products}>
-                        {products.map((product, i) => <ProductCard key={i} product={product} />)}
-                    </div>
+                <div className={classes.container}>
+                    <ProductContainer products={products} itemsPerRow={4}/>
                     <Pagination />
-                </div> */}
+                </div>
             </div>
         </section>
     );
