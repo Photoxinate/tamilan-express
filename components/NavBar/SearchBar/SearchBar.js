@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import classes from './SearchBar.module.scss';
 
 const SearchBar = (props) => {
@@ -6,8 +7,7 @@ const SearchBar = (props) => {
 
   return (
     <div className={classes.wrap}>
-      <input/>
-      <button>Search</button>
+        <Input fluid action='Search' placeholder='Search...' />
     </div>
   );
 };
