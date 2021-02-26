@@ -1,6 +1,8 @@
 .wrap{
     width: 100%;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin: 5px;
     padding: 5px;
     label{
@@ -8,6 +10,13 @@
     }
 
     .controller{
-        width: 60%;
+        width: 80%;
+    }
+}
+
+@media(max-width:768px){
+    .wrap{
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

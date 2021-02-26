@@ -1,0 +1,23 @@
+.wrap {
+  padding: 20px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 80%;
+  margin: 20px auto;
+
+  .detailWrap {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    .label {
+      display: inline-block;
+      padding: 10px 5px;
+      width: 30%;
+    }
+    .value {
+      display: inline-block;
+      padding: 10px 5px;
+      width: 70%;
+    }
+  }
+}
