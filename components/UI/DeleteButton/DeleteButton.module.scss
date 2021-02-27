@@ -4,12 +4,11 @@
   button {
     &:hover {
       cursor: pointer;
-      background-color: #c0392b;
       svg{
-          fill: white;
+          fill: var(--accent);
       }
     }
-
+    background-color: transparent;
     border: 0;
     border-radius: 8px;
     padding: 5px 10px;

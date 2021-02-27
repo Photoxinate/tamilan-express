@@ -7,10 +7,9 @@ import classes from './CartTable.module.scss';
 const CartTable = (props) => {
   return (
     <div className={classes.table}>
-      <div className={classes.row}>
+      <div className={classes.cartHead}>
         <div className={classes.col}><h2>SHOPPING CART</h2></div>
       </div>
-      <hr/>
       {props.products.map((product, i) => (
         <ProductRow key={product.id} onChangeQty={props.onChangeQty} onRemoveProduct={props.onRemoveProduct} product={product}/>
       ))}
