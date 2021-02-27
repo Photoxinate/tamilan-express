@@ -4,7 +4,9 @@ import DeleteButton from '../../UI/DeleteButton/DeleteButton';
 import Product from '../Product/Product';
 import classes from '../CartTable.module.scss';
 
-const ProductRow = ({ product, ...props }) => {
+const ProductRow = (props) => {
+
+  const product = props.product
   const [qty, setQty] = useState(product.qty);
 
   return (

@@ -7,6 +7,7 @@ import ProductData from './ProductData/ProductData'
 import ProductPrice from './ProductPrice/ProductPrice'
 import Button from '../UI/Button/Button'
 import DiscountLabel from './DiscountLabel/DiscountLabel'
+import ProductModal from '../NewModal/ProductModal'
 import classes from './ProductCard.module.scss';
 
 const ProductCard = ({product, ...props}) => {
@@ -27,6 +28,7 @@ const ProductCard = ({product, ...props}) => {
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
       <Button text='Add to Cart' onClicked={onClicked}/>
+      {/* <ProductModal product={product} /> */}
     </div>
     </Link>
     
