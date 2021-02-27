@@ -5,6 +5,7 @@ import Footer from '../footer/footer';
 import Header from '../Header/Header';
 import WhyUs from '../WhyUs/WhyUs';
 import NavBar from '../NavBar/NavBar';
+import Navigation from '../Navigation/Navigation';
 
 
 const Layout = (props) => {
@@ -16,7 +17,7 @@ const Layout = (props) => {
             </Head>
             
             <Header />
-            <NavBar/>
+            <Navigation />
             
             <main className={styles.main}>
                 {props.children}

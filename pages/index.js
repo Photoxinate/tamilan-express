@@ -7,6 +7,7 @@ import ProductCarousel from '../components/ProductCarousel/ProductCarousel'
 import Category from '../components/Category/Category'
 import { useSession, signin, signout } from 'next-auth/client' 
 import ProductModal from '../components/ProductModal/ProductModal'
+import { Button } from 'semantic-ui-react';
 
 const Home = (props) => {
 
@@ -30,7 +31,7 @@ const Home = (props) => {
                 signin()
               }}
             >
-              <button>Sign in</button>
+              <Button>Sign in</Button>
             </a>
           </>
         )}
@@ -50,7 +51,7 @@ const Home = (props) => {
                 signout()
               }}
             >
-              <button >Sign out</button>
+              <Button>Sign out</Button>
             </a>
           </>
         )}

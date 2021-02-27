@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('semantic-ui-css/components/button.min.css');
+@import url('semantic-ui-css/components/input.min.css');
+@import url('semantic-ui-css/components/accordion.min.css');
+@import url('semantic-ui-css/components/transition.min.css');
+@import url('semantic-ui-css/components/menu.min.css');
 
 :root {
   --primary: #0046bf;
@@ -16,7 +21,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family:'Work Sans', sans-serif, -apple-system;
+  font-family:'Poppins', sans-serif, -apple-system;
   scroll-behavior: smooth;
   color: var(--black);
 }
@@ -36,8 +41,27 @@ li {
   box-sizing: border-box;
 }
 
-input {
-  font-family: 'Work Sans', sans-serif, -apple-system;
+input, button {
+  font-family: 'Poppins', sans-serif, -apple-system !important;
+}
+
+.ui.accordion .title{
+  font-family: 'Poppins', sans-serif, -apple-system !important;
+  font-weight: 500;
+  font-size: 16px !important;
+}
+
+.ui.accordion .accordion .title .dropdown.icon, .ui.accordion .title .dropdown.icon {
+  float: right;
+}
+
+.ui.accordion .accordion {
+  margin: 0 0 0;
+  padding: 0;
+}
+
+button {
+  font-weight: 500 !important;
 }
 
 /* input:focus, input:active, button:focus, button:active {

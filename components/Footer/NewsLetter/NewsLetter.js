@@ -1,6 +1,9 @@
-import React from 'react';
+import React from 'react'
+import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
+import { ArrowRight } from '../../Icons/Icons';
 
-import classes from './NewsLetter.module.scss';
+import classes from './NewsLetter.module.scss'
 
 const NewsLetter = () => {
     return (
@@ -15,9 +18,15 @@ const NewsLetter = () => {
                         Be the first to know. Sign up for news letter today.
                     </p>
                 </div>
-                <form className={classes.input}>
-                    <input name='email' type='email' required placeholder='Enter your email...' />
-                    <button>Sign Up</button>
+                <form className={classes.form}>
+                    <Input action={
+                        <Button animated>
+                            <Button.Content visible><ArrowRight color='white' size={16} strokeWidth={3} /></Button.Content>
+                            <Button.Content hidden>
+                                <ArrowRight color='white' size={16} strokeWidth={3} />
+                            </Button.Content>
+                        </Button>
+                    } fluid placeholder='Email' />
                 </form>
             </div>
             <div className={classes.social}>

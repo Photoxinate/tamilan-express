@@ -1,0 +1,13 @@
+.wrap{
+    width: 100%;
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    label{
+        width: 20%;
+    }
+
+    .controller{
+        width: 60%;
+    }
+}

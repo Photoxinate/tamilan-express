@@ -4,12 +4,16 @@ import { Provider as AuthProvider } from 'next-auth/client';
 import { createStore, combineReducers } from 'redux';
 import CartReducer from '../store/reducers/cart';
 import UIReducer from '../store/reducers/UI';
-import '../styles/globals.css';
+import { Button } from 'semantic-ui-react';
+
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+
+//import semantic ui styles
+import '../styles/globals.css';
 
 const rootReducer = combineReducers({
   prdCart: CartReducer,

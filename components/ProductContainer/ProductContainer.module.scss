@@ -3,4 +3,27 @@
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+
+    .wrap{
+        box-sizing:border-box;
+        width: 25%;
+        margin: 5px;
+        padding: 5px;
+    }
+}
+
+@media(max-width:768px){
+    .container{
+        .wrap{
+            width: 33%;
+        }
+    }
+}
+
+@media(max-width:520px){
+    .container{
+        .wrap{
+            width: 50%;
+        }
+    }
 }
