@@ -34,7 +34,7 @@ const Footer = () => {
                     <div className={classes.nav}>
                         <h3>Company</h3>
                         <a href='#'>About us</a>
-                        <a href='#'>Cantact us</a>
+                        <a href='#'>Contact us</a>
                         <a href='#'>Terms and Conditions</a>
                         <a href='#'>Privacy Policy</a>
                     </div>

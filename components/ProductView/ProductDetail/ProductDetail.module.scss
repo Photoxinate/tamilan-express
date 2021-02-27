@@ -7,29 +7,32 @@
   padding: 10px;
   margin: 10px;
 
-  hr {
-    margin: 10px 0px;
-    border: 0;
-    height: 1px;
-    width: 100%;
-    background: #333;
-    background-image: linear-gradient(to right, #ccc, #333, #ccc);
-  }
+  
   .prodName {
     font-size: 28px;
     font-weight: 600;
-    color: #000;
+    color: var(--text-dark);
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 0 20px;
+  
   }
   .prodCategory {
     margin: 10px 0px;
-    color: var(--text-light);
-    font-size: 18px;
+    font-size: 15px;
+    color: #a9a9a9;
+    font-weight: 400;
+    line-height: 22px;
+    padding: 0 20px;
+    text-transform: uppercase;
   }
   .prodStock {
     color: #30b619;
   }
   .itemWrap {
-    margin: 20px 0px;
+    margin: 10px 0px;
+    padding: 0 20px;
+
   }
 }
 

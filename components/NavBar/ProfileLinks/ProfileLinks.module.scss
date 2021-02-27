@@ -8,7 +8,7 @@
         &:hover{
             background-color: #fff;
             svg{
-                fill: #000;
+                fill: var(--accent);
             }
         }
         height: 50px;

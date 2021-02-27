@@ -27,7 +27,7 @@ const ProductCard = ({product, ...props}) => {
       {discountLabel}
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
-      <Button text='Add to Cart' onClicked={onClicked}/>
+      <Button text='ADD TO CART' onClicked={onClicked}/>
       {/* <ProductModal product={product} /> */}
     </div>
     </Link>

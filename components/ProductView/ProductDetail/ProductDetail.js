@@ -12,8 +12,8 @@ const ProductDetail = ({ product, ...props }) => {
 
   return (
     <div className={classes.prodDetail}>
-      <div className={classes.prodName}>{product.name}</div>
       <div className={classes.prodCategory}>{product.category}</div>
+      <div className={classes.prodName}>{product.name}</div>
       <ProductPrice
         price={product.price}
         discount={product.discount}
@@ -25,7 +25,7 @@ const ProductDetail = ({ product, ...props }) => {
         Weight :{' '}
         <span className={classes.prodWeight}>{product.weight}</span>
       </div>
-      <hr/>
+      
       <Quantity qty={qty} id={product.id} onChangeQty={props.onChangeQty} setQty={setQty} max={product.maxQty} />
       <ProductBuy onAddProduct={()=>onAddProduct(product, )}/>
     </div>
