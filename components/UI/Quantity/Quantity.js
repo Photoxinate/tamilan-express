@@ -25,7 +25,7 @@ const Quantity = (props) => {
 
   return (
     <div className={classes.quantity}>
-      <button onClick={decreaseQuantity}>
+      <button className={classes.minusIcon} onClick={decreaseQuantity}>
         <Minus size={24} color="var(--accent)" />
       </button>
       <input

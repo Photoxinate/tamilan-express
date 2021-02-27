@@ -20,8 +20,8 @@ const ProductDetail = (props) => {
 
   return (
     <div className={classes.prodDetail}>
-      <div className={classes.prodName}>{product.name}</div>
       <div className={classes.prodCategory}>{product.category}</div>
+      <div className={classes.prodName}>{product.name}</div>
       <ProductPrice
         price={product.price}
         discount={product.discount}
@@ -33,7 +33,7 @@ const ProductDetail = (props) => {
         Weight :
         <span className={classes.prodWeight}>{product.weight}</span>
       </div>
-      <hr />
+     
       <Quantity max={product.maxQuantity} qty={qty} setQty={setQty}/>
       <div className={classes.btnWrap}>
         <Button text="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>

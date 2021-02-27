@@ -2,7 +2,7 @@
 
 .header {
     width: 100%;
-    background-color: black;
+    background-color: var(--text-dark);
 
     .container {
         @extend %maxWidth;
@@ -12,6 +12,10 @@
         align-items: center;
         color: white;
         font-size: 14px;
+
+        p{
+            margin: 0;
+        }
 
         .select {
             margin-left: 5px;

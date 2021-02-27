@@ -11,7 +11,6 @@ const index = (props) => {
     return (
       <div className={classes.wrap}>
         <CartTable />
-        <Cheque />
       </div>
     );
   }

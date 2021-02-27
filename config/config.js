@@ -2,6 +2,17 @@ const baseUrl =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000/'
     : 'https://api.tamilanexpress.com/';
+
+export const contact = {
+  phone: '+1-1001-234-5678',
+  email: 'hello@tamilanexpress.com',
+  address: '126, select ave - unit 3 scarborough on, m1v 3y6, ontario, canada.',
+  openHours: {
+    weekdays:'Mon-Fri: 08:00 - 20:00',
+    weekend:'Mon-Fri: 08:00 - 20:00'
+  }
+}
+    
 export const products = [
   {
     id:'001',

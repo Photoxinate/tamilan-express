@@ -12,6 +12,8 @@ const categories = [
     {name: 'Category Name', image: 'https://static.thenounproject.com/png/1176637-200.png'},
     {name: 'Category Name', image: 'https://static.thenounproject.com/png/1176637-200.png'},
     {name: 'Category Name', image: 'https://static.thenounproject.com/png/1176637-200.png'},
+    {name: 'Category Name', image: 'https://static.thenounproject.com/png/1176637-200.png'},
+    {name: 'Category Name', image: 'https://static.thenounproject.com/png/1176637-200.png'},
 ]
 
 const Category = () => {

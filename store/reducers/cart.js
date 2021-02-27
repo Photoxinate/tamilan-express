@@ -33,12 +33,11 @@ const reducer = (state = initialState, action) => {
       }
 
     case actionTypes.REMOVE_FROM_CART:
-      updatedProducts = state.products.filter(
-        (prod, i) => prod.id !== action.payload.id
-      );
       return {
         ...state,
-        products: updatedProducts,
+        products: updatedProducts.filter(
+          (prod, i) => prod.id !== action.payload.id
+        ),
       };
 
       case actionTypes.CHANGE_QUANTITY:

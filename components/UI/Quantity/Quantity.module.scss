@@ -2,7 +2,7 @@
 
   display: flex;
   align-items: center;
-  margin: 10px 0px;
+  margin: 10px 20px;
 
 
   /* Chrome, Safari, Edge, Opera */
@@ -26,13 +26,21 @@
 
   button{
     &:hover{
-      border: 1px solid var(--accent);
+      
     }
     margin: 5px;
     border: 0;
     border-radius: 50%;
-    border: 1px solid #fff;
     background-color: #fff;
     transition: all 0.2s ease-in-out;
+
+    
+  }
+  .minusIcon{
+    svg{
+      overflow: visible;
+      stroke: var(--accent);
+      stroke-width: 25px;
+    }
   }
 }

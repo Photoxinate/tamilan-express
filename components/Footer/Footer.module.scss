@@ -33,47 +33,28 @@
             margin: 0 10px;
 
             h3 {
-                margin-bottom: 20px;
+
+                font-size: 18px;
+                line-height: 30px;
                 font-weight: 500;
+                color: var(--text-dark);
+                cursor: pointer;
+                position: relative;
+                margin-bottom: 20px;
             }
 
             a {
                 display: table;
                 margin: 12px 0;
                 color: var(--text-light);
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 30px;
             }
         }
     }
 
-    .copyright {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        border-top: 1px solid rgb(189, 189, 189);
-        color: var(--text-light);
 
-        .content {
-            @extend %maxWidth;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .text {
-                display: inline;
-    
-                a {
-                    color: var(--accent);
-                    font-weight: 500;
-                }
-            }
-    
-            .paypal {
-                height: 32px;
-            }
-        }
-        
-    }
-
-    
 
     a {
         position: relative;
@@ -101,6 +82,41 @@
         }
 
     }
+
+    .copyright {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-top: 1px solid  var(--text-lighter);
+        color: var(--text-lighter);
+
+        .content {
+            @extend %maxWidth;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .text {
+                display: inline;
+                font-weight: 400;
+    
+                a {
+                    color: var(--accent);
+                    font-weight: 400;
+
+                    &:hover{
+                        color: var(--primary) !important;
+                    }
+                }
+            }
+    
+            .paypal {
+                height: 32px;
+            }
+        }
+        
+    }
+
+    
     
 }
 
