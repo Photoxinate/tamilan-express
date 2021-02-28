@@ -5,6 +5,7 @@
 @import url('semantic-ui-css/components/transition.min.css');
 @import url('semantic-ui-css/components/menu.min.css');
 @import url('semantic-ui-css/components/popup.min.css');
+@import url('semantic-ui-css/components/dropdown.min.css');
 @import url('semantic-ui-css/components/item.min.css');
 @import url('semantic-ui-css/components/label.min.css');
 @import url('semantic-ui-css/components/image.min.css');
@@ -64,6 +65,26 @@ input, button {
 .ui.accordion .accordion {
   margin: 0 0 0;
   padding: 0;
+}
+
+.swiper-nav-next {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  right: 10px;
+}
+
+.swiper-nav-prev {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  left: 10px;
 }
 
 button {

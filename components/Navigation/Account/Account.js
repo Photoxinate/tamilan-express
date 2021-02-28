@@ -35,9 +35,6 @@ const Account = () => {
             <Link href='/orders'><a>
                 Orders
             </a></Link>
-            <Link href='/favourites'><a>
-                Favourites
-            </a></Link>
             <Link href='/api/auth/signout'><a className={classes.signout} onClick={(e) => { e.preventDefault(); signout() }}>
                 Sign Out
             </a></Link>

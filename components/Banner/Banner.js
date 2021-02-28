@@ -3,11 +3,11 @@ import BannerImage from './Image/Image';
 import classes from './Banner.module.scss';
 
 // import Swiper core and required modules
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Pagination, Scrollbar, A11y, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // install Swiper modules
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Pagination, Scrollbar, A11y, Autoplay, Navigation]);
 
 const Banner = ({ banners }) => {
 
@@ -16,10 +16,12 @@ const Banner = ({ banners }) => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        pagination={{ type: 'fraction' }}
+        autoplay={{ delay: 6000, disableOnInteraction: false }}
+        navigation={{
+          nextEl: '.swiper-nav-next',
+          prevEl: '.swiper-nav-prev',
+        }}
       >
         {banners.map((banner, i) => (
           <SwiperSlide>

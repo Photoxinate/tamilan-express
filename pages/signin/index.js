@@ -1,8 +1,9 @@
-import React from 'react';
-import { signIn, getSession } from 'next-auth/client';
-import { useRouter } from 'next/router';
+import React from 'react'
+import { signIn, getSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-import classes from './index.module.scss';
+import classes from './index.module.scss'
 
 const index = () => {
 
@@ -28,6 +29,9 @@ const index = () => {
             Continue with Facebook
           </button>
         </div>
+        <span className={classes.agree}>
+          By continue, you're agreeing to the <Link href='terms-conditions'><a>Terms and Conditions.</a></Link>
+        </span>
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
 import { Menu, Profile, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
+import Categories from './Categories/Categories'
 import classes from './Navigation.module.scss'
 import SideDrawer from './SideDrawer/SideDrawer'
 
@@ -34,10 +35,10 @@ const Navigation = () => {
                         <Input required action={{ icon: <Search aria-label='search' color='#555' size={16} strokeWidth={3} /> }} fluid aria-label='Search' placeholder='Search...' />
                     </div>
                     <ul className={classes.navs}>
-                        <li>
-                            <Link href='/categories'><a> Categories </a></Link>
+                        <li className={classes.nav}>
+                            <Categories />
                         </li>
-                        <li>
+                        <li className={classes.nav}>
                             <Link href='/about-us'><a> About Us </a></Link>
                         </li>
                     </ul>
@@ -47,13 +48,13 @@ const Navigation = () => {
                             <span className={classes.count}>1</span>
                             <Shopping size={26} />
                         </a></Link>
-                        <span className={classes.menu} role='button' aria-label='toggle menu' onClick={handleToggle}>
+                        <span className={classes.menu} role='button' aria-label='toggle menu' aria-controls='sidedrawer' tabIndex={0} onClick={handleToggle}>
                             <Menu size={26} />
                         </span>
                     </div>
                 </nav>
             </div>
-            <SideDrawer click={handleToggle} toggle={toggle} />
+            <SideDrawer id='sidedrawer' click={handleToggle} toggle={toggle} />
         </>
     );
 };
