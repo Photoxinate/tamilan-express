@@ -67,6 +67,26 @@ input, button {
   padding: 0;
 }
 
+.swiper-nav-next {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  right: 10px;
+}
+
+.swiper-nav-prev {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  left: 10px;
+}
+
 button {
   font-weight: 500 !important;
 }
