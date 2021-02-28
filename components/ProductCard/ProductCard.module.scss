@@ -10,6 +10,7 @@
   margin: 15px;
   transition: all 0.25s ease;
   cursor: pointer;
+  
 
   .imgWrap {
     width: 170px;
@@ -46,6 +47,7 @@
       line-height: 20px;
       color: var(--text-dark);
       margin-bottom: 10px;
+      text-overflow: ellipsis;
     }
   }
 
@@ -63,6 +65,9 @@
       text-decoration: line-through;
       color: var(--text-light);
     }
+  }
+  .buttonWrap{
+    text-align: center;
   }
 }
 
