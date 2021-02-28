@@ -5,15 +5,15 @@ import Layout from '../components/Layout/Layout';
 import CartReducer from '../store/reducers/cart';
 import UIReducer from '../store/reducers/UI';
 
+
+
+import '../styles/globals.css';
+
 // Import Swiper styles
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
-
-import '../styles/globals.css';
-
-
 
 const rootReducer = combineReducers({
   prdCart: CartReducer,

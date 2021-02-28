@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import Category from '../components/Category/Category';
 import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
 import ProductModal from '../components/ProductModal/ProductModal';
-import { products } from '../config/config';
+import Banner from '../components/Banner/Banner'
+import { products, banners } from '../config/config';
 import * as actionTypes from '../store/actions/actionTypes';
 
 const Home = (props) => {
@@ -14,6 +15,7 @@ const Home = (props) => {
       <Head>
         <title>Tamilan Express</title>
       </Head>
+      <Banner banners={banners}/>
       <ProductCarousel products={products} carouselTitle="Deals of the Day"/>
       <Category />
       <ProductModal isShowModal={props.isShowModal} product={props.modalProduct} closeModal={props.closeModal} />
