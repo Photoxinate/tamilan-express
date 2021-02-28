@@ -4,12 +4,12 @@
     display: flex;
     padding: 10px;
     .imgWrap{
-        flex: 50%;
+        width: 50%;
         padding: 20px;
         text-align: center;
         img{
             width: 400px;
-            height: auto;
+            height: 400px;
         }
     }
 }
@@ -18,7 +18,7 @@
     .productView{
         flex-direction: column;
         .imgWrap{
-            flex: 100%;
+            width: 100%;
             img{
                 width: 60%;
             }
