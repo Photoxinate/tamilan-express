@@ -1,21 +1,28 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import BannerImage from './Image/Image'
+import BannerImage from './Image/Image';
 import classes from './Banner.module.scss';
 
-const Banner = (props) => {
+// import Swiper core and required modules
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+const Banner = ({ banners }) => {
+
   return (
     <div>
       <Swiper
-      spaceBetween={0}
+        spaceBetween={0}
         slidesPerView={1}
         pagination={{ clickable: true }}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        {props.banners.map((banner, i) => (
+        {banners.map((banner, i) => (
           <SwiperSlide>
-            <BannerImage key={i} banner={banner}/>
+            <BannerImage key={i} banner={banner} />
           </SwiperSlide>
         ))}
       </Swiper>
