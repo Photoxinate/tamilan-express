@@ -1,18 +1,13 @@
-import React from 'react'
-import * as actionTypes from '../store/actions/actionTypes'
+import Head from 'next/head';
+import React from 'react';
 import { connect } from 'react-redux';
-import Head from 'next/head'
-import {products} from '../config/config'
-import ProductCarousel from '../components/ProductCarousel/ProductCarousel'
-import Category from '../components/Category/Category'
-import { useSession, signin, signout } from 'next-auth/client' 
-import ProductModal from '../components/ProductModal/ProductModal'
-import { Button } from 'semantic-ui-react';
+import Category from '../components/Category/Category';
+import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
+import ProductModal from '../components/ProductModal/ProductModal';
+import { products } from '../config/config';
+import * as actionTypes from '../store/actions/actionTypes';
 
 const Home = (props) => {
-
-
-  const [ session, loading ] = useSession();
 
   return (
     <>
@@ -21,40 +16,6 @@ const Home = (props) => {
       </Head>
       <ProductCarousel products={products} carouselTitle="Deals of the Day"/>
       <Category />
-      {!session && (
-          <>
-            <span >Not signed in</span>
-            <a
-              href={`/api/auth/signin`}
-              onClick={(e) => {
-                e.preventDefault()
-                signin()
-              }}
-            >
-              <Button>Sign in</Button>
-            </a>
-          </>
-        )}
-        {session && (
-          <>
-            <span
-              style={{ backgroundImage: `url(${session.user.image})` }}
-              
-            />
-            <span>
-              Signed in as <strong>{session.user.email}</strong>
-            </span>
-            <a
-              href={`/api/auth/signout`}
-              onClick={(e) => {
-                e.preventDefault()
-                signout()
-              }}
-            >
-              <Button>Sign out</Button>
-            </a>
-          </>
-        )}
       <ProductModal isShowModal={props.isShowModal} product={props.modalProduct} closeModal={props.closeModal} />
     </>
   )

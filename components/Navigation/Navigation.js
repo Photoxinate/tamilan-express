@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
 import { Menu, Profile, Search, Shopping } from '../Icons/Icons'
+import Account from './Account/Account'
 import classes from './Navigation.module.scss'
 import SideDrawer from './SideDrawer/SideDrawer'
 
@@ -30,7 +31,7 @@ const Navigation = () => {
                         <a className={classes.logo}> <img src='/logo/logo.png' width={180} alt='Tamilan express logo, a smart phone along with a shop' /> </a>
                     </Link>
                     <div className={classes.search}>
-                        <Input action={{ icon: <Search aria-label='search' color='#555' size={16} strokeWidth={3} /> }} fluid aria-label='Search' placeholder='Search...' />
+                        <Input required action={{ icon: <Search aria-label='search' color='#555' size={16} strokeWidth={3} /> }} fluid aria-label='Search' placeholder='Search...' />
                     </div>
                     <ul className={classes.navs}>
                         <li>
@@ -41,9 +42,7 @@ const Navigation = () => {
                         </li>
                     </ul>
                     <div className={classes.icons}>
-                        <Link href='/api/auth/signin'><a aria-label='Account or Sign In'>
-                            <Profile size={26} />
-                        </a></Link>
+                        <Account />
                         <Link href='/cart'><a aria-label='shopping cart' className={classes.cart}>
                             <span className={classes.count}>1</span>
                             <Shopping size={26} />

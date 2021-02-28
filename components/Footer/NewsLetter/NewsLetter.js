@@ -19,7 +19,7 @@ const NewsLetter = () => {
                     </p>
                 </div>
                 <form className={classes.form}>
-                    <Input action={
+                    <Input required type='email' action={
                         <Button animated aria-label='Send'>
                             <Button.Content visible><ArrowRight color='white' size={16} strokeWidth={3} /></Button.Content>
                             <Button.Content hidden>
