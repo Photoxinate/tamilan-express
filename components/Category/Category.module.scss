@@ -25,3 +25,9 @@
         grid-gap: 14px
     }
 }
+@media (max-width: 375px) {
+    .categories .container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 12px
+    }
+}

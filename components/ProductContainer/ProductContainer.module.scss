@@ -7,24 +7,29 @@
 
     .wrap{
         box-sizing:border-box;
-        width: 20%;
-        margin: 5px;
+        width: 23%;
         padding: 5px;
     }
 }
-
-@media(max-width:768px){
+@media(max-width:1250px){
     .container{
         .wrap{
-            width: 25%;
+            width: 30%;
+        }
+    }
+}
+@media(max-width:980px){
+    .container{
+        .wrap{
+            width: 45%;
         }
     }
 }
 
-@media(max-width:520px){
+@media(max-width:400px){
     .container{
         .wrap{
-            width: 33%;
+            width: 65%;
         }
     }
 }
