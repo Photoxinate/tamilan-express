@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 2;
+    z-index: 1301;
     background-color: #fff;
     box-shadow: -10px 0px 70px 5px rgba(17, 67, 96, 0.24);
     transition: transform 0.3s ease-in-out;
@@ -21,8 +21,12 @@
         .navs li {
             display: flex;
             flex-direction: column;
-            margin: 15px;
+            margin: 20px 15px;
             font-weight: 500;
+
+            &.accordion {
+                margin: -10px 15px;
+            }
         }
 
         &>div {

@@ -27,10 +27,10 @@ const Navigation = () => {
             <div className={classes.navigation}>
                 <nav className={classes.container}>
                     <Link href='/'>
-                        <a className={classes.logo}> <img src='/logo/logo.png' width={180} /> </a>
+                        <a className={classes.logo}> <img src='/logo/logo.png' width={180} alt='Tamilan express logo, a smart phone along with a shop' /> </a>
                     </Link>
                     <div className={classes.search}>
-                        <Input action={{ icon: <Search color='#555' size={16} strokeWidth={3} /> }} fluid placeholder='Search...' />
+                        <Input action={{ icon: <Search aria-label='search' color='#555' size={16} strokeWidth={3} /> }} fluid aria-label='Search' placeholder='Search...' />
                     </div>
                     <ul className={classes.navs}>
                         <li>

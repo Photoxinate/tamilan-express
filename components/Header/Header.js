@@ -20,7 +20,7 @@ const customStyles = {
         border: 'none',
         minHeight: height,
         height: height,
-        backgroundColor: '#252525',
+        backgroundColor: '#363636',
         cursor: 'pointer'
     }),
     indicatorSeparator: () => ({

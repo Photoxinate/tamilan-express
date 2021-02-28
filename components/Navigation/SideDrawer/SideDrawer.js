@@ -140,8 +140,8 @@ const SideDrawer = ({ click, toggle }) => {
                         <li>
                             <Link href='/'><a> Home </a></Link>
                         </li>
-                        <li>
-                            <Accordion panels={jsonData} fluid />
+                        <li className={classes.accordion}>
+                            <Accordion panels={jsonData} />
                         </li>
                         <li>
                             <Link href='/about-us'><a> About Us </a></Link>

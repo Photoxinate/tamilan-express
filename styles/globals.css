@@ -50,6 +50,7 @@ input, button {
   font-family: 'Poppins', sans-serif, -apple-system !important;
   font-weight: 500;
   font-size: 16px !important;
+  color: black !important;
 }
 
 .ui.accordion .accordion .title .dropdown.icon, .ui.accordion .title .dropdown.icon {

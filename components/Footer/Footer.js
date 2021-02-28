@@ -11,7 +11,7 @@ const Footer = () => {
             <div className={classes.container}>
                 <div className={classes.links}>
                     <div className={classes.intro}>
-                        <img src='/logo/logo.png' />
+                        <img src='/logo/logo.png' alt='Tamilan express logo, a smart phone along with a shop' />
                         <div className={classes.contact}>
                             <div className={classes.item}>
                                 <strong>Address: </strong> Toronto, Canada

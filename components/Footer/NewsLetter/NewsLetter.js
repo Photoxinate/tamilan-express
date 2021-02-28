@@ -20,13 +20,13 @@ const NewsLetter = () => {
                 </div>
                 <form className={classes.form}>
                     <Input action={
-                        <Button animated>
+                        <Button animated aria-label='Send'>
                             <Button.Content visible><ArrowRight color='white' size={16} strokeWidth={3} /></Button.Content>
                             <Button.Content hidden>
                                 <ArrowRight color='white' size={16} strokeWidth={3} />
                             </Button.Content>
                         </Button>
-                    } fluid placeholder='Email' />
+                    } fluid placeholder='Enter your email..' aria-label='email for newsletter' />
                 </form>
             </div>
             <div className={classes.social}>
