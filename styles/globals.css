@@ -6,6 +6,9 @@
 @import url('semantic-ui-css/components/menu.min.css');
 @import url('semantic-ui-css/components/popup.min.css');
 @import url('semantic-ui-css/components/dropdown.min.css');
+@import url('semantic-ui-css/components/item.min.css');
+@import url('semantic-ui-css/components/label.min.css');
+@import url('semantic-ui-css/components/image.min.css');
 
 :root {
   --primary: #0046bf;

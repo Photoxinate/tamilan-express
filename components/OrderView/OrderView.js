@@ -12,7 +12,7 @@ const OrderView = ({ products }) => {
       <Item.Group divided>
         {products.map((product, i) => (
           <Item>
-            <Item.Image src={product.img} alt={product.alt} />
+            <Item.Image src={product.img} width="200" heigh="200" alt={product.alt} />
             <Item.Content>
               <Item.Header as="a">{product.name}</Item.Header>
               <Item.Meta>

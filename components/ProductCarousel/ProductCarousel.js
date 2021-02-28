@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-const ProductCarousel = ({ products, carouselTitle, onClicked }) => {
+const ProductCarousel = ({ products, carouselTitle }) => {
 
   const { width } = useWindowSize();
 
