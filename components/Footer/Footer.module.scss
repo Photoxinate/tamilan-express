@@ -1,7 +1,46 @@
 @import '../../styles/common';
 
+@keyframes top {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 .container {
     color: var(--text-dark);
+    position: relative;
+
+    .gotop {
+        position: absolute;
+        top: -57px;
+        right: 5%;
+        width: 36px;
+        height: 36px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 1px 1px 8px 1px rgba(26, 95, 100, 0.3);
+        cursor: pointer;
+        border: none;
+
+        &:hover {
+            background-color: rgb(241, 241, 241);
+
+            svg {
+                stroke: black;
+                animation: top .6s forwards 2;
+            }
+        }
+
+    }
 
     .links {
         @extend %maxWidth;
@@ -38,7 +77,7 @@
                 line-height: 30px;
                 font-weight: 500;
                 color: var(--text-dark);
-                cursor: pointer;
+                cursor: default;
                 position: relative;
                 margin-bottom: 20px;
             }
