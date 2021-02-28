@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ProductImage from './ProductImage/ProductImage';
 import ProductData from './ProductData/ProductData'
 import ProductPrice from './ProductPrice/ProductPrice'
-import Button from '../UI/Button/Button'
+import Button from "semantic-ui-react/dist/commonjs/elements/Button"
 import DiscountLabel from './DiscountLabel/DiscountLabel'
 import ProductModal from '../NewModal/ProductModal'
 import classes from './ProductCard.module.scss';
@@ -27,7 +27,7 @@ const ProductCard = ({product, ...props}) => {
       {discountLabel}
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
-      <Button text='ADD TO CART' onClicked={onClicked}/>
+      <Button content='ADD TO CART' onClicked={onClicked}/>
       {/* <ProductModal product={product} /> */}
     </div>
     </Link>

@@ -12,10 +12,11 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const Banner = ({ banners }) => {
 
   return (
-    <div>
+    <div className={classes.wrap}>
       <Swiper
-        spaceBetween={0}
+        spaceBetween={50}
         slidesPerView={1}
+        navigation
         pagination={{ clickable: true }}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
