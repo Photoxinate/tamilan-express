@@ -1,0 +1,26 @@
+@import '../../styles/common';
+
+.itemContainer {
+    margin: 4em 0;
+    width: 100%;
+
+    .container {
+        @extend %maxWidth;
+
+        .title {
+            margin-bottom: 2em;
+            position: relative;
+            color: var(--text-dark);
+
+            &::after {
+                position: absolute;
+                content: '';
+                left: 0;
+                bottom: -8px;
+                height: 1px;
+                width: 100%;
+                background-color: #ccc;
+            }
+        }
+    }
+}

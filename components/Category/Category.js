@@ -19,9 +19,7 @@ const categories = [
 const Category = () => {
     return (
         <div className={classes.categories}>
-            <div className={classes.container}>
-                {categories.map((cat, index) =>  <Item key={index} name={cat.name} image={cat.image} />)}
-            </div>
+            {categories.map((cat, index) =>  <Item key={index} name={cat.name} image={cat.image} />)}
         </div>
     );
 };

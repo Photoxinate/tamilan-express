@@ -13,9 +13,6 @@ const index = () => {
     
   return (
     <section className={classes.signin}>
-      <div className={classes.logo}>
-        <img src='/logo/logo.svg' alt='Tamilan Express' />
-      </div>
       <div className={classes.container}>
         <h1>Sign In / Sign Up</h1>
         <p>with your social network</p>

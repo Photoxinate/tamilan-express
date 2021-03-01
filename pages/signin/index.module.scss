@@ -1,19 +1,9 @@
 .signin {
     margin: 40px auto;
     max-width: 90%;
-    min-width: 400px;
 
     @media (max-width: 500px) {
         min-width: unset;
-    }
-
-    .logo {
-        margin: 30px auto;
-        max-width: 250px;
-
-        img {
-            width: 100%;
-        }
     }
 
     .container {
@@ -25,11 +15,12 @@
         min-width: 300px;
 
         h1 {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         p {
             color: var(--text-light);
+            font-size: 14px;
         }
 
         .buttons {

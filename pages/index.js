@@ -7,6 +7,8 @@ import ProductModal from '../components/ProductModal/ProductModal';
 import Banner from '../components/Banner/Banner'
 import { products, banners } from '../config/config';
 import * as actionTypes from '../store/actions/actionTypes';
+import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer'
+
 
 const Home = (props) => {
 
@@ -17,7 +19,10 @@ const Home = (props) => {
       </Head>
       <Banner banners={banners}/>
       <ProductCarousel products={products} carouselTitle="Deals of the Day"/>
-      <Category />
+
+      <HomeItemContainer title='Explore Categories' id='categories'>
+        <Category />
+      </HomeItemContainer>
       <ProductModal isShowModal={props.isShowModal} product={props.modalProduct} closeModal={props.closeModal} />
     </>
   )
