@@ -38,8 +38,8 @@ const ShippingMethodForm = () => {
       </div>
       <br />
       <Form>
-        If you would like to add a comment abbout your order, please write it in
-        the field box
+        <p className={classes.commentText}>If you would like to add a comment abbout your order, please write it in
+        the field box</p>
         <TextArea placeholder="Tell us more" />
       </Form>
     </div>

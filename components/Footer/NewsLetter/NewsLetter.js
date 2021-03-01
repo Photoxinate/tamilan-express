@@ -7,7 +7,8 @@ import classes from './NewsLetter.module.scss'
 
 const NewsLetter = () => {
     return (
-        <div className={classes.container}>
+        <div className={classes.containerWrap}>
+            <div className={classes.container}>
 
             <div className={classes.news}>
                 <div className={classes.text}>
@@ -41,7 +42,10 @@ const NewsLetter = () => {
                 </a>
             </div>
 
+            </div>
+
         </div>
+        
     );
 };
 

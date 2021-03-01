@@ -111,6 +111,61 @@ strong {
   display: none;
 }
 
+
+
+
+
+/* Sementic Ui Css*/
+
+
+/*Button*/
+
+.ui.button{
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--white);
+  font-size: 13px;
+  transition: all 0.5s ease !important;
+
+}
+
+.ui.button:hover{
+  background-color: var(--white);
+  color: var(--accent);
+ 
+}
+
+.ui.button .icon svg{
+  stroke: #ffffff;
+}
+
+.ui.button > .icon:not(.button) {
+  stroke: #ffffff;
+
+}
+.ui.primary.button {
+  background: var(--accent);
+}
+.ui.primary.button:hover {
+  background-color: var(--white);
+  color: var(--accent);
+}
+
+
+/*form Comment*/
+.ui.form textarea {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  border: 1px solid var(--text-lighter);
+  font-family: 'Poppins';
+  padding: 10px 20px;
+
+
+}
+
+
+
 @media (max-width: 768px) {
 
   .desktop-only {
@@ -121,4 +176,18 @@ strong {
     display: flex;
   }
 
+}
+
+@media (max-width: 480px) {
+  .ui.button{
+          font-size: 12px !important;
+      }
+  
+}
+
+@media (max-width: 340px) {
+  .ui.button{
+          font-size: 10px !important;
+      }
+  
 }
