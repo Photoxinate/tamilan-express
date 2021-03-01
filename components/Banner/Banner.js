@@ -18,16 +18,17 @@ const Banner = ({ banners }) => {
         slidesPerView={1}
         pagination={{ type: 'fraction' }}
         autoplay={{ delay: 6000, disableOnInteraction: false }}
-        navigation={{
-          nextEl: '.swiper-nav-next',
-          prevEl: '.swiper-nav-prev',
-        }}
+        // navigation={{
+        //   nextEl: '.swiper-nav-next',
+        //   prevEl: '.swiper-nav-prev',
+        // }}
       >
         {banners.map((banner, i) => (
           <SwiperSlide>
             <BannerImage key={i} banner={banner} />
           </SwiperSlide>
         ))}
+        {/* <span className='swiper-nav-next' /> */}
       </Swiper>
     </div>
   );

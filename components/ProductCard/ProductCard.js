@@ -28,7 +28,7 @@ const ProductCard = ({product, ...props}) => {
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
      <div className={classes.buttonWrap}>
-     <Button content='ADD TO CART' onClicked={onClicked}/>
+     <Button primary content='ADD TO CART' onClick={onClicked}/>
 
      </div>
       {/* <ProductModal product={product} /> */}

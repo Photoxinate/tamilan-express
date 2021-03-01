@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
+// import ProductCard from '../ProductCard2/ProductCard2'
 import useWindowSize from '../../hooks/useWindowDimensions';
 import Button from '../UI/Button/Button'
 import classes from './ProductCarousel.module.scss'

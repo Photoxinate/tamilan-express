@@ -119,36 +119,13 @@ strong {
 
 
 /*Button*/
-
-.ui.button{
-  background: var(--accent);
-  border: 1px solid var(--accent);
-  color: var(--white);
-  font-size: 13px;
-  transition: all 0.5s ease !important;
-
-}
-
-.ui.button:hover{
-  background-color: var(--white);
-  color: var(--accent);
- 
-}
-
-.ui.button .icon svg{
-  stroke: #ffffff;
-}
-
-.ui.button > .icon:not(.button) {
-  stroke: #ffffff;
-
-}
 .ui.primary.button {
   background: var(--accent);
+  color: #fff;
+  transition: all 0.25 ease;
 }
 .ui.primary.button:hover {
-  background-color: var(--white);
-  color: var(--accent);
+  background: #ff582a;
 }
 
 
