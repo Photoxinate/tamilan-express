@@ -33,7 +33,7 @@ const Navigation = () => {
                         <a className={classes.logo}> <img src='/logo/logo.png' width={180} alt='Tamilan express logo, a smart phone along with a shop' /> </a>
                     </Link>
                     <div className={classes.search}>
-                        <Input required action={{ icon: <Search aria-label='search' color='#555' size={16} strokeWidth={3} /> }} fluid aria-label='Search' placeholder='Search...' />
+                        <Input required action={{ icon: <Search aria-label='search' color='#fff' size={16} strokeWidth={3} /> }} fluid aria-label='Search' placeholder='Search...' />
                     </div>
                     <ul className={classes.navs}>
                         <li className={classes.nav}>
