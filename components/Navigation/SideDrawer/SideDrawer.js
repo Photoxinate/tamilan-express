@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Accordion from 'semantic-ui-react/dist/commonjs/modules/Accordion'
 import { ArrowRight } from '../../Icons/Icons'
 import Backdrop from '../../UI/BackDrop/Backdrop'
+import { useSession, signin, signout } from 'next-auth/client'
+
 import classes from './SideDrawer.module.scss'
 
 let jsonData = [
@@ -82,7 +84,7 @@ const accordify = (jsonData) => {
             if (jsonData[i]["content"].length !== 0) {
                 jsonData[i]["content"] = {
                     content: (
-                        <div style={{marginLeft: 10}}>
+                        <div style={{paddingLeft: 10, background: '#e9e9e9', borderRadius: 4}}>
                             <Accordion.Accordion panels={jsonData[i]["content"]} />
                         </div>
                     ),
@@ -100,10 +102,16 @@ const accordify = (jsonData) => {
         }
     }
 }
+accordify(jsonData)
 
 const SideDrawer = ({ click, toggle }) => {
 
-    accordify(jsonData);
+
+    const [session] = useSession()
+
+    const sign = session ? 
+        <Link href='/api/auth/signout'><a className={classes.signout} onClick={(e) => { e.preventDefault(); signout() }}> Sign Out </a></Link> : 
+        <Link href='/api/auth/signin'><a className={classes.signin} onClick={(e) => { e.preventDefault(); signin() }}> Sign In | Register </a></Link>
 
     const [style, setStyle] = useState({transform: 'translateX(150%)'})
 
@@ -111,21 +119,6 @@ const SideDrawer = ({ click, toggle }) => {
         setStyle(toggle ? {transform: 'translateX(0%)'} : {transform: 'translateX(150%)'})
         toggle ? document.body.style.overflow = 'hidden' : document.body.style.overflow = null;
     }, [toggle])
-
-    const panels1 = [
-        { key: 'panel-1aa', title: 'Level 1AA', content: 'Level 1B Contents' },
-        { key: 'panel-baa', title: 'Level 1AB', content: 'Level 1B Contents' },
-    ]
-
-    const Level1Content = (
-        <div style={{marginLeft: 15}}>
-          <Accordion.Accordion panels={panels1} />
-        </div>
-    )
-
-    const panels = [
-        { key: 'categories', title: 'Categories', content: { content: Level1Content } },
-    ]
 
     return (
         <>
@@ -147,10 +140,11 @@ const SideDrawer = ({ click, toggle }) => {
                             <Link href='/about-us'><a> About Us </a></Link>
                         </li>
                         <li>
-                            <Link href='/favourites'><a> Favourites </a></Link>
+                            <Link href='/orders'><a> Order History </a></Link>
                         </li>
+                        <li className={classes.line} />
                         <li>
-                            <Link href='/history'><a> Order History </a></Link>
+                            {sign}
                         </li>
                     </ul>
 

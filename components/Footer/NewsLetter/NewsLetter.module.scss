@@ -7,7 +7,7 @@
     .container {
         @extend %maxWidth;
         
-        padding: 2em;
+        padding: 2em 0px;
         color: var(--white);
         display: flex;
         justify-content: space-between;

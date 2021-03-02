@@ -20,7 +20,8 @@ const Navigation = () => {
         setPrevPath(pathname)
     }, [pathname]);
 
-    const handleToggle = () => {
+    const handleToggle = (e) => {
+        e.preventDefault()
         setToggle(prev => !prev);
     }
 

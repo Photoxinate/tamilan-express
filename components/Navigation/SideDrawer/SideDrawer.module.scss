@@ -9,6 +9,7 @@
     box-shadow: -10px 0px 70px 5px rgba(17, 67, 96, 0.24);
     transition: transform 0.3s ease-in-out;
     will-change: transform;
+    overflow-y: auto;
 
     .container {
         margin: 15px;
@@ -26,6 +27,24 @@
 
             &.accordion {
                 margin: -10px 15px;
+                padding-left: 5px;
+            }
+
+            &.line {
+                border-bottom: 1px solid #ccc;
+            }
+
+            .signin {
+                color: var(--primary);
+                font-weight: 600;
+            }
+
+            .signout {
+                color: rgb(189, 0, 0);;
+            }
+
+            a {
+                padding: 5px;
             }
         }
 

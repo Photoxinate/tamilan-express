@@ -13,6 +13,12 @@ export const contact = {
   },
 };
 
+export const social = {
+  facebook: 'https://facebook.com/tamilanexpress',
+  instagram: 'https://instagram.com/tamilanexpress',
+  twitter: 'https://twitter.com/tamilanexpress',
+}
+
 export const products = [
   {
     id: '001',

@@ -1,6 +1,7 @@
 import React from 'react'
-import { ArrowUp} from '../Icons/Icons'
+import { ArrowUp } from '../Icons/Icons'
 import NewsLetter from './NewsLetter/NewsLetter'
+import Link from 'next/link'
 
 import classes from './Footer.module.scss'
 
@@ -32,23 +33,23 @@ const Footer = () => {
                     </div>
                     <div className={classes.nav}>
                         <h3>Products</h3>
-                        <a href='/categories'>Categories</a>
-                        <a href='/shop/deal-of-the-day'>Deal of the day</a>
-                        <a href='/shop/new-arrivals'>New Arrivals</a>
-                        <a href='/shop/featured-products'>Featured Products</a>
+                        <Link href='/categories'><a>Categories</a></Link>
+                        <Link href='/shop/deal-of-the-day'><a>Deal of the day</a></Link>
+                        <Link href='/shop/new-arrivals'><a>New Arrivals</a></Link>
+                        <Link href='/shop/featured-products'><a>Featured Products</a></Link>
                     </div>
                     <div className={classes.nav}>
                         <h3>Company</h3>
-                        <a href='/about-us'>About us</a>
-                        <a href='/contact-us'>Contact us</a>
-                        <a href='/terms-conditions'>Terms and Conditions</a>
-                        <a href='/privacy-policy'>Privacy Policy</a>
+                        <Link href='/about-us'><a>About us</a></Link>
+                        <Link href='/about-us#contact-us'><a>Contact us</a></Link>
+                        <Link href='/terms-conditions'><a>Terms and Conditions</a></Link>
+                        <Link href='/privacy-policy'><a>Privacy Policy</a></Link>
                     </div>
                     <div className={classes.nav}>
                         <h3>Account</h3>
-                        <a href='/account'>My Account</a>
-                        <a href='/orders'>Orders</a>
-                        <a href='/cart'>My Cart</a>
+                        <Link href='/account'><a>My Account</a></Link>
+                        <Link href='/orders'><a>Orders</a></Link>
+                        <Link href='/cart'><a>My Cart</a></Link>
                     </div>
                 </div>
                 <div className={classes.copyright}>
