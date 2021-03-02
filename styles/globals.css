@@ -9,6 +9,7 @@
 @import url('semantic-ui-css/components/item.min.css');
 @import url('semantic-ui-css/components/label.min.css');
 @import url('semantic-ui-css/components/image.min.css');
+@import url('semantic-ui-css/components/icon.min.css');
 
 :root {
   --primary: #0046bf;
@@ -126,6 +127,11 @@ strong {
 }
 .ui.primary.button:hover {
   background: #ff582a;
+}
+
+.header-op.ui.labeled.icon.button {
+  padding-left: 3em !important;
+  padding-right: 1em !important;
 }
 
 
