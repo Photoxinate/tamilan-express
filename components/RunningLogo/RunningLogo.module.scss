@@ -1,0 +1,83 @@
+@keyframes move {
+    from {
+        transform: translateX(-85%);
+    }
+    to {
+        transform: translateX(400%);
+    }
+}
+
+@keyframes move768 {
+    from {
+        transform: translateX(-85%);
+    }
+    to {
+        transform: translateX(300%);
+    }
+}
+
+@keyframes bump {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fade {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-40%);
+        opacity: 0;
+    }
+}
+
+.container {
+    position: relative;
+    margin: 40px -5%;
+    height: 200px;
+    overflow: hidden;
+
+    @media (max-width: 560px) {
+        height: 160px;
+    }
+
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        animation: move 10s infinite forwards ease-in;
+
+        @media (max-width: 768px) {
+            animation: move768 10s infinite forwards ease-in;
+        }
+    }
+
+    .logo_body {
+        animation: bump 2s infinite ease-in-out;
+    }
+
+    .line1 {
+        animation: fade 2s infinite ease-in-out .9s;
+    }
+
+    .line2 {
+        animation: fade 1s infinite ease-in-out .6s;
+    }
+
+    .line3 {
+        animation: fade 3s infinite ease-in-out .3s;
+    }
+
+    .line4 {
+        animation: fade 4s infinite ease-in-out;
+    }
+}

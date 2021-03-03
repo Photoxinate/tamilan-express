@@ -17,12 +17,12 @@ const Header = () => {
                     Free Shipping for all order above $99
                 </p>
                 <div className={classes.options}>
-                    <Dropdown button labeled compact text='ENG' icon={<i className={'icon ' + classes.icon}><Globe size={17} color='#eee' /></i>} className={'header-op icon ' + classes.select}>
+                    <Dropdown button labeled compact text='ENG' aria-label='Select language' title='Select language' icon={<i className={'icon ' + classes.icon}><Globe size={17} color='#eee' /></i>} className={'header-op icon ' + classes.select}>
                         <Dropdown.Menu className={classes.menu}>
-                            <Link href='/#' passHref>
+                            <Link href='/#' locale='en' passHref>
                                 <Dropdown.Item key='english' value='english' as='a'>ENG</Dropdown.Item>
                             </Link>
-                            <Link href='/#' passHref>
+                            <Link href='/#' locale='ta' passHref>
                                 <Dropdown.Item key='tamil' value='tamil' as='a'>தமிழ்</Dropdown.Item>
                             </Link>
                         </Dropdown.Menu>

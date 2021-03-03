@@ -10,6 +10,7 @@
 @import url('semantic-ui-css/components/label.min.css');
 @import url('semantic-ui-css/components/image.min.css');
 @import url('semantic-ui-css/components/icon.min.css');
+@import url('semantic-ui-css/components/divider.min.css');
 
 :root {
   --primary: #0046bf;
