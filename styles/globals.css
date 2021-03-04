@@ -12,6 +12,31 @@
 @import url('semantic-ui-css/components/icon.min.css');
 @import url('semantic-ui-css/components/divider.min.css');
 
+@font-face {
+  font-family: 'Mukta Malar';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muktamalar/v7/MCoXzAXyz8LOE2FpJMxZqIvpJ_U5wA.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Mukta Malar';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muktamalar/v7/MCoKzAXyz8LOE2FpJMxZqIMMBOAQ4WveoA.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+@font-face {
+  font-family: 'Mukta Malar';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/muktamalar/v7/MCoKzAXyz8LOE2FpJMxZqIMgA-AQ4WveoA.woff2) format('woff2');
+  unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+
 :root {
   --primary: #0046bf;
   --accent: #F93800;
@@ -29,7 +54,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family:'Poppins', sans-serif, -apple-system;
+  font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system;
   scroll-behavior: smooth;
   color: black;
 }
@@ -50,11 +75,11 @@ li {
 }
 
 input, button {
-  font-family: 'Poppins', sans-serif, -apple-system !important;
+  font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system;
 }
 
 .ui.accordion .title{
-  font-family: 'Poppins', sans-serif, -apple-system !important;
+  font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system !important;
   font-weight: 500;
   font-size: 16px !important;
   color: black !important;
@@ -142,10 +167,8 @@ strong {
   height: 150px;
   border-radius: 5px;
   border: 1px solid var(--text-lighter);
-  font-family: 'Poppins';
+  font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system !important;
   padding: 10px 20px;
-
-
 }
 
 
@@ -164,14 +187,14 @@ strong {
 
 @media (max-width: 480px) {
   .ui.button{
-          font-size: 12px !important;
-      }
+    font-size: 12px !important;
+  }
   
 }
 
 @media (max-width: 340px) {
   .ui.button{
-          font-size: 10px !important;
-      }
+    font-size: 10px !important;
+  }
   
 }

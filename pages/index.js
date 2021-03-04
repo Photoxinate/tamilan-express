@@ -9,8 +9,7 @@ import { products, banners } from '../config/config';
 import * as actionTypes from '../store/actions/actionTypes';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer'
 
-
-const Home = (props) => {
+const Home = props => {
 
   return (
     <>
@@ -41,5 +40,6 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch({type:actionTypes.CLOSE_MODAL})
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

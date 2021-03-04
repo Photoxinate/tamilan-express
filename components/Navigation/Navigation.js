@@ -7,9 +7,14 @@ import Account from './Account/Account'
 import Categories from './Categories/Categories'
 import classes from './Navigation.module.scss'
 import SideDrawer from './SideDrawer/SideDrawer'
+import useTranslation from 'next-translate/useTranslation'
+
 
 
 const Navigation = () => {
+
+    const { t } = useTranslation('common')
+
 
     const [prevPath, setPrevPath] = useState(null);
     const [toggle, setToggle] = useState(false);
@@ -40,7 +45,7 @@ const Navigation = () => {
                             <Categories />
                         </li>
                         <li className={classes.nav}>
-                            <Link href='/about-us'><a> About Us </a></Link>
+                            <Link href='/about-us'><a>  {t('Nav-abt')} </a></Link>
                         </li>
                     </ul>
                     <div className={classes.icons}>
