@@ -8,9 +8,14 @@ import Banner from '../components/Banner/Banner'
 import { products, banners } from '../config/config';
 import * as actionTypes from '../store/actions/actionTypes';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer'
+import useTranslation from 'next-translate/useTranslation'
+
 
 
 const Home = (props) => {
+
+  const { t } = useTranslation('common')
+
 
   return (
     <>
