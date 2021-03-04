@@ -80,6 +80,10 @@
                     [role=option] {
                         font-weight: 500;
                     }
+
+                    [aria-disabled=true] {
+                        opacity: 1;
+                    }
                 }
 
                 .icon {

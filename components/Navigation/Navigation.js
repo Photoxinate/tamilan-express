@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
-import { Menu, Profile, Search, Shopping } from '../Icons/Icons'
+import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
 import Categories from './Categories/Categories'
 import classes from './Navigation.module.scss'
@@ -45,7 +45,7 @@ const Navigation = () => {
                     </ul>
                     <div className={classes.icons}>
                         <Account />
-                        <Link href='/cart'><a aria-label='shopping cart' className={classes.cart}>
+                        <Link href='/cart'><a aria-label='shopping cart' title='Shopping cart' className={classes.cart}>
                             <span className={classes.count}>1</span>
                             <Shopping size={26} />
                         </a></Link>

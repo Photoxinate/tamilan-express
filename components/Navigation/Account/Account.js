@@ -19,10 +19,12 @@ const Account = () => {
 
     const signinHandler = session ? null : e => { e.preventDefault(); signin() }
 
+    const accountLabel = session ? 'Account' : 'Sign In'
+
     const { width } = useWindowDimension();
 
     const trigger = (
-        <span><Link href={link}><a aria-label='Account or Sign In' onClick={signinHandler}>
+        <span><Link href={link}><a aria-label={accountLabel} title={accountLabel} onClick={signinHandler}>
             <Profile size={26} />
         </a></Link></span>
     )

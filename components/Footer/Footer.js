@@ -2,6 +2,7 @@ import React from 'react'
 import { ArrowUp } from '../Icons/Icons'
 import NewsLetter from './NewsLetter/NewsLetter'
 import Link from 'next/link'
+import { contact } from '../../config/config'
 
 import classes from './Footer.module.scss'
 
@@ -21,13 +22,13 @@ const Footer = () => {
                         <img src='/logo/logo.png' alt='Tamilan express logo, a smart phone along with a shop' />
                         <div className={classes.contact}>
                             <div className={classes.item}>
-                                <strong>Address: </strong> Toronto, Canada
+                                <strong>Address: </strong> {contact.address}
                             </div>
                             <div className={classes.item}>
-                                <strong>Email: </strong> <a href='mailto:support@tamilanexpress.com'>support@tamilanexpress.com</a>
+                                <strong>Email: </strong> <a href={'mailto:' + contact.email}>{contact.email}</a>
                             </div>
                             <div className={classes.item}>
-                                <strong>Call us: </strong> <a href='tel:+94777123456' className={classes.call}>1-1001-234-567</a>
+                                <strong>Call us: </strong> <a href={'tel:' + contact.phone} className={classes.call}>{contact.phone}</a>
                             </div>
                         </div>
                     </div>
