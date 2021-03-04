@@ -2,12 +2,17 @@ import React from 'react'
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown'
 import Link from 'next/link'
 import { Globe, Dollar } from '../Icons/Icons'
+import { useRouter } from 'next/router'
 
 import classes from './Header.module.scss'
 
 const Header = () => {
 
-    const handleChange = (e, { value }) => console.log({value});
+    const { asPath, locale } = useRouter()
+
+    const handleChange = (e, { value }) => console.log({value})
+
+    const lang = locale === 'en' ? 'ENG' : 'தமிழ்'
 
     return (
         <div className={classes.header}>
@@ -17,13 +22,13 @@ const Header = () => {
                     Free Shipping for all order above $99
                 </p>
                 <div className={classes.options}>
-                    <Dropdown button labeled compact text='ENG' aria-label='Select language' title='Select language' icon={<i className={'icon ' + classes.icon}><Globe size={17} color='#eee' /></i>} className={'header-op icon ' + classes.select}>
+                    <Dropdown button labeled compact value={locale} text={lang} aria-label='Select language' title='Select language' icon={<i className={'icon ' + classes.icon}><Globe size={17} color='#eee' /></i>} className={'header-op icon ' + classes.select}>
                         <Dropdown.Menu className={classes.menu}>
-                            <Link href='/#' locale='en' passHref>
-                                <Dropdown.Item key='english' value='english' as='a'>ENG</Dropdown.Item>
+                            <Link href={asPath} locale='en' passHref>
+                                <Dropdown.Item key='en' value='en' as='a'>ENG</Dropdown.Item>
                             </Link>
-                            <Link href='/#' locale='ta' passHref>
-                                <Dropdown.Item key='tamil' value='tamil' as='a'>தமிழ்</Dropdown.Item>
+                            <Link href={asPath} locale='ta' passHref>
+                                <Dropdown.Item key='ta' value='ta' as='a'>தமிழ்</Dropdown.Item>
                             </Link>
                         </Dropdown.Menu>
                     </Dropdown>
