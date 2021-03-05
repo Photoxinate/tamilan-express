@@ -3,8 +3,13 @@ import Link from 'next/link'
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
 
 import classes from './ProductCard2.module.scss'
+import useTranslation from 'next-translate/useTranslation'
+
 
 const ProductCard2 = ({ product, ...rest }) => {
+
+    const { t } = useTranslation('common')
+
     return (
         <article itemProp='itemListElement' itemScope itemType='https://schema.org/Product' className={classes.card}>
             <div className={classes.container}>
@@ -27,7 +32,7 @@ const ProductCard2 = ({ product, ...rest }) => {
                     <span itemProp="price" content={product.price}> {product.price} </span>
                 </div>
 
-                <Button compact content='ADD TO CART' />
+                <Button compact content={t('add-to-cart')} />
                 
             </div>
         </article>

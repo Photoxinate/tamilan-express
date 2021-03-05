@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes'
 import ProductRow from './ProductRow/ProductRow'
 import classes from './CartTable.module.scss';
+import useTranslation from 'next-translate/useTranslation'
+
 
 const CartTable = (props) => {
+
+  const { t } = useTranslation('cart')
+
   return (
     <div className={classes.table}>
       <div className={classes.cartHead}>
-        <div className={classes.col}><h2>SHOPPING CART</h2></div>
+        <div className={classes.col}><h2>{t('cart-title')}</h2></div>
       </div>
       {props.products.map((product, i) => (
         <ProductRow key={product.id} onChangeQty={props.onChangeQty} onRemoveProduct={props.onRemoveProduct} product={product}/>

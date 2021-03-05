@@ -2,8 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import classes from './SubTotal.module.scss';
+import useTranslation from 'next-translate/useTranslation'
+
 
 const SubTotal = (props) => {
+
+  const { t } = useTranslation('cart')
+
   let subTotal = 0;
   const getTotalPrice = () => {
     props.cartproducts.map((prod, i) => {
@@ -22,8 +27,8 @@ const SubTotal = (props) => {
         <div className={classes.col}>${subTotal}</div>
       </div>
       <div className={classes.btnWrap}>
-        <Button > Check out </Button>
-        <Button > Continue Shopping </Button>
+        <Button > {t('cart-checkout')} </Button>
+        <Button > {t('cart-continue')} </Button>
       </div>
     </div>
   );

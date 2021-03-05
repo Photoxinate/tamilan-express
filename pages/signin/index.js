@@ -2,10 +2,15 @@ import React from 'react'
 import { signIn, getSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import useTranslation from 'next-translate/useTranslation'
+
 
 import classes from './index.module.scss'
 
 const index = () => {
+
+  const { t } = useTranslation('sign-in')
+
 
   const router = useRouter();
 
@@ -27,7 +32,7 @@ const index = () => {
           </button>
         </div>
         <span className={classes.agree}>
-          By continue, you're agreeing to the <Link href='terms-conditions'><a>Terms and Conditions.</a></Link>
+        {t('signin-agree')} <Link href='terms-conditions'><a>{t('signin-terms')}</a></Link>{t('signin-posttext')}
         </span>
       </div>
     </section>
