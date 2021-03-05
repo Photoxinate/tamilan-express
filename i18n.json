@@ -3,6 +3,9 @@
   "defaultLocale": "en",
   "pages": {
     "*": ["common"],
-    "/about-us": ["about-us"]
+    "/about-us": ["about-us"],
+    "/checkout": ["check-out"],
+    "/cart": ["cart"],
+    "/signin":["sign-in"]
   }
 }

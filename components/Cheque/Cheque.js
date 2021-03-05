@@ -4,8 +4,13 @@ import Coupon from './Coupon/Coupon';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import classes from './Cheque.module.scss';
+import useTranslation from 'next-translate/useTranslation'
+
 
 const Cheque = (props) => {
+
+  const { t } = useTranslation('check-out')
+
   let subTotal = 0;
   const getTotalPrice = () => {
     props.cartproducts.map((prod, i) => {
@@ -19,10 +24,10 @@ const Cheque = (props) => {
   return (
     <div className={classes.cheque}>
       <div className={classes.inputWrap}>
-        <Input action="Redeem" fluid placeholder="Enter credits to redeem" />
+        <Input action={t('Cout-redeem')} fluid placeholder="Enter credits to redeem" />
       </div>
       <div className={classes.inputWrap}>
-        <Input action="&nbsp;&nbsp;Apply&nbsp;&nbsp;" fluid placeholder="Enter coupon here" />
+        <Input action={t('Cout-apply')} fluid placeholder="Enter coupon here" />
       </div>
 
       <div className={classes.row}>
@@ -39,7 +44,7 @@ const Cheque = (props) => {
         <div className={classes.col}>$ 40.00</div>
       </div>
       <div className={classes.btnWrap}>
-        <Button content="Proceed To Payment" />
+        <Button content={t('Cout-PtP')} />
       </div>
     </div>
   );

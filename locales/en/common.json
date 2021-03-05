@@ -1,4 +1,44 @@
 {
     "Nav-cat": "Categories",
-    "Nav-abt": "About Us"
+    "Nav-abt": "About Us",
+    "add-to-cart": "ADD TO CART",
+    "Buy-now": "BUY NOW",
+
+    "Caro-DOD": "Deals of the Day",
+    "Caro-New": "New Arrivals",
+    "Caro-featured": "Featured Products",
+
+    "Cout-redeem": "Redeem",
+    "Cout-apply": "&nbsp;&nbsp;Apply&nbsp;&nbsp;",
+
+    "Cout-PtP": "Proceed To Payment",
+
+    "why-FDelivery":"Faster Delivery",
+    "why-SPayment":"Secure Payment",
+    "why-Hdeals":"Hot Deals",
+    "why-shopping":"Safe Shopping",
+
+    "NewsLetter": "Sign Up For Newsletters",
+
+    "Footer-Add":"Address:",
+    "Footer-Email":"Email:",
+    "Footer-Call":"Call us:",
+
+    "Footer-Prod":"Products",
+    "Footer-Cat":"Categories",
+    "Footer-DoD":"Deal of the day",
+    "Footer-NewArrival":"New Arrivals",
+    "Footer-Featured":"Featured Products",
+
+    "Footer-Company":"Company",
+    "Footer-About":"About us",
+    "Footer-Contact":"Contact us",
+    "Footer-TnC":"Terms and Conditions",
+    "Footer-PnP":"Privacy Policy",
+
+    "Footer-Account":"Account",
+    "Footer-MyAcc":"My Account",
+    "Footer-Orders":"Orders",
+    "Footer-Mycart":"My Cart"
+    
 }

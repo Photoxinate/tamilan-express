@@ -5,8 +5,13 @@ import { ArrowRight } from '../../Icons/Icons'
 import { social } from '../../../config/config';
 
 import classes from './NewsLetter.module.scss'
+import useTranslation from 'next-translate/useTranslation'
+
 
 const NewsLetter = () => {
+
+    const { t } = useTranslation('common')
+
     return (
         <div className={classes.containerWrap}>
             <div className={classes.container}>
@@ -14,7 +19,7 @@ const NewsLetter = () => {
             <div className={classes.news}>
                 <div className={classes.text}>
                     <h2>
-                        Sign Up For Newsletters
+                    {t('NewsLetter')} 
                     </h2>
                     <p>
                         Be the first to know. Sign up for news letter today.
