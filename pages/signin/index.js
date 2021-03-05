@@ -4,17 +4,17 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 
-
 import classes from './index.module.scss'
 
 const index = () => {
 
   const { t } = useTranslation('sign-in')
 
+  const router = useRouter()
 
-  const router = useRouter();
+  console.log('[signin] rendered')
 
-  const callbackUrl = router.query.callbackUrl ? router.query.callbackUrl : process.env.NEXTAUTH_URL + '/#';
+  const callbackUrl = router.query.callbackUrl ? router.query.callbackUrl : process.env.NEXTAUTH_URL
     
   return (
     <section className={classes.signin}>
@@ -42,6 +42,7 @@ const index = () => {
 
 export const getServerSideProps = async (ctx) => {
   const session = await getSession(ctx)
+  const locale = ctx.req.cookies.NEXT_LOCALE
 
   if (session) {
     return {
@@ -50,6 +51,16 @@ export const getServerSideProps = async (ctx) => {
         destination: '/',
         permanent: false
       },
+    }
+  }
+  
+  else if(locale !== ctx.locale) {
+    return {
+      props: {},
+      redirect: {
+        destination: locale + '/signin?' + new URLSearchParams(ctx.query),
+        permanent: false
+      }
     }
   }
 

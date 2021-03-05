@@ -13,6 +13,8 @@ import useTranslation from 'next-translate/useTranslation'
 
 const Home = props => {
 
+  console.log('[home] rendered')
+
   const { t } = useTranslation('common')
 
   return (
