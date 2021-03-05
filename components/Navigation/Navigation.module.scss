@@ -27,6 +27,10 @@
                 padding: 10px 12px;
             }
 
+            @media (max-width: 980px) {
+                width: 38%;
+            }
+
             @media (max-width: 540px) {
                 margin: 20px auto;
                 width: 90%;
@@ -45,6 +49,12 @@
 
             a:hover, .sign:hover {
                 color: var(--primary) !important;
+            }
+
+            @media (max-width: 1015px) {
+                &:first-child {
+                    margin-right: 0;
+                }
             }
 
             @media (max-width: 960px) {

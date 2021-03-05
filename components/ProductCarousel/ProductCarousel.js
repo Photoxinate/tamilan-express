@@ -8,6 +8,7 @@ import classes from './ProductCarousel.module.scss'
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperNav from '../SwiperNav/SwiperNav';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -36,7 +37,10 @@ const ProductCarousel = ({ products, carouselTitle }) => {
       <Swiper
       spaceBetween={spaceBetween}
       slidesPerView={slidesPerView}
-      navigation
+      navigation={{
+        nextEl: '.swiper-nav-next',
+        prevEl: '.swiper-nav-prev',
+      }}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
@@ -45,6 +49,7 @@ const ProductCarousel = ({ products, carouselTitle }) => {
           <ProductCard product={product} />
         </SwiperSlide>
       ))}
+      <SwiperNav />
      </Swiper>
     </div>
     

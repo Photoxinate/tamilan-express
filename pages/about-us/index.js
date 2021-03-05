@@ -22,8 +22,8 @@ const index = () => {
                 <p>
                     {t('About-Paragraph')} 
                 </p>
-                <RunningLogo />
             </section>
+            <RunningLogo />
             <section className={classes.contact} id='contact'>
                 <h1> {t('contact_us')} </h1>
                 <div className={classes.details}>
