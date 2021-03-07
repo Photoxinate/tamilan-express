@@ -29,10 +29,6 @@
             .form {
                 margin: 0 3%;
                 width: 40%;
-    
-                button {
-                    background: var(--accent);
-                }
             }
             
             
@@ -68,7 +64,7 @@
 }
 
 
-@media(max-width: 870px) {
+@media(max-width: 960px) {
     .containerWrap{
         .container {
             flex-direction: column;

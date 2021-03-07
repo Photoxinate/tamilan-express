@@ -22,12 +22,12 @@ const NewsLetter = () => {
                     {t('NewsLetter')} 
                     </h2>
                     <p>
-                        Be the first to know. Sign up for news letter today.
+                        Be the first to know. Sign up for the newsletter today.
                     </p>
                 </div>
                 <form className={classes.form}>
                     <Input required type='email' action={
-                        <Button animated aria-label='Send'>
+                        <Button animated aria-label='Send' primary>
                             <Button.Content visible><ArrowRight color='white' size={16} strokeWidth={3} /></Button.Content>
                             <Button.Content hidden>
                                 <ArrowRight color='white' size={16} strokeWidth={3} />

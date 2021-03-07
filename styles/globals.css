@@ -44,6 +44,7 @@
   --text-dark: #202020;
   --text-light: #585858;
   --text-lighter: #999999;
+  --size-h1: 28px;
 }
 
 ::placeholder {
@@ -136,7 +137,7 @@ strong {
   color: #fff;
   transition: all 0.25 ease;
 }
-.ui.primary.button:hover {
+.ui.primary.button:hover, .ui.primary.button:active, .ui.primary.button:focus {
   background: #ff582a;
 }
 

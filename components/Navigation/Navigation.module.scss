@@ -22,11 +22,6 @@
             width: 40%;
             margin-left: 15px;
 
-            button {
-                background-color: var(--accent);
-                padding: 10px 12px;
-            }
-
             @media (max-width: 980px) {
                 width: 38%;
             }

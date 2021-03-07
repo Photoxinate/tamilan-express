@@ -23,6 +23,8 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 
 function MyApp({ Component, pageProps }) {
+
+  console.log('[_app] rendered');
   
   return (
     <Provider store={store}>
