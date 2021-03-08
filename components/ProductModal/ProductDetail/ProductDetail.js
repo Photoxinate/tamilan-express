@@ -5,7 +5,7 @@ import Link from 'next/link'
 import ProductPrice from '../ProductPrice/ProductPrice';
 import classes from './ProductDetail.module.scss';
 import Quantity from '../../UI/Quantity/Quantity';
-import Button from '../../UI/Button/Button';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 
 const ProductDetail = (props) => {
 
@@ -37,10 +37,10 @@ const ProductDetail = (props) => {
      
       <Quantity max={product.maxQty} setQty={setQty}  qty={qty}/>
       <div className={classes.btnWrap}>
-        <Button text="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
+        <Button content="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
         <Link href="/cart" >
           <a>
-            <Button text="Check Out" onClicked={() => addToCart(product, qty)}/>
+            <Button content="Check Out" onClicked={() => addToCart(product, qty)}/>
           </a>
         </Link>
       </div>

@@ -50,7 +50,7 @@ const ContactFrom = () => {
             </div>
           </form>
         </FormProvider>
-      <Button>Submit</Button>
+      <Button content='Submit' primary/>
       </div>
     </div>
   );

@@ -1,8 +1,7 @@
 import React from 'react';
-import ProductCard from '../ProductCard/ProductCard';
-// import ProductCard from '../ProductCard2/ProductCard2'
+// import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../ProductCard2/ProductCard2'
 import useWindowSize from '../../hooks/useWindowDimensions';
-import Button from '../UI/Button/Button'
 import classes from './ProductCarousel.module.scss'
 
 // import Swiper core and required modules
@@ -20,11 +19,11 @@ const ProductCarousel = ({ products, carouselTitle }) => {
   let slidesPerView, spaceBetween
   if(width <= 540){
     slidesPerView = 2
-    spaceBetween = 5
+    spaceBetween = 10
   }
   else if(width <= 768){
     slidesPerView = 3
-    spaceBetween = 5
+    spaceBetween = 10
   }
   else{
     slidesPerView = 5
