@@ -38,7 +38,7 @@
             .select {
                 font-size: 14px;
                 font-weight: 400;
-                font-family: 'Poppins', sans-serif, -apple-system;
+                font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system;
                 background-color: #494949;
                 color: #eee;
                 margin-left: 6px;
@@ -79,6 +79,10 @@
 
                     [role=option] {
                         font-weight: 500;
+                    }
+
+                    [aria-disabled=true] {
+                        opacity: 1;
                     }
                 }
 

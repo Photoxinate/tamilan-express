@@ -9,10 +9,14 @@ import Button from "semantic-ui-react/dist/commonjs/elements/Button"
 import DiscountLabel from './DiscountLabel/DiscountLabel'
 import ProductModal from '../NewModal/ProductModal'
 import classes from './ProductCard.module.scss';
+import useTranslation from 'next-translate/useTranslation'
+
 
 const ProductCard = ({product, ...props}) => {
 
   const dispatch = useDispatch()
+  const { t } = useTranslation('common')
+
 
   const discountLabel = (product.discount>0)?<DiscountLabel discount={product.discount}/>:null
 
@@ -30,7 +34,7 @@ const ProductCard = ({product, ...props}) => {
       <ProductData product={product}/>
       <ProductPrice price={product.price} discount={product.discount}/>
      <div className={classes.buttonWrap}>
-     <Button primary content='ADD TO CART' onClick={onClicked}/>
+     <Button primary content={t('add-to-cart')} onClick={onClicked}/>
 
      </div>
       {/* <ProductModal product={product} /> */}

@@ -2,10 +2,16 @@ import React from 'react'
 import { ArrowUp } from '../Icons/Icons'
 import NewsLetter from './NewsLetter/NewsLetter'
 import Link from 'next/link'
+import { contact } from '../../config/config'
 
 import classes from './Footer.module.scss'
+import useTranslation from 'next-translate/useTranslation'
+
 
 const Footer = () => {
+
+    const { t } = useTranslation('common')
+
 
     const goTopHandler = () => {
         if(typeof window !== 'undefined')
@@ -21,35 +27,35 @@ const Footer = () => {
                         <img src='/logo/logo.png' alt='Tamilan express logo, a smart phone along with a shop' />
                         <div className={classes.contact}>
                             <div className={classes.item}>
-                                <strong>Address: </strong> Toronto, Canada
+                                <strong>{t('Footer-Add')} </strong> {contact.address}
                             </div>
                             <div className={classes.item}>
-                                <strong>Email: </strong> <a href='mailto:support@tamilanexpress.com'>support@tamilanexpress.com</a>
+                                <strong>{t('Footer-Email')} </strong> <a href={'mailto:' + contact.email}>{contact.email}</a>
                             </div>
                             <div className={classes.item}>
-                                <strong>Call us: </strong> <a href='tel:+94777123456' className={classes.call}>1-1001-234-567</a>
+                                <strong>{t('Footer-Call')} </strong> <a href={'tel:' + contact.phone} className={classes.call}>{contact.phone}</a>
                             </div>
                         </div>
                     </div>
                     <div className={classes.nav}>
-                        <h3>Products</h3>
-                        <Link href='/categories'><a>Categories</a></Link>
-                        <Link href='/shop/deal-of-the-day'><a>Deal of the day</a></Link>
-                        <Link href='/shop/new-arrivals'><a>New Arrivals</a></Link>
-                        <Link href='/shop/featured-products'><a>Featured Products</a></Link>
+                        <h3>{t('Footer-Prod')} </h3>
+                        <Link href='/categories'><a>{t('Footer-Cat')}</a></Link>
+                        <Link href='/shop/deal-of-the-day'><a>{t('Footer-DoD')}</a></Link>
+                        <Link href='/shop/new-arrivals'><a>{t('Footer-NewArrival')}</a></Link>
+                        <Link href='/shop/featured-products'><a>{t('Footer-Featured')}</a></Link>
                     </div>
                     <div className={classes.nav}>
-                        <h3>Company</h3>
-                        <Link href='/about-us'><a>About us</a></Link>
-                        <Link href='/about-us#contact'><a>Contact us</a></Link>
-                        <Link href='/terms-conditions'><a>Terms and Conditions</a></Link>
-                        <Link href='/privacy-policy'><a>Privacy Policy</a></Link>
+                        <h3>{t('Footer-Company')}</h3>
+                        <Link href='/about-us'><a>{t('Footer-About')}</a></Link>
+                        <Link href='/about-us#contact'><a>{t('Footer-Contact')}</a></Link>
+                        <Link href='/terms-conditions'><a>{t('Footer-TnC')}</a></Link>
+                        <Link href='/privacy-policy'><a>{t('Footer-PnP')}</a></Link>
                     </div>
                     <div className={classes.nav}>
-                        <h3>Account</h3>
-                        <Link href='/account'><a>My Account</a></Link>
-                        <Link href='/orders'><a>Orders</a></Link>
-                        <Link href='/cart'><a>My Cart</a></Link>
+                        <h3>{t('Footer-Account')}</h3>
+                        <Link href='/account'><a>{t('Footer-MyAcc')}</a></Link>
+                        <Link href='/orders'><a>{t('Footer-Orders')}</a></Link>
+                        <Link href='/cart'><a>{t('Footer-Mycart')}</a></Link>
                     </div>
                 </div>
                 <div className={classes.copyright}>

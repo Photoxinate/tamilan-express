@@ -24,6 +24,7 @@
             &.active {
                 background-color: var(--accent);
                 color: white;
+                pointer-events: none;
             }
 
             &:not(.active):hover {

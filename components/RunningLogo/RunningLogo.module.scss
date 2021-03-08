@@ -1,18 +1,9 @@
 @keyframes move {
     from {
-        transform: translateX(-85%);
+        transform: translateX(-230px);
     }
     to {
-        transform: translateX(400%);
-    }
-}
-
-@keyframes move768 {
-    from {
-        transform: translateX(-85%);
-    }
-    to {
-        transform: translateX(300%);
+        transform: translateX(calc(100vw + 230px));
     }
 }
 
@@ -41,7 +32,7 @@
 
 .container {
     position: relative;
-    margin: 40px -5%;
+    margin: 40px 0;
     height: 200px;
     overflow: hidden;
 
@@ -56,8 +47,9 @@
         height: 100%;
         animation: move 10s infinite forwards ease-in;
 
-        @media (max-width: 768px) {
-            animation: move768 10s infinite forwards ease-in;
+
+        @media (max-width: 560px) {
+            animation-duration: 6s;
         }
     }
 

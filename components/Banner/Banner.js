@@ -5,9 +5,10 @@ import classes from './Banner.module.scss';
 // import Swiper core and required modules
 import SwiperCore, { Pagination, Scrollbar, A11y, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperNav from '../SwiperNav/SwiperNav';
 
 // install Swiper modules
-SwiperCore.use([Pagination, Scrollbar, A11y, Autoplay, Navigation]);
+SwiperCore.use([Pagination, Scrollbar, A11y, Autoplay]);
 
 const Banner = ({ banners }) => {
 
@@ -18,17 +19,12 @@ const Banner = ({ banners }) => {
         slidesPerView={1}
         pagination={{ type: 'fraction' }}
         autoplay={{ delay: 6000, disableOnInteraction: false }}
-        // navigation={{
-        //   nextEl: '.swiper-nav-next',
-        //   prevEl: '.swiper-nav-prev',
-        // }}
       >
         {banners.map((banner, i) => (
-          <SwiperSlide>
-            <BannerImage key={i} banner={banner} />
+          <SwiperSlide key={i}>
+            <BannerImage banner={banner} />
           </SwiperSlide>
         ))}
-        {/* <span className='swiper-nav-next' /> */}
       </Swiper>
     </div>
   );

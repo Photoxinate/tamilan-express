@@ -3,12 +3,17 @@ import Dropdown, { MenuItem } from '@trendmicro/react-dropdown';
 
 import '@trendmicro/react-dropdown/dist/react-dropdown.css';
 import classes from './Categories.module.scss'
+import useTranslation from 'next-translate/useTranslation'
+
 
 const Categories = () => {
 
+    const { t } = useTranslation('common')
+
+
     return (
         <Dropdown autoOpen className={classes.categories}>
-            <Dropdown.Toggle title="Categories" />
+            <Dropdown.Toggle title= {t('Nav-cat')} />
             <Dropdown.Menu className={classes.menu}>
                 <MenuItem className={classes.item}>
                     Menu item one

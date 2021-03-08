@@ -4,6 +4,7 @@ import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup'
 import { Profile } from '../../Icons/Icons'
 import { useSession, signin, signout } from 'next-auth/client'
 import useWindowDimension from '../../../hooks/useWindowDimensions'
+import { useRouter } from 'next/router'
 
 import classes from './Account.module.scss'
 
@@ -13,16 +14,20 @@ const style = {
 
 const Account = () => {
 
-    const [session] = useSession();
+    const { locale, pathname } = useRouter()
 
-    const link = session ? '/account' : '/api/auth/signin';
+    const [session] = useSession()
+
+    const link = session ? '/account' : '/api/auth/signin'
 
     const signinHandler = session ? null : e => { e.preventDefault(); signin() }
 
-    const { width } = useWindowDimension();
+    const accountLabel = session ? 'Account' : 'Sign In'
+
+    const { width } = useWindowDimension()
 
     const trigger = (
-        <span><Link href={link}><a aria-label='Account or Sign In' onClick={signinHandler}>
+        <span><Link href={link} locale={locale}><a aria-label={accountLabel} title={accountLabel} onClick={signinHandler} style={{ pointerEvents: pathname === '/signin' ? 'none' : 'auto' }} >
             <Profile size={26} />
         </a></Link></span>
     )

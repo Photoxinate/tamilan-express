@@ -1,0 +1,18 @@
+@import '../../styles/common';
+
+.section {
+    width: 100%;
+    
+    .container {
+        @extend %maxWidth;
+
+        .title {
+            font-size: var(--size-h1);
+            margin: 60px 0 40px;
+
+            @media (max-width: 600px) {
+                margin: 50px 0 30px;
+            }
+        }
+    }
+}

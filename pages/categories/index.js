@@ -1,12 +1,19 @@
 import React from 'react';
-import Filter from '../../components/Filter/Filter';
-import Pagination from '../../components/Pagination/Pagination';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import Filter from '../../components/Filter/Filter'
+import Pagination from '../../components/Pagination/Pagination'
 import ProductContainer from '../../components/ProductContainer/ProductContainer'
-import {products} from '../../config/config';
-import classes from './index.module.scss';
+import { products } from '../../config/config'
+import { useRouter } from 'next/router'
+
+import classes from './index.module.scss'
 
 const index = () => {
+    
+    const { query } = useRouter()
+    const { page } = query
+
+    const active = page ? parseInt(page) : 1
+
     return (
         <section className={classes.categories}>
             <div className={classes.name}>
@@ -17,7 +24,7 @@ const index = () => {
                 <Filter />
                 <div className={classes.container}>
                     <ProductContainer products={products} itemsPerRow={4}/>
-                    <Pagination />
+                    <Pagination pages={10} active={active} />
                 </div>
             </div>
         </section>

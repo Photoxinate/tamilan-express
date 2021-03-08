@@ -2,14 +2,19 @@ import React from 'react'
 import { signIn, getSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import useTranslation from 'next-translate/useTranslation'
 
 import classes from './index.module.scss'
 
 const index = () => {
 
-  const router = useRouter();
+  const { t } = useTranslation('sign-in')
 
-  const callbackUrl = router.query.callbackUrl ? router.query.callbackUrl : process.env.NEXTAUTH_URL + '/#';
+  const router = useRouter()
+
+  console.log('[signin] rendered')
+
+  const callbackUrl = router.query.callbackUrl ? router.query.callbackUrl : process.env.NEXTAUTH_URL
     
   return (
     <section className={classes.signin}>
@@ -27,7 +32,7 @@ const index = () => {
           </button>
         </div>
         <span className={classes.agree}>
-          By continue, you're agreeing to the <Link href='terms-conditions'><a>Terms and Conditions.</a></Link>
+        {t('signin-agree')} <Link href='terms-conditions'><a>{t('signin-terms')}</a></Link>{t('signin-posttext')}
         </span>
       </div>
     </section>
@@ -37,6 +42,7 @@ const index = () => {
 
 export const getServerSideProps = async (ctx) => {
   const session = await getSession(ctx)
+  const locale = ctx.req.cookies.NEXT_LOCALE
 
   if (session) {
     return {
@@ -45,6 +51,16 @@ export const getServerSideProps = async (ctx) => {
         destination: '/',
         permanent: false
       },
+    }
+  }
+  
+  else if(locale !== ctx.locale) {
+    return {
+      props: {},
+      redirect: {
+        destination: locale + '/signin?' + new URLSearchParams(ctx.query),
+        permanent: false
+      }
     }
   }
 

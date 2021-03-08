@@ -11,7 +11,7 @@ const ProductDetail = (props) => {
 
   const product = props.product
   const dispatch = useDispatch()
-  const [qtyVal, setQtyVal] = useState(product.qty)
+  const [qty, setQty] = useState(product.qty)
 
   const addToCart = (product, qty) => {
     dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product, qty:qty}})
@@ -35,12 +35,12 @@ const ProductDetail = (props) => {
         <span className={classes.prodWeight}>{product.weight}</span>
       </div>
      
-      <Quantity max={product.maxQty} setQtyVal={setQtyVal} qty={product.qty}/>
+      <Quantity max={product.maxQty} setQty={setQty}  qty={qty}/>
       <div className={classes.btnWrap}>
-        <Button text="Contniue Shopping" onClicked={() => addToCart(product, qtyVal)}/>
+        <Button text="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
         <Link href="/cart" >
           <a>
-            <Button text="Check Out" onClicked={() => addToCart(product, qtyVal)}/>
+            <Button text="Check Out" onClicked={() => addToCart(product, qty)}/>
           </a>
         </Link>
       </div>

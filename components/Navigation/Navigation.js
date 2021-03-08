@@ -2,14 +2,19 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
-import { Menu, Profile, Search, Shopping } from '../Icons/Icons'
+import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
 import Categories from './Categories/Categories'
 import classes from './Navigation.module.scss'
 import SideDrawer from './SideDrawer/SideDrawer'
+import useTranslation from 'next-translate/useTranslation'
+
 
 
 const Navigation = () => {
+
+    const { t } = useTranslation('common')
+
 
     const [prevPath, setPrevPath] = useState(null);
     const [toggle, setToggle] = useState(false);
@@ -33,19 +38,19 @@ const Navigation = () => {
                         <a className={classes.logo}> <img src='/logo/logo.png' width={180} alt='Tamilan express logo, a smart phone along with a shop' /> </a>
                     </Link>
                     <div className={classes.search}>
-                        <Input required action={{ icon: <Search aria-label='search' color='#fff' size={16} strokeWidth={3} /> }} fluid aria-label='Search' placeholder='Search...' />
+                        <Input required action={{ icon: <Search aria-label='search' color='#fff' size={16} strokeWidth={3} />, primary: true }} fluid aria-label='Search' placeholder='Search...' />
                     </div>
                     <ul className={classes.navs}>
                         <li className={classes.nav}>
                             <Categories />
                         </li>
                         <li className={classes.nav}>
-                            <Link href='/about-us'><a> About Us </a></Link>
+                            <Link href='/about-us'><a>  {t('Nav-abt')} </a></Link>
                         </li>
                     </ul>
                     <div className={classes.icons}>
                         <Account />
-                        <Link href='/cart'><a aria-label='shopping cart' className={classes.cart}>
+                        <Link href='/cart'><a aria-label='shopping cart' title='Shopping cart' className={classes.cart}>
                             <span className={classes.count}>1</span>
                             <Shopping size={26} />
                         </a></Link>

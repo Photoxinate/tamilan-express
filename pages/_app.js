@@ -16,6 +16,8 @@ const  MyApp = ({ Component, pageProps }) => {
 
   const store = useStore(pageProps.initialReduxState)
 
+  console.log('[_app] rendered');
+  
   return (
     <Provider store={store}>
       <AuthProvider session={pageProps.session}>
