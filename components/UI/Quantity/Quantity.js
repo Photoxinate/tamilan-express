@@ -4,11 +4,14 @@ import classes from './Quantity.module.scss';
 
 const Quantity = (props) => {
   const quantityField = useRef(null);
- 
+
   const increaseQuantity = () => {
+    console.log('CLICKED');
     if (quantityField.current.value !== props.max) {
+      console.log('QTY_FROM_QUANTITY_BEFORE', props.qty);
       props.setQty(props.qty+1)
       if(props.onChangeQty){
+        console.log('QTY_FROM_QUANTITY', props.qty);
         props.onChangeQty(props.id, props.qty)
       }
     }

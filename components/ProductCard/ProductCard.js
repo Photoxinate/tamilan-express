@@ -1,7 +1,7 @@
 import React from 'react';
 import * as actionTypes from '../../store/actions/actionTypes'
 import Link from 'next/link'
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ProductImage from './ProductImage/ProductImage';
 import ProductData from './ProductData/ProductData'
 import ProductPrice from './ProductPrice/ProductPrice'
@@ -12,11 +12,13 @@ import classes from './ProductCard.module.scss';
 
 const ProductCard = ({product, ...props}) => {
 
+  const dispatch = useDispatch()
+
   const discountLabel = (product.discount>0)?<DiscountLabel discount={product.discount}/>:null
 
   const onClicked = (e) =>{
-    e.preventDefault();
-    props.showModal(product)
+    e.preventDefault()
+    dispatch({type:actionTypes.SHOW_MODAL, payload:{product:product}})
   }
   
 
@@ -38,10 +40,5 @@ const ProductCard = ({product, ...props}) => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return{
-    showModal: (product) => dispatch({type:actionTypes.SHOW_MODAL, payload:{product:product}})
-  }
-}
 
-export default connect(null, mapDispatchToProps)(ProductCard)
+export default ProductCard;
