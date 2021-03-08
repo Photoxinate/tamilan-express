@@ -1,32 +1,27 @@
-.priceWrap{
-    // margin: 20px 0px;
-    // color: var(--accent);
-    padding: 15px 20px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--accent);
+.priceWrap {
+  margin: 10px 0px;
+  padding: 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--accent);
 
-    .originalPrice{
-        margin-right: 10px;
-        text-decoration: line-through;
-        color: var(--text-light);
-    }
-    .priceSave{
-        margin-left: 10px;
-        background-color: #30b715;
-        padding: 5px;
-        color: #fff;
-
-    }
+  .originalPrice {
+    margin-right: 10px;
+    text-decoration: line-through;
+    color: var(--text-light);
+  }
+  .priceSave {
+    margin-left: 10px;
+    background-color: #30b715;
+    padding: 5px;
+    color: #fff;
+  }
 }
 
-@media(max-width:340px){
-    .priceWrap{
-        .priceSave{
-            font-size: 10px;
-
-        }
+@media (max-width: 340px) {
+  .priceWrap {
+    .priceSave {
+      font-size: 10px;
     }
+  }
 }
