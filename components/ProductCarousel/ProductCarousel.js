@@ -24,6 +24,9 @@ const ProductCarousel = ({ products, carouselTitle }) => {
   else if(width <= 768){
     slidesPerView = 3
     spaceBetween = 10
+  }else if(width <= 1100){
+    slidesPerView = 4
+    spaceBetween = 10
   }
   else{
     slidesPerView = 5
