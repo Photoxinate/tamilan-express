@@ -4,6 +4,8 @@ import { ProfileCheck, History, Award, SignOut } from '../../components/Icons/Ic
 import PageContainer from '../../components/PageContainer/PageContainer'
 
 import classes from './index.module.scss'
+import useTranslation from 'next-translate/useTranslation'
+
 
 const cards = [
     {name: 'Profile Info', link: '/profile', icon: <ProfileCheck />},
@@ -13,8 +15,12 @@ const cards = [
 ]
 
 const index = () => {
+
+    const { t } = useTranslation('my-account')
+
+
     return (
-        <PageContainer title={'My Account'} id={'account'} >
+        <PageContainer title={t('Account-title')} id={'account'} >
             <div className={classes.cards}>
                 {cards.map(card => <AccountCard name={card.name} link={card.link} icon={card.icon} />)}
             </div>

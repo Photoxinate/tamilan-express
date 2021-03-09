@@ -4,9 +4,15 @@ import PageContainer from '../../components/PageContainer/PageContainer'
 
 import classes from './index.module.scss'
 
+import useTranslation from 'next-translate/useTranslation'
+
+
 const Form = dynamic(() => import('../../components/Forms/ProfileForm/ProfileForm'))
 
 const index = () => {
+
+    const { t } = useTranslation('profile')
+
 
     const [editPersonal, setEditPersonal] = useState(false)
     const [editDelivery, setEditDelivery] = useState(false)
@@ -71,7 +77,7 @@ const index = () => {
         <PageContainer title='Profile' id='profile'>
             <div className={classes.profile}>
                 <section className={classes.section}>
-                    <div className={classes.title}> Contact Info </div>
+                    <div className={classes.title}> {t('profile-Contact')} </div>
                     <div className={classes.fields}>
                         <div className={classes.field}>
                             <label>Email Address</label>
@@ -85,14 +91,14 @@ const index = () => {
                     <span className={classes.edit} />
                 </section>
                 <section className={classes.section} ref={personalRef}>
-                    <div className={classes.title}> Personal Info </div>
+                    <div className={classes.title}> {t('profile-personal')} </div>
                     <div className={classes.fields}>
                         {personal}
                     </div>
                     <span role='button' aria-label='edit personal information' className={classes.edit} onClick={() => toggleHandler('personal')}> Edit </span>
                 </section>
                 <section className={classes.section} ref={deliveryRef}>
-                    <div className={classes.title}> Delivery Info </div>
+                    <div className={classes.title}> {t('profile-delivery')} </div>
                     <div className={classes.fields}>
                         {delivery}
                     </div>

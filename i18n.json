@@ -6,6 +6,8 @@
     "/about-us": ["about-us"],
     "/checkout": ["check-out"],
     "/cart": ["cart"],
-    "/signin":["sign-in"]
+    "/signin":["sign-in"],
+    "/profile":["profile"],
+    "/account":["my-account"]
   }
 }

@@ -1,5 +1,12 @@
 @import '../../styles/common';
 
+.noProducts{
+    padding: 250px 0px;
+
+    a{
+        color: var(--primary)
+    }
+}
 .wrap{
     @extend %maxWidth;
     width: 100%;

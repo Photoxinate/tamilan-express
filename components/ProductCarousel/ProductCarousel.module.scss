@@ -7,5 +7,17 @@
 
     h2{
         color: var(--text-dark);
+        margin-bottom: 2em;
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: -8px;
+            height: 1px;
+            width: 100%;
+            background-color: #ccc;
+        }
     }
 }

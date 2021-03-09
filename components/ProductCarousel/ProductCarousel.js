@@ -17,14 +17,14 @@ const ProductCarousel = ({ products, carouselTitle }) => {
   const { width } = useWindowSize();
 
   let slidesPerView, spaceBetween
-  if(width <= 540){
+  if(width <= 600){
     slidesPerView = 2
     spaceBetween = 10
   }
-  else if(width <= 768){
+  else if(width <= 830){
     slidesPerView = 3
     spaceBetween = 10
-  }else if(width <= 1100){
+  }else if(width <= 1200){
     slidesPerView = 4
     spaceBetween = 10
   }

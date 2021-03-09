@@ -1,4 +1,7 @@
 {
+    "cart-noItem": "No item Added, ",
+    "cart-startShopping": "Start Shopping",
+ 
     "cart-title": "SHOPPING CART",
 
     "cart-checkout": "Check out",

@@ -29,23 +29,23 @@ const index = () => {
                 <h1> {t('contact_us')} </h1>
                 <div className={classes.details}>
                     <div className={classes.item}>
-                        <label className={classes.title}><Phone color='#888' /> Phone</label>
+                        <label className={classes.title}><Phone color='#888' /> {t('about-phone')}</label>
                         <div className={classes.value}>
                             <a href={'tel:' + contact.phone}>{contact.phone}</a>
                         </div>
                     </div>
                     <div className={classes.item}>
-                        <label className={classes.title}><Mail color='#888' /> E-mail</label>
+                        <label className={classes.title}><Mail color='#888' /> {t('about-email')}</label>
                         <div className={classes.value}>
                             <a href={'mailto:' + contact.email}>{contact.email}</a>
                         </div>
                     </div>
                     <div className={classes.item}>
-                        <label className={classes.title}><Location color='#888' /> Address</label>
+                        <label className={classes.title}><Location color='#888' /> {t('about-address')}</label>
                         <div className={classes.value}>{contact.address}</div>
                     </div>
                     <div className={classes.item}>
-                        <label className={classes.title}><Clock color='#888' /> Store Hours</label>
+                        <label className={classes.title}><Clock color='#888' /> {t('about-hours')}</label>
                         <div className={[classes.value, classes.hours].join(' ')}>
                             <div> {contact.openHours.weekdays} </div>
                             <div> {contact.openHours.weekend} </div>
