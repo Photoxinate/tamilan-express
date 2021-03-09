@@ -14,10 +14,12 @@ const states = [
 const ProfileForm = ({ delivery, onCancel }) => {
 
     const contact = delivery ? <Form.Input label='Contact Number' placeholder='Contact No' fluid type='phone' /> : ''
+    const check = delivery ? <Form.Checkbox label='Same as main address' style={{marginBottom: '15px'}} /> : ''
 
     return (
         <div className={classes.container}>
             <Form>
+                {check}
                 <Form.Group widths={2}>
                     <Form.Input label='First Name' placeholder='First Name' fluid type='text' required />
                     <Form.Input label='Middle Name' placeholder='Middle Name' fluid type='text' />
@@ -37,7 +39,7 @@ const ProfileForm = ({ delivery, onCancel }) => {
                     <Form.Input label='Zip Code' placeholder='Zip Code' fluid type='text' required />
                     {contact}
                 </Form.Group>
-                <Form.Group>
+                <Form.Group style={{float: 'right', marginTop: '20px'}}>
                     <Form.Button onClick={() => onCancel(delivery ? 'delivery' : 'personal')}> CANCEL </Form.Button>
                     <Form.Button primary type='submit' > SAVE </Form.Button>
                 </Form.Group>
