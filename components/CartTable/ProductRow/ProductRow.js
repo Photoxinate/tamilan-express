@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Quantity from '../../UI/Quantity/Quantity';
 import DeleteButton from '../../UI/DeleteButton/DeleteButton';
-import Product from '../Product/Product';
 import classes from '../CartTable.module.scss';
 
-const ProductRow = (props) => {
+const ProductRow = ({product, onChangeQty, onRemoveProduct}) => {
 
-  const product = props.product
-  const [qty, setQty] = useState(product.qty);
+  const [qty, setQty] = useState(product.qty)
 
   return (
     <div className={classes.row}>
@@ -20,11 +18,11 @@ const ProductRow = (props) => {
           <div className={classes.price}>${product.price}</div>
         </div>
         <div className={classes.col}>
-          <Quantity qty={qty} id={product.id} onChangeQty={props.onChangeQty} setQty={setQty} max={product.maxQty} />
+          <Quantity qty={qty} setQty={setQty} id={product.id} onChangeQty={onChangeQty} max={product.maxQty} />
         </div>
         <div className={classes.col}>
           $ {product.price * qty}
-          <DeleteButton onClicked={() => props.onRemoveProduct(product.id)} />
+          <DeleteButton onClicked={() => onRemoveProduct(product.id)} />
         </div>
       </div>
     </div>

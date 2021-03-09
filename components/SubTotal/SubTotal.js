@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import classes from './SubTotal.module.scss';
 import useTranslation from 'next-translate/useTranslation'
@@ -7,17 +7,21 @@ import useTranslation from 'next-translate/useTranslation'
 
 const SubTotal = (props) => {
 
+  const cartProducts = useSelector(state => state.prdCart.products)
+
   const { t } = useTranslation('cart')
 
-  let subTotal = 0;
   const getTotalPrice = () => {
-    props.cartproducts.map((prod, i) => {
-      console.log();
-      subTotal = prod.price * prod.qty + subTotal;
+    let subTotal = 0;
+    cartProducts.map((prod, i) => {
+      subTotal = ((prod.price * prod.qty) + subTotal);
     });
-  };
 
-  getTotalPrice();
+    return subTotal
+  }
+
+  const subTotal = getTotalPrice()
+
 
   return (
     <div className={classes.wrap}>
@@ -34,10 +38,5 @@ const SubTotal = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    cartproducts: state.prdCart.products,
-  };
-};
 
-export default connect(mapStateToProps)(SubTotal);
+export default SubTotal;

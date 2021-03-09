@@ -1,16 +1,16 @@
 import React from 'react';
 import classes from './ProductPrice.module.scss';
 
-const ProductPrice = (props) => {
+const ProductPrice = ({price, discount}) => {
 
-  let price;
+  let discountedprice;
 
-  if (props.discount > 0) {
-    const savePrice = (props.price * props.discount) / 100
-    price = props.price - savePrice;
+  if (discount > 0) {
+    const savePrice = (price * discount) / 100
+    discountedprice = price - savePrice;
     return (
         <div className={classes.priceWrap}>
-          <div className={classes.originalPrice}>${props.price}</div>${price}
+          <div className={classes.originalPrice}>${price}</div>${discountedprice}
           <span className={classes.priceSave}>SAVE&nbsp;{savePrice}</span>
         </div>
       );

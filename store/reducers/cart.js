@@ -44,9 +44,8 @@ const reducer = (state = initialState, action) => {
         const index = updatedProducts.findIndex(
           (prod) => prod.id == action.payload.id
         );
-
-        updatedProducts[index].qty =
-          updatedProducts[index].qty + action.payload.qty;
+          console.log("QTY_FROM_REDUCER",action.payload.qty);
+        updatedProducts[index].qty = action.payload.qty;
         return {
           ...state,
           products: updatedProducts,

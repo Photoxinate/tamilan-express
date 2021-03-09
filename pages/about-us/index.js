@@ -3,6 +3,7 @@ import RunningLogo from '../../components/RunningLogo/RunningLogo'
 import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider'
 import { contact } from '../../config/config'
 import { Clock, Location, Mail, Phone } from '../../components/Icons/Icons'
+import ContactForm from '../../components/Forms/ContactForm/ContactForm'
 import useTranslation from 'next-translate/useTranslation'
 
 import classes from './index.module.scss'
@@ -53,7 +54,7 @@ const index = () => {
                 </div>
                 <Divider horizontal>Or</Divider>
                 <div className={classes.form}>
-
+                    <ContactForm/>
                 </div>
             </section>
         </div>

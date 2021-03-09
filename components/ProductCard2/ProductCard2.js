@@ -1,42 +1,94 @@
-import React from 'react'
-import Link from 'next/link'
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
+import React from 'react';
+import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionTypes';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import useTranslation from 'next-translate/useTranslation';
 
-import classes from './ProductCard2.module.scss'
-import useTranslation from 'next-translate/useTranslation'
+import classes from './ProductCard2.module.scss';
 
+const ProductCard2 = ({ product, ...props }) => {
+  const dispatch = useDispatch();
 
-const ProductCard2 = ({ product, ...rest }) => {
+  let price;
 
-    const { t } = useTranslation('common')
+  const { t } = useTranslation('common');
 
-    return (
-        <article itemProp='itemListElement' itemScope itemType='https://schema.org/Product' className={classes.card}>
-            <div className={classes.container}>
+  const onClicked = (e) => {
+    e.preventDefault();
+    dispatch({ type: actionTypes.SHOW_MODAL, payload: { product: product } });
+  };
 
-                <div className={classes.image}>
-                    <Link href={'/product/' + product.id}><a>
-                        <img itemProp='image' src={product.img} alt={product.name} width={200} height={200} />
-                    </a></Link>
-                    <span className={classes.discount}>20%</span>
-                </div>
+  const getPrice = () => {
+    if (product.discount > 0) {
+      price = product.price - (product.price * product.discount) / 100;
+      return (
+        <div
+          itemProp="offers"
+          itemScope
+          itemType="https://schema.org/Offer"
+          className={classes.price}
+        >
+          <div className={classes.originalPrice}>${product.price}</div>
+          <span itemProp="priceCurrency" content="USD">
+            $
+          </span>
+          <span itemProp="price" content={price}>
+            {price}
+          </span>
+        </div>
+      );
+    } else {
+      price = product.price;
+      return (
+        <div
+          itemProp="offers"
+          itemScope
+          itemType="https://schema.org/Offer"
+          className={classes.price}
+        >
+          ${price}
+        </div>
+      );
+    }
+  };
 
-                <span itemProp='category' className={classes.category}> {product.category} </span>
+  const priceComp = getPrice();
 
-                <Link href={'/product/' + product.id}><a itemProp='url'>
-                    <h3 itemProp='name' className={classes.name}> {product.name} </h3>
-                </a></Link>
+  return (
+    <article
+      itemProp="itemListElement"
+      itemScope
+      itemType="https://schema.org/Product"
+      className={classes.card}
+    >
 
-                <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className={classes.price}>
-                    <span itemProp="priceCurrency" content="USD">$</span>
-                    <span itemProp="price" content={product.price}> {product.price} </span>
-                </div>
+      <div className={classes.image}>
+        <Link href={`/product/${encodeURIComponent(product.id)}`}>
+          <a>
+            <img itemProp="image" src={product.img} alt={product.name} />
+          </a>
+        </Link>
+        {product.discount > 0 ? (
+          <span className={classes.discount}>{product.discount}%</span>
+        ) : null}
+      </div>
 
-                <Button compact content={t('add-to-cart')} />
-                
-            </div>
-        </article>
-    );
+      <span itemProp="category" className={classes.category}>
+        {product.category}
+      </span>
+
+      <Link href={'/product/' + product.id}>
+        <a itemProp="url">
+          <h3 itemProp="name" className={classes.name}>
+            {product.name}
+          </h3>
+        </a>
+      </Link>
+      {priceComp}
+      <Button fluid primary content={t('add-to-cart')} onClick={onClicked} />
+    </article>
+  );
 };
 
 export default ProductCard2;

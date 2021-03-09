@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import Link from 'next/link'
 import ProductPrice from '../ProductPrice/ProductPrice';
 import classes from './ProductDetail.module.scss';
 import Quantity from '../../UI/Quantity/Quantity';
-import Button from '../../UI/Button/Button';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 
 const ProductDetail = (props) => {
 
   const product = props.product
+  const dispatch = useDispatch()
+  const [qty, setQty] = useState(product.qty)
 
   const addToCart = (product, qty) => {
-    props.onAddProduct(product, qty)
-    props.closeModal()
+    dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product, qty:qty}})
+    dispatch({type: actionTypes.CLOSE_MODAL})
   }
 
-  const [qty, setQty] = useState(1)
 
   return (
     <div className={classes.prodDetail}>
@@ -34,12 +35,12 @@ const ProductDetail = (props) => {
         <span className={classes.prodWeight}>{product.weight}</span>
       </div>
      
-      <Quantity max={product.maxQuantity} qty={qty} setQty={setQty}/>
+      <Quantity max={product.maxQty} setQty={setQty}  qty={qty}/>
       <div className={classes.btnWrap}>
-        <Button text="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
+        <Button content="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
         <Link href="/cart" >
           <a>
-            <Button text="Check Out" onClicked={() => addToCart(product, qty)}/>
+            <Button content="Check Out" onClicked={() => addToCart(product, qty)}/>
           </a>
         </Link>
       </div>
@@ -47,13 +48,4 @@ const ProductDetail = (props) => {
   );
 };
 
-
-const mapDispatchToProps = dispatch => {
-  return {
-      onAddProduct: (product, qty) => dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product, qty:qty}}),
-      onRemoveProduct: (id) => dispatch({type: actionTypes.REMOVE_FROM_CART, payload:{id:id}}),
-      closeModal: () => dispatch({type: actionTypes.CLOSE_MODAL})
-  }
-};
-
-export default connect(null, mapDispatchToProps)(ProductDetail);
+export default ProductDetail;

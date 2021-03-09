@@ -1,11 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { initializeStore } from '../../store/store';
+import { useSelector } from 'react-redux'
 import CartTable from '../../components/CartTable/CartTable';
 import SubTotal from '../../components/SubTotal/SubTotal';
 import classes from './index.module.scss';
 
 const index = (props) => {
-  if (props.products === undefined || props.products.length === 0) {
+
+  const cartProducts = useSelector(state => state.prdCart.products)
+
+
+  if (cartProducts === undefined || cartProducts.length === 0) {
     return <div>No item Added, Start Shopping</div>;
   } else {
     return (
@@ -21,10 +26,20 @@ const index = (props) => {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.prdCart.products,
-  };
-};
+// export function getServerSideProps() {
 
-export default connect(mapStateToProps)(index);
+//   const initialState = {
+//     prdCart: { products: [] },
+//         ui: {
+//           isShowModal: false,
+//           modalProduct: null,
+//         },
+//   }
+//   const reduxStore = initializeStore()
+//   const { dispatch } = reduxStore
+
+//   return { props: { initialReduxState: reduxStore.getState() } }
+// }
+
+
+export default index;
