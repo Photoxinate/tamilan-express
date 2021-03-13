@@ -1,57 +1,48 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes'
+import { updateObject } from './utility'
 
 const initialState = {
   products: [],
-};
+  count: 0,
+  total: 0,
+}
+
+const updateCart = (state, action) => {
+
+  let count = 0, total = 0
+  let products
+
+  // check product already exist in cart
+  if(state.products.some(product => product.id === action.id)) {    
+    // update the cart
+    products = state.products.map(product => {
+      if(product.id === action.id) {
+        product = updateObject(product, { qty: action.qty })
+      }
+      count = count + product.qty
+      total = total + (product.qty * product.price) 
+      return product
+    })
+  }
+  else {
+    // add to the cart
+    products = state.products
+    products.push({ id: action.id, price: action.price, qty: action.qty })
+    count = state.count + action.qty
+    total = state.total + (action.qty * action.price) 
+  }
+
+  return updateObject(state, { products, count, total })
+}
+
 
 const reducer = (state = initialState, action) => {
-  const updatedProducts = [...state.products]
+
   switch (action.type) {
-    case actionTypes.ADD_TO_CART:
-      if (
-        state.products.some((prod) => prod.id === action.payload.product.id)
-      ) {
-        const index = updatedProducts.findIndex(
-          (prod) => prod.id == action.payload.product.id
-        );
-
-        updatedProducts[index].qty =
-          updatedProducts[index].qty + action.payload.qty;
-        return {
-          ...state,
-          products: updatedProducts,
-        };
-      } else {
-        const newProduct = {
-          ...action.payload.product,
-          qty: action.payload.qty,
-        };
-        return {
-          ...state,
-          products: state.products.concat(newProduct),
-        };
-      }
-
-    case actionTypes.REMOVE_FROM_CART:
-      return {
-        ...state,
-        products: updatedProducts.filter(
-          (prod, i) => prod.id !== action.payload.id
-        ),
-      };
-
-      case actionTypes.CHANGE_QUANTITY:
-        const index = updatedProducts.findIndex(
-          (prod) => prod.id == action.payload.id
-        );
-          console.log("QTY_FROM_REDUCER",action.payload.qty);
-        updatedProducts[index].qty = action.payload.qty;
-        return {
-          ...state,
-          products: updatedProducts,
-        };
+    case actionTypes.UPDATE_CART: return updateCart(state, action)
   }
-  return state;
-};
+
+  return state
+}
 
 export default reducer;

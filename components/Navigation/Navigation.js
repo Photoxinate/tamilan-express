@@ -5,30 +5,33 @@ import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
 import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
 import Categories from './Categories/Categories'
-import classes from './Navigation.module.scss'
 import SideDrawer from './SideDrawer/SideDrawer'
 import useTranslation from 'next-translate/useTranslation'
+import { useSelector } from 'react-redux'
 
-
+import classes from './Navigation.module.scss'
 
 const Navigation = () => {
 
     const { t } = useTranslation('common')
 
+    const count = useSelector(state => state.cart.count)
 
-    const [prevPath, setPrevPath] = useState(null);
-    const [toggle, setToggle] = useState(false);
-    const { pathname } = useRouter();
+    const [prevPath, setPrevPath] = useState(null)
+    const [toggle, setToggle] = useState(false)
+    const { pathname } = useRouter()
 
     useEffect(() => {
-        setToggle(prev => !prev && prevPath === pathname )
+        setToggle(prev => !prev && prevPath === pathname) //if(prev === true && prevPath !=== pathname) return false : return true;
         setPrevPath(pathname)
-    }, [pathname]);
+    }, [pathname])
 
     const handleToggle = (e) => {
         e.preventDefault()
         setToggle(prev => !prev);
     }
+
+    const countHTML = count > 0 ? <span className={classes.count}>{count}</span> : ''
 
     return (
         <>
@@ -51,7 +54,7 @@ const Navigation = () => {
                     <div className={classes.icons}>
                         <Account />
                         <Link href='/cart'><a aria-label='shopping cart' title='Shopping cart' className={classes.cart}>
-                            <span className={classes.count}>1</span>
+                            {countHTML}
                             <Shopping size={26} />
                         </a></Link>
                         <span className={classes.menu} role='button' aria-label='toggle menu' aria-controls='sidedrawer' tabIndex={0} onClick={handleToggle}>

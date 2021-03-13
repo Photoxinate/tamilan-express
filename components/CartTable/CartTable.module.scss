@@ -11,11 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
-
-    
-
-    
+    padding: 2rem 1rem;
 
     .imgCol {
       width: 10%;
@@ -32,7 +28,6 @@
         box-sizing: border-box;
         align-items: center;
         margin: 10px;
-        padding: 10px;
 
         .name{
           font-size: 15px;
@@ -43,6 +38,24 @@
         .price {
           color: var(--accent);
         }
+
+        &.delete {
+          text-transform: uppercase;
+        
+          button {
+            &:hover {
+              svg{
+                stroke: red;
+              }
+            }
+            cursor: pointer;
+            background-color: transparent;
+            border: 0;
+            border-radius: 8px;
+            padding: 5px 10px;
+            transition: all 0.3s ease-in-out;
+          }
+        }        
 
         &:nth-child(1) {
           width: 30%;

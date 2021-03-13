@@ -1,17 +1,21 @@
-import { createStore, applyMiddleware } from 'redux';
-import { useMemo } from 'react';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers/rootReducer';
+import { createStore, applyMiddleware } from 'redux'
+import { useMemo } from 'react'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import rootReducer from './reducers/rootReducer'
 
-let store;
+let store
 
 const initialState = {
-  prdCart: { products: [] },
+  cart: {
+    products: [],
+    count: 0,
+    total: 0,
+  },
   ui: {
-    isShowModal: false,
-    modalProduct: null,
+    show: false,
+    product: null,
   }
-};
+}
 
 const initStore = (preloadedState = initialState) => {
   return createStore(
@@ -19,7 +23,7 @@ const initStore = (preloadedState = initialState) => {
     preloadedState,
     composeWithDevTools(applyMiddleware())
   );
-};
+}
 
 export const initializeStore = (preloadedState) => {
   let _store = store ?? initStore(preloadedState);
@@ -41,9 +45,9 @@ export const initializeStore = (preloadedState) => {
   if (!store) store = _store;
 
   return _store;
-};
+}
 
 export const useStore = (initialState) => {
   const store = useMemo(() => initializeStore(initialState), [initialState]);
   return store;
-};
+}

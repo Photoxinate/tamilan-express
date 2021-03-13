@@ -7,7 +7,7 @@ import useTranslation from 'next-translate/useTranslation'
 
 const SubTotal = (props) => {
 
-  const cartProducts = useSelector(state => state.prdCart.products)
+  const cartProducts = useSelector(state => state.cart.products)
 
   const { t } = useTranslation('cart')
 

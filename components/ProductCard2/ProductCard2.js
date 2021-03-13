@@ -16,7 +16,7 @@ const ProductCard2 = ({ product, ...props }) => {
 
   const onClicked = (e) => {
     e.preventDefault();
-    dispatch({ type: actionTypes.SHOW_MODAL, payload: { product: product } });
+    dispatch({ type: actionTypes.SHOW_MODAL, product: product });
   };
 
   const getPrice = () => {

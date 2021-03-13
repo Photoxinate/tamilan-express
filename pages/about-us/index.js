@@ -31,7 +31,7 @@ const index = () => {
                     <div className={classes.item}>
                         <label className={classes.title}><Phone color='#888' /> Phone</label>
                         <div className={classes.value}>
-                            <a href={'tel:' + contact.phone}>{contact.phone}</a>
+                            <a href={'tel:' + contact.phone.link}>{contact.phone.text}</a>
                         </div>
                     </div>
                     <div className={classes.item}>

@@ -5,9 +5,9 @@ import CartTable from '../../components/CartTable/CartTable';
 import SubTotal from '../../components/SubTotal/SubTotal';
 import classes from './index.module.scss';
 
-const index = (props) => {
+const index = () => {
 
-  const cartProducts = useSelector(state => state.prdCart.products)
+  const cartProducts = useSelector(state => state.cart.products)
 
 
   if (cartProducts === undefined || cartProducts.length === 0) {

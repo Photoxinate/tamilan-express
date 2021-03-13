@@ -4,7 +4,7 @@ const baseUrl =
     : 'https://api.tamilanexpress.com/';
 
 export const contact = {
-  phone: '+1-1001-234-5678',
+  phone: {text: '+1-1001-234-5678', link: '+110012345678'},
   email: 'hello@tamilanexpress.com',
   address: '126, select ave - unit 3 scarborough on, m1v 3y6, ontario, canada.',
   openHours: {

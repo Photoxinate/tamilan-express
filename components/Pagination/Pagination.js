@@ -44,7 +44,7 @@ const Pagination = ({ pages, active }) => {
     if (startIndex > 1) {
         pageNumbersArray.push(
             <Link href={{ query: {page: active - 1} }} key="1">
-                <a className={classes.page}>&lt;</a>
+                <a className={classes.page} aria-label='Previous page'>&lt;</a>
             </Link>
         )
     }
@@ -65,7 +65,7 @@ const Pagination = ({ pages, active }) => {
     if (endIndex < pages) {
         pageNumbersArray.push(
             <Link href={{ query: {page: active + 1} }} key={pages}>
-                <a className={classes.page}>&gt;</a>
+                <a className={classes.page} aria-label='Next page'>&gt;</a>
             </Link>
         )
     }

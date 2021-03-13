@@ -10,10 +10,10 @@ const ProductModal = (props) => {
   const dispatch = useDispatch()
 
   const closeModal = () => dispatch({type:actionTypes.CLOSE_MODAL})
-  const isShowModal = useSelector(state => state.ui.isShowModal)
-  const modalProduct = useSelector(state => state.ui.modalProduct)
+  const show = useSelector(state => state.ui.show)
+  const product = useSelector(state => state.ui.product)
 
-  if (!isShowModal) {
+  if (!show) {
     return null;
   }
   return (
@@ -23,9 +23,9 @@ const ProductModal = (props) => {
           <Close size="24" color="var(--accent)" />
         </button>
         <div className={classes.imgWrap}>
-          <img src={modalProduct.img} alt={modalProduct} />
+          <img src={product.img} alt={product} />
         </div>
-        <ProductDetail product={modalProduct} setShow={props.setShow} />
+        <ProductDetail product={product} setShow={props.setShow} />
       </div>
     </div>
   );

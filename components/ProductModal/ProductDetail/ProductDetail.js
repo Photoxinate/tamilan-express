@@ -14,8 +14,8 @@ const ProductDetail = (props) => {
   const [qty, setQty] = useState(product.qty)
 
   const addToCart = (product, qty) => {
-    dispatch({type: actionTypes.ADD_TO_CART, payload:{product:product, qty:qty}})
     dispatch({type: actionTypes.CLOSE_MODAL})
+    dispatch({ type: actionTypes.UPDATE_CART, id: product.id, qty, price: product.price })
   }
 
 
@@ -37,10 +37,10 @@ const ProductDetail = (props) => {
      
       <Quantity max={product.maxQty} setQty={setQty}  qty={qty}/>
       <div className={classes.btnWrap}>
-        <Button content="Contniue Shopping" onClicked={() => addToCart(product, qty)}/>
+        <Button content="Contniue Shopping" onClick={() => addToCart(product, qty)}/>
         <Link href="/cart" >
           <a>
-            <Button content="Check Out" onClicked={() => addToCart(product, qty)}/>
+            <Button content="Check Out" onClick={() => addToCart(product, qty)}/>
           </a>
         </Link>
       </div>

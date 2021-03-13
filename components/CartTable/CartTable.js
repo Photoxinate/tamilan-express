@@ -1,24 +1,24 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import * as actionTypes from '../../store/actions/actionTypes';
-import ProductRow from './ProductRow/ProductRow';
-import classes from './CartTable.module.scss';
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import * as actionTypes from '../../store/actions/actionTypes'
+import ProductRow from './ProductRow/ProductRow'
+import classes from './CartTable.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 
 
 const CartTable = (props) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  
+  const products = useSelector(state => state.cart.products)
 
-  const onChangeQty = (id, qty) =>
-    dispatch({
-      type: actionTypes.CHANGE_QUANTITY,
-      payload: { id: id, qty: qty },
-    });
+  const qtyChangeHandler = (id, qty, price) => {
+    dispatch({ type: actionTypes.UPDATE_CART, id, qty, price })
+  }
 
-  const onRemoveProduct = (id) =>
-    dispatch({ type: actionTypes.REMOVE_FROM_CART, payload: { id: id } });
+  const removeProductHandler = (id, price) => {
+    dispatch({ type: actionTypes.UPDATE_CART, id, qty: 0, price })
+  }
 
-  const products = useSelector((state) => state.prdCart.products);
 
   const { t } = useTranslation('cart')
 
@@ -30,8 +30,8 @@ const CartTable = (props) => {
       {products.map((product, i) => (
         <ProductRow
           key={product.id}
-          onChangeQty={onChangeQty}
-          onRemoveProduct={onRemoveProduct}
+          onChangeQty={qtyChangeHandler}
+          onRemoveProduct={removeProductHandler}
           product={product}
         />
       ))}

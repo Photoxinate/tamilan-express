@@ -8,8 +8,6 @@ import Banner from '../components/Banner/Banner';
 import { products, banners } from '../config/config';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer';
 
-
-
 const Home = props => {
 
   console.log('[home] rendered')
@@ -41,10 +39,14 @@ export const getStaticProps = () => {
   return {
     props: {
       initialReduxState: {
-        prdCart: { products: [] },
+        cart: {
+          products: [],
+          count: 0,
+          total: 0,
+        },
         ui: {
-          isShowModal: false,
-          modalProduct: null,
+          show: false,
+          product: null,
         },
       },
     },

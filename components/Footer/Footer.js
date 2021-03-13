@@ -33,7 +33,7 @@ const Footer = () => {
                                 <strong>{t('Footer-Email')} </strong> <a href={'mailto:' + contact.email}>{contact.email}</a>
                             </div>
                             <div className={classes.item}>
-                                <strong>{t('Footer-Call')} </strong> <a href={'tel:' + contact.phone} className={classes.call}>{contact.phone}</a>
+                                <strong>{t('Footer-Call')} </strong> <a href={'tel:' + contact.phone.link} className={classes.call}>{contact.phone.text}</a>
                             </div>
                         </div>
                     </div>

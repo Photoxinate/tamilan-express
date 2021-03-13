@@ -195,9 +195,9 @@ strong {
 
 /* swiper navigation style */
 .swiper-nav {
-  width: 36px;
-  height: 36px;
-  background-color: rgb(0, 0, 0);
+  width: 32px;
+  height: 32px;
+  background-color: white;
   position: absolute;
   top: 50%;
   z-index: 2;
@@ -207,26 +207,41 @@ strong {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: .7;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 24%), 0 0 2px 0 rgb(0 0 0 / 12%);
+  transition: all .3s ease;
 }
 
 .swiper-nav:hover {
-  opacity: 0.85;
+  background-color: #767676;
+  border-color: #767676;
+}
+
+.swiper-nav:hover svg {
+  stroke: #fff;
 }
 
 .swiper-nav.swiper-button-disabled {
-  opacity: 0;
+  opacity: 0 !important;
   cursor: default;
 }
 
 .swiper-nav.swiper-button-hidden  {
-  opacity: 0;
+  opacity: 0 !important;
 }
 
 .swiper-nav-next {
-  right: 0px;
+  right: 10px;
+}
+
+.swiper-nav-next svg {
+  margin-right: -2px;
 }
 
 .swiper-nav-prev {
-  left: 0px;
+  left: 10px;
+}
+
+.swiper-nav-prev svg {
+  margin-left: -2px;
 }

@@ -5,10 +5,10 @@ const SwiperNav = () => {
     return (
         <>
             <span className='swiper-nav swiper-nav-prev'>
-                <ChevronLeft size={18} color='#fff' />
+                <ChevronLeft size={22} />
             </span>
             <span className='swiper-nav swiper-nav-next'>
-                <ChevronRight size={18} color='#fff' />
+                <ChevronRight size={22} />
             </span>
         </>
     );

@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import Quantity from '../../UI/Quantity/Quantity';
-import DeleteButton from '../../UI/DeleteButton/DeleteButton';
-import classes from '../CartTable.module.scss';
+import React, { useEffect, useState } from 'react'
+import Quantity from '../../UI/Quantity/Quantity'
+import { XCircle } from '../../Icons/Icons'
+
+import classes from '../CartTable.module.scss'
+
 
 const ProductRow = ({product, onChangeQty, onRemoveProduct}) => {
 
-  const [qty, setQty] = useState(product.qty)
+  let total = product.price * product.qty
+
+  useEffect(() => {
+    total = product.price * product.qty
+  }, [product])
 
   return (
     <div className={classes.row}>
@@ -18,11 +24,15 @@ const ProductRow = ({product, onChangeQty, onRemoveProduct}) => {
           <div className={classes.price}>${product.price}</div>
         </div>
         <div className={classes.col}>
-          <Quantity qty={qty} setQty={setQty} id={product.id} onChangeQty={onChangeQty} max={product.maxQty} />
-        </div>
+          <Quantity qty={product.qty} id={product.id} price={product.price} onChangeQty={onChangeQty} />
+        </div>  
         <div className={classes.col}>
-          $ {product.price * qty}
-          <DeleteButton onClicked={() => onRemoveProduct(product.id)} />
+          $ {total}
+        </div>
+        <div className={[classes.col, classes.delete].join(' ')}>
+          <button onClick={() => onRemoveProduct(product.id, product.price)} aria-label='remove' title='remove'> 
+            <XCircle size={20} /> 
+          </button>
         </div>
       </div>
     </div>
