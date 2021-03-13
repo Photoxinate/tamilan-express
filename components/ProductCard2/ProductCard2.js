@@ -64,7 +64,7 @@ const ProductCard2 = ({ product, ...props }) => {
     >
 
       <div className={classes.image}>
-        <Link href={`/product/${encodeURIComponent(product.id)}`}>
+        <Link href={'/product/'+product.id}>
           <a>
             <img itemProp="image" src={product.img} alt={product.name} />
           </a>

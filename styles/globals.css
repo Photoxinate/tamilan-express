@@ -134,13 +134,21 @@ strong {
 
 
 /*Button*/
+
+.ui.button{
+  background: var(--accent);
+  color: #fff;
+  transition: all 0.25 ease;
+}
+
 .ui.primary.button {
   background: var(--accent);
   color: #fff;
   transition: all 0.25 ease;
 }
-.ui.primary.button:hover, .ui.primary.button:active, .ui.primary.button:focus {
+.ui.primary.button:hover, .ui.primary.button:active, .ui.primary.button:focus, .ui.button:hover {
   background: #ff582a;
+  color: #fff;
 }
 
 .header-op.ui.labeled.icon.button {
@@ -164,7 +172,12 @@ strong {
   font-size: 14px;
 }
 
-
+@media (max-width: 862px) {
+  .ui.button{
+    font-size: 12px !important;
+  }
+  
+}
 
 @media (max-width: 768px) {
 

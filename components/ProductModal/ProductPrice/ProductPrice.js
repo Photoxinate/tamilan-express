@@ -15,7 +15,7 @@ const ProductPrice = ({price, discount}) => {
         </div>
       );
   } else{
-      price = props.price
+      price = price
       return <div className={classes.priceWrap}>${price}</div>
 
   }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import ContactDetail from './ContactDetail/ContactDetail';
 import InputText from '../../UI/Input/Input';
-import Button from "semantic-ui-react/dist/commonjs/elements/Button"
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import classes from './ContactForm.module.scss';
 
 const ContactFrom = () => {
@@ -26,17 +25,17 @@ const ContactFrom = () => {
 
   return (
     <div className={classes.wrap}>
-        <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={classes.inputWrapper}>
-              <InputText name="name" placeHolder="Name" max="100" />
-              <InputText name="email" placeHolder="E-mail" max="50" />
-              <InputText name="phone" placeHolder="Phone" max="20" />
-              <InputText name="message" placeHolder="Message" max="150" />
-            </div>
-          </form>
-        </FormProvider>
-      <Button content='Submit' primary/>
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={classes.inputWrapper}>
+            <InputText name="name" placeHolder="Name" max="100" />
+            <InputText name="email" placeHolder="E-mail" max="50" />
+            <InputText name="phone" placeHolder="Phone" max="20" />
+            <InputText name="message" placeHolder="Message" max="150" />
+          </div>
+        </form>
+      </FormProvider>
+      <Button content="Submit" primary />
     </div>
   );
 };

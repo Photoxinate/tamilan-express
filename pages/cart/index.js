@@ -4,14 +4,21 @@ import { useSelector } from 'react-redux'
 import CartTable from '../../components/CartTable/CartTable';
 import SubTotal from '../../components/SubTotal/SubTotal';
 import classes from './index.module.scss';
+import Link from 'next/link'
+
+import useTranslation from 'next-translate/useTranslation'
+
+
 
 const index = () => {
 
   const cartProducts = useSelector(state => state.cart.products)
+  
+  const { t } = useTranslation('cart')
 
 
   if (cartProducts === undefined || cartProducts.length === 0) {
-    return <div>No item Added, Start Shopping</div>;
+    return <div className={classes.noProducts}>{t('cart-noItem')}<Link href='/'><a>{t('cart-startShopping')}</a></Link> </div>;
   } else {
     return (
       <div className={classes.wrap}>

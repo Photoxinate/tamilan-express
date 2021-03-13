@@ -32,7 +32,7 @@
     }
 
     .imgWrap {
-      width: 50%;
+      width: 45%;
       padding: 20px;
 
       img {
@@ -43,6 +43,36 @@
   }
 }
 
+@media(max-width:1365px){
+  .wrap {
+    .productModal {
+      width: 60vw;
+      .imgWrap {
+        width: 40%;
+
+      }
+
+    }
+  }
+}
+
+@media(max-width:1155px){
+  .wrap {
+    .productModal {
+      width: 70vw;
+
+    }
+  }
+}
+
+@media(max-width:990px){
+  .wrap {
+    .productModal {
+      width: 80vw;
+
+    }
+  }
+}
 
 @media(max-width:768px){
     .wrap{
