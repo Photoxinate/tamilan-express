@@ -7,7 +7,7 @@ const Item = ({ name, image }) => {
     return (
         <Link href='/#'>
             <a className={classes.container}> 
-                <img src={image} />
+                <img src={image} width={50} height={50} loading='lazy' alt={'category - ' + name} />
                 <div className={classes.title}>{name}</div>
             </a>
         </Link>

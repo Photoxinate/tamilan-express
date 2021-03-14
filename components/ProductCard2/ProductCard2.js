@@ -1,59 +1,29 @@
-import React from 'react';
-import Link from 'next/link';
-import { useDispatch } from 'react-redux';
-import * as actionTypes from '../../store/actions/actionTypes';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import useTranslation from 'next-translate/useTranslation';
+import React from 'react'
+import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import * as actionTypes from '../../store/actions/actionTypes'
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
+import Label from 'semantic-ui-react/dist/commonjs/elements/Label'
+import useTranslation from 'next-translate/useTranslation'
 
-import classes from './ProductCard2.module.scss';
+import classes from './ProductCard2.module.scss'
 
 const ProductCard2 = ({ product, ...props }) => {
-  const dispatch = useDispatch();
 
-  let price;
+  const dispatch = useDispatch()
 
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common')
 
-  const onClicked = (e) => {
-    e.preventDefault();
-    dispatch({ type: actionTypes.SHOW_MODAL, product: product });
-  };
+  const addToCartHandler = e => {
+    e.preventDefault()
+    dispatch({ type: actionTypes.SHOW_MODAL, product: product })
+  }
 
-  const getPrice = () => {
-    if (product.discount > 0) {
-      price = product.price - (product.price * product.discount) / 100;
-      return (
-        <div
-          itemProp="offers"
-          itemScope
-          itemType="https://schema.org/Offer"
-          className={classes.price}
-        >
-          <div className={classes.originalPrice}>${product.price}</div>
-          <span itemProp="priceCurrency" content="USD">
-            $
-          </span>
-          <span itemProp="price" content={price}>
-            {price}
-          </span>
-        </div>
-      );
-    } else {
-      price = product.price;
-      return (
-        <div
-          itemProp="offers"
-          itemScope
-          itemType="https://schema.org/Offer"
-          className={classes.price}
-        >
-          ${price}
-        </div>
-      );
-    }
-  };
+  const price = product.discount > 0 ? product.price - (product.price * product.discount / 100) : product.price
 
-  const priceComp = getPrice();
+  const discountLabel = product.discount > 0 ? <span className={classes.discount}> {product.discount}% </span> : null
+
+  const discountPrice = product.discount > 0 ? <div className={classes.originalPrice}> $ {product.price} </div> : null
 
   return (
     <article
@@ -66,12 +36,10 @@ const ProductCard2 = ({ product, ...props }) => {
       <div className={classes.image}>
         <Link href={'/product/'+product.id}>
           <a>
-            <img itemProp="image" src={product.img} alt={product.name} />
+            <img loading='lazy' itemProp="image" src={product.img} alt={product.name} />
           </a>
         </Link>
-        {product.discount > 0 ? (
-          <span className={classes.discount}>{product.discount}%</span>
-        ) : null}
+        {discountLabel}
       </div>
 
       <span itemProp="category" className={classes.category}>
@@ -85,8 +53,15 @@ const ProductCard2 = ({ product, ...props }) => {
           </h3>
         </a>
       </Link>
-      {priceComp}
-      <Button fluid primary content={t('add-to-cart')} onClick={onClicked} />
+
+      <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className={classes.price} >
+        <div className={classes.originalPrice}>${product.price}</div>
+        {discountPrice}
+        <span itemProp="priceCurrency" content="USD"> $ </span>
+        <span itemProp="price" content={price}> {price} </span>
+      </div>
+
+      <Button fluid primary compact content={t('add-to-cart')} onClick={addToCartHandler} />
     </article>
   );
 };

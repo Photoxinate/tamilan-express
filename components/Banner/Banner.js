@@ -1,14 +1,11 @@
-import React from 'react';
-import BannerImage from './Image/Image';
-import classes from './Banner.module.scss';
+import React from 'react'
+import Image from './Image/Image'
+import SwiperCore, { Pagination, Scrollbar, A11y, Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
-// import Swiper core and required modules
-import SwiperCore, { Pagination, Scrollbar, A11y, Autoplay, Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperNav from '../SwiperNav/SwiperNav';
+import classes from './Banner.module.scss'
 
-// install Swiper modules
-SwiperCore.use([Pagination, Scrollbar, A11y, Autoplay]);
+SwiperCore.use([Pagination, Scrollbar, A11y, Autoplay])
 
 const Banner = ({ banners }) => {
 
@@ -22,7 +19,7 @@ const Banner = ({ banners }) => {
       >
         {banners.map((banner, i) => (
           <SwiperSlide key={i}>
-            <BannerImage banner={banner} />
+            <Image banner={banner} />
           </SwiperSlide>
         ))}
       </Swiper>
