@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import * as actionTypes from '../../store/actions/actionTypes';
 import ProductDetail from './ProductDetail/ProductDetail';
-import { Close } from '../Icons/Icons';
+import { X } from '../Icons/Icons';
 import classes from './ProductModal.module.scss';
 
 const ProductModal = (props) => {
@@ -20,7 +20,7 @@ const ProductModal = (props) => {
     <div className={classes.wrap}>
       <div className={classes.productModal}>
         <button className={classes.closeBtn} onClick={closeModal}>
-          <Close size="24" color="var(--accent)" />
+          <X size="18" color='white' />
         </button>
         <div className={classes.imgWrap}>
           <img src={product.img} alt={product} />

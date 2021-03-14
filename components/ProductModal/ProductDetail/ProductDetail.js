@@ -18,6 +18,9 @@ const ProductDetail = (props) => {
     dispatch({ type: actionTypes.UPDATE_CART, id: product.id, qty, price: product.price })
   }
 
+  const qtyChangeHandler = (_, qty) => {
+    setQty(qty)
+  }
 
   return (
     <div className={classes.prodDetail}>
@@ -35,12 +38,12 @@ const ProductDetail = (props) => {
         <span className={classes.prodWeight}>{product.weight}</span>
       </div>
      
-      <Quantity max={product.maxQty} setQty={setQty}  qty={qty}/>
+      <Quantity max={product.maxQty} onChangeQty={qtyChangeHandler} qty={qty}/>
       <div className={classes.btnWrap}>
-        <Button content="Contniue Shopping" onClick={() => addToCart(product, qty)}/>
+        <Button content="ADD TO CART" onClick={() => addToCart(product, qty)} primary compact />
         <Link href="/cart" >
           <a>
-            <Button content="Check Out" onClick={() => addToCart(product, qty)}/>
+            <Button content="BUY NOW" onClick={() => addToCart(product, qty)} compact/>
           </a>
         </Link>
       </div>

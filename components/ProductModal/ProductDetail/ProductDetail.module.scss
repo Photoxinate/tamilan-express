@@ -1,28 +1,35 @@
 .prodDetail{
     padding: 10px;
+
     .prodName{
-        margin: 10px 5px;
-        font-size: 22px;
+        margin: 0px 5px;
+        font-size: 18px;
         color: #000;
     }
+
     .prodCategory{
-        margin: 10px 5px;
+        margin: 0px 5px;
         color: var(--text-light);
-        font-size: 18px;
+        font-size: 14px;
     }
+
     .prodStock{
         margin: 10px 5px;
         color: #30b619;
     }
+
     .detail{
-        margin: 10px 5px;
+        margin: 0px 5px;
     }
+
     .btnWrap{
         border-top: 1px solid var(--text-lighter);
         padding: 10px 0;
         text-align: center;
+
         button{
             margin: 5px 5px;
         }
+
     }
 }
