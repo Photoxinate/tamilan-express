@@ -1,3 +1,4 @@
+import { getSession } from 'next-auth/client'
 import React from 'react'
 import PageContainer from '../../components/PageContainer/PageContainer'
 
@@ -46,6 +47,22 @@ const index = () => {
             </div>
         </PageContainer>
     );
-};
+}
+
+export const getServerSideProps = async (ctx) => {
+    const session = await getSession(ctx)
+    if (!session) {
+        return {
+          redirect: {
+            destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/loyalty',
+            permanent: false
+          }
+        }
+    }
+
+    return {
+        props: {}
+    }
+}
 
 export default index;

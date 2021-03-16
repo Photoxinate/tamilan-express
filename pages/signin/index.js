@@ -46,7 +46,6 @@ export const getServerSideProps = async (ctx) => {
 
   if (session) {
     return {
-      props: {},
       redirect: {
         destination: '/',
         permanent: false

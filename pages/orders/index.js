@@ -6,6 +6,7 @@ import Item from 'semantic-ui-react/dist/commonjs/views/Item';
 import Link from 'next/link';
 import { products } from '../../config/config'
 import classes from './index.module.scss';
+import { getSession } from 'next-auth/client';
 
 const OrderView = () => {
   return (
@@ -36,6 +37,22 @@ const OrderView = () => {
       </Item.Group>
     </div>
   );
-};
+}
+
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx)
+  if (!session) {
+      return {
+        redirect: {
+          destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/orders',
+          permanent: false
+        }
+      }
+  }
+
+  return {
+      props: {}
+  }
+}
 
 export default OrderView;

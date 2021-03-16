@@ -10,6 +10,7 @@
   "dependencies": {
     "@szhsin/react-menu": "^1.7.0",
     "@trendmicro/react-dropdown": "^1.4.0",
+    "axios": "^0.21.1",
     "next": "10.0.5",
     "next-auth": "^3.4.2",
     "next-translate": "^1.0.4",

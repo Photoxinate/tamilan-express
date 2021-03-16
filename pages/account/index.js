@@ -2,9 +2,10 @@ import React from 'react'
 import AccountCard from '../../components/AccountCard/AccountCard'
 import { ProfileCheck, History, Award, SignOut } from '../../components/Icons/Icons'
 import PageContainer from '../../components/PageContainer/PageContainer'
+import useTranslation from 'next-translate/useTranslation'
 
 import classes from './index.module.scss'
-import useTranslation from 'next-translate/useTranslation'
+import { getSession } from 'next-auth/client'
 
 
 const cards = [
@@ -18,7 +19,6 @@ const index = () => {
 
     const { t } = useTranslation('my-account')
 
-
     return (
         <PageContainer title={t('Account-title')} id={'account'} >
             <div className={classes.cards}>
@@ -26,6 +26,22 @@ const index = () => {
             </div>
         </PageContainer>
     );
-};
+}
+
+export const getServerSideProps = async (ctx) => {
+    const session = await getSession(ctx)
+    if (!session) {
+        return {
+          redirect: {
+            destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/account',
+            permanent: false
+          }
+        }
+    }
+
+    return {
+        props: {}
+    }
+}
 
 export default index;

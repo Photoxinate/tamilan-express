@@ -52,7 +52,7 @@ const Cheque = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    cartproducts: state.prdCart.products,
+    cartproducts: state.cart.products,
   };
 };
 

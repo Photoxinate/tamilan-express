@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import PageContainer from '../../components/PageContainer/PageContainer'
+import useTranslation from 'next-translate/useTranslation'
+import { getSession } from 'next-auth/client'
 
 import classes from './index.module.scss'
 
-import useTranslation from 'next-translate/useTranslation'
 
 
 const Form = dynamic(() => import('../../components/Forms/ProfileForm/ProfileForm'))
@@ -107,6 +108,22 @@ const index = () => {
             </div>
         </PageContainer>
     );
-};
+}
+
+export const getServerSideProps = async (ctx) => {
+    const session = await getSession(ctx)
+    if (!session) {
+        return {
+          redirect: {
+            destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/account',
+            permanent: false
+          }
+        }
+    }
+
+    return {
+        props: {}
+    }
+}
 
 export default index;
