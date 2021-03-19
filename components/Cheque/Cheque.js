@@ -44,7 +44,7 @@ const Cheque = (props) => {
         <div className={classes.col}>$ 40.00</div>
       </div>
       <div className={classes.btnWrap}>
-        <Button content={t('Cout-PtP')} />
+      <Button fluid primary compact content={t('Cout-PtP')}   />
       </div>
     </div>
   );

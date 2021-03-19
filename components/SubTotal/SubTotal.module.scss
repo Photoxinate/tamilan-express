@@ -21,16 +21,29 @@
 
   .btnWrap{
     display: flex;
-    margin: 15px 0px;
-    button{
-      &:hover{
-        color: var(--text-dark);
-        background-color: var(--accent);
-      }
-      background-color: var(--accent);
-      color: var(--white);
-      transition: all 0.25s ease;
-    }
+    margin-top: 20px;
+   
   }
 
+}
+
+@media(max-width:994px){
+  .wrap{
+    width: max-content;
+    .btnWrap{
+      button{
+        font-size: 15px !important;
+      }
+    }
+  }
+}
+
+@media(max-width:358px){
+  .wrap{
+    .btnWrap{
+      button{
+        font-size: 13px !important;
+      }
+    }
+  }
 }

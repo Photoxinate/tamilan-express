@@ -12,7 +12,7 @@
     font-size: 28px;
     font-weight: 600;
     color: var(--text-dark);
-    line-height: 20px;
+    line-height: auto;
     margin-bottom: 10px;
     padding: 0 20px;
   
@@ -46,6 +46,24 @@
 @media(max-width:768px){
   .prodDetail{
     flex: 100%;
+
+    .productBuy{
+      button{
+        font-size: 15px !important;
+      }
+    }
   }
 }
 
+
+@media(max-width:402px){
+  .prodDetail{
+
+    .productBuy{
+      button{
+        width: max-content;
+        font-size: 12px !important;
+      }
+    }
+  }
+}

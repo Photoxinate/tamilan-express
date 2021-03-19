@@ -6,8 +6,12 @@ import ProductPrice from '../ProductPrice/ProductPrice';
 import classes from './ProductDetail.module.scss';
 import Quantity from '../../UI/Quantity/Quantity';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import useTranslation from 'next-translate/useTranslation'
+
 
 const ProductDetail = (props) => {
+
+  const { t } = useTranslation('common')
 
   const product = props.product
   const dispatch = useDispatch()
@@ -40,10 +44,10 @@ const ProductDetail = (props) => {
      
       <Quantity max={product.maxQty} onChangeQty={qtyChangeHandler} qty={qty}/>
       <div className={classes.btnWrap}>
-        <Button content="ADD TO CART" onClick={() => addToCart(product, qty)} primary compact />
+        <Button content={t('add-to-cart')} onClick={() => addToCart(product, qty)} primary compact />
         <Link href="/cart" >
           <a>
-            <Button content="BUY NOW" onClick={() => addToCart(product, qty)} compact/>
+            <Button content={t('Buy-now')} onClick={() => addToCart(product, qty)} compact/>
           </a>
         </Link>
       </div>
