@@ -1,6 +1,6 @@
 .wrap {
   margin: 10px;
-  padding: 10px;
+  padding: 30px 10px;
   box-shadow: 0px 4px 9.3px 0.7px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
   box-sizing: border-box;
@@ -16,7 +16,7 @@
   .row {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin: 10px 0px;
   }
 
   .btnWrap{

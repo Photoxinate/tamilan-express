@@ -1,18 +1,27 @@
 .table {
   margin: 10px;
-  box-shadow: 0px 4px 9.3px 0.7px rgba(0, 0, 0, 0.08);
+  //box-shadow: 0px 4px 9.3px 0.7px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
   box-sizing: border-box;
   .cartHead{
     padding: 1rem 3rem;
-    border-bottom: 1px solid var(--text-lighter);
+    background: #f8f8f8;
+    //border-bottom: 1px solid #e1e1e1;
+    margin: 10px 0px;
+    box-shadow: 0px 4px 9.3px 0.7px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
     
   }
   .row {
+    margin: 10px 0px;
+    box-shadow: 0px 4px 9.3px 0.7px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem 1rem;
+    //border-bottom: 1px solid #e1e1e1;
+
 
     .imgCol {
       width: 10%;
