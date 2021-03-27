@@ -7,8 +7,10 @@ import ProductModal from '../components/ProductModal/ProductModal';
 import Banner from '../components/Banner/Banner';
 import { products, banners } from '../config/config';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer';
+import fetch from '../config/fetch'
+import transform from '../config/transformCategories2'
 
-const Home = props => {
+const Home = ({ categories, isShowModal, modalProduct, closeModal }) => {
 
   console.log('[home] rendered')
 
@@ -20,21 +22,24 @@ const Home = props => {
         <title>Tamilan Express</title>
       </Head>
       <Banner banners={banners}/>
-      <HomeItemContainer title='Explore Categories' id='categories'>
-        <Category />
+      <HomeItemContainer title={t('home:explore-categories')} id='categories'>
+        <Category categories={categories} />
       </HomeItemContainer>
 
       <ProductCarousel products={products} carouselTitle={t('Caro-DOD')}/>
       <ProductCarousel products={products} carouselTitle={t('Caro-New')}/>
       <ProductCarousel products={products} carouselTitle={t('add-to-cart')}/>
 
-      <ProductModal isShowModal={props.isShowModal} product={props.modalProduct} closeModal={props.closeModal} />
+      <ProductModal isShowModal={isShowModal} product={modalProduct} closeModal={closeModal} />
     </>
   );
 };
 
-export const getStaticProps = () => {
+export const getStaticProps = async () => {
   //send preloaded state from server here
+
+  const categoriesResponse = await fetch('categories?limit=10')
+  const categories = [...categoriesResponse.data]
 
   return {
     props: {
@@ -48,8 +53,12 @@ export const getStaticProps = () => {
           show: false,
           product: null,
         },
+        categories: transform(categories),
       },
+      categories,
+
     },
+    revalidate: 60,
   };
 };
 

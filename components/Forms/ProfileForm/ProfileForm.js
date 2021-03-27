@@ -11,7 +11,7 @@ const states = [
     { key: 'jaffna', text: 'Jaffna', value: 'jaffna' },
 ]
 
-const ProfileForm = ({ delivery, onCancel }) => {
+const ProfileForm = ({ delivery, onCancel, firstName, middleName, lastName, address }) => {
 
     const contact = delivery ? <Form.Input label='Contact Number' placeholder='Contact No' fluid type='phone' /> : ''
     const check = delivery ? <Form.Checkbox label='Same as main address' style={{marginBottom: '15px'}} /> : ''
@@ -24,11 +24,11 @@ const ProfileForm = ({ delivery, onCancel }) => {
         (
             <>
                 <Form.Group widths={2}>
-                    <Form.Input label='First Name' placeholder='First Name' fluid type='text' required />
-                    <Form.Input label='Middle Name' placeholder='Middle Name' fluid type='text' />
+                    <Form.Input label='First Name' placeholder='First Name' fluid type='text' defaultValue={firstName} required />
+                    <Form.Input label='Middle Name' placeholder='Middle Name' defaultValue={middleName} fluid type='text' />
                 </Form.Group>
                 <Form.Group widths={2}>
-                    <Form.Input label='Last Name' placeholder='Last Name' fluid type='text' required />
+                    <Form.Input label='Last Name' placeholder='Last Name' defaultValue={lastName} fluid type='text' required />
                 </Form.Group>
             </>
         )

@@ -3,17 +3,17 @@ import dynamic from 'next/dynamic'
 import PageContainer from '../../components/PageContainer/PageContainer'
 import useTranslation from 'next-translate/useTranslation'
 import { getSession } from 'next-auth/client'
+import fetch from '../../config/fetch'
 
 import classes from './index.module.scss'
 
-
-
 const Form = dynamic(() => import('../../components/Forms/ProfileForm/ProfileForm'))
 
-const index = () => {
+const index = ({ error, data }) => {
 
     const { t } = useTranslation('profile')
 
+    console.log({ error, data });
 
     const [editPersonal, setEditPersonal] = useState(false)
     const [editDelivery, setEditDelivery] = useState(false)
@@ -40,7 +40,7 @@ const index = () => {
         <>
             <div className={classes.field}>
                 <label>Owner Name</label>
-                <span>Tamilan Express</span>
+                <span>{`${data.firstName} ${data.middleName ? data.middleName : ''} ${data.lastName}`}</span>
             </div>
             <div className={classes.field}>
                 <label>Address</label>
@@ -67,11 +67,22 @@ const index = () => {
     )
 
     if(editPersonal) {
-        personal = <Form onCancel={toggleHandler} />
+        personal = <Form 
+            firstName={data.firstName}
+            middleName={data.middleName}
+            lastName={data.lastName}
+            address={data.address}
+            onCancel={toggleHandler} />
     }
 
     if(editDelivery) {
-        delivery = <Form delivery onCancel={toggleHandler} />
+        delivery = <Form 
+            firstName={data.firstName}
+            middleName={data.middleName}
+            lastName={data.lastName}
+            address={data.address}
+            delivery 
+            onCancel={toggleHandler} />
     }
 
     return (
@@ -82,7 +93,7 @@ const index = () => {
                     <div className={classes.fields}>
                         <div className={classes.field}>
                             <label>Email Address</label>
-                            <span>help@tamilanexpress.com</span>
+                            <span>{data.email}</span>
                         </div>
                         <div className={classes.field}>
                             <label>Phone Number</label>
@@ -121,8 +132,13 @@ export const getServerSideProps = async (ctx) => {
         }
     }
 
+    const headers = { Authorization: `Bearer ${session.accessToken}` }
+    const res = await fetch('users/me', { headers })
+
     return {
-        props: {}
+        props: {
+            ...res
+        }
     }
 }
 

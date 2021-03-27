@@ -252,3 +252,42 @@ strong {
 .swiper-nav-prev svg {
   margin-left: -2px;
 }
+
+/* categories dropdown menu style */
+.primaryMenu.enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.primaryMenu.enter-done {
+  transform: translateX(0%);
+  transition: all .3s ease;
+}
+
+.primaryMenu.exit {
+  position: absolute;
+}
+
+.primaryMenu.exit-done {
+  transform: translateX(-110%);
+  transition: all .3s ease;
+}
+
+.secondaryMenu.enter {
+position: absolute;
+transform: translateX(110%);
+}
+
+.secondaryMenu.enter-done {
+  transform: translateX(0%);
+  transition: all .3s ease;
+}
+
+.secondaryMenu.exit {
+  position: absolute;
+}
+
+.secondaryMenu.exit-done {
+    transform: translateX(110%);
+    transition: all .3s ease;
+}

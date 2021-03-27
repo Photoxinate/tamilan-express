@@ -1,34 +1,43 @@
+import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
+import DropdownMenu from '../DropdownMenu/DropdownMenu'
 import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
-import Categories from './Categories/Categories'
-import SideDrawer from './SideDrawer/SideDrawer'
-import useTranslation from 'next-translate/useTranslation'
-import { useSelector } from 'react-redux'
-
 import classes from './Navigation.module.scss'
+import SideDrawer from './SideDrawer/SideDrawer'
+
 
 const Navigation = () => {
 
     const { t } = useTranslation('common')
 
     const count = useSelector(state => state.cart.count)
+    const categories = useSelector(state => state.categories)
 
     const [prevPath, setPrevPath] = useState(null)
-    const [toggle, setToggle] = useState(false)
+    const [menuToggle, setMenuToggle] = useState(false)
+    const [categoryToggle, setCategoryToggle] = useState(false)
+
     const { pathname } = useRouter()
 
     useEffect(() => {
-        setToggle(prev => !prev && prevPath === pathname) //if(prev === true && prevPath !=== pathname) return false : return true;
+        setMenuToggle(prev => !prev && prevPath === pathname) //if(prev === true && prevPath !=== pathname) return false : return true;
+        setCategoryToggle(prev => !prev && prevPath === pathname)
         setPrevPath(pathname)
     }, [pathname])
 
-    const handleToggle = (e) => {
+    const menuToggleHandler = (e) => {
         e.preventDefault()
-        setToggle(prev => !prev);
+        setMenuToggle(prev => !prev);
+    }
+
+    const categoryToggleHandler = (e) => {
+        e.preventDefault()
+        setCategoryToggle(prev => !prev)
     }
 
     const countHTML = count > 0 ? <span className={classes.count}>{count}</span> : ''
@@ -45,7 +54,8 @@ const Navigation = () => {
                     </div>
                     <ul className={classes.navs}>
                         <li className={classes.nav}>
-                            <Categories />
+                            <Link href='#'><a onClick={categoryToggleHandler}>  {t('Nav-cat')} </a></Link>
+                            {categoryToggle && <DropdownMenu categories={categories} onClick={categoryToggleHandler} />}
                         </li>
                         <li className={classes.nav}>
                             <Link href='/about-us'><a>  {t('Nav-abt')} </a></Link>
@@ -57,13 +67,13 @@ const Navigation = () => {
                             {countHTML}
                             <Shopping size={26} />
                         </a></Link>
-                        <span className={classes.menu} role='button' aria-label='toggle menu' aria-controls='sidedrawer' tabIndex={0} onClick={handleToggle}>
+                        <span className={classes.menu} role='button' aria-label='toggle menu' aria-controls='sidedrawer' tabIndex={0} onClick={menuToggleHandler}>
                             <Menu size={26} />
                         </span>
                     </div>
                 </nav>
             </div>
-            <SideDrawer id='sidedrawer' click={handleToggle} toggle={toggle} />
+            <SideDrawer id='sidedrawer' click={menuToggleHandler} toggle={menuToggle} />
         </>
     );
 };

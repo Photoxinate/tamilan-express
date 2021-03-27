@@ -3,6 +3,7 @@
   "defaultLocale": "en",
   "pages": {
     "*": ["common"],
+    "/": ["home"],
     "/about-us": ["about-us"],
     "/checkout": ["check-out"],
     "/cart": ["cart"],

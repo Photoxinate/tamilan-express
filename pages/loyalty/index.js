@@ -1,10 +1,13 @@
 import { getSession } from 'next-auth/client'
 import React from 'react'
 import PageContainer from '../../components/PageContainer/PageContainer'
+import fetch from '../../config/fetch'
 
 import classes from './index.module.scss'
 
-const index = () => {
+const index = ({ error, data }) => {
+
+    console.log({error, data});
 
     const circumference = 38 * 2 * Math.PI
     const strokeDashoffset = circumference - 75 / 100 * circumference;
@@ -29,7 +32,7 @@ const index = () => {
                     </div>
                     <div className={classes.info}>
                         <div className={classes.points}>
-                            1240pts
+                            {data.loyaltyPoints}pts
                         </div>
                         <div className={classes.equal}>
                             1pt is equal to 1 cent
@@ -38,10 +41,10 @@ const index = () => {
                 </div>
                 <div className={classes.user}>
                     <span className={classes.name}>
-                        Firstname
+                        {data.firstName}
                     </span>
                     <span className={classes.identity}>
-                        CustomerID / Email
+                        {data._id}
                     </span>
                 </div>
             </div>
@@ -60,8 +63,13 @@ export const getServerSideProps = async (ctx) => {
         }
     }
 
+    const headers = { Authorization: `Bearer ${session.accessToken}` }
+    const res = await fetch('users/me', { headers })
+  
     return {
-        props: {}
+      props: {
+        ...res
+      }
     }
 }
 

@@ -14,7 +14,8 @@ const initialState = {
   ui: {
     show: false,
     product: null,
-  }
+  },
+  categories: []
 }
 
 const initStore = (preloadedState = initialState) => {

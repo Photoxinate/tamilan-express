@@ -1,14 +1,18 @@
-import React from 'react';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
-import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
-import Item from 'semantic-ui-react/dist/commonjs/views/Item';
-import Link from 'next/link';
+import React from 'react'
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon'
+import Label from 'semantic-ui-react/dist/commonjs/elements/Label'
+import Item from 'semantic-ui-react/dist/commonjs/views/Item'
+import Link from 'next/link'
 import { products } from '../../config/config'
-import classes from './index.module.scss';
-import { getSession } from 'next-auth/client';
+import classes from './index.module.scss'
+import { getSession } from 'next-auth/client'
+import fetch from '../../config/fetch'
 
-const OrderView = () => {
+const OrderView = ({ error, data }) => {
+
+  console.log({ error, data });
+
   return (
     <div className={classes.wrap}>
       <Item.Group divided>
@@ -42,16 +46,21 @@ const OrderView = () => {
 export const getServerSideProps = async (ctx) => {
   const session = await getSession(ctx)
   if (!session) {
-      return {
-        redirect: {
-          destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/orders',
-          permanent: false
-        }
+    return {
+      redirect: {
+        destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/orders',
+        permanent: false
       }
+    }
   }
 
+  const headers = { Authorization: `Bearer ${session.accessToken}` }
+  const res = await fetch('orders/me', { headers })
+
   return {
-      props: {}
+    props: {
+      ...res
+    }
   }
 }
 

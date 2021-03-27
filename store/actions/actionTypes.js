@@ -5,4 +5,6 @@ export const UPDATE_CART = 'UPDATE_CART';
 
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const SET_CATEGORIES = 'SET_CATEGORIES';
  

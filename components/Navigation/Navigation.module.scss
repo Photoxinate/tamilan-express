@@ -37,13 +37,14 @@
             display: inline-block;
             margin: 0 15px;
             font-weight: 500;
+            position: relative;
 
             .sign {
                 color: black !important;
             }
 
             a:hover, .sign:hover {
-                color: var(--primary) !important;
+                color: var(--primary);
             }
 
             @media (max-width: 1015px) {
