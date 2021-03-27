@@ -31,8 +31,8 @@ const SubTotal = (props) => {
         <div className={classes.col}>${subTotal}</div>
       </div>
       <div className={classes.btnWrap}>
-        <Button > {t('cart-checkout')} </Button>
-        <Button > {t('cart-continue')} </Button>
+      <Button fluid primary compact content={t('cart-checkout')}   />
+      <Button fluid primary compact content={t('cart-continue')}  />
       </div>
     </div>
   );

@@ -1,14 +1,15 @@
 .prodDetail{
-    padding: 10px;
+    padding: 20px;
+    margin-top: 20px;
 
     .prodName{
-        margin: 0px 5px;
+        margin: 5px 5px;
         font-size: 18px;
         color: #000;
     }
 
     .prodCategory{
-        margin: 0px 5px;
+        margin: 5px 5px;
         color: var(--text-light);
         font-size: 14px;
     }
@@ -19,7 +20,7 @@
     }
 
     .detail{
-        margin: 0px 5px;
+        margin: 5px 5px;
     }
 
     .btnWrap{
