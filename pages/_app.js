@@ -11,6 +11,7 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
 
 import '../styles/globals.css';
+import { ToastProvider } from 'react-toast-notifications';
 
 const  MyApp = ({ Component, pageProps }) => {
 
@@ -21,9 +22,11 @@ const  MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <AuthProvider session={pageProps.session}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ToastProvider autoDismiss autoDismissTimeout={10000}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ToastProvider>
       </AuthProvider>
     </Provider>
   );

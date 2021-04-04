@@ -1,16 +1,62 @@
-import React from 'react'
-import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
+import axios from 'axios'
+import useTranslation from 'next-translate/useTranslation'
+import React, { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import { useToasts } from 'react-toast-notifications'
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
-import { ArrowRight } from '../../Icons/Icons'
-import { social } from '../../../config/config';
+import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
+import { social } from '../../../config/config'
+import { ArrowRight, Spinner } from '../../Icons/Icons'
 
 import classes from './NewsLetter.module.scss'
-import useTranslation from 'next-translate/useTranslation'
+
+const NewsletterInput = ({ onChange, value, loading }) => (
+    <Input 
+        type='email' 
+        required pattern={"^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"} 
+        title={'Please enter a valid email address.'} 
+        onChange={onChange} 
+        value={value}
+        fluid 
+        placeholder='Enter your email..' 
+        aria-label='email for newsletter' 
+        action={
+            <Button animated aria-label='Send' primary disabled={loading}>
+                <Button.Content visible>
+                    {loading ? <Spinner color='white' size={18} /> : <ArrowRight color='white' size={16} strokeWidth={3} />}
+                </Button.Content>
+                <Button.Content hidden>
+                    <ArrowRight color='white' size={16} strokeWidth={3} />
+                </Button.Content>
+            </Button>
+        } 
+    />
+)
 
 
 const NewsLetter = () => {
 
+    const [loading, setLoading] = useState(false)
+
+    const { control, handleSubmit, reset } = useForm()
+
     const { t } = useTranslation('common')
+
+    const { addToast } = useToasts()
+
+    const formSubmitHandler = async data => {
+        setLoading(true)
+        axios.post('http://localhost:3001/newsletters', data)
+            .then(res => {
+                reset()
+                addToast('You are successfully registered for the newsletters!', { appearance: 'success' })
+                setLoading(false)
+            })
+            .catch(err => {
+                setLoading(false)
+                addToast(err.response.data.message, { appearance: 'error' })
+            });
+    }
 
     return (
         <div className={classes.containerWrap}>
@@ -25,15 +71,13 @@ const NewsLetter = () => {
                         Be the first to know. Sign up for the newsletter today.
                     </p>
                 </div>
-                <form className={classes.form}>
-                    <Input required type='email' action={
-                        <Button animated aria-label='Send' primary>
-                            <Button.Content visible><ArrowRight color='white' size={16} strokeWidth={3} /></Button.Content>
-                            <Button.Content hidden>
-                                <ArrowRight color='white' size={16} strokeWidth={3} />
-                            </Button.Content>
-                        </Button>
-                    } fluid placeholder='Enter your email..' aria-label='email for newsletter' />
+                <form className={classes.form} onSubmit={handleSubmit(formSubmitHandler)}>
+                    <Controller
+                        name="email"
+                        control={control}
+                        defaultValue=""
+                        render={({ onChange, value }) => <NewsletterInput onChange={onChange} value={value} loading={loading} />}
+                    />
                 </form>
             </div>
             <div className={classes.social}>
