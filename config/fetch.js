@@ -1,6 +1,6 @@
 import axios from '../axios'
 
-const fetchData = async (path, config) => await axios.get(path, config)
+const fetch = async (path, config) => await axios.get(path, config)
   .then(res => ({
     error: false,
     data: res.data,
@@ -11,4 +11,4 @@ const fetchData = async (path, config) => await axios.get(path, config)
     }),
   );
 
-export default fetchData;
+export default fetch;

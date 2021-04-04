@@ -10,7 +10,7 @@ import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer
 import fetch from '../config/fetch'
 import transform from '../config/transformCategories2'
 
-const Home = ({ categories, isShowModal, modalProduct, closeModal }) => {
+const Home = ({ categories, isShowModal, modalProduct, closeModal, error }) => {
 
   console.log('[home] rendered')
 
@@ -36,10 +36,13 @@ const Home = ({ categories, isShowModal, modalProduct, closeModal }) => {
 };
 
 export const getStaticProps = async () => {
-  //send preloaded state from server here
 
   const categoriesResponse = await fetch('categories?limit=10')
-  const categories = [...categoriesResponse.data]
+  let categories = []
+  const error = categoriesResponse.error
+
+  if(!error)
+    categories = [...categoriesResponse.data]
 
   return {
     props: {
@@ -56,7 +59,7 @@ export const getStaticProps = async () => {
         categories: transform(categories),
       },
       categories,
-
+      error
     },
     revalidate: 60,
   };

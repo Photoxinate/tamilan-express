@@ -7,107 +7,38 @@ import { useSession, signin, signout } from 'next-auth/client'
 
 import classes from './SideDrawer.module.scss'
 
-let jsonData = [
-    {
-        key: "Categories",
-        title: "Categories",
-        content: [
-        {
-            key: "Menu",
-            title: "Menu",
-            content: [
-            {
-                key: "Sharing",
-                title: "Sharing",
-                content: [
-                {
-                    key: "Home",
-                    title: "Home",
-                    content: [],
-                },
-
-                {
-                    key: "Profile",
-                    title: "Profile",
-                    content: [
-                    {
-                        key: "Account",
-                        title: "Account",
-                        content: [],
-                    },
-                    {
-                        key: "Followers",
-                        title: "Followers",
-                        content: [],
-                    },
-                    ],
-                },
-                {
-                    key: "Request",
-                    title: "Request",
-                    content: [
-                    {
-                        key: "Exhange",
-                        title: "Exchange",
-                        content: [],
-                    },
-                    ],
-                },
-                ],
-            },
-            ],
-        },
-        {
-            key: "Settings",
-            title: "Settings",
-            content: [
-            {
-                key: "Profile Setting",
-                title: "Profile Setting",
-                content: [],
-            },
-            ],
-        },
-        ],
-    }
-];
-
-const accordify = (jsonData) => {
-    if (jsonData.length === 0) {
-        return;
-    } 
-    else {
-        for (let i = 0; i < jsonData.length; i++) {
-
-            accordify(jsonData[i]["content"]);
-
-            if (jsonData[i]["content"].length !== 0) {
-                jsonData[i]["content"] = {
-                    content: (
-                        <div style={{paddingLeft: 10, background: '#e9e9e9', borderRadius: 4}}>
-                            <Accordion.Accordion panels={jsonData[i]["content"]} />
-                        </div>
-                    ),
-                };
-            } 
-            else {
-                jsonData[i]["content"] = {
-                    content: (
-                        <div>
-                            {jsonData[i]["title"]}
-                        </div>
-                    ),
-                };
-            }
+const getContent = (categories, allCategories) => {
+    return categories.map(cat => {
+        if(cat.hasChild) {
+            return <Accordion.Accordion 
+                key={cat.name}
+                panels={[{ key: cat._id, title: cat.name, content: { content: <div className={classes.accordify2}>{getContent(allCategories[cat.name])}</div> } }]} />
         }
-    }
+        else {
+            return (
+                <Link href={'/categories/' + cat._id} key={cat._id}><a className={classes.accordionLink}>
+                    {cat.name}
+                </a></Link>
+            )
+        }    
+    })
 }
-accordify(jsonData)
 
-const SideDrawer = ({ click, toggle }) => {
+const accordify2 = categories => {
+    console.log('here');
+    const panels = Object.keys(categories).map(key => {
+        if(key === 'main') {
+            return getContent(categories[key], categories)
+        }
+    })
 
+    return [{ key: 'categories-main', title: 'Categories', content: { content: <div className={classes.accordify1}>{panels}</div> } }]
+}
+
+const SideDrawer = ({ click, toggle, categories }) => {
 
     const [session] = useSession()
+    const [panels, setPanels] = useState(accordify2(categories))
 
     const sign = session ? 
         <Link href='/api/auth/signout'><a className={classes.signout} onClick={(e) => { e.preventDefault(); signout() }}> Sign Out </a></Link> : 
@@ -117,8 +48,12 @@ const SideDrawer = ({ click, toggle }) => {
 
     useEffect(() => {
         setStyle(toggle ? {transform: 'translateX(0%)'} : {transform: 'translateX(150%)'})
-        toggle ? document.body.style.overflow = 'hidden' : document.body.style.overflow = null;
+        toggle ? document.body.style.overflow = 'hidden' : document.body.style.overflow = null
     }, [toggle])
+
+    useEffect(() => {
+        setPanels(accordify2(categories))
+    }, [categories])
 
     return (
         <>
@@ -134,7 +69,7 @@ const SideDrawer = ({ click, toggle }) => {
                             <Link href='/'><a> Home </a></Link>
                         </li>
                         <li className={classes.accordion}>
-                            <Accordion panels={jsonData} />
+                            <Accordion panels={panels} />
                         </li>
                         <li>
                             <Link href='/about-us'><a> About Us </a></Link>

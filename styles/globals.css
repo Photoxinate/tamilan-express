@@ -291,3 +291,24 @@ transform: translateX(110%);
     transform: translateX(110%);
     transition: all .3s ease;
 }
+
+/* 404 styles */
+.notFound {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFound h1 {
+  padding-right: 10px;
+  border-right: 1px solid #202020;
+  margin-right: 10px;
+}
+
+/* Accordion */
+.ui.accordion .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -39,6 +39,15 @@
     "Footer-Account":"Account",
     "Footer-MyAcc":"My Account",
     "Footer-Orders":"Orders",
-    "Footer-Mycart":"My Cart"
+    "Footer-Mycart":"My Cart",
+
+    "find-all-categories": "Find out all categories here",
+    "sub-categories": "Explore sub categories",
+    
+    "tamilan-express": "Tamilan Express",
+    "all-rights": "All Rights Reserved",
+    "powered-by-pre": "Powered by",
+    "powered-by-post": "",
+    "photoxinate": "Photoxinate."
     
 }

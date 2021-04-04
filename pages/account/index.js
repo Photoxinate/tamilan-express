@@ -22,7 +22,7 @@ const index = () => {
     return (
         <PageContainer title={t('Account-title')} id={'account'} >
             <div className={classes.cards}>
-                {cards.map(card => <AccountCard name={card.name} link={card.link} icon={card.icon} />)}
+                {cards.map(card => <AccountCard key={card.name} name={card.name} link={card.link} icon={card.icon} />)}
             </div>
         </PageContainer>
     );

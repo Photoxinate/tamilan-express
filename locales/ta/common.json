@@ -40,7 +40,14 @@
     "Footer-Account":"கணக்கு",
     "Footer-MyAcc":"என் கணக்கு",
     "Footer-Orders":"நீங்கள் வாங்கியவை ",
-    "Footer-Mycart":"என் கார்ட்"
+    "Footer-Mycart":"என் கார்ட்",
 
+    "find-all-categories": "எல்லா பிரிவுகளையும் இங்கே காணலாம்",
+    "sub-categories": "துணை பிரிவுகளை இங்கே காணலாம்",
 
+    "tamilan-express": "தமிழன் எக்ஸ்பிரஸ்",
+    "all-rights": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை",
+    "powered-by-pre": "",
+    "powered-by-post": "மூலம் இயக்கப்படுகிறது.",
+    "photoxinate": "ஃபோட்டோக்சினேட்"
 }

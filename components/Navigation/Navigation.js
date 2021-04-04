@@ -54,7 +54,9 @@ const Navigation = () => {
                     </div>
                     <ul className={classes.navs}>
                         <li className={classes.nav}>
-                            <Link href='#'><a onClick={categoryToggleHandler}>  {t('Nav-cat')} </a></Link>
+                            <Link href='#'><a onClick={categoryToggleHandler}>  
+                                {t('Nav-cat')} 
+                            </a></Link>
                             {categoryToggle && <DropdownMenu categories={categories} onClick={categoryToggleHandler} />}
                         </li>
                         <li className={classes.nav}>
@@ -73,7 +75,7 @@ const Navigation = () => {
                     </div>
                 </nav>
             </div>
-            <SideDrawer id='sidedrawer' click={menuToggleHandler} toggle={menuToggle} />
+            <SideDrawer id='sidedrawer' click={menuToggleHandler} toggle={menuToggle} categories={categories} />
         </>
     );
 };

@@ -62,10 +62,10 @@ const Footer = () => {
                     <div className={classes.content}>
                         <div>
                             <p className={classes.text}>
-                                ©Tamilan Express. All Rights Reserved.
+                                ©{t('tamilan-express')}. {t('all-rights')}.
                             </p>
                             <p className={classes.text}>
-                                &nbsp; Powered by <a href='https://photoxinate.com'>Photoxinate.</a>
+                                &nbsp; {t('powered-by-pre')} <a href='https://photoxinate.com'>{t('photoxinate')}</a> {t('powered-by-post')}
                             </p>
                         </div>
                         <img className={classes.paypal} src="/Credit-Card-Icons.svg" border="0" alt="Available payments - paypal" />

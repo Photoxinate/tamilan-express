@@ -63,7 +63,7 @@ const DropdownMenu = ({ categories, onClick }) => {
         const menuClass = key === 'main' ? 'primaryMenu' : 'secondaryMenu';
 
         return (
-            <CSSTransition in={activeMenu === key} timeout={1} unmountOnExit onEnter={calcHeightHandler}>
+            <CSSTransition in={activeMenu === key} timeout={1} unmountOnExit onEnter={calcHeightHandler} key={key}>
                 <div className={menuClass}>
                     {key != 'main' && <DropdownItem leftIcon={<ChevronLeft />} goToMenu='main' back> {key} </DropdownItem>}
                     {generateList(categories[key])}
