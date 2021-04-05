@@ -22,7 +22,7 @@ const  MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <AuthProvider session={pageProps.session}>
-        <ToastProvider autoDismiss autoDismissTimeout={10000}>
+        <ToastProvider autoDismiss autoDismissTimeout={10000} placement='bottom-left'>
           <Layout>
             <Component {...pageProps} />
           </Layout>

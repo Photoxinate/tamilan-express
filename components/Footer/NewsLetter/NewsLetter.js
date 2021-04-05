@@ -1,14 +1,14 @@
-import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
 import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useToasts } from 'react-toast-notifications'
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
+import axios from '../../../axios'
 import { social } from '../../../config/config'
 import { ArrowRight, Spinner } from '../../Icons/Icons'
-
 import classes from './NewsLetter.module.scss'
+
 
 const NewsletterInput = ({ onChange, value, loading }) => (
     <Input 
@@ -46,7 +46,7 @@ const NewsLetter = () => {
 
     const formSubmitHandler = async data => {
         setLoading(true)
-        axios.post('http://localhost:3001/newsletters', data)
+        axios.post('newsletters', data)
             .then(res => {
                 reset()
                 addToast('You are successfully registered for the newsletters!', { appearance: 'success' })
@@ -55,7 +55,7 @@ const NewsLetter = () => {
             .catch(err => {
                 setLoading(false)
                 addToast(err.response.data.message, { appearance: 'error' })
-            });
+            })
     }
 
     return (

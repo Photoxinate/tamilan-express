@@ -6,21 +6,39 @@ import { getSession } from 'next-auth/client'
 import fetch from '../../config/fetch'
 
 import classes from './index.module.scss'
+import { useToasts } from 'react-toast-notifications'
 
-const Form = dynamic(() => import('../../components/Forms/ProfileForm/ProfileForm'))
+const ContactForm = dynamic(() => import('../../components/Forms/ProfileForms/ContactForm'), { loading: () => <p>Loading...</p> })
+const PersonalForm = dynamic(() => import('../../components/Forms/ProfileForms/PersonalForm'), { loading: () => <p>Loading...</p> })
+const DeliveryForm = dynamic(() => import('../../components/Forms/ProfileForms/DeliveryForm'), { loading: () => <p>Loading...</p> })
 
 const index = ({ error, data }) => {
 
     const { t } = useTranslation('profile')
 
-    console.log({ error, data });
+    const { addToast } = useToasts()
+    
+    const [info, setInfo] = useState(data)
+
+    const address = info.address
+    const deliveryAddress = info.deliveryAddress
 
     const [editPersonal, setEditPersonal] = useState(false)
     const [editDelivery, setEditDelivery] = useState(false)
+    const [editContact, setEditContact] = useState(false)
+
     const personalRef = useRef(null)
     const deliveryRef = useRef(null)
+    const contactRef = useRef(null)
 
-    const toggleHandler = type => {
+    useState(() => {
+        if(!info.email) {
+            addToast('Please provide your email in contact section of profile for e-bills and promotions!', 
+                { appearance: 'warning' })
+        }
+    }, [])
+
+    const toggleHandler = (type, info = null) => {
         if(type === 'personal') {
             setEditPersonal(prev => {
                 if(prev) personalRef.current.scrollIntoView() 
@@ -28,23 +46,51 @@ const index = ({ error, data }) => {
             })
             
         }
-        else {
+        else if(type === 'delivery') {
             setEditDelivery(prev => {
                 if(prev) deliveryRef.current.scrollIntoView() 
                 return !prev
             })
         }
+        else {
+            setEditContact(prev => {
+                if(prev) contactRef.current.scrollIntoView() 
+                return !prev
+            })
+        }
+        if(info) setInfo(info)
     }
+
+    let contact = (
+        <>
+            <div className={classes.field}>
+                <label>Email Address</label>
+                <span>{info.email}</span>
+            </div>
+            <div className={classes.field}>
+                <label>Phone Number</label>
+                <span>{info.mobile ? info.mobile : <p style={{color: 'orangered'}}>Provide your mobile number</p>}</span>
+            </div>
+        </>
+    )
+
+    const addressValue = address ? `
+        ${address.street1}${address.street1 && ', '}
+        ${address.street2}${address.street2 && ', '}
+        ${address.city}${address.city && ', '}
+        ${address.state}${address.state && ', '}
+        ${address.zipCode}
+    ` : <p style={{color: 'orangered'}}>Provide your address</p>
 
     let personal = (
         <>
             <div className={classes.field}>
                 <label>Owner Name</label>
-                <span>{`${data.firstName} ${data.middleName ? data.middleName : ''} ${data.lastName}`}</span>
+                <span>{`${info.firstName} ${info.middleName ? info.middleName : ''} ${info.lastName}`}</span>
             </div>
             <div className={classes.field}>
                 <label>Address</label>
-                <span>No: 216, Ontario Rd, Ontario, GDP Region, 70100</span>
+                <span>{addressValue}</span>
             </div>
         </>
     )
@@ -66,55 +112,54 @@ const index = ({ error, data }) => {
         </>
     )
 
+    if(editContact) {
+        contact = <ContactForm 
+            setInfo={setInfo}
+            email={info.email}
+            mobile={info.mobile}
+            onCancel={toggleHandler} />
+    }
+
     if(editPersonal) {
-        personal = <Form 
-            firstName={data.firstName}
-            middleName={data.middleName}
-            lastName={data.lastName}
-            address={data.address}
+        personal = <PersonalForm 
+            setInfo={setInfo}
+            firstName={info.firstName}
+            middleName={info.middleName}
+            lastName={info.lastName}
+            address={info.address}
             onCancel={toggleHandler} />
     }
 
     if(editDelivery) {
-        delivery = <Form 
-            firstName={data.firstName}
-            middleName={data.middleName}
-            lastName={data.lastName}
-            address={data.address}
-            delivery 
+        delivery = <DeliveryForm 
+            setInfo={setInfo}
+            address={info.deliveryAddress}
             onCancel={toggleHandler} />
     }
 
     return (
         <PageContainer title='Profile' id='profile'>
             <div className={classes.profile}>
-                <section className={classes.section}>
+                <section className={classes.section} ref={contactRef}>
                     <div className={classes.title}> {t('profile-Contact')} </div>
                     <div className={classes.fields}>
-                        <div className={classes.field}>
-                            <label>Email Address</label>
-                            <span>{data.email}</span>
-                        </div>
-                        <div className={classes.field}>
-                            <label>Phone Number</label>
-                            <span>+94777862675</span>
-                        </div>
+                        {contact}
                     </div>
-                    <span className={classes.edit} />
+                    <span role='button' aria-label='edit contact information' className={classes.edit} onClick={() => toggleHandler('contact')}> { editContact ? 'Cancel' : 'Edit' } </span>
                 </section>
                 <section className={classes.section} ref={personalRef}>
                     <div className={classes.title}> {t('profile-personal')} </div>
                     <div className={classes.fields}>
                         {personal}
                     </div>
-                    <span role='button' aria-label='edit personal information' className={classes.edit} onClick={() => toggleHandler('personal')}> Edit </span>
+                    <span role='button' aria-label='edit personal information' className={classes.edit} onClick={() => toggleHandler('personal')}> { editPersonal ? 'Cancel' : 'Edit' } </span>
                 </section>
                 <section className={classes.section} ref={deliveryRef}>
                     <div className={classes.title}> {t('profile-delivery')} </div>
                     <div className={classes.fields}>
                         {delivery}
                     </div>
-                    <span role='button' aria-label='edit personal information' className={classes.edit} onClick={() => toggleHandler('delivery')}> Edit </span>
+                    <span role='button' aria-label='edit delivery information' className={classes.edit} onClick={() => toggleHandler('delivery')}> { editDelivery ? 'Cancel' : 'Edit' } </span>
                 </section>
             </div>
         </PageContainer>

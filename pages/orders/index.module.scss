@@ -3,4 +3,15 @@
 .wrap {
     @extend %maxWidth;
     padding: 100px 10px;
+
+    .viewMore {
+        vertical-align: bottom;
+        display: inline-block;
+        float: right;
+
+        @media (max-width: 350px) {
+            display: block;
+            float: none;
+        }
+    }
 }

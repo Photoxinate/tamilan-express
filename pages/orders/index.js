@@ -27,7 +27,7 @@ const OrderView = ({ error, data }) => {
               <Item.Extra>
                 <Label>Delivered</Label>
                 <Link href={'/orders/' + product.id}>
-                  <a>
+                  <a className={classes.viewMore}>
                     <Button primary floated="right">
                       View More
                       <Icon name="right chevron" />
