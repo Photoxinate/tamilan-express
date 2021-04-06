@@ -1,52 +1,106 @@
+import { getSession } from 'next-auth/client';
+import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 import React from 'react';
-import { initializeStore } from '../../store/store';
-import { useSelector } from 'react-redux'
-import CartTable from '../../components/CartTable/CartTable';
+import { useDispatch } from 'react-redux';
+import CartRow from '../../components/CartRow/CartRow';
 import SubTotal from '../../components/SubTotal/SubTotal';
+import fetch from '../../config/fetch';
+import * as actionTypes from '../../store/actions/actionTypes';
 import classes from './index.module.scss';
-import Link from 'next/link'
-
-import useTranslation from 'next-translate/useTranslation'
 
 
-
-const index = () => {
-
-  const cartProducts = useSelector(state => state.cart.products)
+const index = ({ local, carts }) => {
   
   const { t } = useTranslation('cart')
 
+  const dispatch = useDispatch()
 
-  if (cartProducts === undefined || cartProducts.length === 0) {
-    return <div className={classes.noProducts}>{t('cart-noItem')}<Link href='/'><a>{t('cart-startShopping')}</a></Link> </div>;
-  } else {
+  const qtyChangeHandler = (id, qty, price) => {
+    dispatch({ type: actionTypes.UPDATE_CART, id, qty, price })
+  }
+
+  const removeProductHandler = (id, price) => {
+    dispatch({ type: actionTypes.UPDATE_CART, id, qty: 0, price })
+  }
+
+  let cartProds = []
+
+  if(local) {
+    if(localStorage.getItem('cart')){
+      cartProds = JSON.parse(localStorage.getItem('cart'));
+    }
+
+    
+  }
+  else {
+    cartProds = carts
+  }
+
+  if (cartProds === undefined || cartProds.length === 0) {
     return (
-      <div className={classes.wrap}>
-        <div className={classes.colCart}>
-          <CartTable />
-        </div>
-        <div className={classes.colSub}>
-          <SubTotal />
-        </div>
+      <div className={classes.noProducts}>
+        {t('cart-noItem')}
+        <Link href='/'><a>{t('cart-startShopping')}</a></Link>
       </div>
     );
-  }
+  } 
+
+  return (
+    <div className={classes.wrap}>
+      <div className={classes.colCart}>
+
+        <div className={classes.table}>
+          <div className={classes.cartHead}>
+            <div className={classes.col}><h2>{t('cart-title')}</h2></div>
+          </div>
+          {cartProds.map(cartProduct => (
+            <CartRow
+              key={cartProduct._id}
+              onChangeQty={qtyChangeHandler}
+              onRemoveProduct={removeProductHandler}
+              product={cartProduct}
+            />
+          ))}
+        </div>
+
+      </div>
+
+      <div className={classes.colSub}>
+        <SubTotal />
+      </div>
+
+    </div>
+  );
+  
 };
 
-// export function getServerSideProps() {
+export const getServerSideProps = async (ctx) => {
+  const session = await getSession(ctx)
+  if (!session) {
+      return {
+        props: {
+          local: true
+        }
+      }
+  }
 
-//   const initialState = {
-//     prdCart: { products: [] },
-//         ui: {
-//           isShowModal: false,
-//           modalProduct: null,
-//         },
-//   }
-//   const reduxStore = initializeStore()
-//   const { dispatch } = reduxStore
+  const headers = { Authorization: `Bearer ${session.accessToken}` }
+  const res = await fetch('users/me/cart', { headers })
+  let carts = []
 
-//   return { props: { initialReduxState: reduxStore.getState() } }
-// }
+  if(res.data && res.data.cart ) {
+    carts = [...res.data.cart]
+    carts = carts.map(cart => ({ qty: +cart.qty, ...cart.product }))
+  }
+
+  return {
+      props: {
+        carts,
+        local: false
+      }
+  }
+}
 
 
 export default index;

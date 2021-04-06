@@ -99,7 +99,7 @@ const index = ({ error, data }) => {
         <>
             <div className={classes.field}>
                 <label>Owner Name</label>
-                <span>{`${info.firstName} ${info.middleName ? info.middleName : ''} ${info.lastName}`}</span>
+                <span>{`${info.firstName} ${info.middleName ? info.middleName : ''} ${info.lastName ? info.lastName : ''}`}</span>
             </div>
             <div className={classes.field}>
                 <label>Address</label>

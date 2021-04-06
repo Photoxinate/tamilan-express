@@ -52,19 +52,19 @@ const DeliveryForm = ({ onCancel, address }) => {
     const formHTML = !isSame ? (
         <>
             <Form.Group widths={2}>
-                <Input defaultValue={address.name} name='name' label='Name' placeholder='Name' form type='text' required />
+                <Input defaultValue={address?.name} name='name' label='Name' placeholder='Name' form type='text' required />
             </Form.Group>
             <Form.Group widths={2}>
-                <Input defaultValue={address.street1} name='street1' label='Street Address' placeholder='Street Address' type='text' required form />
-                <Input defaultValue={address.street2} name='street2' label='Street Address 2' placeholder='Street Address 2' form />
+                <Input defaultValue={address?.street1} name='street1' label='Street Address' placeholder='Street Address' type='text' required form />
+                <Input defaultValue={address?.street2} name='street2' label='Street Address 2' placeholder='Street Address 2' form />
             </Form.Group>
             <Form.Group widths={2}>
-                <Input defaultValue={address.city} name='city' label='City' placeholder='City' type='text' required form />
-                <Input defaultValue={address.state} name='state' type='select' label='State' options={states} placeholder='State' required form />
+                <Input defaultValue={address?.city} name='city' label='City' placeholder='City' type='text' required form />
+                <Input defaultValue={address?.state} name='state' type='select' label='State' options={states} placeholder='State' required form />
             </Form.Group>
             <Form.Group widths={2}>
-                <Input defaultValue={address.zipCode} name='zipCode' label='Zip Code' placeholder='Zip Code' type='text' required form />
-                <Input defaultValue={address.contact} name='contact' label='Contact Number' placeholder='Contact No' form type='phone' />
+                <Input defaultValue={address?.zipCode} name='zipCode' label='Zip Code' placeholder='Zip Code' type='text' required form />
+                <Input defaultValue={address?.contact} name='contact' label='Contact Number' placeholder='Contact No' form type='phone' />
             </Form.Group>
         </>
     ) : null

@@ -53,7 +53,7 @@ const SideDrawer = ({ click, toggle, categories }) => {
 
     useEffect(() => {
         setPanels(accordify2(categories))
-    }, [categories])
+    }, [])
 
     return (
         <>

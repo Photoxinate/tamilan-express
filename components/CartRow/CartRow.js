@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Quantity from '../../UI/Quantity/Quantity'
-import { XCircle } from '../../Icons/Icons'
+import React, { useEffect } from 'react';
+import { XCircle } from '../Icons/Icons';
+import Quantity from '../UI/Quantity/Quantity';
+import classes from './CartRow.module.scss';
 
-import classes from '../CartTable.module.scss'
 
-
-const ProductRow = ({product, onChangeQty, onRemoveProduct}) => {
+const CartRow = ({product, onChangeQty, onRemoveProduct}) => {
 
   let total = product.price * product.qty
 
@@ -16,7 +15,7 @@ const ProductRow = ({product, onChangeQty, onRemoveProduct}) => {
   return (
     <div className={classes.row}>
       <div className={classes.imgCol}>
-        <img src={product.img} alt={product.alt} />
+        <img src={product.image[0]} alt={product.alt} />
       </div>
       <div className={classes.detailCol}>
         <div className={classes.col}>
@@ -42,4 +41,4 @@ const ProductRow = ({product, onChangeQty, onRemoveProduct}) => {
 
 
 
-export default ProductRow;
+export default CartRow;
