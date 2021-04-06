@@ -61,6 +61,27 @@ const index = ({ error, data }) => {
         if(info) setInfo(info)
     }
 
+    // assign values
+    const addressValue = address ? `
+        ${address.street1}${address.street1 && ', '}
+        ${address.street2}${address.street2 && ', '}
+        ${address.city}${address.city && ', '}
+        ${address.state}${address.state && ', '}
+        ${address.zipCode}
+    ` : <p style={{color: 'orangered'}}>Provide your address.</p>
+
+    const deliveryAddressValue = deliveryAddress ? `
+        ${deliveryAddress.street1}${deliveryAddress.street1 && ', '}
+        ${deliveryAddress.street2}${deliveryAddress.street2 && ', '}
+        ${deliveryAddress.city}${deliveryAddress.city && ', '}
+        ${deliveryAddress.state}${deliveryAddress.state && ', '}
+        ${deliveryAddress.zipCode}
+    ` : null
+
+    const deliveryContact = deliveryAddress && deliveryAddress.contact ? 
+        deliveryAddress.contact : <p style={{color: 'gray'}}>No contact number.</p>
+
+    // assign view HTML
     let contact = (
         <>
             <div className={classes.field}>
@@ -73,14 +94,6 @@ const index = ({ error, data }) => {
             </div>
         </>
     )
-
-    const addressValue = address ? `
-        ${address.street1}${address.street1 && ', '}
-        ${address.street2}${address.street2 && ', '}
-        ${address.city}${address.city && ', '}
-        ${address.state}${address.state && ', '}
-        ${address.zipCode}
-    ` : <p style={{color: 'orangered'}}>Provide your address</p>
 
     let personal = (
         <>
@@ -95,23 +108,24 @@ const index = ({ error, data }) => {
         </>
     )
 
-    let delivery = (
+    let delivery = deliveryAddress && !deliveryAddress.isSame ? (
         <>
             <div className={classes.field}>
                 <label>Name</label>
-                <span>Tamilan Express</span>
+                <span>{deliveryAddress.name}</span>
             </div>
             <div className={classes.field}>
                 <label>Address</label>
-                <span>No: 216, Ontario Rd, Ontario, GDP Region, 70100</span>
+                <span>{deliveryAddressValue}</span>
             </div>
             <div className={classes.field}>
                 <label>Contact Number</label>
-                <span>+94777862675</span>
+                <span>{deliveryContact}</span>
             </div>
         </>
-    )
+    ) : <p style={{color: 'gray'}}>Same as personal information.</p>
 
+    // assign values to form HTML when click edit
     if(editContact) {
         contact = <ContactForm 
             setInfo={setInfo}

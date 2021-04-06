@@ -39,6 +39,12 @@ const validations = {
       message: "That doesn't look like a mobile number",
     },
   },
+  contact: {
+    pattern: {
+      value: /^([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4,5}$/,
+      message: "That doesn't look like a mobile number",
+    },
+  },
   email: {
     required: 'Please enter your email',
     pattern: {
@@ -65,7 +71,7 @@ const validations = {
 }
 
 
-const InputText = ({ label, name, helper, max, type, placeHolder, defaultValue, form, ...rest }) => {
+const InputText = ({ label, name, helper, max, type, placeHolder, defaultValue, form, setSame, ...rest }) => {
   
   const { control, errors } = useFormContext();
 
@@ -78,6 +84,19 @@ const InputText = ({ label, name, helper, max, type, placeHolder, defaultValue, 
   const style = type === 'hidden' ? { display: 'none' } : { display: 'unset' };
   const labelHTML = label ? <label htmlFor={name}> {label} </label> : null;
   const defaultVal = defaultValue ? defaultValue : '';
+  
+  if(form && type === 'checkbox')
+    return (
+      <Controller
+        control={control}
+        name={name}
+        rules={validations[name]}
+        defaultValue={defaultValue}
+        render={({onChange, value}) => (
+          <Form.Checkbox label={label} defaultChecked={defaultValue} onChange={(_, data) => { onChange(data.checked); setSame(data.checked); }} {...rest} />
+        )}
+      />
+    )
 
   if(form && type === 'select')
     return (
