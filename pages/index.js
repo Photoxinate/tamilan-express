@@ -29,8 +29,6 @@ const Home = ({ categories, isShowModal, modalProduct, closeModal, error }) => {
       <ProductCarousel products={products} carouselTitle={t('Caro-DOD')}/>
       <ProductCarousel products={products} carouselTitle={t('Caro-New')}/>
       <ProductCarousel products={products} carouselTitle={t('add-to-cart')}/>
-
-      <ProductModal isShowModal={isShowModal} product={modalProduct} closeModal={closeModal} />
     </>
   );
 };

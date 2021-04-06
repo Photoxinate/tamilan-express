@@ -3,6 +3,7 @@ import React from 'react';
 import Footer from '../footer/footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
+import ProductModal from '../ProductModal/ProductModal';
 import WhyUs from '../WhyUs/WhyUs';
 import styles from './Layout.module.css';
 
@@ -52,7 +53,7 @@ const Layout = (props) => {
                 page_id="193409722177221"
                 theme_color="#F93800">
             </div>
-
+            <ProductModal />
         </div>
     );
 };
