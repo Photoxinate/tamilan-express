@@ -44,7 +44,11 @@ export const getStaticProps = async ctx => {
 
 export const getStaticPaths = async () => {
     const response = await fetch('categories?limit=15')
-    const categories = [ ...response.data ]
+    let categories = []
+    const error = response.error
+
+    if(!error)
+        categories = [ ...response.data ]
     
     const paths = categories.map(cat => ({
         params: { id: cat._id }

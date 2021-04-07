@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import Footer from '../footer/footer';
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import ProductModal from '../ProductModal/ProductModal';

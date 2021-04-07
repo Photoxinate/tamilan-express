@@ -20,7 +20,11 @@ const index = ({ categories }) => {
 
 export const getStaticProps = async () => {
     const response = await fetch('categories')
-    const categories = [...response.data]
+    let categories = []
+    const error = response.error
+
+    if(!error)
+        categories = [...response.data]
 
     return {
         props: { categories },
