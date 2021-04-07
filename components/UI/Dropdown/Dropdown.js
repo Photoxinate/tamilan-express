@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
-import classes from './DropDown.module.scss'
+import classes from './Dropdown.module.scss'
 
 const CustomDropdown = (props) => {
   const { control, errors } = useForm();
