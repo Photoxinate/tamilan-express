@@ -53,7 +53,7 @@ export const getServerSideProps = async (ctx) => {
     }
   }
   
-  else if(locale !== ctx.locale) {
+  else if(locale && locale !== ctx.locale) {
     return {
       props: {},
       redirect: {
