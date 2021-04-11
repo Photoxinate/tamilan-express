@@ -1,4 +1,7 @@
 const transform = categories => {
+    if(!categories)
+     return []
+
     categories.sort((cat1, cat2) => {
         if(cat1.parent && cat2.parent) return 0
         if(cat1.parent) return 1
@@ -30,7 +33,6 @@ const transform = categories => {
         if(cat1.hasChild) return -1
         return 1
     })
-    console.log(transformed);
   
     return {...transformed}
 }

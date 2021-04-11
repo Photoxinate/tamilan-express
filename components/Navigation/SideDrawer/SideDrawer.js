@@ -1,11 +1,11 @@
+import { signin, signout, useSession } from 'next-auth/client'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Accordion from 'semantic-ui-react/dist/commonjs/modules/Accordion'
 import { ArrowRight } from '../../Icons/Icons'
 import Backdrop from '../../UI/BackDrop/Backdrop'
-import { useSession, signin, signout } from 'next-auth/client'
-
 import classes from './SideDrawer.module.scss'
+
 
 const getContent = (categories, allCategories) => {
     return categories.map(cat => {
@@ -38,7 +38,7 @@ const accordify2 = categories => {
 const SideDrawer = ({ click, toggle, categories }) => {
 
     const [session] = useSession()
-    const [panels, setPanels] = useState(accordify2(categories))
+    const [panels, setPanels] = useState([])
 
     const sign = session ? 
         <Link href='/api/auth/signout'><a className={classes.signout} onClick={(e) => { e.preventDefault(); signout() }}> Sign Out </a></Link> : 
@@ -53,7 +53,7 @@ const SideDrawer = ({ click, toggle, categories }) => {
 
     useEffect(() => {
         setPanels(accordify2(categories))
-    }, [])
+    }, [categories])
 
     return (
         <>

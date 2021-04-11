@@ -4,6 +4,9 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
+import useSWR from 'swr'
+import fetch from '../../config/fetch'
+import transform from '../../config/transformCategories2'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
 import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
@@ -16,11 +19,13 @@ const Navigation = () => {
     const { t } = useTranslation('common')
 
     const count = useSelector(state => state.cart.count)
-    const categories = useSelector(state => state.categories)
+
+    const { data, error } = useSWR('categories', fetch)
 
     const [prevPath, setPrevPath] = useState(null)
     const [menuToggle, setMenuToggle] = useState(false)
     const [categoryToggle, setCategoryToggle] = useState(false)
+    const [categories, setCategories] = useState([])
 
     const { pathname } = useRouter()
 
@@ -29,6 +34,10 @@ const Navigation = () => {
         setCategoryToggle(prev => !prev && prevPath === pathname)
         setPrevPath(pathname)
     }, [pathname])
+
+    useEffect(() => {
+        setCategories(transform(data?.data))
+    }, [data])
 
     const menuToggleHandler = (e) => {
         e.preventDefault()

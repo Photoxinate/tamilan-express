@@ -54,7 +54,6 @@ export const getStaticProps = async () => {
           show: false,
           product: null,
         },
-        categories: transform(categories),
       },
       categories,
       error
