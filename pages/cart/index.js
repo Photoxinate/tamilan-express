@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import CartRow from '../../components/CartRow/CartRow';
+import PageContainer from '../../components/PageContainer/PageContainer';
 import SubTotal from '../../components/SubTotal/SubTotal';
 import fetch from '../../config/fetch';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -39,38 +40,59 @@ const index = ({ local, carts }) => {
 
   if (cartProds === undefined || cartProds.length === 0) {
     return (
-      <div className={classes.noProducts}>
-        {t('cart-noItem')}
-        <Link href='/'><a>{t('cart-startShopping')}</a></Link>
-      </div>
+      <PageContainer title={t('cart-title')} id={'cart'} >
+        <div className={classes.noProducts}>
+          {t('cart-noItem')}
+          <Link href='/'><a>{t('cart-startShopping')}</a></Link>
+        </div>
+      </PageContainer>
     );
   } 
 
   return (
-    <div className={classes.wrap}>
-      <div className={classes.colCart}>
-
-        <div className={classes.table}>
-          <div className={classes.cartHead}>
-            <div className={classes.col}><h2>{t('cart-title')}</h2></div>
+    <PageContainer title={t('cart-title')} id={'cart'} >
+        <div className={classes.container}>
+          <div className={classes.items}>
+            {cartProds.map(cartProduct => (
+              <CartRow
+                key={cartProduct._id}
+                onChangeQty={qtyChangeHandler}
+                onRemoveProduct={removeProductHandler}
+                product={cartProduct}
+              />
+            ))}
           </div>
-          {cartProds.map(cartProduct => (
-            <CartRow
-              key={cartProduct._id}
-              onChangeQty={qtyChangeHandler}
-              onRemoveProduct={removeProductHandler}
-              product={cartProduct}
-            />
-          ))}
+          <div className={classes.totals}>
+            <SubTotal />
+          </div>
         </div>
+    </PageContainer>
+    // <div className={classes.wrap}>
+    //   <div className={classes.colCart}>
 
-      </div>
+    //     <div className={classes.table}>
+    //       <div className={classes.cartHead}>
+    //         <div className={classes.col}>
+    //           <h2>{t('cart-title')}</h2>
+    //         </div>
+    //       </div>
+    //       {cartProds.map(cartProduct => (
+    //         <CartRow
+    //           key={cartProduct._id}
+    //           onChangeQty={qtyChangeHandler}
+    //           onRemoveProduct={removeProductHandler}
+    //           product={cartProduct}
+    //         />
+    //       ))}
+    //     </div>
 
-      <div className={classes.colSub}>
-        <SubTotal />
-      </div>
+    //   </div>
 
-    </div>
+    //   <div className={classes.colSub}>
+    //     <SubTotal />
+    //   </div>
+
+    // </div>
   );
   
 };

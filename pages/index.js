@@ -1,16 +1,14 @@
+import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
 import React from 'react';
-import useTranslation from 'next-translate/useTranslation'
-import Category from '../components/Category/Category';
-import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
-import ProductModal from '../components/ProductModal/ProductModal';
 import Banner from '../components/Banner/Banner';
-import { products, banners } from '../config/config';
+import Category from '../components/Category/Category';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer';
-import fetch from '../config/fetch'
-import transform from '../config/transformCategories2'
+import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
+import { banners, products } from '../config/config';
+import fetch from '../config/fetch';
 
-const Home = ({ categories, isShowModal, modalProduct, closeModal, error }) => {
+const Home = ({ categories, error }) => {
 
   console.log('[home] rendered')
 
@@ -35,8 +33,8 @@ const Home = ({ categories, isShowModal, modalProduct, closeModal, error }) => {
 
 export const getStaticProps = async () => {
 
-  const categoriesResponse = await fetch('categories?limit=10')
   let categories = []
+  const categoriesResponse = await fetch('categories?limit=10')
   const error = categoriesResponse.error
 
   if(!error)
