@@ -141,7 +141,7 @@ strong {
   transition: all 0.25s ease;
 }
 .ui.primary.button:hover, .ui.primary.button:active, .ui.primary.button:focus{
-  background: #ff582a !important;
+  background: #c72b00 !important;
   color: #fff !important;
 }
 
