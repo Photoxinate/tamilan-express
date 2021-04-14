@@ -33,7 +33,7 @@ const ProductCard2 = ({ product, ...props }) => {
     >
 
       <div className={classes.image}>
-        <Link href={'/product/'+product.id}>
+        <Link href={'/product/'+product._id}>
           <a>
             <img loading='lazy' itemProp="image" src={product.img} alt={product.name} />
           </a>
@@ -41,13 +41,13 @@ const ProductCard2 = ({ product, ...props }) => {
         {discountLabel}
       </div>
 
-      <Link href={'/categories/' + product.id}>
+      <Link href={'/categories/' + product._id}>
         <a itemProp="category" className={classes.category}>
           {product.category}
         </a>
       </Link>
 
-      <Link href={'/product/' + product.id}>
+      <Link href={'/product/' + product._id}>
         <a itemProp="url">
           <h3 itemProp="name" className={classes.name}>
             {product.name}

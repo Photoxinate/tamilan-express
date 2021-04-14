@@ -11,7 +11,7 @@ const index = (props) => {
 
   const router = useRouter()
   const { pid } = router.query
-  const product = products.find(prod => prod.id === pid)
+  const product = products.find(prod => prod._id === pid)
 
   return (
 

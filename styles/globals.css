@@ -86,6 +86,14 @@ input {
   font-weight: 500;
 }
 
+@media (max-width: 768px) {
+
+  input {
+    font-size: 16px;
+  }
+  
+}
+
 .ui.accordion .title{
   font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system !important;
   font-weight: 500;
