@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import * as actionTypes from '../../store/actions/actionTypes';
 import ProductDetail from './ProductDetail/ProductDetail';
 import { X } from '../Icons/Icons';
 import classes from './ProductModal.module.scss';
+import { useToasts } from 'react-toast-notifications';
 
 const ProductModal = (props) => {
 
   const dispatch = useDispatch()
 
+  const { addToast } = useToasts()
+
   const closeModal = () => dispatch({type:actionTypes.CLOSE_MODAL})
+
   const show = useSelector(state => state.ui.show)
   const product = useSelector(state => state.ui.product)
+  const added = useSelector(state => state.cart.added)
+
+  useEffect(() => {
+    if(added) addToast(`${added} successfully added to cart!`, { appearance: 'success' })
+  }, [added])
 
   if (!show) {
     return null;

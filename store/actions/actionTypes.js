@@ -7,4 +7,9 @@ export const SHOW_MODAL = 'SHOW_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const SET_CATEGORIES = 'SET_CATEGORIES';
+
+export const UPDATE_CART_START = 'UPDATE_CART_START';
+export const UPDATE_CART_SUCCESS = 'UPDATE_CART_SUCCESS';
+export const UPDATE_CART_FAIL = 'UPDATE_CART_FAIL';
+export const FETCH_CART = 'FETCH_CART';
  

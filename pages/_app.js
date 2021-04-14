@@ -1,17 +1,16 @@
 import { Provider as AuthProvider } from 'next-auth/client';
 import { Provider } from 'react-redux';
+import { ToastProvider } from 'react-toast-notifications';
 import Layout from '../components/Layout/Layout';
 import { useStore } from '../store/store';
-
-
 // Import Swiper styles
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
-
 import '../styles/globals.css';
-import { ToastProvider } from 'react-toast-notifications';
+
+
 
 const  MyApp = ({ Component, pageProps }) => {
 

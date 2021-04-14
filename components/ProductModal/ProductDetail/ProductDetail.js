@@ -1,25 +1,29 @@
+import { useSession } from 'next-auth/client';
+import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import * as actionTypes from '../../../store/actions/actionTypes';
-import Link from 'next/link'
+import { updateCart } from '../../../store/actions/cart';
+import Quantity from '../../UI/Quantity/Quantity';
 import ProductPrice from '../ProductPrice/ProductPrice';
 import classes from './ProductDetail.module.scss';
-import Quantity from '../../UI/Quantity/Quantity';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import useTranslation from 'next-translate/useTranslation'
 
 
-const ProductDetail = (props) => {
+const ProductDetail = ({ product }) => {
+
+  const [session] = useSession()
 
   const { t } = useTranslation('common')
 
-  const product = props.product
   const dispatch = useDispatch()
+
   const [qty, setQty] = useState(product.qty)
 
-  const addToCart = (product, qty) => {
+  const addToCart = () => {
     dispatch({type: actionTypes.CLOSE_MODAL})
-    dispatch({ type: actionTypes.UPDATE_CART, id: product.id, qty, price: product.price })
+    dispatch(updateCart(session, product.name, product._id, qty))
   }
 
   const qtyChangeHandler = (_, qty) => {
@@ -44,10 +48,10 @@ const ProductDetail = (props) => {
      
       <Quantity max={product.maxQty} onChangeQty={qtyChangeHandler} qty={qty}/>
       <div className={classes.btnWrap}>
-        <Button content={t('add-to-cart')} onClick={() => addToCart(product, qty)} primary compact />
+        <Button content={t('add-to-cart')} onClick={addToCart} primary compact />
         <Link href="/cart" >
           <a>
-            <Button content={t('Buy-now')} onClick={() => addToCart(product, qty)} compact/>
+            <Button content={t('Buy-now')} onClick={addToCart} compact/>
           </a>
         </Link>
       </div>

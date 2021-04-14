@@ -1,5 +1,8 @@
+import { useSession } from 'next-auth/client';
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchCart } from '../../store/actions/cart';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
@@ -9,6 +12,14 @@ import styles from './Layout.module.css';
 
 
 const Layout = (props) => {
+
+    const dispatch = useDispatch()
+
+    const [session, loading] = useSession()
+
+    useEffect(() => {
+        dispatch(fetchCart(session))
+    }, [loading])
 
     if (typeof window !== 'undefined') {
         window.fbAsyncInit = function() {
