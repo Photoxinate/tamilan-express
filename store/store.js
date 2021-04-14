@@ -2,11 +2,15 @@ import { createStore, applyMiddleware } from 'redux'
 import { useMemo } from 'react'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './reducers/rootReducer'
+import thunkMiddleware from 'redux-thunk'
 
 let store
 
 const initialState = {
   cart: {
+    loading: false ,
+    error: false,
+    added: null,
     products: [],
     count: 0,
     total: 0,
@@ -22,7 +26,7 @@ const initStore = (preloadedState = initialState) => {
   return createStore(
     rootReducer,
     preloadedState,
-    composeWithDevTools(applyMiddleware())
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
 }
 

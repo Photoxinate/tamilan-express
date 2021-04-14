@@ -10,7 +10,6 @@ import transform from '../../config/transformCategories2'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
 import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
-import CartCount from './CartCount/CartCount'
 import classes from './Navigation.module.scss'
 import SideDrawer from './SideDrawer/SideDrawer'
 
@@ -19,7 +18,7 @@ const Navigation = () => {
 
     const { t } = useTranslation('common')
 
-    const count = useSelector(state => state.cart.count)
+    const products = useSelector(state => state.cart.products)
 
     const { data } = useSWR('categories', fetch)
 
@@ -50,7 +49,9 @@ const Navigation = () => {
         setCategoryToggle(prev => !prev)
     }
 
-    const countHTML = count > 0 ? <span className={classes.count}>{count}</span> : ''
+    const countHTML = products.length > 0 ? <span className={classes.count}>{products.length}</span> : null
+
+    console.log('[Navigation] re-rendered');
 
     return (
         <>
@@ -76,8 +77,7 @@ const Navigation = () => {
                     <div className={classes.icons}>
                         <Account />
                         <Link href='/cart'><a aria-label='shopping cart' title='Shopping cart' className={classes.cart}>
-                            {/* {countHTML} */}
-                            <CartCount className={classes.count} />
+                            {countHTML}
                             <Shopping size={26} />
                         </a></Link>
                         <span className={classes.menu} role='button' aria-label='toggle menu' aria-controls='sidedrawer' tabIndex={0} onClick={menuToggleHandler}>

@@ -105,6 +105,10 @@
       margin-bottom: 10px;
       justify-self: end;
 
+      @media (max-width: 400px) {
+        height: 28px;
+      }
+
       input {
         width: 50px;
         text-align: center;
@@ -141,6 +145,10 @@
         background-color: transparent;
         color: var(--primary);
         text-decoration: underline;
+
+        &:hover {
+          filter: brightness(1.2);
+        }
       }
 
       .update {

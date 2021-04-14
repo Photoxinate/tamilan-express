@@ -42,17 +42,17 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      initialReduxState: {
-        cart: {
-          products: [],
-          count: 0,
-          total: 0,
-        },
-        ui: {
-          show: false,
-          product: null,
-        },
-      },
+      // initialReduxState: {
+      //   cart: {
+      //     products: [],
+      //     count: 0,
+      //     total: 0,
+      //   },
+      //   ui: {
+      //     show: false,
+      //     product: null,
+      //   },
+      // },
       categories,
       error
     },
