@@ -33,7 +33,7 @@ const ProductDetail = ({ product, ...props }) => {
       <div className={classes.itemWrap}>
         Weight : <span className={classes.prodWeight}>{product.weight}</span>
       </div>
-
+      <div className={classes.qtyWrap}>
       <Quantity
         qty={qty}
         id={product.id}
@@ -41,6 +41,8 @@ const ProductDetail = ({ product, ...props }) => {
         setQty={setQty}
         max={product.maxQty}
       />
+      </div>
+      
       <div className={classes.productBuy}>
         <Button
           primary

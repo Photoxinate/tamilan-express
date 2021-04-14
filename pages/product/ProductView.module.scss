@@ -1,5 +1,7 @@
+@import '../../styles/common';
+
 .productContainer{
-    width: 100%;
+    @extend %maxWidth;
     margin-top: 50px;
     display: flex;
     align-items: center;
@@ -16,7 +18,7 @@
 }
 
 @media(max-width:768px){
-    .productView{
+    .productContainer{
         flex-direction: column;
         .imgWrap{
             width: 100%;

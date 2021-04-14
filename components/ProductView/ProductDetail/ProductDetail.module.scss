@@ -30,9 +30,12 @@
     color: #30b619;
   }
   .itemWrap {
-    margin: 10px 0px;
-    padding: 0 20px;
+    margin: 10px 20px;
 
+  }
+
+  .qtyWrap{
+    margin: 10px 20px;
   }
   .productBuy{
     display: flex;
@@ -46,7 +49,7 @@
 @media(max-width:768px){
   .prodDetail{
     flex: 100%;
-
+    
     .productBuy{
       button{
         font-size: 15px !important;
