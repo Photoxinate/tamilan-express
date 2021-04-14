@@ -88,7 +88,7 @@ input {
 
 @media (max-width: 768px) {
 
-  input {
+  input, select:focus, textarea  {
     font-size: 16px;
   }
   

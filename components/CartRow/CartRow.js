@@ -58,7 +58,7 @@ const CartRow = ({ product }) => {
         <img width={120} height={120} src={'https://specials-images.forbesimg.com/imageserve/5f3c29cb61683479eecdf8fb/960x0.jpg?fit=scale'} alt={product.name} />
       </div>
       <div className={classes.details}>
-        <div className={classes.name}><Link href={`/products/${product._id}`}><a>
+        <div className={classes.name}><Link href={`/product/${product._id}`}><a>
           {product.name}
         </a></Link></div>
         {variationHTML}

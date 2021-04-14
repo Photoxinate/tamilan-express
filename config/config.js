@@ -142,22 +142,22 @@ export const products = [
 export const banners = [
   {
     src:
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+      '/images/1.jpg',
     alt: 'product image',
   },
   {
     src:
-      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=989&q=80',
+      '/images/2.jpg',
     alt: 'product image',
   },
   {
     src:
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+      '/images/3.jpg',
     alt: 'product image',
   },
   {
     src:
-      'https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80',
+      '/images/4.jpg',
     alt: 'product image',
   },
 ];
