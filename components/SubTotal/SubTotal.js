@@ -7,20 +7,9 @@ import useTranslation from 'next-translate/useTranslation'
 
 const SubTotal = (props) => {
 
-  const cartProducts = useSelector(state => state.cart.products)
+  const total = useSelector(state => state.cart.total)
 
   const { t } = useTranslation('cart')
-
-  const getTotalPrice = () => {
-    let subTotal = 0;
-    cartProducts.map((prod, i) => {
-      subTotal = ((prod.price * prod.qty) + subTotal);
-    });
-
-    return subTotal
-  }
-
-  const subTotal = getTotalPrice()
 
 
   return (
@@ -28,7 +17,7 @@ const SubTotal = (props) => {
       
       <div className={classes.row}>
         <div className={classes.col}>Sub-total</div>
-        <div className={classes.col}>${subTotal}</div>
+        <div className={classes.col}>${total}</div>
       </div>
       <div className={classes.btnWrap}>
       <Button fluid primary compact content={t('cart-checkout')}   />

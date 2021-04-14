@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes'
 import axios from '../../axios'
 import { updateObject } from '../reducers/utility'
+import { getSession } from 'next-auth/client'
 
 const updateCartStart = () => {
     return {
@@ -8,11 +9,11 @@ const updateCartStart = () => {
     }
 }
 
-const updateCartSuccess = (cartProducts, name) => {
+const updateCartSuccess = (cartProducts, message) => {
     return {
         type: actionTypes.UPDATE_CART_SUCCESS,
         cartProducts,
-        name
+        message
     }
 }
 
@@ -23,27 +24,38 @@ const updateCartFail = error => {
     }
 }
 
-const fetchCartSuccess = (cartProducts) => {
+const fetchCartSuccess = cartProducts => {
     return {
         type: actionTypes.FETCH_CART,
         cartProducts
     }
 }
 
-export const fetchCart = (session) => dispatch => {
+const updateTotalPrice = total => {
+    return {
+        type: actionTypes.UPDATE_TOTAL,
+        total
+    }
+}
+
+const calcTotalPrice = products => {
+    let total = 0
+    products.forEach(product => {
+        const price = product.discount && product.discount > 0 ? product.discount : product.price
+        total = total + price * product.qty
+    })
+
+    return total
+}
+
+export const fetchCart = () => async dispatch => {
+    const session = await getSession()
     if(session) {
         const headers = { Authorization: `Bearer ${session.accessToken}` }
         axios.get('users/me/cart', { headers })
-            .then(res => {
-                console.log(res);
-                let cartProducts = []
-                if(res.data) {
-                    cartProducts = res.data.cart.map(cart => ({
-                        qty: cart.qty, id: cart.product._id, variations: cart.variations
-                    }))
-                }
-                
-                dispatch(fetchCartSuccess(cartProducts))
+            .then(res => {                
+                dispatch(fetchCartSuccess(res.data))
+                dispatch(updateTotalPrice(calcTotalPrice(res.data)))
             })
             .catch(err => {
                 console.log(err)
@@ -56,26 +68,35 @@ export const fetchCart = (session) => dispatch => {
         }
 
         dispatch(fetchCartSuccess(carts))
+        dispatch(updateTotalPrice(calcTotalPrice(carts)))
     }
 }
 
-export const updateCart = (session, name, id, qty, variations = undefined) => dispatch => {
+export const updateCart = (product, qty = 1, type = undefined) => async dispatch => {
+    const session = await getSession()
     dispatch(updateCartStart())
+    
+    let message = `${product.name} successfully added to your cart!`
+
+    if(qty <= 0)
+        message = `${product.name} removed from your cart!`
+    else if(type === 'cartPage')
+        message = `Quantity of ${product.name} updated!`
 
     if(session) {
         const headers = { Authorization: `Bearer ${session.accessToken}` }
         const data = {
-            product: id,
-            qty,
-            variations
+            product: product._id,
+            variations: product.variations,
+            qty
         }
+        
         axios.patch('users/cart', data, { headers })
             .then(res => {
-                console.log(res)
-                dispatch(updateCartSuccess(res.data, name))
+                dispatch(updateCartSuccess(res.data, message))
+                dispatch(updateTotalPrice(calcTotalPrice(res.data)))
             })
             .catch(err => {
-                console.log(err)
                 dispatch(updateCartFail(err))
             })
     }
@@ -86,11 +107,11 @@ export const updateCart = (session, name, id, qty, variations = undefined) => di
         }
 
         if(qty === 0) {
-            carts = carts.filter(cart => cart.product != id)
+            carts = carts.filter(cart => cart._id != product._id)
         }
-        else if(carts.some(cart => cart.product === id)) {
+        else if(carts.some(cart => cart._id === product._id)) {
             carts = carts.map(cart => {
-                if(cart.product === id) {
+                if(cart._id === product._id) {
                   cart = updateObject(cart, { qty })
                 }
                 
@@ -98,12 +119,12 @@ export const updateCart = (session, name, id, qty, variations = undefined) => di
             })
         }
         else {
-            carts.push({product: id, qty, variations})
+            carts.push({...product, qty})
         }
         
         localStorage.setItem('cartProducts', JSON.stringify(carts))
-
-        dispatch(updateCartSuccess(carts, name))
+        dispatch(updateCartSuccess(carts, message))
+        dispatch(updateTotalPrice(calcTotalPrice(carts)))
     }
 
 }

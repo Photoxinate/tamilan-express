@@ -1,4 +1,3 @@
-import { useSession } from 'next-auth/client';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,11 +14,9 @@ const Layout = (props) => {
 
     const dispatch = useDispatch()
 
-    const [session, loading] = useSession()
-
     useEffect(() => {
-        dispatch(fetchCart(session))
-    }, [loading])
+        dispatch(fetchCart())
+    }, [])
 
     if (typeof window !== 'undefined') {
         window.fbAsyncInit = function() {

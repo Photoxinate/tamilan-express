@@ -16,11 +16,14 @@ const ProductModal = (props) => {
 
   const show = useSelector(state => state.ui.show)
   const product = useSelector(state => state.ui.product)
-  const added = useSelector(state => state.cart.added)
+  const message = useSelector(state => state.cart.message)
 
   useEffect(() => {
-    if(added) addToast(`${added} successfully added to cart!`, { appearance: 'success' })
-  }, [added])
+    if(message) {
+      const appearance = message.includes('removed') ? 'warning' : message.includes('updated') ? 'info' : 'success'
+      addToast(message, { appearance })
+    }
+  }, [message])
 
   if (!show) {
     return null;

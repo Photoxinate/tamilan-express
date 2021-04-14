@@ -87,7 +87,7 @@
       .percent {
         display: inline-block;
         text-align: center;
-        width: 42px;
+        padding: 0px 4px;
         background-color: rgba(255, 68, 0, 0.1);
         color: var(--accent);
         border-radius: 5px;
@@ -147,7 +147,7 @@
         text-decoration: underline;
 
         &:hover {
-          filter: brightness(1.2);
+          filter: brightness(.6);
         }
       }
 

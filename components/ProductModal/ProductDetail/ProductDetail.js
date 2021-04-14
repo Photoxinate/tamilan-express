@@ -23,7 +23,7 @@ const ProductDetail = ({ product }) => {
 
   const addToCart = () => {
     dispatch({type: actionTypes.CLOSE_MODAL})
-    dispatch(updateCart(session, product.name, product._id, qty))
+    dispatch(updateCart(product, qty))
   }
 
   const qtyChangeHandler = (_, qty) => {

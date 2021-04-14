@@ -1,29 +1,18 @@
-import { getSession } from 'next-auth/client';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import CartRow from '../../components/CartRow/CartRow';
 import PageContainer from '../../components/PageContainer/PageContainer';
-import fetch from '../../config/fetch';
+import SubTotal from '../../components/SubTotal/SubTotal';
 import classes from './index.module.scss';
 
 
-const index = ({ local, carts }) => {
+const index = () => {
   
   const { t } = useTranslation('cart')
 
-  let cartProds = []
-
-  if(local) {
-    if(typeof window != 'undefined' && localStorage.getItem('cartProducts')){
-      cartProds = JSON.parse(localStorage.getItem('cartProducts'));
-    }
-
-    
-  }
-  else {
-    cartProds = carts
-  }
+  const cartProds = useSelector(state => state.cart.products)
 
   if (cartProds === undefined || cartProds.length === 0) {
     return (
@@ -48,7 +37,7 @@ const index = ({ local, carts }) => {
             ))}
           </div>
           <div className={classes.totals}>
-            {/* <SubTotal /> */}
+            <SubTotal />
           </div>
         </div>
     </PageContainer>
@@ -56,32 +45,31 @@ const index = ({ local, carts }) => {
   
 };
 
-export const getServerSideProps = async (ctx) => {
-  const session = await getSession(ctx)
-  if (!session) {
-      return {
-        props: {
-          local: true
-        }
-      }
-  }
+// export const getServerSideProps = async (ctx) => {
+//   const session = await getSession(ctx)
+//   if (!session) {
+//       return {
+//         props: {
+//           local: true
+//         }
+//       }
+//   }
 
-  const headers = { Authorization: `Bearer ${session.accessToken}` }
-  const res = await fetch('users/me/cart', { headers })
-  let carts = []
+//   const headers = { Authorization: `Bearer ${session.accessToken}` }
+//   const res = await fetch('users/me/cart', { headers })
+//   let carts = []
 
-  if(res.data && res.data.cart ) {
-    carts = [...res.data.cart]
-    carts = carts.map(cart => ({ qty: +cart.qty, ...cart.product }))
-  }
+//   if(res.data) {
+//     carts = [...res.data]
+//   }
 
-  return {
-      props: {
-        carts,
-        local: false
-      }
-  }
-}
+//   return {
+//       props: {
+//         carts,
+//         local: false
+//       }
+//   }
+// }
 
 
 export default index;

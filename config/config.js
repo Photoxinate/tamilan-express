@@ -21,20 +21,20 @@ export const social = {
 
 export const products = [
   {
-    id: '001',
+    _id: '6056fabd0d0e4f1a90ad463f',
     category: 'Dairy and Milk',
-    name: 'Anchor-400g-அங்கோர் பால் மா ',
+    name: 'Anchor-400g-அங்கோர் பால் மா REAL',
     img: 'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',
     alt: 'anchor image',
     weight: '400g',
     maxQty: 10,
     qty: 1,
     tamil: '',
-    price: 40.50,
-    discount: 40,
+    price: 42,
+    discount: 41,
   },
   {
-    id: '002',
+    _id: '002',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',
@@ -47,7 +47,7 @@ export const products = [
     discount: 0,
   },
   {
-    id: '003',
+    _id: '003',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://images.ctfassets.net/xuuihvmvy6c9/noJGw3I5yNiK2nJrQkN5W/f1bc273ad39fe467f384ef899029d7d4/Web_1920________26.png',
@@ -60,7 +60,7 @@ export const products = [
     discount: 40,
   },
   {
-    id: '004',
+    _id: '004',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdCzK_8A55qmn6ENtHjcw14SFLzH0DxdwWxQ&usqp=CAU',
@@ -73,7 +73,7 @@ export const products = [
     discount: 40,
   },
   {
-    id: '005',
+    _id: '005',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://img2.pngio.com/nestle-milkmaid-96573-png-images-pngio-milkmaid-png-650_650.png',
@@ -86,7 +86,7 @@ export const products = [
     discount: 40,
   },
   {
-    id: '006',
+    _id: '006',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://www.pngitem.com/pimgs/m/284-2843673_coffee-products-in-sri-lanka-hd-png-download.png',
@@ -99,7 +99,7 @@ export const products = [
     discount: 40,
   },
   {
-    id: '007',
+    _id: '007',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://i.ebayimg.com/images/g/804AAOSwUuRgJZ1X/s-l500.jpg',
@@ -112,7 +112,7 @@ export const products = [
     discount: 40,
   },
   {
-    id: '008',
+    _id: '008',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',
@@ -125,7 +125,7 @@ export const products = [
     discount: 40,
   },
   {
-    id: '009',
+    _id: '009',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',
