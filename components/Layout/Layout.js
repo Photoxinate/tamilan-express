@@ -38,6 +38,14 @@ const Layout = (props) => {
     return (
         <div className={styles.container}>
             <Head>
+                <link rel='apple-touch-icon' sizes='180x180' href='/favicons/apple-touch-icon.png' />
+                <link rel='icon' type='image/png' sizes='32x32' href='/favicons/favicon-32x32.png' />
+                <link rel='icon' type='image/png' sizes='16x16' href='/favicons/favicon-16x16.png' />
+                <link rel='manifest' href='/site.webmanifest' />
+                <link rel='mask-icon' href='/favicons/safari-pinned-tab.svg' color='#FF582A' />
+                <meta name='msapplication-TileColor' content='#FFC40D' />
+                <meta name='theme-color' content='#FFFFFF' />
+
                 <meta name="google-signin-client_id" content="871485404239-c8vjp41smf7d13ecc07ndkp9qbq23bec.apps.googleusercontent.com.apps.googleusercontent.com" />
                 <title>Tamilan Express</title>
             </Head>
