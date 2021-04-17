@@ -15,7 +15,7 @@ const states = [
     { key: 'jaffna', text: 'Jaffna', value: 'jaffna' },
 ]
 
-const PersonalForm = ({ onCancel, firstName, middleName, lastName, address }) => {
+const PersonalForm = ({ onCancel, firstName, middleName, lastName, address, checkout }) => {
 
     const [ session ] = useSession()
 
@@ -46,7 +46,7 @@ const PersonalForm = ({ onCancel, firstName, middleName, lastName, address }) =>
         axios.patch('users', data, { headers })
             .then(res => {
                 console.log(res);
-                addToast('Personal info successfully updated!', { appearance: 'success' })
+                addToast(`${checkout ? 'Billing address' : 'Personal info'} successfully updated!`, { appearance: 'success' })
                 setLoading(false)
                 onCancel('personal', res.data)
             })
@@ -78,7 +78,7 @@ const PersonalForm = ({ onCancel, firstName, middleName, lastName, address }) =>
                     <Form.Group widths={2}>
                         <Input name='zipCode' defaultValue={address?.zipCode} label='Zip Code' placeholder='Zip Code' type='text' required form />
                     </Form.Group>
-                    <Form.Group style={{float: 'right', marginTop: '20px'}}>
+                    <Form.Group style={{justifyContent: 'flex-end', marginTop: '20px'}}>
                         <Form.Button onClick={() => onCancel('personal')} compact> CANCEL </Form.Button>
                         <Form.Button primary type='submit' compact disabled={loading} > {loading ? 'LOADING..' : 'SAVE'} </Form.Button>
                     </Form.Group>

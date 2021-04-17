@@ -34,11 +34,12 @@ const Home = ({ categories, error }) => {
 export const getStaticProps = async () => {
 
   let categories = []
-  const categoriesResponse = await fetch('categories?limit=10')
+  const categoriesResponse = await fetch('categories?limit=10&sort=parent')
   const error = categoriesResponse.error
+  const data = categoriesResponse.data
 
   if(!error)
-    categories = [...categoriesResponse.data]
+    categories = [...data.docs]
 
   return {
     props: {

@@ -2,14 +2,14 @@ import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
 import useSWR from 'swr'
-import fetch from '../../config/fetch'
+import swrFetch from '../../config/swrFetch'
 import transform from '../../config/transformCategories2'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
 import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
+import CartCount from './CartCount/CartCount'
 import classes from './Navigation.module.scss'
 import SideDrawer from './SideDrawer/SideDrawer'
 
@@ -18,9 +18,7 @@ const Navigation = () => {
 
     const { t } = useTranslation('common')
 
-    const products = useSelector(state => state.cart.products)
-
-    const { data } = useSWR('categories', fetch)
+    const { data } = useSWR('categories?limit=100', swrFetch)
 
     const [prevPath, setPrevPath] = useState(null)
     const [menuToggle, setMenuToggle] = useState(false)
@@ -30,13 +28,15 @@ const Navigation = () => {
     const { pathname } = useRouter()
 
     useEffect(() => {
-        setMenuToggle(prev => !prev && prevPath === pathname) //if(prev === true && prevPath !=== pathname) return false : return true;
-        setCategoryToggle(prev => !prev && prevPath === pathname)
+        if(prevPath !== pathname) {
+            setMenuToggle(false)
+            setCategoryToggle(false)
+        }
         setPrevPath(pathname)
     }, [pathname])
 
     useEffect(() => {
-        setCategories(transform(data?.data))
+        setCategories(transform(data?.docs   || []))
     }, [data])
 
     const menuToggleHandler = (e) => {
@@ -49,9 +49,7 @@ const Navigation = () => {
         setCategoryToggle(prev => !prev)
     }
 
-    const countHTML = products.length > 0 ? <span className={classes.count}>{products.length}</span> : null
-
-    console.log('[Navigation] re-rendered');
+    console.log('[Naviagtion] redered');
 
     return (
         <>
@@ -77,7 +75,7 @@ const Navigation = () => {
                     <div className={classes.icons}>
                         <Account />
                         <Link href='/cart'><a aria-label='shopping cart' title='Shopping cart' className={classes.cart}>
-                            {countHTML}
+                            <CartCount className={classes.count} />
                             <Shopping size={26} />
                         </a></Link>
                         <span className={classes.menu} role='button' aria-label='toggle menu' aria-controls='sidedrawer' tabIndex={0} onClick={menuToggleHandler}>

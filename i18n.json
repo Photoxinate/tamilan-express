@@ -5,7 +5,7 @@
     "*": ["common"],
     "/": ["home"],
     "/about-us": ["about-us"],
-    "/checkout": ["check-out"],
+    "/checkout": ["checkout"],
     "/cart": ["cart"],
     "/signin":["sign-in"],
     "/profile":["profile"],

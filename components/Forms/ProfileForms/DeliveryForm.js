@@ -15,7 +15,7 @@ const states = [
     { key: 'jaffna', text: 'Jaffna', value: 'jaffna' },
 ]
 
-const DeliveryForm = ({ onCancel, address }) => {
+const DeliveryForm = ({ onCancel, address, checkout }) => {
 
     const [ session ] = useSession()
 
@@ -39,7 +39,7 @@ const DeliveryForm = ({ onCancel, address }) => {
         setLoading(true)
         axios.patch('users', data, { headers })
             .then(res => {
-                addToast('Delivery info successfully updated!', { appearance: 'success' })
+                addToast(`Delivery ${checkout ? 'address' : 'info'} successfully updated!`, { appearance: 'success' })
                 setLoading(false)
                 onCancel('delivery', res.data)
             })
@@ -77,12 +77,12 @@ const DeliveryForm = ({ onCancel, address }) => {
                         name='isSame' 
                         type='checkbox' 
                         defaultValue={address && address.isSame !== undefined ? address.isSame : true} 
-                        label='Same as personal info' 
+                        label={checkout ? 'Same as billing address.' : 'Same as personal info.' }
                         style={{marginBottom: '15px'}} 
                         setSame={setSame} 
                         form />
                     {formHTML}
-                    <Form.Group style={{float: 'right', marginTop: '20px'}}>
+                    <Form.Group style={{justifyContent: 'flex-end', marginTop: '20px'}}>
                         <Form.Button onClick={() => onCancel('delivery')} compact> CANCEL </Form.Button>
                         <Form.Button primary type='submit' compact disabled={loading} > {loading ? 'LOADING..' : 'SAVE'} </Form.Button>
                     </Form.Group>

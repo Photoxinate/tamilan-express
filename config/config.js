@@ -21,7 +21,7 @@ export const social = {
 
 export const products = [
   {
-    _id: '6056fabd0d0e4f1a90ad463f',
+    _id: '607a8742ec6ae22888d316ca',
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா REAL',
     img: 'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',

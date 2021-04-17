@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import Radio from 'semantic-ui-react/dist/commonjs/addons/Radio';
 import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
-import classes from './ShippingMethodForm.module.scss';
 
-const ShippingMethodForm = () => {
-  const [shippingMethod, setShippingMethod] = useState('shipping');
+const ShippingMethodForm = ({ className, shippingMethod, onShippingMethodChange }) => {
 
   const handleChange = (e, { value }) => {
-    setShippingMethod(value);
+    onShippingMethodChange(value);
   };
 
   return (
-    <div className={classes.wrap}>
-      <h3>Shipping Method</h3>
-      <div className={classes.radioWrap}>
+    <>
+      <h2>Shipping Method</h2>
+      <div>
         <Form.Field>
           <Radio
             label="Regular shipping GTA only"
@@ -25,7 +23,7 @@ const ShippingMethodForm = () => {
           />
         </Form.Field>
       </div>
-      <div className={classes.radioWrap}>
+      <div>
         <Form.Field>
           <Radio
             label="Pickup from store"
@@ -38,11 +36,10 @@ const ShippingMethodForm = () => {
       </div>
       <br />
       <Form>
-        <p className={classes.commentText}>If you would like to add a comment abbout your order, please write it in
-        the field box</p>
-        <TextArea placeholder="Tell us more" />
+        <p>• If you would like to add a comment about your order, please write it in the field box.</p>
+        <TextArea placeholder="Comments about your order" rows={2} />
       </Form>
-    </div>
+    </>
   );
 };
 

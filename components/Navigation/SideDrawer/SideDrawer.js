@@ -1,6 +1,6 @@
 import { signin, signout, useSession } from 'next-auth/client'
 import Link from 'next/link'
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import Accordion from 'semantic-ui-react/dist/commonjs/modules/Accordion'
 import { ArrowRight } from '../../Icons/Icons'
 import Backdrop from '../../UI/BackDrop/Backdrop'
@@ -25,7 +25,6 @@ const getContent = (categories, allCategories) => {
 }
 
 const accordify2 = categories => {
-    console.log('here');
     const panels = Object.keys(categories).map(key => {
         if(key === 'main') {
             return getContent(categories[key], categories)
@@ -85,7 +84,6 @@ const SideDrawer = ({ click, toggle, categories }) => {
                         </li>
                     </ul>
 
-                    
                 </div>
             </div>
         </>

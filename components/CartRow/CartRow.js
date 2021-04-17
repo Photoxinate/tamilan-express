@@ -6,7 +6,7 @@ import { updateCart } from '../../store/actions/cart';
 import classes from './CartRow.module.scss';
 
 
-const CartRow = ({ product }) => {
+const CartRow = ({ product, checkout }) => {
 
   const [qty, setQty] = useState(product.qty)
 
@@ -53,7 +53,7 @@ const CartRow = ({ product }) => {
   ) : null
 
   return (
-    <div className={classes.grid}>
+    <div className={checkout ? [classes.grid, classes.checkout].join(' ') : classes.grid}>
       <div className={classes.image}>
         <img width={120} height={120} src={'https://specials-images.forbesimg.com/imageserve/5f3c29cb61683479eecdf8fb/960x0.jpg?fit=scale'} alt={product.name} />
       </div>

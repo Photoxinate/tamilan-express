@@ -3,16 +3,16 @@ import dynamic from 'next/dynamic'
 import PageContainer from '../../components/PageContainer/PageContainer'
 import useTranslation from 'next-translate/useTranslation'
 import { getSession } from 'next-auth/client'
+import { useToasts } from 'react-toast-notifications'
 import fetch from '../../config/fetch'
 
 import classes from './index.module.scss'
-import { useToasts } from 'react-toast-notifications'
 
 const ContactForm = dynamic(() => import('../../components/Forms/ProfileForms/ContactForm'), { loading: () => <p>Loading...</p> })
 const PersonalForm = dynamic(() => import('../../components/Forms/ProfileForms/PersonalForm'), { loading: () => <p>Loading...</p> })
 const DeliveryForm = dynamic(() => import('../../components/Forms/ProfileForms/DeliveryForm'), { loading: () => <p>Loading...</p> })
 
-const index = ({ error, data }) => {
+const index = ({ data }) => {
 
     const { t } = useTranslation('profile')
 

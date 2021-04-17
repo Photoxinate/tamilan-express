@@ -22,12 +22,10 @@ const index = ({ category, subCategories, products }) => {
     ) : null
 
     return (
-        <>
-            <PageContainer title={category.name} id={category.name} >
-                {subCategoriesHTML}
-                {productsHTML}
-            </PageContainer>
-        </>
+        <PageContainer title={category.name} id={category.name} >
+            {subCategoriesHTML}
+            {productsHTML}
+        </PageContainer>
     );
 };
 
@@ -43,12 +41,14 @@ export const getStaticProps = async ctx => {
 }
 
 export const getStaticPaths = async () => {
-    const response = await fetch('categories?limit=15')
+
     let categories = []
+    const response = await fetch('categories?limit=15')
     const error = response.error
+    const data = response.data
 
     if(!error)
-        categories = [ ...response.data ]
+        categories = [ ...data.docs ]
     
     const paths = categories.map(cat => ({
         params: { id: cat._id }
