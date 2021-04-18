@@ -6,7 +6,7 @@ import { X } from '../Icons/Icons';
 import classes from './ProductModal.module.scss';
 import { useToasts } from 'react-toast-notifications';
 
-const ProductModal = (props) => {
+const ProductModal = ({setShow}) => {
 
   const dispatch = useDispatch()
 
@@ -35,9 +35,9 @@ const ProductModal = (props) => {
           <X size="18" color='white' />
         </button>
         <div className={classes.imgWrap}>
-          <img src={product.img} alt={product} />
+          <img src={product.image[0]} alt={"image of "+product.name} />
         </div>
-        <ProductDetail product={product} setShow={props.setShow} />
+        <ProductDetail product={product} setShow={setShow} />
       </div>
     </div>
   );

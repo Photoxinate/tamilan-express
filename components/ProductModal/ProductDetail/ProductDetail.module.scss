@@ -14,13 +14,18 @@
         font-size: 14px;
     }
 
-    .prodStock{
-        margin: 10px 5px;
-        color: #30b619;
-    }
-
-    .detail{
+    .itemWrap{
         margin: 5px 5px;
+
+        .prodStock{
+            margin: 10px 5px;
+            color: #30b619;
+        }
+    
+        .prodNoStock{
+            margin: 10px 5px;
+            color: var(--text-light);
+        }
     }
 
     .btnWrap{
