@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import classes from './SubTotal.module.scss';
 import useTranslation from 'next-translate/useTranslation'
+import Link from 'next/link'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
+
+import classes from './SubTotal.module.scss'
 
 
-const SubTotal = (props) => {
+const SubTotal = () => {
 
   const total = useSelector(state => state.cart.total)
 
   const { t } = useTranslation('cart')
-
 
   return (
     <div className={classes.wrap}>
@@ -20,8 +21,8 @@ const SubTotal = (props) => {
         <div className={classes.col}>${total}</div>
       </div>
       <div className={classes.btnWrap}>
-      <Button fluid primary compact content={t('cart-checkout')}   />
-      <Button fluid primary compact content={t('cart-continue')}  />
+        <Link href='/'><a><Button fluid compact content={t('continue')}  /></a></Link>
+        <Link href='/checkout'><a><Button fluid primary compact content={t('checkout')} /></a></Link>
       </div>
     </div>
   );

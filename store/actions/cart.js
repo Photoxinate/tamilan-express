@@ -38,14 +38,37 @@ const updateTotalPrice = total => {
     }
 }
 
+const updateCount = count => {
+    return {
+        type: actionTypes.UPDATE_COUNT,
+        count
+    }
+}
+
 const calcTotalPrice = products => {
     let total = 0
     products.forEach(product => {
         const price = product.discount && product.discount > 0 ? product.discount : product.price
-        total = total + price * product.qty
+
+        if(product.type === 'buy 1 get 2nd off' && product.offDiscount > 0 && product.qty >= 2) {
+            total = total + ( price * (product.qty - 1) ) + ( price * (100 - product.offDiscount) / 100 )
+        }
+        else {
+            total = total + price * product.qty
+        }
+        
     })
 
     return total
+}
+
+const calcCount = products => {
+    let count = 0
+    products.forEach(product => {
+        count = count + product.qty
+    })
+
+    return count
 }
 
 export const fetchCart = () => async dispatch => {
@@ -56,6 +79,7 @@ export const fetchCart = () => async dispatch => {
             .then(res => {                
                 dispatch(fetchCartSuccess(res.data))
                 dispatch(updateTotalPrice(calcTotalPrice(res.data)))
+                dispatch(updateCount(calcCount(res.data)))
             })
             .catch(err => {
                 console.log(err)
@@ -69,6 +93,7 @@ export const fetchCart = () => async dispatch => {
 
         dispatch(fetchCartSuccess(carts))
         dispatch(updateTotalPrice(calcTotalPrice(carts)))
+        dispatch(updateCount(calcCount(carts)))
     }
 }
 
@@ -95,6 +120,7 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
             .then(res => {
                 dispatch(updateCartSuccess(res.data, message))
                 dispatch(updateTotalPrice(calcTotalPrice(res.data)))
+                dispatch(updateCount(calcCount(res.data)))
             })
             .catch(err => {
                 dispatch(updateCartFail(err))
@@ -125,6 +151,7 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
         localStorage.setItem('cartProducts', JSON.stringify(carts))
         dispatch(updateCartSuccess(carts, message))
         dispatch(updateTotalPrice(calcTotalPrice(carts)))
+        dispatch(updateCount(calcCount(cart)))
     }
 
 }

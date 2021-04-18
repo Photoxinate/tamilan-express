@@ -291,6 +291,7 @@ export const Spinner = ({size = 24, color = 'black', ...rest}) => {
       height={size}
       viewBox="0 0 50 50"
       style={{ enableBackground: 'new 0 0 50 50' }}
+      {...rest}
     >
       <path
         fill={color}

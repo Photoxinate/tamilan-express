@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 
 const CartCount = ({ className }) => {
 
-    const products = useSelector(state => state.cart.products)
+    const count = useSelector(state => state.cart.count)
 
-    return products.length > 0 ? <span className={className}>{products.length}</span> : null
+    return count > 0 ? <span className={className}>{count}</span> : null
 };
 
 export default CartCount;

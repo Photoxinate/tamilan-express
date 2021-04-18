@@ -22,7 +22,7 @@ const index = () => {
           <Link href='/'><a>{t('cart-startShopping')}</a></Link>
         </div>
       </PageContainer>
-    );
+    )
   } 
 
   return (
@@ -41,35 +41,9 @@ const index = () => {
           </div>
         </div>
     </PageContainer>
-  );
+  )
   
-};
-
-// export const getServerSideProps = async (ctx) => {
-//   const session = await getSession(ctx)
-//   if (!session) {
-//       return {
-//         props: {
-//           local: true
-//         }
-//       }
-//   }
-
-//   const headers = { Authorization: `Bearer ${session.accessToken}` }
-//   const res = await fetch('users/me/cart', { headers })
-//   let carts = []
-
-//   if(res.data) {
-//     carts = [...res.data]
-//   }
-
-//   return {
-//       props: {
-//         carts,
-//         local: false
-//       }
-//   }
-// }
+}
 
 
 export default index;
