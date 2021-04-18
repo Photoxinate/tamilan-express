@@ -11,7 +11,7 @@ const Quantity = ({ id, qty, price, max, onChangeQty }) => {
   const qtyIncrementtHandler = () => {
     setQty(prev => {
       if(prev !== max) {
-        onChangeQty(id, prev + 1, price)
+        // onChangeQty(id, prev + 1, price)
         return prev + 1
       }
       return prev
@@ -21,7 +21,7 @@ const Quantity = ({ id, qty, price, max, onChangeQty }) => {
   const qtyDecrementHandler = () => {
     if (_qty > 1) {
       setQty(prev => {
-        onChangeQty(id, prev - 1, price)
+        // onChangeQty(id, prev - 1, price)
         return prev - 1
       })
     }
@@ -29,8 +29,8 @@ const Quantity = ({ id, qty, price, max, onChangeQty }) => {
 
   const qtyChangeHandler = e => {
     const qty = +e.target.value
-    if(qty > 1 && qty <= max)
-      onChangeQty(id, qty, price)
+    // if(qty > 1 && qty <= max)
+    //   onChangeQty(id, qty, price)
   }
 
   return (
