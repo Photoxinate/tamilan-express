@@ -29,6 +29,9 @@
   .prodStock {
     color: #30b619;
   }
+  .prodNoStock {
+    color: var(--text-light);
+  }
   .itemWrap {
     margin: 10px 20px;
 

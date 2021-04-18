@@ -11,9 +11,11 @@ import classes from './ProductDetail.module.scss';
 const ProductDetail = ({ product, ...props }) => {
   const dispatch = useDispatch();
 
+  const [isStock, setIsStock] = useState((product.stock>0)? true: false);
+
   const { t } = useTranslation('common');
 
-  const [qty, setQty] = useState(product.qty);
+  const [qty, setQty] = useState(1);
 
   const onAddProduct = (product, qty) => {
     dispatch({
@@ -28,30 +30,39 @@ const ProductDetail = ({ product, ...props }) => {
       <div className={classes.prodName}>{product.name}</div>
       <ProductPrice price={product.price} discount={product.discount} />
       <div className={classes.itemWrap}>
-        Stock :<span className={classes.prodStock}> In Stock </span>
+        Stock :
+        {isStock ? (
+          <span className={classes.prodStock}> In Stock </span>
+        ) : (
+          <span className={classes.prodNoStock}> Out of Stock </span>
+        )}
       </div>
-      <div className={classes.itemWrap}>
-        Weight : <span className={classes.prodWeight}>{product.weight}</span>
-      </div>
+      {product.weight && (
+        <div className={classes.itemWrap}>
+          Weight : <span className={classes.prodWeight}>{product.weight}</span>
+        </div>
+      )}
+
       <div className={classes.qtyWrap}>
-      <Quantity
-        qty={qty}
-        id={product.id}
-        onChangeQty={props.onChangeQty}
-        setQty={setQty}
-        max={product.maxQty}
-      />
+        <Quantity
+          qty={qty}
+          id={product.id}
+          // onChangeQty={props.onChangeQty}
+          setQty={setQty}
+          max={product.maxCount}
+        />
       </div>
-      
+
       <div className={classes.productBuy}>
         <Button
           primary
+          disabled={!isStock}
           content={t('add-to-cart')}
           onClick={() => onAddProduct(product, qty)}
         />
         <Link href="/cart">
           <a>
-            <Button primary content={t('Buy-now')} />
+            <Button primary disabled={!isStock} content={t('Buy-now')} />
           </a>
         </Link>
       </div>

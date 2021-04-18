@@ -5,10 +5,10 @@ import Banner from '../components/Banner/Banner';
 import Category from '../components/Category/Category';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer';
 import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
-import { banners, products } from '../config/config';
+import { banners } from '../config/config';
 import fetch from '../config/fetch';
 
-const Home = ({ categories, error }) => {
+const Home = ({ categories, products, error }) => {
 
   console.log('[home] rendered')
 
@@ -34,17 +34,27 @@ const Home = ({ categories, error }) => {
 export const getStaticProps = async () => {
 
   let categories = []
+  let products = []
   const categoriesResponse = await fetch('categories?limit=10&sort=parent')
+  const prodResponse = await fetch('products?limit=10')
+  const prodError = prodResponse.error
   const error = categoriesResponse.error
   const data = categoriesResponse.data
+  const prodData = prodResponse.data
+
 
   if(!error)
     categories = [...data.docs]
 
+  if(!prodError)
+    products = [...prodData.docs]
+    
   return {
     props: {
       categories,
-      error
+      products,
+      error,
+      prodError
     },
     revalidate: 60,
   };

@@ -1,30 +1,36 @@
 @import '../../styles/common';
 
-.productContainer{
+.productContainer {
+  width: 100%;
+  .productFlex {
     @extend %maxWidth;
     margin-top: 50px;
     display: flex;
     align-items: center;
     padding: 10px;
-    .imgWrap{
-        width: 50%;
-        padding: 20px;
-        text-align: center;
-        img{
-            width: 60%;
-            height: auto;
-        }
+
+    .imgWrap {
+      width: 50%;
+      padding: 20px;
+      text-align: center;
+      img {
+        width: 60%;
+        height: auto;
+      }
     }
+  }
 }
 
-@media(max-width:768px){
-    .productContainer{
-        flex-direction: column;
-        .imgWrap{
-            width: 100%;
-            img{
-                width: 60%;
-            }
+@media (max-width: 768px) {
+  .productContainer {
+    .productFlex {
+      flex-direction: column;
+      .imgWrap {
+        width: 100%;
+        img {
+          width: 60%;
         }
+      }
     }
+  }
 }

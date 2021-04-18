@@ -1,40 +1,55 @@
 import React from 'react';
-import { useRouter } from 'next/router'
-import { initializeStore } from '../../store/store'
-import { productDescription, products } from '../../config/config';
+import fetch from '../../config/fetch'
 import ProductDescription from '../../components/ProductView/ProductDescription/ProductDescription';
 import ProductDetail from '../../components/ProductView/ProductDetail/ProductDetail';
+import ProductImageCarousel from '../../components/ProductImageCarousel/ProductImageCarousel';
 import classes from './ProductView.module.scss';
 
-
-const index = (props) => {
-
-  const router = useRouter()
-  const { pid } = router.query
-  const product = products.find(prod => prod._id === pid)
-
+const index = ({product}) => {
   return (
-
-    <>
-      <div className={classes.productContainer}>
+    <div className={classes.productContainer}>
+      <div className={classes.productFlex}>
         <div className={classes.imgWrap}>
-          <img src={product.img} alt={product.alt} />
+        <ProductImageCarousel images={product.image} name={product.name}/>
         </div>
         <ProductDetail product={product} />
       </div>
       <ProductDescription
-        description={productDescription.desc}
-        warranty={productDescription.warranty}
+        description={product.description}
+        warranty={product.warranty}
       />
-    </>
-
-  )
+    </div>
+  );
 };
 
-export function getServerSideProps() {
-  const reduxStore = initializeStore()
+export const getStaticProps = async ctx => {
+  const id = ctx.params.pid;
+  const response = await fetch(`products/${id}`)
+  const product = { ...response.data }
+  return {
+      props: { product },
+      revalidate: 60*5
+  }
+}
 
-  return { props: { initialReduxState: reduxStore.getState() } }
+export const getStaticPaths = async () => {
+
+  let products = []
+  const response = await fetch('products?limit=30')
+  const error = response.error
+  const data = response.data
+
+  if(!error)
+      products = [ ...data.docs ]
+  
+  const paths = products.map(prod => ({
+      params: { pid: prod._id }
+  }))
+
+  return {
+      fallback: 'blocking',
+      paths
+  }
 }
 
 export default index;
