@@ -1,6 +1,6 @@
 .wrap {
-  margin: 15px 0px;
-  padding: 30px 10px;
+  margin: 15px 0;
+  padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
@@ -16,34 +16,21 @@
   .row {
     display: flex;
     justify-content: space-between;
-    margin: 10px 0px;
+    margin-bottom: 14px;
+    font-size: 18px;
+    font-weight: 500;
   }
 
   .btnWrap{
-    display: flex;
-    margin-top: 20px;
-   
-  }
 
-}
-
-@media(max-width:994px){
-  .wrap{
-    width: max-content;
-    .btnWrap{
-      button{
-        font-size: 15px !important;
-      }
+    a {
+      display: block;
     }
-  }
-}
-
-@media(max-width:358px){
-  .wrap{
-    .btnWrap{
-      button{
-        font-size: 13px !important;
-      }
+    
+    a:last-child {
+      margin-top: 10px;
     }
+
   }
+
 }

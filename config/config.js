@@ -34,7 +34,9 @@ export const products = [
     discount: 41,
   },
   {
-    _id: '002',
+    _id: '607bd3f4a0ed4909445f213b',
+    type: 'buy 1 get 2nd off',
+    offDiscount: 10,
     category: 'Dairy and Milk',
     name: 'Anchor-400g-அங்கோர் பால் மா ',
     img: 'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',

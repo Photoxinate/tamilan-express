@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.UPDATE_CART_FAIL: return updateObject(state, { loading: false, error: true, added: null })
     case actionTypes.FETCH_CART: return updateObject(state, { products: action.cartProducts })
     case actionTypes.UPDATE_TOTAL: return updateObject(state, { total: action.total })
+    case actionTypes.UPDATE_COUNT: return updateObject(state, { count: action.count })
   }
 
   return state

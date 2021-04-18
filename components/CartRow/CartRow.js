@@ -38,7 +38,7 @@ const CartRow = ({ product, checkout }) => {
     <div className={classes.prices}>
       <span className={classes.price}>{ `$${product.discount}` }</span>
       <span className={classes.old}>{ `$${product.price}` }</span>
-      <span className={classes.percent}>{Math.round(100 - product.price * 100 / product.discount)}%</span>
+      <span className={classes.percent}>-{100 - Math.round(product.discount * 100 / product.price)}%</span>
     </div>
   ) : (
     <div className={classes.prices}>

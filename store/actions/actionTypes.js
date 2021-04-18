@@ -13,4 +13,5 @@ export const UPDATE_CART_SUCCESS = 'UPDATE_CART_SUCCESS';
 export const UPDATE_CART_FAIL = 'UPDATE_CART_FAIL';
 export const FETCH_CART = 'FETCH_CART';
 export const UPDATE_TOTAL = 'UPDATE_TOTAL';
+export const UPDATE_COUNT = 'UPDATE_COUNT';
  

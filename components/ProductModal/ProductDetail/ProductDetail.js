@@ -1,4 +1,3 @@
-import { useSession } from 'next-auth/client';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -12,8 +11,6 @@ import classes from './ProductDetail.module.scss';
 
 
 const ProductDetail = ({ product }) => {
-
-  const [session] = useSession()
 
   const { t } = useTranslation('common')
 
