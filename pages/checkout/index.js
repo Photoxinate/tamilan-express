@@ -3,7 +3,7 @@ import { getSession, useSession } from 'next-auth/client'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
 import axios from '../../axios'
@@ -16,6 +16,7 @@ import Loading from '../../components/UI/Loading/Loading'
 import fetch from '../../config/fetch'
 import classes from './index.module.scss'
 import CheckoutMessage from '../../components/UI/CheckoutMessage/CheckoutMessage'
+import { clearCart } from '../../store/actions/cart'
 
 
 const index = ({ user }) => {
@@ -29,6 +30,8 @@ const index = ({ user }) => {
   const router = useRouter()
 
   const { products, total, count, loading } = useSelector(state => state.cart)
+
+  const dispatch = useDispatch()
 
   const loyaltyRef = useRef()
   const couponRef = useRef()
@@ -54,14 +57,14 @@ const index = ({ user }) => {
 
   const loyaltyRedeemHandler = () => {
     const value = +loyaltyRef.current.value
-    if(value >= 0 && value <= userInfo.loyaltyPoints && value < grandTotal) {
-      setRedeemedLoyalty(value)
+    if(value >= 0 && value <= userInfo.loyaltyPoints && value <= (grandTotal + redeemedLoyalty)) {
+      setRedeemedLoyalty(+value.toFixed(2))
     }
   }
 
   const couponApplyHandler = e => {
     setCouponError(null)
-    let code = couponRef.current.value
+    let code = couponRef.current?.value
     if(e === COUNT_CHANGED && appliedCoupon)
       code = appliedCoupon.code
     else if(appliedCoupon && appliedCoupon.code === code)
@@ -94,6 +97,21 @@ const index = ({ user }) => {
     console.log('here', grandTotal);
     return actions.order.create({
       intent: "CAPTURE",
+      payer: {
+        email_address: userInfo.email,
+        name: {
+          given_name: userInfo.firstName,
+          surname: userInfo.lastName
+        },
+        address: {
+          address_line_1: userInfo.address.street1,
+          address_line_2: userInfo.address.street2,
+          postal_code: userInfo.address.zipCode,
+          country_code: 'CA',
+          admin_area_2: userInfo.address.city,
+          admin_area_1: userInfo.address.state
+        }
+      },
       purchase_units: [
         {
           amount: {
@@ -139,6 +157,7 @@ const index = ({ user }) => {
         .then(res => {
           setCompleteLoading(false)
           router.replace('/receipt/' + res.data._id)
+          dispatch(clearCart())
         })
         .catch(err => {
           setCompleteLoading(false)
@@ -170,7 +189,7 @@ const index = ({ user }) => {
     const couponDeduction = appliedCoupon && appliedCoupon.value ? appliedCoupon.value : 0
     const totalCharge = total + shippingCharge - redeemedLoyalty - couponDeduction
 
-    setGrandTotal(totalCharge)
+    setGrandTotal(+totalCharge.toFixed(2))
   }, [total, shippingMethod, redeemedLoyalty, appliedCoupon])
 
   useEffect(() => {
@@ -234,14 +253,15 @@ const index = ({ user }) => {
             {userInfo.loyaltyPoints > 0 &&
               <Input 
                 action
-                max={userInfo.loyaltyPoints}
+                max={userInfo.loyaltyPoints <= (grandTotal + redeemedLoyalty) ? userInfo.loyaltyPoints : (grandTotal + redeemedLoyalty)}
                 min={0}
+                step={0.2}
                 type='number'
                 fluid 
                 name='Enter loyalty points to redeem'
                 placeholder='loyalty points to redeem' 
                 className={classes.pointsInput} >
-                  <input ref={loyaltyRef} />
+                  <input ref={loyaltyRef} onSubmit={loyaltyRedeemHandler} />
                   <Button content={t('redeem')} onClick={loyaltyRedeemHandler} />
               </Input> 
             }
@@ -281,7 +301,7 @@ const index = ({ user }) => {
             </div>
             <PayPalButtons 
               // fundingSource={FUNDING.PAYPAL}
-              forceReRender={[grandTotal]}
+              forceReRender={[grandTotal, userInfo]}
               disabled={!addrAvailability || loading || couponLoading}
               createOrder={createOrderHandler} 
               onApprove={paymentApproveHandler} 

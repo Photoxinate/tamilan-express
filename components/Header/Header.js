@@ -36,14 +36,9 @@ const Header = () => {
                         </Dropdown.Menu>
                     </Dropdown>
 
-                    <Dropdown button labeled compact text='USD' aria-label='Select currency' title='Select currency' icon={<i className={'icon ' + classes.icon}><Dollar size={16} color='#eee' /></i>} className={'header-op icon ' + classes.select}>
+                    <Dropdown button labeled compact text='CAD' aria-label='Select currency' title='Select currency' icon={<i className={'icon ' + classes.icon}><Dollar size={16} color='#eee' /></i>} className={'header-op icon ' + classes.select}>
                         <Dropdown.Menu className={classes.menu}>
-                            <Link href='/#' passHref>
-                                <Dropdown.Item key='english' value='english' as='a'>USD</Dropdown.Item>
-                            </Link>
-                            <Link href='/#' passHref>
-                                <Dropdown.Item key='tamil' value='tamil' as='a'>CAD</Dropdown.Item>
-                            </Link>
+                            <Dropdown.Item key='cad' value='cad' as='a'>CAD</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>

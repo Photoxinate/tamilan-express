@@ -21,7 +21,6 @@ const Quantity = ({ setQty, qty, max, }) => {
       setQty(prev => {
         return prev - 1
       })
-      return prev
     }
   }
 

@@ -31,6 +31,12 @@ const fetchCartSuccess = cartProducts => {
     }
 }
 
+const clearCartSuccess = () => {
+    return {
+        type: actionTypes.CLEAR_CART
+    }
+}
+
 const updateTotalPrice = total => {
     return {
         type: actionTypes.UPDATE_TOTAL,
@@ -154,4 +160,8 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
         dispatch(updateCount(calcCount(cart)))
     }
 
+}
+
+export const clearCart = () => dispatch => {
+    dispatch(clearCartSuccess())
 }

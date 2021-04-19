@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import { updateCart } from '../../../store/actions/cart';
 import Quantity from '../../UI/Quantity/Quantity';

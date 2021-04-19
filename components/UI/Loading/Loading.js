@@ -9,6 +9,7 @@ const Loading = ({ style, complete }) => {
         if(complete && typeof document !== 'undefined') {
             document.body.style.overflow = 'hidden'
             document.body.style.position = 'fixed'
+            document.body.style.width = '100%'
         }
 
         return () => {
