@@ -26,7 +26,7 @@ const CartRow = ({ product, checkout }) => {
     dispatch(updateCart(product, 0, 'cartPage'))
   }
 
-  const updateHTML = (qty != product.qty && qty > 0) ? (
+  const updateHTML = (qty != product.qty && qty > 0 && qty <= product.stock && qty <= product.maxCount) ? (
     <button 
       type='submit' 
       className={classes.update} 
@@ -66,7 +66,15 @@ const CartRow = ({ product, checkout }) => {
       </div>
       
       <div className={classes.change}>
-        <Input label='Qty' size='mini' type='number' className={classes.input} min={0} defaultValue={product.qty} onChange={qtyEnterHandler} />
+        <Input 
+          label='Qty' 
+          size='mini' 
+          type='number' 
+          className={classes.input} 
+          min={0} 
+          max={product.stock < product.maxCount ? product.stock : product.maxCount}
+          defaultValue={product.qty} 
+          onChange={qtyEnterHandler} />
         <div className={classes.total}>
           ${total}
         </div>

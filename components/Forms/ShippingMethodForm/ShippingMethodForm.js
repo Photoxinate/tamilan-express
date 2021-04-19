@@ -3,11 +3,17 @@ import Radio from 'semantic-ui-react/dist/commonjs/addons/Radio';
 import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
 
-const ShippingMethodForm = ({ className, shippingMethod, onShippingMethodChange }) => {
+const ShippingMethodForm = ({ shippingMethod, onShippingMethodChange, commentRef }) => {
+
+  const [comment, setComment] = useState()
 
   const handleChange = (e, { value }) => {
-    onShippingMethodChange(value);
-  };
+    onShippingMethodChange(value)
+  }
+
+  const commentHandler = (e, { value }) => {
+    setComment(value)
+  }
 
   return (
     <>
@@ -37,7 +43,12 @@ const ShippingMethodForm = ({ className, shippingMethod, onShippingMethodChange 
       <br />
       <Form>
         <p>• If you would like to add a comment about your order, please write it in the field box.</p>
-        <TextArea placeholder="Comments about your order" rows={2} />
+        <TextArea 
+          placeholder="Comments about your order" 
+          rows={2} 
+          onChange={commentHandler} 
+          ref={commentRef} 
+          value={comment} />
       </Form>
     </>
   );

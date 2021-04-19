@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^6.0.0",
     "@szhsin/react-menu": "^1.7.0",
     "@trendmicro/react-dropdown": "^1.4.0",
     "axios": "^0.21.1",

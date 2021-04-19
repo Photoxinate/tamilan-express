@@ -1,0 +1,41 @@
+.receipt {
+    margin-bottom: 60px;
+
+    h2 {
+        font-size: var(--size-h2);
+        margin-bottom: 30px;
+        text-decoration: underline;
+    }
+
+    .short {
+        background-color: rgba(198, 199, 255, 0.507);
+        padding: 1rem;
+        font-weight: 500;
+
+        .field {
+
+            p {
+                display: inline-block;
+                padding: 3px 0px;
+            }
+    
+            span {
+                margin-left: 15px;
+                font-weight: 600;
+            }
+    
+            @media (max-width: 640px) {
+                margin: 10px 0;
+                font-size: 15px;
+                
+                p {
+                    display: block;
+                }
+    
+                span {
+                    margin-left: 0px;
+                }
+            }
+        }
+    }
+}
