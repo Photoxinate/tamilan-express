@@ -1,34 +1,31 @@
-import React, { useState } from 'react'
-import { Minus, Plus } from '../../Icons/Icons'
+import React, { useState } from 'react';
+import { Minus, Plus } from '../../Icons/Icons';
 
-import classes from './Quantity.module.scss'
+import classes from './Quantity.module.scss';
 
-
-const Quantity = ({ setQty, qty, max, }) => {
-
-
+const Quantity = ({ setQty, qty, max }) => {
   const qtyIncrementtHandler = () => {
-    setQty(prev => {
-      if(prev !== max) {
-        return prev + 1
+    setQty((prev) => {
+      if (prev !== max) {
+        return prev + 1;
       }
-      return prev
-    })
-  }
+      return prev;
+    });
+  };
 
   const qtyDecrementHandler = () => {
-    if (qty > 1) {
-      setQty(prev => {
-        return prev - 1
-      })
-      return prev
-    }
-  }
+    setQty((prev) => {
+      if (prev > 1) {
+        return prev - 1;
+      }
+      return prev;
+    });
+  };
 
   return (
     <div className={classes.quantity}>
       <button className={classes.minus} onClick={qtyDecrementHandler}>
-        <Minus size={16} color={'#333'}/>
+        <Minus size={16} color={'#333'} />
       </button>
       <input
         name="quantity"
@@ -39,7 +36,7 @@ const Quantity = ({ setQty, qty, max, }) => {
         max={max}
       />
       <button className={classes.plus} onClick={qtyIncrementtHandler}>
-        <Plus size={16} color={'#333'}/>
+        <Plus size={16} color={'#333'} />
       </button>
     </div>
   );

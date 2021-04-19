@@ -11,7 +11,7 @@ const ProductPrice = ({price, discount}) => {
     return (
         <div className={classes.priceWrap}>
           <div className={classes.originalPrice}>${price}</div>${discountedprice}
-          <span className={classes.priceSave}>SAVE&nbsp;{savePrice}</span>
+          <span className={classes.priceSave}>SAVE&nbsp;${savePrice}</span>
         </div>
       );
   } else{

@@ -1,28 +1,36 @@
-import React from 'react'
-import Link from 'next/link'
-import { useDispatch } from 'react-redux'
-import * as actionTypes from '../../store/actions/actionTypes'
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
-import useTranslation from 'next-translate/useTranslation'
+import React from 'react';
+import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import * as actionTypes from '../../store/actions/actionTypes';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import useTranslation from 'next-translate/useTranslation';
 
-import classes from './ProductCard2.module.scss'
+import classes from './ProductCard2.module.scss';
 
 const ProductCard2 = ({ product, ...props }) => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  const { t } = useTranslation('common');
 
-  const { t } = useTranslation('common')
+  const addToCartHandler = (e) => {
+    e.preventDefault();
+    dispatch({ type: actionTypes.SHOW_MODAL, product: product });
+  };
 
-  const addToCartHandler = e => {
-    e.preventDefault()
-    dispatch({ type: actionTypes.SHOW_MODAL, product: product })
-  }
+  const price =
+    product.discount > 0
+      ? product.price - (product.price * product.discount) / 100
+      : product.price;
 
-  const price = product.discount > 0 ? product.price - (product.price * product.discount / 100) : product.price
+  const discountLabel =
+    product.discount > 0 ? (
+      <span className={classes.discount}> {product.discount}% </span>
+    ) : null;
 
-  const discountLabel = product.discount > 0 ? <span className={classes.discount}> {product.discount}% </span> : null
-
-  const originalPrice = product.discount > 0 ? <div className={classes.originalPrice}> ${product.price} </div> : null
+  const originalPrice =
+    product.discount > 0 ? (
+      <div className={classes.originalPrice}> ${product.price} </div>
+    ) : null;
 
   return (
     <article
@@ -31,19 +39,23 @@ const ProductCard2 = ({ product, ...props }) => {
       itemType="https://schema.org/Product"
       className={classes.card}
     >
-
       <div className={classes.image}>
-        <Link href={'/product/'+product._id}>
+        <Link href={'/product/' + product._id}>
           <a>
-            <img loading='lazy' itemProp="image" src={product.img} alt={product.name} />
+            <img
+              loading="lazy"
+              itemProp="image"
+              src={product.img}
+              alt={product.name}
+            />
           </a>
         </Link>
         {discountLabel}
       </div>
 
-      <Link href={'/categories/' + product._id}>
+      <Link href={'/categories/' + product.category._id}>
         <a itemProp="category" className={classes.category}>
-          {product.category}
+          {product.category.name}
         </a>
       </Link>
 
@@ -55,13 +67,29 @@ const ProductCard2 = ({ product, ...props }) => {
         </a>
       </Link>
 
-      <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className={classes.price} >
+      <div
+        itemProp="offers"
+        itemScope
+        itemType="https://schema.org/Offer"
+        className={classes.price}
+      >
         {originalPrice}
-        <span itemProp="priceCurrency" content="USD"> $</span>
-        <span itemProp="price" content={price}>{price}</span>
+        <span itemProp="priceCurrency" content="USD">
+          {' '}
+          $
+        </span>
+        <span itemProp="price" content={price}>
+          {price}
+        </span>
       </div>
 
-      <Button fluid primary compact content={t('add-to-cart')} onClick={addToCartHandler} />
+      <Button
+        fluid
+        primary
+        compact
+        content={t('add-to-cart')}
+        onClick={addToCartHandler}
+      />
     </article>
   );
 };
