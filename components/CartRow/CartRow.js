@@ -12,7 +12,8 @@ const CartRow = ({ product, checkout }) => {
 
   const dispatch = useDispatch()
 
-  let total = product.discount && product.discount > 0 ? product.discount * product.qty : product.price * product.qty
+  let total = product.discount && product.discount > 0 ? 
+    (product.price - (product.price * product.discount / 100)) * product.qty : product.price * product.qty
 
   const qtyEnterHandler = e => {
     setQty(+e.target.value)
@@ -36,9 +37,9 @@ const CartRow = ({ product, checkout }) => {
 
   const priceHTML = product.discount && product.discount > 0 ? (
     <div className={classes.prices}>
-      <span className={classes.price}>{ `$${product.discount}` }</span>
+      <span className={classes.price}>{ `$${(product.price - (product.price * product.discount / 100))}` }</span>
       <span className={classes.old}>{ `$${product.price}` }</span>
-      <span className={classes.percent}>-{100 - Math.round(product.discount * 100 / product.price)}%</span>
+      <span className={classes.percent}>-{product.discount}%</span>
     </div>
   ) : (
     <div className={classes.prices}>

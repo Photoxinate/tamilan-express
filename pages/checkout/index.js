@@ -142,10 +142,10 @@ const index = ({ user }) => {
           product: prod._id, 
           qty: prod.qty, 
           variations: prod.variations,
-          price: prod.discount > 0 ? prod.discount : prod.price
+          price: prod.discount > 0 ? prod.price - (prod.price * prod.discount / 100) : prod.price
         })),
         coupon: appliedCoupon,
-        loyaltyPoints: redeemedLoyalty,
+        redeemedPoints: redeemedLoyalty,
         comment: commentRef?.current.props.value,
         subTotal: total,
         grandTotal,
