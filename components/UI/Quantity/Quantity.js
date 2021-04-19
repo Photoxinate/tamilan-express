@@ -4,14 +4,12 @@ import { Minus, Plus } from '../../Icons/Icons'
 import classes from './Quantity.module.scss'
 
 
-const Quantity = ({ id, qty, price, max, onChangeQty }) => {
+const Quantity = ({ setQty, qty, max, }) => {
 
-  const [_qty, setQty] = useState(qty)
 
   const qtyIncrementtHandler = () => {
     setQty(prev => {
       if(prev !== max) {
-        onChangeQty(id, prev + 1, price)
         return prev + 1
       }
       return prev
@@ -19,18 +17,12 @@ const Quantity = ({ id, qty, price, max, onChangeQty }) => {
   }
 
   const qtyDecrementHandler = () => {
-    if (_qty > 1) {
+    if (qty > 1) {
       setQty(prev => {
-        onChangeQty(id, prev - 1, price)
         return prev - 1
       })
+      return prev
     }
-  }
-
-  const qtyChangeHandler = e => {
-    const qty = +e.target.value
-    if(qty > 1 && qty <= max)
-      onChangeQty(id, qty, price)
   }
 
   return (
@@ -41,8 +33,7 @@ const Quantity = ({ id, qty, price, max, onChangeQty }) => {
       <input
         name="quantity"
         type="number"
-        onChange={qtyChangeHandler}
-        value={_qty}
+        value={qty}
         min="1"
         size="2"
         max={max}

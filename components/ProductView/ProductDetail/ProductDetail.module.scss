@@ -26,11 +26,15 @@
     padding: 0 20px;
     text-transform: uppercase;
   }
-  .prodStock {
-    color: #30b619;
-  }
+  
   .itemWrap {
     margin: 10px 20px;
+    .prodStock {
+      color: #30b619;
+    }
+    .prodNoStock {
+      color: var(--text-light);
+    }
 
   }
 
