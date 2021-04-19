@@ -7,8 +7,6 @@
   z-index: 100;
 
   .productModal {
-    width: 50vw;
-    display: flex;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -52,7 +50,6 @@
 @media(max-width:1365px){
   .wrap {
     .productModal {
-      width: 60vw;
       .imgWrap {
         width: 40%;
 
@@ -65,7 +62,6 @@
 @media(max-width:1155px){
   .wrap {
     .productModal {
-      width: 70vw;
 
     }
   }
@@ -74,7 +70,6 @@
 @media(max-width:990px){
   .wrap {
     .productModal {
-      width: 80vw;
 
     }
   }

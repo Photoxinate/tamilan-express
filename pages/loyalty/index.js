@@ -35,7 +35,7 @@ const index = ({ error, data }) => {
                             {data.loyaltyPoints}pts
                         </div>
                         <div className={classes.equal}>
-                            1pt is equal to 1 cent
+                            1pt is equal to 1 CAD
                         </div>
                     </div>
                 </div>

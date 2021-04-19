@@ -1,7 +1,7 @@
 {
     "title": "ஆர்டர்கள் Checkout",
-    "billing-address": "Billing Address",
-    "delivery-address": "Delivery Address",
+    "billing-address": "பட்டியலிடும் முகவரி ",
+    "delivery-address": "டெலிவரி முகவரி ",
     
     "redeem": "மீட்பு",
     "apply": "உபயோகி",
@@ -9,5 +9,11 @@
     "Cout-PtP": "கட்டணம் செலுத்துவதற்கு தொடரவும்",
     
     "no-item": "பொருள் எதுவும் சேர்க்கப்படவில்லை, ",
-    "start-shopping": "ஷாப்பிங் தொடர்வதற்கு"
+    "start-shopping": "ஷாப்பிங் தொடர்வதற்கு",
+
+    "shipping-method": "ஷிப்பிங் முறைமை",
+    "delivery-text": "டெலிவரி மற்றும் பட்டியல் முகவரி ஒன்றே.",
+    "change": "மாற்றவதற்கு ",
+    "shipping-text": "• உங்கள் ஆர்டரைப் பற்றி ஒரு கருத்தைச் சேர்க்க விரும்பினால், அதை பெட்டியில் எழுதுங்கள்."
+
 }

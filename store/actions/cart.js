@@ -31,6 +31,12 @@ const fetchCartSuccess = cartProducts => {
     }
 }
 
+const clearCartSuccess = () => {
+    return {
+        type: actionTypes.CLEAR_CART
+    }
+}
+
 const updateTotalPrice = total => {
     return {
         type: actionTypes.UPDATE_TOTAL,
@@ -48,7 +54,8 @@ const updateCount = count => {
 const calcTotalPrice = products => {
     let total = 0
     products.forEach(product => {
-        const price = product.discount && product.discount > 0 ? product.discount : product.price
+        const price = product.discount && product.discount > 0 ? 
+            (product.price - (product.price * product.discount / 100)) : product.price
 
         if(product.type === 'buy 1 get 2nd off' && product.offDiscount > 0 && product.qty >= 2) {
             total = total + ( price * (product.qty - 1) ) + ( price * (100 - product.offDiscount) / 100 )
@@ -154,4 +161,8 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
         dispatch(updateCount(calcCount(cart)))
     }
 
+}
+
+export const clearCart = () => dispatch => {
+    dispatch(clearCartSuccess())
 }

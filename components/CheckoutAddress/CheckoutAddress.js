@@ -5,6 +5,8 @@ import { useToasts } from 'react-toast-notifications';
 import classes from './CheckoutAddress.module.scss'
 
 
+
+
 const PersonalForm = dynamic(() => import('../../components/Forms/ProfileForms/PersonalForm'), { loading: () => <p>Loading...</p> })
 const DeliveryForm = dynamic(() => import('../../components/Forms/ProfileForms/DeliveryForm'), { loading: () => <p>Loading...</p> })
 
@@ -50,7 +52,7 @@ const CheckoutAddress = ({ info, setInfo, t }) => {
             <p>{address.street1}{address.street2 ? `, ${address.street2}` : null}</p>
             <p>{address.city}</p>
             <p>{address.state}, {address.zipCode}</p>
-            <button className={classes.change} onClick={() => toggleHandler('personal')}>Change</button>
+            <button className={classes.change} onClick={() => toggleHandler('personal')}>{t('change')}</button>
         </> 
         : 
         <>
@@ -65,12 +67,12 @@ const CheckoutAddress = ({ info, setInfo, t }) => {
             <p>{deliveryAddress.city}</p>
             <p>{deliveryAddress.state}, {deliveryAddress.zipCode}</p>
             {deliveryAddress.contact ? `<p>${deliveryAddress.contact}</p>` : null}
-            <button className={classes.change} onClick={() => toggleHandler('delivery')}>Change</button>
+            <button className={classes.change} onClick={() => toggleHandler('delivery')}>{t('change')}</button>
         </> 
         : 
         <>
-            <p style={{color: 'gray'}}>My delivery and billing addresses are the same.</p>
-            <button className={classes.change} onClick={() => toggleHandler('delivery')}>Change</button>
+            <p style={{color: 'gray'}}>{t('delivery-text')}</p>
+            <button className={classes.change} onClick={() => toggleHandler('delivery')}>{t('change')}</button>
         </>
 
     if(editPersonal) {
