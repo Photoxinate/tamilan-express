@@ -2,7 +2,7 @@
 
 .wrap {
     width: 100%;
-    background-color: #f1f1f1;
+    background-color: #f6f6f8;
     padding: 40px 0px;
     margin-top: 50px;
   .tab {
@@ -11,20 +11,24 @@
     justify-content: center;
     button {
         &:hover{
-            background-color: #ddd;
+            color: #000;
         }
         &.active{
-            border: 1px solid #000;
-        }
+          border: 1px solid #000;
+      }
+        
         background-color: transparent;
         border: 1px solid transparent;
         border-radius: 30px;
         outline: none;
         cursor: pointer;
         margin: 10px;
-        padding: 14px 16px;
+        min-height: 40px;
+        padding: 0px 25px;
         transition: 0.3s;
         font-size: 17px;
+
+        
       }
   }
 
@@ -33,5 +37,6 @@
     display: block;
     text-align: center;
     padding: 1em 5em;
+    color: #878787;
   }
 }

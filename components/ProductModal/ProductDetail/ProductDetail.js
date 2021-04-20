@@ -49,7 +49,6 @@ const ProductDetail = ({ product }) => {
       ) : null}
 
       <div className={classes.itemWrap}>
-        Stock :
         {isStock ? (
           <span className={classes.prodStock}> In Stock </span>
         ) : (

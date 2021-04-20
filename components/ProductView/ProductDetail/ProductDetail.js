@@ -24,10 +24,10 @@ const ProductDetail = ({ product, ...props }) => {
       payload: { product: product, qty: qty },
     });
   };
-
+  
   return (
     <div className={classes.prodDetail}>
-      <div className={classes.prodCategory}>{product.category}</div>
+      <div className={classes.prodCategory}>{product.category.name}</div>
 
       <div className={classes.prodName}>{product.name}</div>
 
@@ -50,7 +50,6 @@ const ProductDetail = ({ product, ...props }) => {
       ) : null}
 
       <div className={classes.itemWrap}>
-        Stock :
         {isStock ? (
           <span className={classes.prodStock}> In Stock </span>
         ) : (

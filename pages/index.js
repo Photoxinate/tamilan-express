@@ -36,7 +36,7 @@ export const getStaticProps = async () => {
   let categories = []
   let products = []
   const categoriesResponse = await fetch('categories?limit=10&sort=parent')
-  const prodResponse = await fetch('products?limit=10')
+  const prodResponse = await fetch('products?populate=category&filter[publish]=true')
   const prodError = prodResponse.error
   const error = categoriesResponse.error
   const data = categoriesResponse.data

@@ -9,6 +9,11 @@
     "Cout-PtP": "Proceed To Payment",
     
     "no-item": "No item Added, ",
-    "start-shopping": "Start Shopping"
+    "start-shopping": "Start Shopping",
+
+    "shipping-method": "Shipping Method",
+    "delivery-text": "My delivery and billing addresses are the same.",
+    "change": "Change",
+    "shipping-text": "• If you would like to add a comment about your order, please write it in the field box."
 
 }
