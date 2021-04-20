@@ -5,15 +5,9 @@ import Form from 'semantic-ui-react/dist/commonjs/collections/Form'
 import Input from '../../UI/Input/Input'
 import axios from '../../../axios'
 import { useToasts } from 'react-toast-notifications'
+import states from '../../../config/states'
 
 import classes from './ProfileForms.module.scss'
-
-const states = [
-    { key: 'colombo', text: 'Colombo', value: 'colombo' },
-    { key: 'kegalle', text: 'Kegalle', value: 'kegalle' },
-    { key: 'ratnapura', text: 'Ratnapura', value: 'ratnapura' },
-    { key: 'jaffna', text: 'Jaffna', value: 'jaffna' },
-]
 
 const PersonalForm = ({ onCancel, firstName, middleName, lastName, address, checkout }) => {
 

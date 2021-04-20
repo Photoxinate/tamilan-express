@@ -5,15 +5,9 @@ import Form from 'semantic-ui-react/dist/commonjs/collections/Form'
 import Input from '../../UI/Input/Input'
 import { useToasts } from 'react-toast-notifications'
 import axios from '../../../axios'
+import states from '../../../config/states'
 
 import classes from './ProfileForms.module.scss'
-
-const states = [
-    { key: 'colombo', text: 'Colombo', value: 'colombo' },
-    { key: 'kegalle', text: 'Kegalle', value: 'kegalle' },
-    { key: 'ratnapura', text: 'Ratnapura', value: 'ratnapura' },
-    { key: 'jaffna', text: 'Jaffna', value: 'jaffna' },
-]
 
 const DeliveryForm = ({ onCancel, address, checkout }) => {
 
@@ -60,7 +54,7 @@ const DeliveryForm = ({ onCancel, address, checkout }) => {
             </Form.Group>
             <Form.Group widths={2}>
                 <Input defaultValue={address?.city} name='city' label='City' placeholder='City' type='text' required form />
-                <Input defaultValue={address?.state} name='state' type='select' label='State' options={states} placeholder='State' required form />
+                <Input defaultValue={address?.state} name='state' type='select' label='State' options={states} placeholder='State' search required form />
             </Form.Group>
             <Form.Group widths={2}>
                 <Input defaultValue={address?.zipCode} name='zipCode' label='Zip Code' placeholder='Zip Code' type='text' required form />

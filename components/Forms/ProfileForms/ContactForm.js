@@ -8,13 +8,6 @@ import { useSession } from 'next-auth/client'
 
 import classes from './ProfileForms.module.scss'
 
-const states = [
-    { key: 'colombo', text: 'Colombo', value: 'colombo' },
-    { key: 'kegalle', text: 'Kegalle', value: 'kegalle' },
-    { key: 'ratnapura', text: 'Ratnapura', value: 'ratnapura' },
-    { key: 'jaffna', text: 'Jaffna', value: 'jaffna' },
-]
-
 const DeliveryForm = ({ onCancel, email, mobile }) => {
 
     const [ session ] = useSession()

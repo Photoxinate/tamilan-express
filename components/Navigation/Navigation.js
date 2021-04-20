@@ -2,7 +2,6 @@ import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import Input from 'semantic-ui-react/dist/commonjs/elements/Input'
 import useSWR from 'swr'
 import swrFetch from '../../config/swrFetch'
 import transform from '../../config/transformCategories2'
@@ -11,6 +10,7 @@ import { Menu, Search, Shopping } from '../Icons/Icons'
 import Account from './Account/Account'
 import CartCount from './CartCount/CartCount'
 import classes from './Navigation.module.scss'
+import SearchInput from './SearchInput'
 import SideDrawer from './SideDrawer/SideDrawer'
 
 
@@ -49,8 +49,6 @@ const Navigation = () => {
         setCategoryToggle(prev => !prev)
     }
 
-    console.log('[Naviagtion] redered');
-
     return (
         <>
             <div className={classes.navigation}>
@@ -59,7 +57,7 @@ const Navigation = () => {
                         <a className={classes.logo}> <img src='/logo/logo.png' width={180} alt='Tamilan express logo, a smart phone along with a shop' /> </a>
                     </Link>
                     <div className={classes.search}>
-                        <Input required action={{ icon: <Search aria-label='search' color='#fff' size={16} strokeWidth={3} />, primary: true }} fluid aria-label='Search' placeholder='Search...' />
+                        <SearchInput />
                     </div>
                     <ul className={classes.navs}>
                         <li className={classes.nav}>
