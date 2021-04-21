@@ -26,7 +26,7 @@ const ProductDetail = ({ product }) => {
 
   return (
     <div className={classes.prodDetail}>
-      <div className={classes.prodCategory}>{product.category}</div>
+      <div className={classes.prodCategory}>{product.category.name}</div>
 
       <div className={classes.prodName}>{product.name}</div>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ProuctCard from '../ProductCard2/ProductCard2';
 import classes from './ProductContainer.module.scss';
 
-export const ProductContainer = (props) => {
+export const ProductContainer = ({ products, search }) => {
     // const width = 100/(props.itemsPerRow + 1)
     // const myStyle = {
     //     boxSizing:'border-box',
@@ -12,8 +12,8 @@ export const ProductContainer = (props) => {
     // }
   return (
     <div className={classes.container}>
-      {props.products.map((product, i) => (
-        <div key={product.id} className={classes.wrap} >
+      {products.map(product => (
+        <div key={product._id} className={search ? [classes.searchWrap, classes.wrap].join(' '): classes.wrap} >
           <ProuctCard product={product} />
         </div>
       ))}

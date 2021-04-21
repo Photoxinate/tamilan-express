@@ -7,7 +7,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import classes from './ProductCard2.module.scss';
 
-const ProductCard2 = ({ product, ...props }) => {
+const ProductCard2 = ({ product }) => {
   const dispatch = useDispatch();
 
   const { t } = useTranslation('common');

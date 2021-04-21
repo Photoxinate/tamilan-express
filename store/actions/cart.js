@@ -158,7 +158,7 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
         localStorage.setItem('cartProducts', JSON.stringify(carts))
         dispatch(updateCartSuccess(carts, message))
         dispatch(updateTotalPrice(calcTotalPrice(carts)))
-        dispatch(updateCount(calcCount(cart)))
+        dispatch(updateCount(calcCount(carts)))
     }
 
 }
