@@ -2,12 +2,13 @@ import { getSession } from 'next-auth/client';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
 import PageContainer from '../../components/PageContainer/PageContainer';
+import ReceiptProduct from '../../components/ReceiptProduct/ReceiptProduct';
 import fetch from '../../config/fetch';
 
 import classes from './index.module.scss'
 
 const index = ({ data }) => {
-    console.log(data);
+    console.log(data.products);
 
     const { t } = useTranslation('receipt')
 
@@ -32,8 +33,53 @@ const index = ({ data }) => {
                         `}</span>
                     </div>
                 </div>
-                <div className={classes.products}>
-                    
+                <div className={classes.summary}>
+                    <h3>Order Summary</h3>
+                    <table cellSpacing={0}>
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Qty</th>
+                                <th align='right'>Price</th>
+                                <th align='right'>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.products.map(prod => (
+                                <ReceiptProduct 
+                                    key={prod.product._id} 
+                                    product={prod.product} 
+                                    price={prod.price} 
+                                    qty={prod.qty}
+                                    offDiscount={prod.offDiscount} />
+                            ))}
+                            <tr className={classes.finals}>
+                                <td/><td colSpan={3} align='right'>Sub Total</td>
+                                <td align='right'>${data.subTotal}</td>
+                            </tr>
+                            <tr className={classes.finals}>
+                                <td/><td colSpan={3} align='right'>Shipping</td>
+                                <td align='right'>${data.deliveryFee}</td>
+                            </tr>
+                            {data.redeemedPoints > 0 &&
+                                <tr className={classes.finals}>
+                                    <td/><td colSpan={3} align='right'>Loyalty Points</td>
+                                    <td align='right'>-${data.redeemedPoints}</td>
+                                </tr>
+                            }
+                            {data.coupon &&
+                                <tr className={classes.finals}>
+                                    <td/><td colSpan={3} align='right'>Coupn({data.coupon.code})</td>
+                                    <td align='right'>-${data.coupon.value}</td>
+                                </tr>
+                            }
+                            <tr className={classes.finals}>
+                                <td/><td colSpan={3} align='right'>Grand Total</td>
+                                <td align='right'>${data.grandTotal}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </PageContainer>

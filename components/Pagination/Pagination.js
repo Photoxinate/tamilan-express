@@ -3,17 +3,17 @@ import Link from 'next/link'
 
 import classes from './Pagination.module.scss'
 
-const Pagination = ({ pages, active }) => {
+const Pagination = ({ pages, active, pagingCounter, count }) => {
 
     if(pages <= 1) {
 
-        return (
+        return count > 1 ? (
             <section className={classes.pagination}>
                 <p className={classes.count}>
-                    Showing 1-15 item(s)
+                    Showing 1-{count} item(s)
                 </p>
             </section>
-        )
+        ) : null
         
     }
 
@@ -73,7 +73,7 @@ const Pagination = ({ pages, active }) => {
     return (
         <section className={classes.pagination}>
             <p className={classes.count}>
-                Showing 1-15 of {pages} item(s)
+                Showing {pagingCounter}-{count} of {pages} item(s)
             </p>
             <div className={classes.pages}>
                 {pageNumbersArray}

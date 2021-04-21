@@ -1,7 +1,8 @@
-import { PayPalButtons, FUNDING } from '@paypal/react-paypal-js'
+import { PayPalButtons } from '@paypal/react-paypal-js'
 import { getSession, useSession } from 'next-auth/client'
 import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
@@ -11,15 +12,14 @@ import CartRow from '../../components/CartRow/CartRow'
 import CheckoutAddress from '../../components/CheckoutAddress/CheckoutAddress'
 import ShippingMethodForm from '../../components/Forms/ShippingMethodForm/ShippingMethodForm'
 import PageContainer from '../../components/PageContainer/PageContainer'
-import { useRouter } from 'next/router'
+import CheckoutMessage from '../../components/UI/CheckoutMessage/CheckoutMessage'
 import Loading from '../../components/UI/Loading/Loading'
 import fetch from '../../config/fetch'
-import classes from './index.module.scss'
-import CheckoutMessage from '../../components/UI/CheckoutMessage/CheckoutMessage'
 import { clearCart } from '../../store/actions/cart'
+import classes from './index.module.scss'
 
 
-const index = ({ user }) => {
+const index = ({ user, shippingCharge }) => {
 
   const COUNT_CHANGED = 'COUNT_CHANGED'
 
@@ -41,8 +41,9 @@ const index = ({ user }) => {
   const [addrAvailability, setAddrAvailability] = useState(user.hasOwnProperty('address'))
   const [redeemedLoyalty, setRedeemedLoyalty] = useState(0)
   const [appliedCoupon, setAppliedCoupon] = useState()
-  const [shippingMethod, setShippingMethod] = useState('shipping')
-  const [grandTotal, setGrandTotal] = useState(total + 1)
+  const [shippingMethod, setShippingMethod] = useState('gta')
+  const [shippingFee, setShippingFee] = useState(0)
+  const [grandTotal, setGrandTotal] = useState(total)
 
   const [couponLoading, setCouponLoading] = useState(false)
   const [couponError, setCouponError] = useState(null)
@@ -142,7 +143,9 @@ const index = ({ user }) => {
           product: prod._id, 
           qty: prod.qty, 
           variations: prod.variations,
-          price: prod.discount > 0 ? prod.price - (prod.price * prod.discount / 100) : prod.price
+          price: prod.discount > 0 ? prod.price - (prod.price * prod.discount / 100) : prod.price,
+          type: prod.type,
+          offDiscount: prod.offDiscount
         })),
         coupon: appliedCoupon,
         redeemedPoints: redeemedLoyalty,
@@ -150,6 +153,7 @@ const index = ({ user }) => {
         subTotal: total,
         grandTotal,
         shippingMethod,
+        deliveryFee: shippingFee
       }
 
       const headers = { Authorization: `Bearer ${session.accessToken}` }
@@ -185,9 +189,16 @@ const index = ({ user }) => {
   // Paypal intergration end
 
   useEffect(() => {
-    const shippingCharge = shippingMethod === 'shipping' ? 1 : 0
+    let newShippingFee = 0
+    if(shippingCharge && shippingMethod === 'gta')
+      newShippingFee = total >= shippingCharge.minGta ? 0 : shippingCharge.gta
+    if(shippingCharge && shippingMethod === 'outside')
+      newShippingFee = shippingCharge.others
+
+    setShippingFee(newShippingFee)
+    
     const couponDeduction = appliedCoupon && appliedCoupon.value ? appliedCoupon.value : 0
-    const totalCharge = total + shippingCharge - redeemedLoyalty - couponDeduction
+    const totalCharge = total + newShippingFee - redeemedLoyalty - couponDeduction
 
     setGrandTotal(+totalCharge.toFixed(2))
   }, [total, shippingMethod, redeemedLoyalty, appliedCoupon])
@@ -226,7 +237,8 @@ const index = ({ user }) => {
               className={classes.section}
               onShippingMethodChange={shippingMethodChangeHandler}
               shippingMethod={shippingMethod}
-              commentRef={commentRef} />
+              commentRef={commentRef}
+              minGta={shippingCharge.minGta} />
           </section>
 
           <section className={classes.section}>
@@ -281,7 +293,7 @@ const index = ({ user }) => {
             </div>
             <div className={classes.fields}>
               <div>Shipping</div>
-              <div>${shippingMethod === 'shipping' ? 1 : 0}</div>
+              <div>${shippingFee}</div>
             </div>
             {redeemedLoyalty > 0 &&
               <div className={classes.fields}>
@@ -317,24 +329,27 @@ const index = ({ user }) => {
 }
 
 export const getServerSideProps = async (ctx) => {
-    const session = await getSession(ctx)
-    if (!session) {
-      return {
-        redirect: {
-          destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/checkout',
-          permanent: false
-        }
-      }
-    }
-
-    const headers = { Authorization: `Bearer ${session.accessToken}` }
-    const user = await fetch('users/me', { headers })
-
+  const session = await getSession(ctx)
+  if (!session) {
     return {
-      props: {
-        user: user.data
+      redirect: {
+        destination: '/signin?callbackUrl=' + process.env.NEXTAUTH_URL + '/checkout',
+        permanent: false
       }
     }
+  }
+
+  const headers = { Authorization: `Bearer ${session.accessToken}` }
+  const user = await fetch('users/me', { headers })
+
+  const settings = await fetch('settings')
+
+  return {
+    props: {
+      user: user.data,
+      shippingCharge: settings.data?.shippingCharge || { gta: 15, others: 50, minGta: 100 }
+    }
+  }
 }
 
 export default index;

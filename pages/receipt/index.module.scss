@@ -1,16 +1,18 @@
 .receipt {
     margin-bottom: 60px;
 
-    h2 {
+    .title {
         font-size: var(--size-h2);
         margin-bottom: 30px;
         text-decoration: underline;
+        text-align: center;
     }
 
     .short {
-        background-color: rgba(198, 199, 255, 0.507);
+        background-color: #8df1d5;
         padding: 1rem;
         font-weight: 500;
+        border-radius: 5px;
 
         .field {
 
@@ -34,6 +36,64 @@
     
                 span {
                     margin-left: 0px;
+                }
+            }
+        }
+    }
+
+    .summary {
+        margin: 60px 0px 30px;
+
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+
+            thead {
+                color: white;
+                background-color: rgb(31, 31, 31);
+            }
+
+            tbody {
+
+                td {
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                tr:nth-child(odd) {
+                    background: #dddddd;
+                }
+
+                tr:nth-child(even) {
+                    background-color: #eeeeee;
+                }
+
+            }
+
+            th, td {
+                padding: 10px 5px;
+
+                &:last-child {
+                    padding-right: 30px;
+                }
+
+                @media (max-width: 768px) {
+                    font-size: 12px;
+                    
+                    &:last-child {
+                        padding-right: 10px;
+                    }
+
+                    &:first-child {
+                        display: none;
+                    }
                 }
             }
         }
