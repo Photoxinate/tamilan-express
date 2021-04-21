@@ -30,9 +30,11 @@
   .itemWrap {
     margin: 10px 20px;
     .prodStock {
+      font-weight: 600;
       color: #30b619;
     }
     .prodNoStock {
+      font-weight: 600;
       color: var(--text-light);
     }
 

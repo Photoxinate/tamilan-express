@@ -15,15 +15,15 @@
     }
 
     .itemWrap{
-        margin: 5px 5px;
+        margin: 10px 5px;
 
         .prodStock{
-            margin: 10px 5px;
+            font-weight: 600;
             color: #30b619;
         }
     
         .prodNoStock{
-            margin: 10px 5px;
+            font-weight: 600;
             color: var(--text-light);
         }
     }

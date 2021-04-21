@@ -14,8 +14,8 @@ const Banner = ({ banners }) => {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        pagination={{ type: 'fraction' }}
         autoplay={{ delay: 6000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
       >
         {banners.map((banner, i) => (
           <SwiperSlide key={i}>

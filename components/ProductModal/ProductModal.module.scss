@@ -16,6 +16,10 @@
     transition: all 0.3s ease-in-out;
     border-radius: 7px;
 
+    .customLabel {
+      left: -16px;
+      top: 10px;
+    }
     .closeBtn {
       cursor: pointer;
       border: none;
@@ -36,10 +40,10 @@
     }
 
     .imgWrap {
-      width: 45%;
-      padding: 20px;
+      width: 150px;
+      margin: 0 auto;
 
-      img {
+      img{
         width: 100%;
         height: auto;
       }
@@ -47,45 +51,10 @@
   }
 }
 
-@media(max-width:1365px){
+@media (max-width: 768px) {
   .wrap {
     .productModal {
-      .imgWrap {
-        width: 40%;
-
-      }
-
+      width: 80%;
     }
   }
-}
-
-@media(max-width:1155px){
-  .wrap {
-    .productModal {
-
-    }
-  }
-}
-
-@media(max-width:990px){
-  .wrap {
-    .productModal {
-
-    }
-  }
-}
-
-@media(max-width:768px){
-    .wrap{
-        .productModal{
-          width: 80vw;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            .imgWrap{
-                width: 60%;
-            }
-        }
-    }
 }

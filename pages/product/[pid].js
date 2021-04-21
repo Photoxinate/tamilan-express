@@ -10,7 +10,7 @@ const index = ({product}) => {
     <div className={classes.productContainer}>
       <div className={classes.productFlex}>
         <div className={classes.imgWrap}>
-        <ProductImageCarousel images={product.image} name={product.name}/>
+        <ProductImageCarousel type={product.type} images={product.image} name={product.name}/>
         </div>
         <ProductDetail product={product} />
       </div>
