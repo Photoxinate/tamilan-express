@@ -12,3 +12,24 @@
         text-align: center;
 
 }
+
+  
+
+  @media (max-width: 800px) {
+    .wrap{
+        padding: 3rem 2rem;
+        
+        width: 90%;
+    
+    }
+  }
+
+
+  @media (max-width: 550px) {
+    .wrap{
+        padding: 3rem 1rem;
+        
+        width: 100%;
+    
+    }
+  }

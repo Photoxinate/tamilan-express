@@ -45,7 +45,8 @@ const ProductCard2 = ({ product }) => {
             <img
               loading="lazy"
               itemProp="image"
-              src={product.img}
+              // src={product.image}
+              src="https://workmacro.com/wp-content/uploads/2018/02/1-by-1-1024x1024.png"
               alt={product.name}
             />
           </a>

@@ -1,30 +1,50 @@
+import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import * as actionTypes from '../../../store/actions/actionTypes';
-import ProductPrice from '../ProductPrice/ProductPrice';
-import Quantity from '../../UI/Quantity/Quantity';
-import useTranslation from 'next-translate/useTranslation';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
-import Link from 'next/link';
+import { updateCart } from '../../../store/actions/cart';
+import Quantity from '../../UI/Quantity/Quantity';
+import ProductPrice from '../ProductPrice/ProductPrice';
+import ProductVariation from '../../ProductVariation/ProductVariation';
 import classes from './ProductDetail.module.scss';
 
 const ProductDetail = ({ product, ...props }) => {
   const dispatch = useDispatch();
 
-  const [isStock, setIsStock] = useState(product.stock > 0 ? true : false);
-
   const { t } = useTranslation('common');
+
+  const isStock = product.stock > 0 ? true : false;
+
+  const [variation, setVariation] = useState([]);
+
+  const [isError, setIsError] = useState(false);
 
   const [qty, setQty] = useState(1);
 
-  const onAddProduct = (product, qty) => {
-    dispatch({
-      type: actionTypes.ADD_TO_CART,
-      payload: { product: product, qty: qty },
-    });
+  const addToCart = () => {
+    if (product.variation) {
+      const error = product.variation.length !== variation.length;
+      setIsError(error);
+
+      if (!error) {
+        product.variations = variation;
+        dispatch(updateCart(product, qty));
+      }
+    } else {
+      product.variations = variation;
+      dispatch(updateCart(product, qty));
+    }
   };
-  
+
+  // const onAddProduct = (product, qty) => {
+  //   dispatch({
+  //     type: actionTypes.ADD_TO_CART,
+  //     payload: { product: product, qty: qty },
+  //   });
+  // };
+
   return (
     <div className={classes.prodDetail}>
       <div className={classes.prodCategory}>{product.category.name}</div>
@@ -62,7 +82,15 @@ const ProductDetail = ({ product, ...props }) => {
           Weight : <span className={classes.prodWeight}>{product.weight}</span>
         </div>
       )}
-
+      {product.variation && (
+        <div className={classes.itemWrap}>
+          <ProductVariation
+            error={isError}
+            setVariation={setVariation}
+            variation={product.variation}
+          />
+        </div>
+      )}
       <div className={classes.qtyWrap}>
         <Quantity
           qty={qty}
@@ -77,11 +105,16 @@ const ProductDetail = ({ product, ...props }) => {
           primary
           disabled={!isStock}
           content={t('add-to-cart')}
-          onClick={() => onAddProduct(product, qty)}
+          onClick={addToCart}
         />
         <Link href="/cart">
           <a>
-            <Button primary disabled={!isStock} content={t('Buy-now')} />
+            <Button
+              primary
+              disabled={!isStock}
+              onClick={addToCart}
+              content={t('Buy-now')}
+            />
           </a>
         </Link>
       </div>

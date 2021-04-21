@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import { updateCart } from '../../../store/actions/cart';
+import ProductVariation from '../../ProductVariation/ProductVariation';
 import Quantity from '../../UI/Quantity/Quantity';
 import ProductPrice from '../ProductPrice/ProductPrice';
 import classes from './ProductDetail.module.scss';
@@ -13,15 +13,31 @@ import classes from './ProductDetail.module.scss';
 const ProductDetail = ({ product }) => {
   const { t } = useTranslation('common');
 
-  const [isStock, setIsStock] = useState(product.stock > 0 ? true : false);
+  const dispatch = useDispatch();
+
+  const isStock = product.stock > 0 ? true : false
+
+  const [variation, setVariation] = useState([]);
+
+  const [isError, setIsError] = useState(false);
 
   const [qty, setQty] = useState(1);
 
-  const dispatch = useDispatch();
-
   const addToCart = () => {
-    dispatch({ type: actionTypes.CLOSE_MODAL });
-    dispatch(updateCart(product, qty));
+    if (product.variation) {
+      const error = product.variation.length !== variation.length
+      setIsError(error)
+
+      if (!error) {
+        product.variations = variation
+        dispatch({ type: actionTypes.CLOSE_MODAL });
+        dispatch(updateCart(product, qty));
+      }
+    } else {
+      product.variations = variation
+      dispatch({ type: actionTypes.CLOSE_MODAL });
+      dispatch(updateCart(product, qty));
+    }
   };
 
   return (
@@ -31,22 +47,6 @@ const ProductDetail = ({ product }) => {
       <div className={classes.prodName}>{product.name}</div>
 
       <ProductPrice price={product.price} discount={product.discount} />
-
-      {product.type === 'buy 1 get 1 free' ? (
-        <div className={classes.itemWrap}>
-          <Label as="a" color="red" tag>
-            Buy 1 get 1 free
-          </Label>
-        </div>
-      ) : null}
-
-      {product.type === 'buy 1 get 2nd off' ? (
-        <div className={classes.itemWrap}>
-          <Label as="a" color="red" tag>
-            Buy 1 get 2nd {product.offDiscount} off
-          </Label>
-        </div>
-      ) : null}
 
       <div className={classes.itemWrap}>
         {isStock ? (
@@ -61,7 +61,15 @@ const ProductDetail = ({ product }) => {
           Weight :<span className={classes.prodWeight}>{product.weight}</span>
         </div>
       )}
-
+      {product.variation && (
+        <div className={classes.itemWrap}>
+          <ProductVariation
+            error={isError}
+            setVariation={setVariation}
+            variation={product.variation}
+          />
+        </div>
+      )}
       <Quantity max={product.maxCount} setQty={setQty} qty={qty} />
 
       <div className={classes.btnWrap}>
