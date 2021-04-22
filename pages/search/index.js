@@ -14,7 +14,7 @@ import Loading from '../../components/UI/Loading/Loading'
 import classes from './index.module.scss'
 import swrFetch from '../../config/swrFetch';
 
-const index = ({ docs, total, totalPages, page, pagingCounter, categories, types, brands }) => {
+const index = ({ docs, total, totalPages, page, pagingCounter, categories, types, brands, prices }) => {
 
     const { query } = useRouter()
     const [serverQuery] = useState(query)
@@ -47,17 +47,13 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
         )
     }
 
-    // if(data.total <= 0) {
-    //     return (
-    //         <PageContainer 
-    //             id='search' 
-    //             title={searchTerm} >
-    //             <NoResult />
-    //         </PageContainer>
-    //     )
-    // }
-
-    console.log(data);
+    if(total <= 0 && Object.keys(parsedQuery.filter).length === 1 && parsedQuery.filter.q) {
+        return (
+            <PageContainer id='search' title={searchTerm} >
+                <NoResult />
+            </PageContainer>
+        )
+    }
 
     return (
         <PageContainer 
@@ -70,6 +66,7 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
                         dimensions={data.docs.filter(prod=> prod.dimension)}
                         categories={categories}
                         brands={brands.filter(brand => brand)}
+                        prices={prices}
                      />
                     <div className={classes.container}>
                         {data.total > 0 ? 
@@ -83,7 +80,7 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
                                     query={query} /> 
                             </>
                             : 
-                            <NoResult />
+                            <NoResult withFilter />
                         }
                     </div>
                 </div>
@@ -94,11 +91,11 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
 
 export const getServerSideProps = async (ctx) => {
 
-    let query = stringify({...ctx.query, populate: ['category','brand']})
+    let query = stringify({...ctx.query, populate: ['category','brand']}, { encode: false })
     const products = await fetch(`products?${query}`)
 
     query = parse(query)
-    const resources = await fetch(`products/resources/${query.filter.q}`)
+    const resources = await fetch(`products/resources/${query.filter?.q}`)
     
     return {
       props: {

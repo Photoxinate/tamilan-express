@@ -24,7 +24,7 @@ const Item = ({title, options, name}) => {
         }
 
         filter = {...parsedQuery.filter, [name]: { '$in': ids } }
-        parsedQuery = stringify({...parsedQuery, filter, page: 1})
+        parsedQuery = stringify({...parsedQuery, filter, page: 1}, { encode: false })
         push({ search: parsedQuery }, undefined, { shallow: true })
     }
 

@@ -13,7 +13,7 @@ export const ProductContainer = ({ products, search }) => {
   return (
     <div className={classes.container}>
       {products.map(product => (
-        <div key={product._id} className={search ? [classes.searchWrap, classes.wrap].join(' '): classes.wrap} >
+        <div key={product._id} className={search ? classes.searchWrap : classes.wrap} >
           <ProuctCard product={product} />
         </div>
       ))}

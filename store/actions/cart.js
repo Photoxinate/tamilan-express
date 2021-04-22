@@ -80,7 +80,33 @@ const calcCount = products => {
 
 export const fetchCart = () => async dispatch => {
     const session = await getSession()
-    if(session) {
+    if(session && localStorage.getItem('cartProducts')) {
+        const cartProds = JSON.parse(localStorage.getItem('cartProducts'))
+        
+        if(cartProds.length > 0) {
+            const data = []
+            cartProds.forEach(prod => {
+                data.push({
+                    product: prod._id,
+                    variations: prod.variations,
+                    qty: prod.qty
+                })
+            })
+
+            const headers = { Authorization: `Bearer ${session.accessToken}` }
+            axios.patch('users/cart/signin', data, { headers })
+                .then(res => {                
+                    dispatch(fetchCartSuccess(res.data))
+                    dispatch(updateTotalPrice(calcTotalPrice(res.data)))
+                    dispatch(updateCount(calcCount(res.data)))
+                    localStorage.removeItem('cartProducts')
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        } 
+    }
+    else if(session) {
         const headers = { Authorization: `Bearer ${session.accessToken}` }
         axios.get('users/me/cart', { headers })
             .then(res => {                

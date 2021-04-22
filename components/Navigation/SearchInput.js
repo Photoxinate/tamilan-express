@@ -17,7 +17,7 @@ const SearchInput = () => {
     const submitHandler = (e) => {
         e.preventDefault()
 
-        const query = { page: 1, limit: 3, filter: { q: search ? search : '' } }
+        const query = { page: 1, limit: 20, filter: { q: search ? search : '' } }
         route.push({ pathname: '/search', query: stringify(query) })
     }
 

@@ -9,15 +9,16 @@
     overflow: hidden;
     border: 1px solid #ccc;
     margin-top: 20px;
+    background-color: #343434;
 
     h3 {
         padding: 10px 20px;
-        background-color: #4d545f;
         color: white;
     }
 
     .container {
         padding: 1px 20px;
+        background-color: #fff;
     }
 
 }
@@ -37,7 +38,7 @@
 
         .container {
             border-radius: 5px;
-            margin-top: 10px;
+            padding-top: 10px;
             transition: height .3s ease-in-out;
         }
     }

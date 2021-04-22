@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import removeDuplicates from '../../config/removeDuplicates';
 import useWindowSize from '../../hooks/useWindowDimensions';
 import RangeSlider from '../RangeSlider/RangeSLider';
-
 import classes from './Filter.module.scss';
 import Item from './Item/Item';
 
-const Filter = ({ categories, brands, dimensions, types }) => {
+
+const Filter = ({ categories, brands, dimensions, types, prices }) => {
 
     const [showFilter, setShowFilter] = useState(false)
 
@@ -22,6 +21,8 @@ const Filter = ({ categories, brands, dimensions, types }) => {
         filters.push({name: 'type', title: 'Product Type', options: types.map(type => ({ name: type, id: type })) })
 
     const { width } = useWindowSize();
+
+    if(prices && !prices.min) return null
 
     const isClickable = width <= 768;
 
@@ -48,7 +49,7 @@ const Filter = ({ categories, brands, dimensions, types }) => {
                     Filters
             </h3>
             <div className={classes.container} style={style}>
-                <RangeSlider />
+                <RangeSlider {...prices} />
                 {filtersHTML}
             </div>
         </div>
