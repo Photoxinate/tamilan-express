@@ -33,17 +33,10 @@ const ProductDetail = ({ product, ...props }) => {
         dispatch(updateCart(product, qty));
       }
     } else {
-      product.variations = variation;
       dispatch(updateCart(product, qty));
     }
   };
 
-  // const onAddProduct = (product, qty) => {
-  //   dispatch({
-  //     type: actionTypes.ADD_TO_CART,
-  //     payload: { product: product, qty: qty },
-  //   });
-  // };
 
   return (
     <div className={classes.prodDetail}>
@@ -88,6 +81,7 @@ const ProductDetail = ({ product, ...props }) => {
             error={isError}
             setVariation={setVariation}
             variation={product.variation}
+            addedVariations={variation}
           />
         </div>
       )}

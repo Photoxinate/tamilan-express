@@ -44,7 +44,9 @@ const ProductDetail = ({ product }) => {
     <div className={classes.prodDetail}>
       <div className={classes.prodCategory}>{product.category.name}</div>
 
-      <div className={classes.prodName}>{product.name}</div>
+      <div className={classes.prodName}>
+          {product.name}
+      </div>
 
       <ProductPrice price={product.price} discount={product.discount} />
 
@@ -67,6 +69,7 @@ const ProductDetail = ({ product }) => {
             error={isError}
             setVariation={setVariation}
             variation={product.variation}
+            addedVariations={variation}
           />
         </div>
       )}
