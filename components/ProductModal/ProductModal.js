@@ -36,7 +36,7 @@ const ProductModal = ({ setShow }) => {
     <div className={classes.wrap}>
       <div className={classes.productModal}>
       {product.type === 'buy 1 get 1 free' ? (
-              <Label as="a" color="red" ribbon>
+              <Label as="a" color="red" ribbon className={classes.customLabel}>
                 Buy 1 get 1 free
               </Label>
           ) : null}
