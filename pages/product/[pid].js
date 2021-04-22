@@ -4,10 +4,23 @@ import ProductDescription from '../../components/ProductView/ProductDescription/
 import ProductDetail from '../../components/ProductView/ProductDetail/ProductDetail';
 import ProductImageCarousel from '../../components/ProductView/ProductImageCarousel/ProductImageCarousel';
 import classes from './ProductView.module.scss';
+import BreadCrumb from '../../components/UI/BreadCrumb/BreadCrumb';
+import Link from 'next/link'
+
+
+
 
 const index = ({product}) => {
+ 
+const sections = [
+  { key: 'home', content: 'Home', as:Link, href:"/", link: true},
+  { key: product.category.name, content: product.category.name, as:Link, href:"/categories/"+product.category._id, link: true },
+  { key: product.name, content: product.name, active: true },
+]
+
   return (
     <div className={classes.productContainer}>
+      <BreadCrumb sections={sections}/>
       <div className={classes.productFlex}>
         <div className={classes.imgWrap}>
         <ProductImageCarousel type={product.type} images={product.image} name={product.name}/>
