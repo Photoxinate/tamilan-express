@@ -9,14 +9,22 @@ const RangeSlider = ({ min = 0, max = 100 }) => {
 
     const STEP = 1
 
-    const [values, setValues] = useState([0, 100])
+    if(min === null) {
+        min = 0
+    }
+
+    if(max === null) {
+        max = 100
+    }
+
+    const [values, setValues] = useState([min, max])
 
     const priceRangeChangeHandler = values => {
         let parsedQuery = parse(query)
         let filter = parsedQuery.filter
 
         filter = {...parsedQuery.filter, price: { $gte: values[0], $lte: values[1] } }
-        parsedQuery = stringify({...parsedQuery, filter, page: 1})
+        parsedQuery = stringify({...parsedQuery, filter, page: 1}, { encode: false })
         push({ search: parsedQuery }, undefined, { shallow: true })
     }
 
