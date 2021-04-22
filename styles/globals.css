@@ -14,6 +14,7 @@
 @import url('semantic-ui-css/components/form.min.css');
 @import url('semantic-ui-css/components/checkbox.min.css');
 @import url('semantic-ui-css/components/table.min.css');
+@import url('semantic-ui-css/components/breadcrumb.min.css');
 
 @font-face {
   font-family: 'Mukta Malar';
