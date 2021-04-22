@@ -2,20 +2,22 @@ import React from 'react';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
 import classes from './ProductVariation.module.scss';
 
-const ProductVariation = ({error, variation, setVariation }) => {
-  console.log("variation validate inside value", error);
-  const addedVariations = [];
-
+const ProductVariation = ({error, addedVariations, variation, setVariation }) => {
+  const aVariations = [...addedVariations]
   const variationChangeHandler = (e, data, name) => {
-    const index = addedVariations.findIndex((v) => v.name === name);
+    const index = aVariations.findIndex((v) => v.name === name);
     if (index !== -1) {
-      addedVariations.splice(index, 1);
-      addedVariations.push({ name: name, value: data.value });
-    }else{
-      addedVariations.push({ name: name, value: data.value });
-    }
+      console.log();
+      aVariations.splice(index, 1);
+      aVariations.push({ name: name, value: data.value });
+    console.log("removed added variations", aVariations);
 
-    setVariation(addedVariations);
+    }else{
+      aVariations.push({ name: name, value: data.value });
+    console.log("added variations", aVariations);
+    }
+    console.log("variations", aVariations);
+    setVariation(aVariations);
   };
   
   return (
