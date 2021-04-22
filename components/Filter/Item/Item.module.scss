@@ -3,7 +3,7 @@
 
     h4 {
         position: relative;
-        overflow: hidden;
+        overflow-x: hidden;
         margin-bottom: 20px;
 
         &::after {
@@ -21,15 +21,10 @@
         display: flex;
         align-items: center;
         margin: 10px 0;
+        font-size: 14px;
 
         label {
-            color: var(--text-light);
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        input {
-            cursor: pointer;
+            text-transform: capitalize;
         }
     }
 }

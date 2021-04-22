@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
+import { stringify } from 'qs'
 
 import classes from './Pagination.module.scss'
 
-const Pagination = ({ pages, active, pagingCounter, count }) => {
+const Pagination = ({ pages, active = 1, pagingCounter, count, query }) => {
 
     if(pages <= 1) {
 
@@ -43,7 +44,7 @@ const Pagination = ({ pages, active, pagingCounter, count }) => {
     // add first pagination if startIndex is not the 1
     if (startIndex > 1) {
         pageNumbersArray.push(
-            <Link href={{ query: {page: active - 1} }} key="1">
+            <Link href={{ query: {...query, page: active - 1} }} key="1" shallow >
                 <a className={classes.page} aria-label='Previous page'>&lt;</a>
             </Link>
         )
@@ -55,7 +56,7 @@ const Pagination = ({ pages, active, pagingCounter, count }) => {
         const cssClass = active === i ? [classes.page, classes.active].join(' ') : classes.page
 
         pageNumbersArray.push(
-            <Link href={{ query: {page: i} }} key={i}>
+            <Link href={{ query: {...query, page: i} }} key={i} shallow >
                 <a className={cssClass}>{i}</a>
             </Link>
         )
@@ -64,7 +65,7 @@ const Pagination = ({ pages, active, pagingCounter, count }) => {
     // add last pagination if endPage is not the last pagination
     if (endIndex < pages) {
         pageNumbersArray.push(
-            <Link href={{ query: {page: active + 1} }} key={pages}>
+            <Link href={{ query: {...query, page: active + 1} }} key={pages} shallow >
                 <a className={classes.page} aria-label='Next page'>&gt;</a>
             </Link>
         )
@@ -73,7 +74,7 @@ const Pagination = ({ pages, active, pagingCounter, count }) => {
     return (
         <section className={classes.pagination}>
             <p className={classes.count}>
-                Showing {pagingCounter}-{count} of {pages} item(s)
+                Showing {pagingCounter}-{pagingCounter + count - 1} of {pages} item(s)
             </p>
             <div className={classes.pages}>
                 {pageNumbersArray}

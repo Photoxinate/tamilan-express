@@ -9,6 +9,8 @@
         .title {
             font-size: var(--size-h1);
             margin: 60px 0 40px;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
 
             @media (max-width: 600px) {
                 margin: 50px 0 30px;

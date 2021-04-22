@@ -10,6 +10,12 @@
         width: 23%;
         padding: 5px;
     }
+
+    .searchWrap {
+        box-sizing:border-box;
+        width: 25%;
+        padding-right: 20px;
+    }
 }
 @media(max-width:1250px){
     .container{

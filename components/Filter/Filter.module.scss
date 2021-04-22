@@ -5,15 +5,18 @@
     position: sticky;
     left: 0;
     top: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin-top: 20px;
 
     h3 {
         padding: 10px 20px;
-        background-color: var(--primary);
+        background-color: #4d545f;
         color: white;
     }
 
     .container {
-        background-color: #f5f5f5;;
         padding: 1px 20px;
     }
 
