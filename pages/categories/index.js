@@ -24,7 +24,7 @@ export const getStaticProps = async () => {
     const error = response.error
 
     if(!error)
-        categories = [...response.data]
+        categories = [...response.data.docs]
 
     return {
         props: { categories },

@@ -190,13 +190,6 @@ strong {
 
 }
 
-@media (max-width: 480px) {
-  .ui.button{
-    /* font-size: 12px !important; */
-  }
-  
-}
-
 @media (max-width: 340px) {
   .ui.button{
     font-size: 10px !important;
@@ -256,6 +249,13 @@ strong {
 
 .swiper-nav-prev svg {
   margin-left: -2px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: rgb(51, 51, 51);
+  width: 10px;
+  height: 10px;
+  vertical-align: middle;
 }
 
 /* categories dropdown menu style */

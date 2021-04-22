@@ -6,23 +6,21 @@
     width: 100%;
 
     .wrap{
-        box-sizing:border-box;
-        width: 23%;
-        padding: 5px;
+        width: calc(20% - 20px);
+        margin: 15px 10px;
     }
 
     .searchWrap {
-        box-sizing:border-box;
         width: calc(25% - 20px);
         padding: 0px;
-        margin: 0px 10px;
+        margin: 5px 10px;
     }
 }
 
 @media(max-width:1250px){
     .container{
         .wrap{
-            width: 30%;
+            width: calc(25% - 20px);
         }
 
         .searchWrap {
@@ -34,7 +32,7 @@
 @media(max-width:980px){
     .container{
         .wrap{
-            width: 45%;
+            width: calc(33.33% - 20px);
         }
     }
 }
@@ -57,17 +55,13 @@
 
 @media(max-width: 630px){
     .container{
-        .searchWrap {
+        .wrap{
             margin: 0px 5px;
             width: calc(50% - 10px);
         }
-    }
-}
-
-@media(max-width:400px){
-    .container{
-        .wrap{
-            width: 65%;
+        .searchWrap {
+            margin: 0px 5px;
+            width: calc(50% - 10px);
         }
     }
 }

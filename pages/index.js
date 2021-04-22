@@ -8,7 +8,7 @@ import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
 import { banners } from '../config/config';
 import fetch from '../config/fetch';
 
-const Home = ({ categories, products, error }) => {
+const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, buy1get2Prods }) => {
 
   console.log('[home] rendered')
 
@@ -24,9 +24,11 @@ const Home = ({ categories, products, error }) => {
         <Category categories={categories} />
       </HomeItemContainer>
 
-      <ProductCarousel products={products} carouselTitle={t('Caro-DOD')}/>
-      <ProductCarousel products={products} carouselTitle={t('Caro-New')}/>
-      <ProductCarousel products={products} carouselTitle={t('add-to-cart')}/>
+      {dealProds && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')}/>}
+      {buy1get1Prods && <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')}/>}
+      {buy1get2Prods && <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')}/>}
+      {recentProds && <ProductCarousel products={recentProds} carouselTitle={t('Caro-New')}/>}
+      {cartProds && <ProductCarousel products={cartProds} carouselTitle={t('add-to-cart')}/>}
     </>
   );
 };
@@ -34,27 +36,23 @@ const Home = ({ categories, products, error }) => {
 export const getStaticProps = async () => {
 
   let categories = []
-  let products = []
+
   const categoriesResponse = await fetch('categories?limit=10&sort=parent')
-  const prodResponse = await fetch('products?populate=category&filter[publish]=true')
-  const prodError = prodResponse.error
+  const homeProdResponse = await fetch('products?home=true')
+  const bannersResponse = await fetch('settings/banners')
+
   const error = categoriesResponse.error
   const data = categoriesResponse.data
-  const prodData = prodResponse.data
-
 
   if(!error)
     categories = [...data.docs]
-
-  if(!prodError)
-    products = [...prodData.docs]
     
   return {
     props: {
       categories,
-      products,
       error,
-      prodError
+      ...homeProdResponse.data,
+      ...bannersResponse
     },
     revalidate: 60,
   };

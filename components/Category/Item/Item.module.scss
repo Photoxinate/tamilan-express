@@ -12,6 +12,9 @@
         &:last-child {
             display: none;
         }
+        &:first-child {
+            display: flex;
+        }
     }
 
     img {

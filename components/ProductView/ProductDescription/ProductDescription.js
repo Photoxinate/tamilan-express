@@ -8,21 +8,21 @@ const ProductDescription = ({ description, warranty }) => {
   const descBtn = useRef();
 
   useEffect(() => {
-    descBtn.current.style.border = '1px solid #000';
+    descBtn.current.style.border = '2px solid #505050';
     descEl.current.style.display = 'block';
     warrantyEl.current.style.display = 'none';
   }, []);
 
   const toggleDesc = (e, type) => {
     if (type === 'description') {
-      descBtn.current.style.border = '1px solid #000';
-      warrantyBtn.current.style.border = '1px solid transparent';
+      descBtn.current.style.border = '2px solid #505050';
+      warrantyBtn.current.style.border = '2px solid transparent';
       warrantyEl.current.style.display = 'none';
       descEl.current.style.display = 'block';
     }
     if (type === 'warranty') {
-      warrantyBtn.current.style.border = '1px solid #000';
-      descBtn.current.style.border = '1px solid transparent';
+      warrantyBtn.current.style.border = '2px solid #505050';
+      descBtn.current.style.border = '2px solid transparent';
       descEl.current.style.display = 'none';
       warrantyEl.current.style.display = 'block';
     }
