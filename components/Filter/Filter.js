@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useWindowSize from '../../hooks/useWindowDimensions';
-import RangeSlider from '../RangeSlider/RangeSLider';
+import RangeSlider from '../RangeSlider/RangeSlider';
 import classes from './Filter.module.scss';
 import Item from './Item/Item';
 
