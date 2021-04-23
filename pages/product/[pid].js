@@ -4,7 +4,7 @@ import ProductDescription from '../../components/ProductView/ProductDescription/
 import ProductDetail from '../../components/ProductView/ProductDetail/ProductDetail';
 import ProductImageCarousel from '../../components/ProductView/ProductImageCarousel/ProductImageCarousel';
 import classes from './ProductView.module.scss';
-import BreadCrumb from '../../components/UI/BreadCrumb/BreadCrumb';
+import BreadCrumb from '../../components/UI/Breadcrumb/Breadcrumb';
 import Link from 'next/link'
 
 
