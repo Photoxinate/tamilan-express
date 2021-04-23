@@ -51,11 +51,10 @@ const ProductModal = ({ setShow }) => {
         </button>
         <div className={classes.imgWrap}>
           <img
-            // src={product.image[0]}
-            src="https://workmacro.com/wp-content/uploads/2018/02/1-by-1-1024x1024.png"
-            alt={'image of ' + product.name}
-            // width='150'
-            // height='150'
+              src={"https://media.tamilanexpress.ca/product/thumb400/" + product.image}
+              alt={'image of ' + product.name}
+              width='150px'
+              height='150px'
           />
         </div>
         <ProductDetail product={product} setShow={setShow} />

@@ -14,10 +14,6 @@ const base =
     ? 'file://D:/photoxinate/TamilanExpress/media/product/thumb400/'
     : 'https://media.tamilanexpress.ca/product/thumb400/';
 
-const imgs = [
-  'https://cdn2.webdamdb.com/md_IRLcaRTbLgZ1.png?1517915165',
-  'https://i.ebayimg.com/images/g/804AAOSwUuRgJZ1X/s-l500.jpg',
-];
 export const ProductImageCarousel = ({ images, name, type }) => {
   return (
     <div className={classes.container}>
@@ -30,9 +26,9 @@ export const ProductImageCarousel = ({ images, name, type }) => {
           prevEl: '.swiper-nav-prev',
         }}
       >
-        {imgs.map((image, i) => (
+        {images.map((image, i) => (
           <SwiperSlide>
-            <img src={image} key={i} alt={'image of ' + name} />
+            <img src={"https://media.tamilanexpress.ca/product/original/" + image} key={i} alt={'image of ' + name} />
           </SwiperSlide>
         ))}
       </Swiper>
