@@ -76,7 +76,6 @@ const index = ({ user, shippingCharge }) => {
       const headers = { Authorization: `Bearer ${session.accessToken}` }
       axios.get(`coupons/check/${code}`, { headers })
         .then(res => {
-          console.log(res.data)
           setAppliedCoupon(res.data)
           setCouponLoading(false)
         })
@@ -95,7 +94,6 @@ const index = ({ user, shippingCharge }) => {
 
   // Paypal intergration start
   const createOrderHandler = (data, actions) => {
-    console.log('here', grandTotal);
     return actions.order.create({
       intent: "CAPTURE",
       payer: {
@@ -175,8 +173,6 @@ const index = ({ user, shippingCharge }) => {
           }
           
         })
-
-      console.log(payload)
     }
       
     return order
@@ -260,7 +256,7 @@ const index = ({ user, shippingCharge }) => {
             {(loading || couponLoading) && <Loading />}
 
             <div className={classes.royalty}>
-              {userInfo.loyaltyPoints > 0 ? `You can redeem maximum of ${userInfo.loyaltyPoints} loyalty points.` : `Earn loyalty points by purchase more!`}
+              {userInfo.loyaltyPoints > 0 ? `You can redeem maximum of ${Math.floor(userInfo.loyaltyPoints * 100) / 100} loyalty points.` : `Earn loyalty points by purchase more!`}
             </div>
             {userInfo.loyaltyPoints > 0 &&
               <Input 

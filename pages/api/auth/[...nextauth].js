@@ -38,7 +38,6 @@ callbacks.signIn = async function signIn(user, account, profile) {
             return true;
         }
         catch (err) {
-            console.log({err});
             return false;
         }
     }
@@ -60,7 +59,6 @@ callbacks.signIn = async function signIn(user, account, profile) {
             return true;
         }
         catch (err) {
-            console.log({err});
             return false;
         }
     }

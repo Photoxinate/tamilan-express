@@ -7,8 +7,6 @@ import classes from './index.module.scss'
 
 const index = ({ error, data }) => {
 
-    console.log({error, data});
-
     const circumference = 38 * 2 * Math.PI
     const strokeDashoffset = circumference - 75 / 100 * circumference;
 
@@ -18,7 +16,7 @@ const index = ({ error, data }) => {
                 <h2> Loyalty Balance </h2>
                 <div className={classes.content}>
                     <div className={classes.progress}>
-                        <svg class={classes.ring} height={80} width={80} >
+                        <svg className={classes.ring} height={80} width={80} >
                             <circle 
                                 strokeWidth={4}  
                                 r={38} 
@@ -32,7 +30,7 @@ const index = ({ error, data }) => {
                     </div>
                     <div className={classes.info}>
                         <div className={classes.points}>
-                            {data.loyaltyPoints}pts
+                            {Math.floor(data.loyaltyPoints * 100) / 100}pts
                         </div>
                         <div className={classes.equal}>
                             1pt is equal to 1 CAD

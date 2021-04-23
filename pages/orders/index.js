@@ -7,11 +7,19 @@ import Link from 'next/link';
 import classes from './index.module.scss';
 import { getSession } from 'next-auth/client';
 import fetch from '../../config/fetch';
+import PageContainer from '../../components/PageContainer/PageContainer'
 
 const OrderView = ({ error, data }) => {
   
   if (data.length === 0) {
-    return 'Start Shopping';
+    return (
+      <PageContainer id={'Orders'} title={'Orders'} key={'orders'}>
+        <div className={classes.noOrders}>
+          {'You have made no orders yet. '}
+          <Link href='/'><a>{'Start shopping!'}</a></Link>
+        </div>
+      </PageContainer>
+    );
   }
 
   return (

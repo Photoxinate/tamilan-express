@@ -21,7 +21,6 @@ const DeliveryForm = ({ onCancel, email, mobile }) => {
     const { handleSubmit } = methods
 
     const formSubmitHandler = data => {
-        console.log({ data, session });
         
         const headers = { Authorization: `Bearer ${session.accessToken}` }
 

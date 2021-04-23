@@ -39,7 +39,6 @@ const PersonalForm = ({ onCancel, firstName, middleName, lastName, address, chec
         setLoading(true)
         axios.patch('users', data, { headers })
             .then(res => {
-                console.log(res);
                 addToast(`${checkout ? 'Billing address' : 'Personal info'} successfully updated!`, { appearance: 'success' })
                 setLoading(false)
                 onCancel('personal', res.data)
