@@ -13,8 +13,8 @@ import Link from 'next/link'
 const index = ({product}) => {
  
 const sections = [
-  { key: 'home', content: 'Home', as:Link, href:"/", link: true},
-  { key: product.category.name, content: product.category.name, as:Link, href:"/categories/"+product.category._id, link: true },
+  { key: 'home', content: 'Home', as:Link, href:"/"},
+  { key: product.category.name, content: product.category.name, as:Link, href:"/categories/"+product.category._id },
   { key: product.name, content: product.name, active: true },
 ]
 
