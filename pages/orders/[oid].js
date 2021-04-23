@@ -25,7 +25,6 @@ const OrderView = () => {
 
       axios.get('orders/me/' + oid, { headers }).then(
         (res) => {
-          console.log('res1', res);
           setOrder(res.data);
         },
         (error) => {

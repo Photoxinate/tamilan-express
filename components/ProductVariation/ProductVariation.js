@@ -7,16 +7,12 @@ const ProductVariation = ({error, addedVariations, variation, setVariation }) =>
   const variationChangeHandler = (e, data, name) => {
     const index = aVariations.findIndex((v) => v.name === name);
     if (index !== -1) {
-      console.log();
       aVariations.splice(index, 1);
       aVariations.push({ name: name, value: data.value });
-    console.log("removed added variations", aVariations);
 
     }else{
       aVariations.push({ name: name, value: data.value });
-    console.log("added variations", aVariations);
     }
-    console.log("variations", aVariations);
     setVariation(aVariations);
   };
   

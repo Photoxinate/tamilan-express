@@ -23,7 +23,6 @@ const DeliveryForm = ({ onCancel, address, checkout }) => {
     const { handleSubmit } = methods
 
     const formSubmitHandler = data => {
-        console.log(data);
         data = {
             deliveryAddress: { ...data }
         }

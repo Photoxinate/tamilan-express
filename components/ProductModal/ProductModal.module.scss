@@ -55,7 +55,8 @@
 @media (max-width: 768px) {
   .wrap {
     .productModal {
-      width: 80%;
+      width: 90%;
+      max-width: 320px;
     }
   }
 }

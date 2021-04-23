@@ -8,7 +8,6 @@ import fetch from '../../config/fetch';
 import classes from './index.module.scss'
 
 const index = ({ data }) => {
-    console.log(data.products);
 
     const { t } = useTranslation('receipt')
 

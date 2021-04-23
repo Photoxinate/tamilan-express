@@ -12,8 +12,6 @@ const index = () => {
 
   const router = useRouter()
 
-  console.log('[signin] rendered')
-
   const callbackUrl = router.query.callbackUrl ? router.query.callbackUrl : process.env.NEXTAUTH_URL
     
   return (

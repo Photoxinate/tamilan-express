@@ -1,5 +1,15 @@
 @import '../../styles/common';
 
+.noOrders{
+    padding: 100px 0px 150px;
+    text-align: center;
+  
+    a{
+      color: var(--primary);
+    }
+  
+}
+
 .wrap {
     @extend %maxWidth;
     padding: 100px 10px;

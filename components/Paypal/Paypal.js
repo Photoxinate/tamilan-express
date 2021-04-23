@@ -19,7 +19,6 @@ const Paypal = ({ onApprove, onError, orders }) => {
             window.paypal.Buttons({
 
                 createOrder: (data, actions) => {
-                    console.log('here');
                     return actions.order.create({
                         intent: "CAPTURE",
                         purchase_units: [
