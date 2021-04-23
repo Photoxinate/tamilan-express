@@ -54,8 +54,6 @@ const SideDrawer = ({ click, toggle, categories }) => {
         setPanels(accordify2(categories))
     }, [categories])
 
-    console.log('[Sidedrawer] re-rendered');
-
     return (
         <>
             <Backdrop clicked={click} show={toggle} />

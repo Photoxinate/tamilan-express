@@ -5,12 +5,10 @@ import Banner from '../components/Banner/Banner';
 import Category from '../components/Category/Category';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer';
 import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
-import { banners } from '../config/config';
+import { banners as configBanners } from '../config/config';
 import fetch from '../config/fetch';
 
-const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, buy1get2Prods }) => {
-
-  console.log('[home] rendered')
+const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, buy1get2Prods, banners }) => {
 
   const { t } = useTranslation('common')
 
@@ -44,6 +42,14 @@ export const getStaticProps = async () => {
   const error = categoriesResponse.error
   const data = categoriesResponse.data
 
+  let banners = configBanners
+
+  if(bannersResponse.data && bannersResponse.data.banners && Array.isArray(bannersResponse.data.banners)) {
+    banners = bannersResponse.data.banners.map((banner, i) => {
+      return { src: `${process.env.NEXT_PUBLIC_MEDIA_BASE_URL}/banners/original/${banner}`, alt: `Banner image ${i}` }
+    })
+  }
+
   if(!error)
     categories = [...data.docs]
     
@@ -52,7 +58,7 @@ export const getStaticProps = async () => {
       categories,
       error,
       ...homeProdResponse.data,
-      ...bannersResponse
+      banners
     },
     revalidate: 60,
   };

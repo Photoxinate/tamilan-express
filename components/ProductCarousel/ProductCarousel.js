@@ -47,7 +47,7 @@ const ProductCarousel = ({ products, carouselTitle }) => {
       // onSwiper={(swiper) => console.log(swiper)}
     >
       {products.map((product, i) => (
-        <SwiperSlide key={product.id}>
+        <SwiperSlide key={product._id}>
           <ProductCard product={product} />
         </SwiperSlide>
       ))}
