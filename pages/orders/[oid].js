@@ -51,7 +51,7 @@ const OrderView = () => {
           {order.products.map((product, i) => (
             <Item key={product._id}>
               <Item.Image
-                // src={product.product.image[0]}
+                // src={`https://media.tamilanexpress.ca/product/thumb200/${product.product.image[0]}`}
                 src="https://workmacro.com/wp-content/uploads/2018/02/1-by-1-1024x1024.png"
                 alt={'image of ' + product.product.name}
               />
@@ -80,22 +80,44 @@ const OrderView = () => {
       </div>
 
       <div className={classes.chequeWrap}>
-        <Table definition>
+        <Table definition >
           <Table.Body>
             <Table.Row>
               <Table.Cell width={2}>Order Status</Table.Cell>
               <Table.Cell>{order.status}</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell width={2}>Grand Total</Table.Cell>
-              <Table.Cell>{order.grandTotal}</Table.Cell>
+              <Table.Cell>Shipping Method</Table.Cell>
+              <Table.Cell>{order.shippingMethod.toUpperCase()}</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Sub total</Table.Cell>
-              <Table.Cell>{order.subTotal}</Table.Cell>
+              <Table.Cell>Delivery Address</Table.Cell>
+              <Table.Cell>
+                {order.deliveryAddress.name
+                  ? order.deliveryAddress.name 
+                  : null} <br />
+                {order.deliveryAddress.street1
+                  ? order.deliveryAddress.street1
+                  : null}
+                {order.deliveryAddress.street2
+                  ? ', ' + order.deliveryAddress.street2
+                  : null}
+                {order.deliveryAddress.city
+                  ? ', ' + order.deliveryAddress.city
+                  : null}
+                {order.deliveryAddress.state
+                  ? ', ' + order.deliveryAddress.state
+                  : null}
+                {order.deliveryAddress.zipCode
+                  ? ', ' + order.deliveryAddress.zipCode
+                  : null}
+                {order.deliveryAddress.country
+                  ? ', ' + order.deliveryAddress.country
+                  : null}
+              </Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Earned pointsor</Table.Cell>
+              <Table.Cell>Earned points</Table.Cell>
               <Table.Cell>{order.earnedPoints}</Table.Cell>
             </Table.Row>
             {order.coupon && (
@@ -105,41 +127,12 @@ const OrderView = () => {
               </Table.Row>
             )}
             <Table.Row>
-              <Table.Cell>Transaction Id</Table.Cell>
-              <Table.Cell>{order.transactionId}</Table.Cell>
+              <Table.Cell>Sub total</Table.Cell>
+              <Table.Cell>{order.subTotal}</Table.Cell>
             </Table.Row>
             <Table.Row>
-              <Table.Cell>Shipping Method</Table.Cell>
-              <Table.Cell>{order.shippingMethod}</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Delivery Address</Table.Cell>
-              <Table.Cell>
-                {order.deliveryAddress.name
-                  ? order.deliveryAddress.name + ', '
-                  : null}
-                {order.deliveryAddress.street
-                  ? order.deliveryAddress.street + ', '
-                  : null}
-                {order.deliveryAddress.street2
-                  ? order.deliveryAddress.street2 + ', '
-                  : null}
-                {order.deliveryAddress.city
-                  ? order.deliveryAddress.city + ', '
-                  : null}
-                {order.deliveryAddress.state
-                  ? order.deliveryAddress.state + ', '
-                  : null}
-                {order.deliveryAddress.country
-                  ? order.deliveryAddress.country + ', '
-                  : null}
-              </Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Zip code</Table.Cell>
-              <Table.Cell>
-                {order.deliveryAddress.zipCode}
-              </Table.Cell>
+              <Table.Cell width={2}>Grand Total</Table.Cell>
+              <Table.Cell>{order.grandTotal}</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>

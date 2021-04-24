@@ -22,11 +22,11 @@ const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, bu
         <Category categories={categories} />
       </HomeItemContainer>
 
-      {dealProds && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')}/>}
-      {buy1get1Prods && <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')}/>}
-      {buy1get2Prods && <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')}/>}
-      {recentProds && <ProductCarousel products={recentProds} carouselTitle={t('Caro-New')}/>}
-      {cartProds && <ProductCarousel products={cartProds} carouselTitle={t('add-to-cart')}/>}
+      {dealProds && dealProds.length > 0 && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')}/>}
+      {buy1get1Prods && buy1get1Prods.length > 0 &&  <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')}/>}
+      {buy1get2Prods && buy1get2Prods.length > 0 &&  <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')}/>}
+      {recentProds && recentProds.length > 0 &&  <ProductCarousel products={recentProds} carouselTitle={t('Caro-New')}/>}
+      {cartProds && cartProds.length > 0 &&  <ProductCarousel products={cartProds} carouselTitle={t('add-to-cart')}/>}
     </>
   );
 };
@@ -46,7 +46,7 @@ export const getStaticProps = async () => {
 
   if(bannersResponse.data && bannersResponse.data.banners && Array.isArray(bannersResponse.data.banners)) {
     banners = bannersResponse.data.banners.map((banner, i) => {
-      return { src: `${process.env.NEXT_PUBLIC_MEDIA_BASE_URL}/banners/original/${banner}`, alt: `Banner image ${i}` }
+      return { src: `${process.env.NEXT_PUBLIC_MEDIA_BASE_URL}/banner/original/${banner}`, alt: `Banner image of tamilan express ${i}` }
     })
   }
 
@@ -58,7 +58,7 @@ export const getStaticProps = async () => {
       categories,
       error,
       ...homeProdResponse.data,
-      banners
+      banners,
     },
     revalidate: 60,
   };

@@ -19,7 +19,7 @@ const RangeSlider = ({ min = 0, max = 100 }) => {
 
     if(min >= max) {
         min = 0
-        max = 100
+        max = max > 100 ? max : 100
     }
 
     const [values, setValues] = useState([min, max])

@@ -1,6 +1,7 @@
 .account {
     display: flex;
     flex-direction: column;
+    min-width: 120px;
 
     a {
         padding: 5px 15px;

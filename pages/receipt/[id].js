@@ -26,7 +26,7 @@ const index = ({ data }) => {
                         <p>Delivery address: </p> <span>{`
                             ${data.deliveryAddress.street1},
                             ${data.deliveryAddress.street2}${data.deliveryAddress.street2 && ', '}
-                            ${data.deliveryAddress.city}
+                            ${data.deliveryAddress.city},
                             ${data.deliveryAddress.state},
                             ${data.deliveryAddress.zipCode}
                         `}</span>

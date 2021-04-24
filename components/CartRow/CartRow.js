@@ -56,7 +56,7 @@ const CartRow = ({ product, checkout }) => {
   return (
     <div className={checkout ? [classes.grid, classes.checkout].join(' ') : classes.grid}>
       <div className={classes.image}>
-        <img width={120} height={120} src={'https://specials-images.forbesimg.com/imageserve/5f3c29cb61683479eecdf8fb/960x0.jpg?fit=scale'} alt={product.name} />
+        <img width={120} height={120} src={`https://media.tamilanexpress.ca/product/thumb200/${product.image[0]}`} alt={product.name} />
       </div>
       <div className={classes.details}>
         <div className={classes.name}><Link href={`/product/${product._id}`}><a>

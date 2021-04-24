@@ -24,7 +24,7 @@ const ProductCard2 = ({ product }) => {
 
   const discountLabel =
     product.discount > 0 ? (
-      <span className={classes.discount}> {product.discount}% </span>
+      <div className={classes.discount}> <span>{product.discount}%</span> </div>
     ) : null;
 
   const originalPrice =
@@ -45,51 +45,63 @@ const ProductCard2 = ({ product }) => {
             <img
               loading="lazy"
               itemProp="image"
-              src={"https://media.tamilanexpress.ca/product/thumb400/" + product.image}
+              // src='https://betterstudio.com/wp-content/uploads/2019/05/1-1-instagram-1024x1024.jpg'
+              src={"https://media.tamilanexpress.ca/product/thumb400/" + product.image[0]}
               alt={"image of" + product.name}
             />
           </a>
         </Link>
-        {discountLabel}
       </div>
 
-      <Link href={'/categories/' + product.category._id}>
-        <a itemProp="category" className={classes.category}>
-          {product.category.name}
-        </a>
-      </Link>
+      {discountLabel}
 
-      <Link href={'/product/' + product._id}>
-        <a itemProp="url">
-          <h3 itemProp="name" className={classes.name}>
-            {product.name}
-          </h3>
-        </a>
-      </Link>
+      <div className={classes.details}>
 
-      <div
-        itemProp="offers"
-        itemScope
-        itemType="https://schema.org/Offer"
-        className={classes.price}
-      >
-        {originalPrice}
-        <span itemProp="priceCurrency" content="USD">
-          {' '}
-          $
-        </span>
-        <span itemProp="price" content={price}>
-          {price}
-        </span>
+        {product.category ? 
+          <Link href={'/categories/' + product.category._id}>
+            <a itemProp="category" className={classes.category}>
+              {product.category.name}
+            </a>
+          </Link> : 
+          <a className={classes.category} style={{color: 'white', cursor: 'default'}}>
+            No Category
+          </a>
+        }
+
+        <Link href={'/product/' + product._id}>
+          <a itemProp="url">
+            <h3 itemProp="name" className={classes.name}>
+              {product.name}
+            </h3>
+          </a>
+        </Link>
+
+        <div
+          itemProp="offers"
+          itemScope
+          itemType="https://schema.org/Offer"
+          className={classes.price}
+        >
+          {originalPrice}
+          <span itemProp="priceCurrency" content="USD">
+            {' '}
+            $
+          </span>
+          <span itemProp="price" content={price}>
+            {price}
+          </span>
+        </div>
+
+        <Button
+          fluid
+          primary
+          compact
+          content={t('add-to-cart')}
+          onClick={addToCartHandler}
+        />
+
       </div>
 
-      <Button
-        fluid
-        primary
-        compact
-        content={t('add-to-cart')}
-        onClick={addToCartHandler}
-      />
     </article>
   );
 };

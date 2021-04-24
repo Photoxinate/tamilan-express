@@ -47,32 +47,34 @@ const OrderView = ({ error, data }) => {
                 <Item.Description>
                   Deliver Address :{' '}
                   {order.deliveryAddress.name
-                    ? order.deliveryAddress.name + ', '
-                    : null}
-                  {order.deliveryAddress.street
-                    ? order.deliveryAddress.street + ', '
+                    ? order.deliveryAddress.name 
+                    : null} <br />
+                  {order.deliveryAddress.street1
+                    ? order.deliveryAddress.street1
                     : null}
                   {order.deliveryAddress.street2
-                    ? order.deliveryAddress.street2 + ', '
+                    ? ', ' + order.deliveryAddress.street2
                     : null}
                   {order.deliveryAddress.city
-                    ? order.deliveryAddress.city + ', '
+                    ? ', ' + order.deliveryAddress.city
                     : null}
                   {order.deliveryAddress.state
-                    ? order.deliveryAddress.state + ', '
-                    : null}
-                  {order.deliveryAddress.country
-                    ? order.deliveryAddress.country + ', '
+                    ? ', ' + order.deliveryAddress.state
                     : null}
                   {order.deliveryAddress.zipCode
-                    ? order.deliveryAddress.zipCode + '.'
+                    ? ', ' + order.deliveryAddress.zipCode
+                    : null}
+                  {order.deliveryAddress.country
+                    ? ', ' + order.deliveryAddress.country
                     : null}
                 </Item.Description>
                 <Item.Extra>
-                  <Label>{order.status}</Label>
+                  <Label color={order.status === 'pending' ? 'grey' : order.status === 'completed' ? 'green' : order.status === 'shipped' ? 'teal' : 'red'}>
+                    {order.status}
+                  </Label>
                   <Link href={'/orders/' + order._id}>
                     <a className={classes.viewMore}>
-                      <Button primary floated="right">
+                      <Button floated="right">
                         View More
                         <Icon name="right chevron" />
                       </Button>

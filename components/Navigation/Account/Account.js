@@ -34,11 +34,14 @@ const Account = () => {
 
     const content = (
         <div className={classes.account}>
-            <Link href='/account'><a>
-                My Account
+            <Link href='/profile'><a>
+                My Profile
             </a></Link>
             <Link href='/orders'><a>
-                Orders
+                Order History
+            </a></Link>
+            <Link href='/loyalty'><a>
+                Loyalty Points
             </a></Link>
             <Link href='/api/auth/signout'><a className={classes.signout} onClick={(e) => { e.preventDefault(); signout() }}>
                 Sign Out

@@ -14,7 +14,7 @@ export const contact = {
 };
 
 export const social = {
-  facebook: 'https://facebook.com/tamilanexpress',
+  facebook: 'https://www.facebook.com/Tamilan-Express-193409722177221',
   instagram: 'https://instagram.com/tamilanexpress',
   twitter: 'https://twitter.com/tamilanexpress',
 }

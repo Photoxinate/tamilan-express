@@ -7,7 +7,13 @@ const Item = ({ name, image, id }) => {
     return (
         <Link href={`/categories/${id}`}>
             <a className={classes.container}> 
-                <img src={image} width={50} height={50} loading='lazy' alt={'category - ' + name} />
+                <img 
+                    src={`https://media.tamilanexpress.ca/category/thumb60/${image}`} 
+                    width={50} 
+                    height={50} 
+                    loading='lazy' 
+                    alt={'category - ' + name} 
+                    />
                 <div className={classes.title}>{name}</div>
             </a>
         </Link>

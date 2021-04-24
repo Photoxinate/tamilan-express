@@ -64,7 +64,7 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
                     <Filter
                         types={types}
                         dimensions={data.docs.filter(prod=> prod.dimension)}
-                        categories={categories}
+                        categories={categories.filter(cat => cat)}
                         brands={brands.filter(brand => brand)}
                         prices={prices}
                      />

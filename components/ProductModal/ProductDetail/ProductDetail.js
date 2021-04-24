@@ -8,6 +8,7 @@ import { updateCart } from '../../../store/actions/cart';
 import ProductVariation from '../../ProductVariation/ProductVariation';
 import Quantity from '../../UI/Quantity/Quantity';
 import ProductPrice from '../ProductPrice/ProductPrice';
+import { useRouter } from 'next/router'
 import classes from './ProductDetail.module.scss';
 
 const ProductDetail = ({ product }) => {
@@ -23,7 +24,9 @@ const ProductDetail = ({ product }) => {
 
   const [qty, setQty] = useState(1);
 
-  const addToCart = () => {
+  const { push } = useRouter()
+
+  const addToCart = (now = false) => {
     if (product.variation) {
       const error = product.variation.length !== variation.length
       setIsError(error)
@@ -32,11 +35,17 @@ const ProductDetail = ({ product }) => {
         product.variations = variation
         dispatch({ type: actionTypes.CLOSE_MODAL });
         dispatch(updateCart(product, qty));
+
+        if(now) 
+          push('/cart')
       }
     } else {
       product.variations = variation
       dispatch({ type: actionTypes.CLOSE_MODAL });
       dispatch(updateCart(product, qty));
+
+      if(now) 
+        push('/cart')
     }
   };
 
@@ -82,11 +91,11 @@ const ProductDetail = ({ product }) => {
           primary
           compact
         />
-        <Link href="/cart">
-          <a>
-            <Button content={t('Buy-now')} onClick={addToCart} compact />
-          </a>
-        </Link>
+        <Button 
+          content={t('Buy-now')} 
+          onClick={() => addToCart('now')} 
+          compact 
+        />
       </div>
     </div>
   );

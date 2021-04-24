@@ -172,6 +172,10 @@ strong {
   font-size: 14px;
 }
 
+.ui.items>.item>.content>.header {
+  font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system !important;
+}
+
 @media (max-width: 862px) {
   .ui.button{
     font-size: 14px;
