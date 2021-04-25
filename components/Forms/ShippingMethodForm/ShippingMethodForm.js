@@ -25,7 +25,7 @@ const ShippingMethodForm = ({ shippingMethod, onShippingMethodChange, commentRef
       <div>
         <Form.Field>
           <Radio
-            label={`Regular shipping GTA only (free above $${minGta})`}
+            label={t('regular-shipping-pre') + minGta + t('regular-shipping-post')}
             name="radioGroup"
             value="gta"
             checked={shippingMethod === 'gta'}
@@ -36,7 +36,7 @@ const ShippingMethodForm = ({ shippingMethod, onShippingMethodChange, commentRef
       <div>
         <Form.Field>
           <Radio
-            label="Outside of GTA"
+            label={t('outside-gta')}
             name="radioGroup"
             value="outside"
             checked={shippingMethod === 'outside'}
@@ -47,7 +47,7 @@ const ShippingMethodForm = ({ shippingMethod, onShippingMethodChange, commentRef
       <div>
         <Form.Field>
           <Radio
-            label="Pickup from store"
+            label={t('pickup')}
             name="radioGroup"
             value="pickup"
             checked={shippingMethod === 'pickup'}

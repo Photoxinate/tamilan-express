@@ -49,5 +49,13 @@
     "all-rights": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை",
     "powered-by-pre": "",
     "powered-by-post": "மூலம் இயக்கப்படுகிறது.",
-    "photoxinate": "ஃபோட்டோக்சினேட்"
+    "photoxinate": "ஃபோட்டோக்சினேட்",
+
+    "remove": "அகற்று",
+    "update": "புதுப்பி",
+    "sub-total": "கூட்டுத்தொகை",
+    "order-total": "மொத்தம்",
+    "shipping": "டெலிவரி",
+    "coupon-discount": "கூப்பன் தள்ளுபடி",
+    "loyalty-points": "லயல்டி புள்ளிகள்"
 }

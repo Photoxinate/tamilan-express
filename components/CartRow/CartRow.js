@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -11,6 +12,8 @@ const CartRow = ({ product, checkout }) => {
   const [qty, setQty] = useState(product.qty)
 
   const dispatch = useDispatch()
+
+  const { t } = useTranslation('common')
 
   let total = product.discount && product.discount > 0 ? 
     (product.price - (product.price * product.discount / 100)) * product.qty : product.price * product.qty
@@ -32,7 +35,7 @@ const CartRow = ({ product, checkout }) => {
       type='submit' 
       className={classes.update} 
       aria-label='update product quantity' 
-      onClick={qtyChangeHandler}>Update</button>
+      onClick={qtyChangeHandler}>{t('update')}</button>
   ) : null
 
   const priceHTML = product.discount && product.discount > 0 ? (
@@ -81,7 +84,7 @@ const CartRow = ({ product, checkout }) => {
         </div>
         <div className={classes.actions}>
           {updateHTML}
-          <button aria-label='remove product from cart' onClick={productRemoveHandler}>Remove</button>
+          <button aria-label='remove product from cart' onClick={productRemoveHandler}>{t('remove')}</button>
         </div>
       </div>
     </div>

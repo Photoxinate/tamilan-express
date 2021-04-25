@@ -14,6 +14,12 @@
     "shipping-method": "Shipping Method",
     "delivery-text": "My delivery and billing addresses are the same.",
     "change": "Change",
-    "shipping-text": "• If you would like to add a comment about your order, please write it in the field box."
+    "shipping-text": "• If you would like to add a comment about your order, please write it in the field box.",
+
+    "order-summary": "Order Summary",
+    "regular-shipping-pre": "Regular shipping GTA only (free above $",
+    "regular-shipping-post": ")",
+    "outside-gta": "Outside of GTA",
+    "pickup": "Pickup from store"
 
 }

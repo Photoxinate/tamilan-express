@@ -48,6 +48,14 @@
     "all-rights": "All Rights Reserved",
     "powered-by-pre": "Powered by",
     "powered-by-post": "",
-    "photoxinate": "Photoxinate."
+    "photoxinate": "Photoxinate.",
+
+    "remove": "Remove",
+    "update": "Update",
+    "sub-total": "Sub Total",
+    "order-total": "Order Total",
+    "shipping": "Shipping",
+    "coupon-discount": "Coupon Discount",
+    "loyalty-points": "Loyalty Points"
     
 }

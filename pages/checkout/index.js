@@ -245,7 +245,7 @@ const index = ({ user, shippingCharge }) => {
 
           <section className={classes.section}>
             {(loading || couponLoading) && <Loading />}
-            <h2>Order Summary</h2>
+            <h2>{t('order-summary')}</h2>
             {products.map(cartProduct => (
               <CartRow
                 checkout
@@ -294,27 +294,27 @@ const index = ({ user, shippingCharge }) => {
           <section className={[classes.section, classes.main].join(' ')}>
             {(loading || couponLoading) && <Loading style={{ zIndex: 101 }} />}
             <div className={classes.fields}>
-              <div>SubTotal</div>
+              <div>{t('common:sub-total')}</div>
               <div>${total}</div>
             </div>
             <div className={classes.fields}>
-              <div>Shipping</div>
+              <div>{t('common:shipping')}</div>
               <div>${shippingFee}</div>
             </div>
             {redeemedLoyalty > 0 &&
               <div className={classes.fields}>
-                <div>Loyalty Point</div>
+                <div>{t('common:loyalty-points')}</div>
                 <div>-${redeemedLoyalty}</div>
               </div>
             }
             {appliedCoupon &&
               <div className={classes.fields}>
-                <div>Coupon Discount</div>
+                <div>{t('common:coupon-discount')}</div>
                 <div>-${appliedCoupon.value}</div>
               </div>
             }
             <div className={[classes.fields, classes.total].join(' ')}>
-              <div>Order Total</div>
+              <div>{t('common:order-total')}</div>
               <div>${grandTotal}</div>
             </div>
             <PayPalButtons 
