@@ -28,8 +28,12 @@
 
             @media (max-width: 540px) {
                 margin: 20px auto;
-                width: 90%;
+                width: 99%;
                 order: 3;
+            }
+
+            input, input:focus {
+                color: #414141;
             }
         }
 

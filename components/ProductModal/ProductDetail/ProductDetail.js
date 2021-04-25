@@ -26,7 +26,7 @@ const ProductDetail = ({ product }) => {
 
   const { push } = useRouter()
 
-  const addToCart = (now = false) => {
+  const addToCart = (now) => {
     if (product.variation) {
       const error = product.variation.length !== variation.length
       setIsError(error)
@@ -51,7 +51,7 @@ const ProductDetail = ({ product }) => {
 
   return (
     <div className={classes.prodDetail}>
-      <div className={classes.prodCategory}>{product.category.name}</div>
+      {product.category && <div className={classes.prodCategory}>{product.category.name}</div>}
 
       <div className={classes.prodName}>
           {product.name}
@@ -87,13 +87,13 @@ const ProductDetail = ({ product }) => {
       <div className={classes.btnWrap}>
         <Button
           content={t('add-to-cart')}
-          onClick={addToCart}
+          onClick={() => addToCart(false)}
           primary
           compact
         />
         <Button 
           content={t('Buy-now')} 
-          onClick={() => addToCart('now')} 
+          onClick={() => addToCart(true)} 
           compact 
         />
       </div>

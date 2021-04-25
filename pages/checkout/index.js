@@ -56,7 +56,8 @@ const index = ({ user, shippingCharge }) => {
     setAddrAvailability(data.hasOwnProperty('address'))
   }
 
-  const loyaltyRedeemHandler = () => {
+  const loyaltyRedeemHandler = e => {
+    e.preventDefault()
     const value = +loyaltyRef.current.value
     if(value >= 0 && value <= userInfo.loyaltyPoints && value <= (grandTotal + redeemedLoyalty)) {
       setRedeemedLoyalty(+value.toFixed(2))
@@ -64,6 +65,9 @@ const index = ({ user, shippingCharge }) => {
   }
 
   const couponApplyHandler = e => {
+    if(e !== COUNT_CHANGED )
+      e.preventDefault()
+
     setCouponError(null)
     let code = couponRef.current?.value
     if(e === COUNT_CHANGED && appliedCoupon)
@@ -85,7 +89,9 @@ const index = ({ user, shippingCharge }) => {
           setAppliedCoupon(undefined)
         })
     }
-
+    else if(code === '') {
+      setAppliedCoupon(undefined)
+    }
   }
 
   const errorMessageCloseHandler = () => {
@@ -187,9 +193,9 @@ const index = ({ user, shippingCharge }) => {
   useEffect(() => {
     let newShippingFee = 0
     if(shippingCharge && shippingMethod === 'gta')
-      newShippingFee = total >= shippingCharge.minGta ? 0 : shippingCharge.gta
+      newShippingFee = total >= shippingCharge.minGta ? 0 : +shippingCharge.gta
     if(shippingCharge && shippingMethod === 'outside')
-      newShippingFee = shippingCharge.others
+      newShippingFee = +shippingCharge.others
 
     setShippingFee(newShippingFee)
     
@@ -259,25 +265,29 @@ const index = ({ user, shippingCharge }) => {
               {userInfo.loyaltyPoints > 0 ? `You can redeem maximum of ${Math.floor(userInfo.loyaltyPoints * 100) / 100} loyalty points.` : `Earn loyalty points by purchase more!`}
             </div>
             {userInfo.loyaltyPoints > 0 &&
-              <Input 
-                action
-                max={userInfo.loyaltyPoints <= (grandTotal + redeemedLoyalty) ? userInfo.loyaltyPoints : (grandTotal + redeemedLoyalty)}
-                min={0}
-                step={0.2}
-                type='number'
-                fluid 
-                name='Enter loyalty points to redeem'
-                placeholder='loyalty points to redeem' 
-                className={classes.pointsInput} >
-                  <input ref={loyaltyRef} onSubmit={loyaltyRedeemHandler} />
-                  <Button content={t('redeem')} onClick={loyaltyRedeemHandler} />
-              </Input> 
+              <form onSubmit={loyaltyRedeemHandler}>
+                <Input 
+                  action
+                  max={userInfo.loyaltyPoints <= (grandTotal + redeemedLoyalty) ? userInfo.loyaltyPoints : (grandTotal + redeemedLoyalty)}
+                  min={0}
+                  step={0.1}
+                  type='number'
+                  fluid 
+                  name='Enter loyalty points to redeem'
+                  placeholder='loyalty points to redeem' 
+                  className={classes.pointsInput} >
+                    <input ref={loyaltyRef} />
+                    <Button type='submit' content={t('redeem')} />
+                </Input> 
+              </form>
             }
-            <Input fluid action placeholder='Enter coupon code' name='coupon code' className={classes.pointsInput} >
-              <input ref={couponRef} />
-              <Button content={t('apply')} onClick={couponApplyHandler} />
-            </Input>
-            {couponError && <span className={classes.couponError}>{couponError}</span>}
+            <form onSubmit={couponApplyHandler}>
+              <Input fluid action placeholder='Enter coupon code' name='coupon code' className={classes.pointsInput} >
+                <input ref={couponRef} />
+                <Button type='submit' content={t('apply')} />
+              </Input>
+              {couponError && <span className={classes.couponError}>{couponError}</span>}
+            </form>
 
           </section>
 

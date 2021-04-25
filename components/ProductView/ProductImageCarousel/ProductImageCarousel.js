@@ -27,7 +27,7 @@ export const ProductImageCarousel = ({ images, name, type }) => {
         }}
       >
         {images.map((image, i) => (
-          <SwiperSlide>
+          <SwiperSlide key={i}>
             <img src={"https://media.tamilanexpress.ca/product/original/" + image} key={i} alt={'image of ' + name} />
           </SwiperSlide>
         ))}

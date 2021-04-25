@@ -77,6 +77,7 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
                                     active={data.page} 
                                     pagingCounter={data.pagingCounter}
                                     count={data.docs.length}
+                                    total={data.total}
                                     query={query} /> 
                             </>
                             : 

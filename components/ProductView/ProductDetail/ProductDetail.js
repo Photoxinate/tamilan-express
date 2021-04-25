@@ -9,6 +9,7 @@ import Quantity from '../../UI/Quantity/Quantity';
 import ProductPrice from '../ProductPrice/ProductPrice';
 import ProductVariation from '../../ProductVariation/ProductVariation';
 import classes from './ProductDetail.module.scss';
+import { useRouter } from 'next/router';
 
 const ProductDetail = ({ product, ...props }) => {
   const dispatch = useDispatch();
@@ -23,7 +24,9 @@ const ProductDetail = ({ product, ...props }) => {
 
   const [qty, setQty] = useState(1);
 
-  const addToCart = () => {
+  const { push } = useRouter();
+
+  const addToCart = (now = false) => {
     if (product.variation) {
       const error = product.variation.length !== variation.length;
       setIsError(error);
@@ -31,9 +34,15 @@ const ProductDetail = ({ product, ...props }) => {
       if (!error) {
         product.variations = variation;
         dispatch(updateCart(product, qty));
+        
+        if(now) 
+          push('/cart')
       }
     } else {
       dispatch(updateCart(product, qty));
+      
+      if(now) 
+        push('/cart')
     }
   };
 
@@ -99,18 +108,14 @@ const ProductDetail = ({ product, ...props }) => {
           primary
           disabled={!isStock}
           content={t('add-to-cart')}
-          onClick={addToCart}
+          onClick={() => addToCart(false)}
         />
-        <Link href="/cart">
-          <a>
-            <Button
-              primary
-              disabled={!isStock}
-              onClick={addToCart}
-              content={t('Buy-now')}
-            />
-          </a>
-        </Link>
+        <Button
+          primary
+          disabled={!isStock}
+          onClick={() => addToCart(true)}
+          content={t('Buy-now')}
+        />
       </div>
     </div>
   );

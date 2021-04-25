@@ -31,6 +31,13 @@
       margin-top: 10px;
     }
 
+    @media (max-width: 862px) {
+      button {
+        font-size: 1rem;
+        padding: .7rem !important;
+      }
+    }
+
   }
 
 }

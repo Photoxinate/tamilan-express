@@ -49,7 +49,7 @@ const CartRow = ({ product, checkout }) => {
 
   const variationHTML = product.variations ? (
     <div className={classes.options}>
-      {product.variations.map(vari => (<span className={classes.option}> {vari.value} </span>))}
+      {product.variations.map(vari => (<span key={vari.value} className={classes.option}> {vari.value} </span>))}
     </div>
   ) : null
 

@@ -177,6 +177,7 @@ strong {
 }
 
 @media (max-width: 862px) {
+
   .ui.button{
     font-size: 14px;
   }
@@ -197,9 +198,8 @@ strong {
 
 @media (max-width: 340px) {
   .ui.button{
-    font-size: 10px !important;
+    font-size: 12px !important;
   }
-  
 }
 
 

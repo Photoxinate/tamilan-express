@@ -8,15 +8,13 @@ import BreadCrumb from '../../components/UI/Breadcrumb/Breadcrumb';
 import Link from 'next/link'
 
 
-
-
 const index = ({product}) => {
  
-const sections = [
-  { key: 'home', content: 'Home', as:Link, href:"/"},
-  { key: product.category.name, content: product.category.name, as:Link, href:"/categories/"+product.category._id },
-  { key: product.name, content: product.name, active: true },
-]
+  const sections = [
+    { key: 'home', content: 'Home', as:Link, href:"/"},
+    { key: product.category.name, content: product.category.name, as:Link, href:"/categories/"+product.category._id },
+    { key: product.name, content: product.name, active: true },
+  ]
 
   return (
     <div className={classes.productContainer}>
@@ -40,7 +38,7 @@ export const getStaticProps = async ctx => {
   // const response = await fetch(`products/${id}`)
   const response = await fetch(`products/${id}`)
   const product = { ...response.data }
-  console.log("RESPONSE>>>>>",product);
+  
   return {
       props: { product },
       revalidate: 60*5

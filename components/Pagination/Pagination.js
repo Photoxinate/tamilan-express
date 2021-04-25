@@ -4,7 +4,7 @@ import { stringify } from 'qs'
 
 import classes from './Pagination.module.scss'
 
-const Pagination = ({ pages, active = 1, pagingCounter, count, query }) => {
+const Pagination = ({ pages, active = 1, pagingCounter, count, query, total }) => {
 
     if(pages <= 1) {
 
@@ -74,7 +74,7 @@ const Pagination = ({ pages, active = 1, pagingCounter, count, query }) => {
     return (
         <section className={classes.pagination}>
             <p className={classes.count}>
-                Showing {pagingCounter}-{pagingCounter + count - 1} of {pages} item(s)
+                Showing {pagingCounter}-{pagingCounter + count - 1} of {total} item(s)
             </p>
             <div className={classes.pages}>
                 {pageNumbersArray}

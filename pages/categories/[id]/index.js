@@ -20,7 +20,7 @@ const index = ({ category, subCategories, products }) => {
     ) : null
 
     const productsHTML = products.length > 0 ? (
-        <ItemContainer title={t('Footer-Prod')} id='sub-categories'>
+        <ItemContainer id='products' >
             <ProductContainer products={products} />
         </ItemContainer>
     ) : null
