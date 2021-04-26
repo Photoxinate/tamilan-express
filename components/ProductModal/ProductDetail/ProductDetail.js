@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import { updateCart } from '../../../store/actions/cart';
 import ProductVariation from '../../ProductVariation/ProductVariation';
@@ -57,15 +58,19 @@ const ProductDetail = ({ product }) => {
           {product.name}
       </div>
 
-      <ProductPrice price={product.price} discount={product.discount} />
-
       <div className={classes.itemWrap}>
         {isStock ? (
-          <span className={classes.prodStock}> In Stock </span>
+          <Label color='green' horizontal>
+          In Stock
+        </Label>
         ) : (
-          <span className={classes.prodNoStock}> Out of Stock </span>
+          <Label color='red' horizontal>
+          Out of Stock
+        </Label>
         )}
       </div>
+
+      <ProductPrice price={product.price} discount={product.discount} />
 
       {product.weight && (
         <div className={classes.itemWrap}>
