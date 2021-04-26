@@ -246,10 +246,10 @@ const index = ({ user, shippingCharge }) => {
           <section className={classes.section}>
             {(loading || couponLoading) && <Loading />}
             <h2>{t('order-summary')}</h2>
-            {products.map(cartProduct => (
+            {products.map(cartProduct=> (
               <CartRow
                 checkout
-                key={cartProduct._id}
+                key={cartProduct._id + JSON.stringify(cartProduct.variations)}
                 product={cartProduct}
               />
             ))}

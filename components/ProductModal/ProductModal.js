@@ -43,7 +43,7 @@ const ProductModal = ({ setShow }) => {
 
           {product.type === 'buy 1 get 2nd off' ? (
               <Label as="a" color="red" ribbon className={classes.customLabel}>
-                Buy 1 get 2nd {product.offDiscount} off
+                Buy 1 get 2nd {product.offDiscount}% off
               </Label>
           ) : null}
         <button className={classes.closeBtn} onClick={closeModal}>

@@ -30,7 +30,7 @@ const index = ({ error, data }) => {
                     </div>
                     <div className={classes.info}>
                         <div className={classes.points}>
-                            {Math.floor(data.loyaltyPoints * 100) / 100}pts
+                            {data.loyaltyPoints && data.loyaltyPoints > 0 ? Math.floor(data.loyaltyPoints * 100) / 100 : 0}pts
                         </div>
                         <div className={classes.equal}>
                             1pt is equal to 1 CAD

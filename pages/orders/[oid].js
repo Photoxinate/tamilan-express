@@ -51,8 +51,8 @@ const OrderView = () => {
           {order.products.map((product, i) => (
             <Item key={product._id}>
               <Item.Image
-                // src={`https://media.tamilanexpress.ca/product/thumb200/${product.product.image[0]}`}
-                src="https://workmacro.com/wp-content/uploads/2018/02/1-by-1-1024x1024.png"
+                src={`https://media.tamilanexpress.ca/product/thumb200/${product.product.image[0]}`}
+                // src="https://workmacro.com/wp-content/uploads/2018/02/1-by-1-1024x1024.png"
                 alt={'image of ' + product.product.name}
               />
               <Item.Content>

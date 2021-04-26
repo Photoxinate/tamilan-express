@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes'
 import axios from '../../axios'
 import { updateObject } from '../reducers/utility'
 import { getSession } from 'next-auth/client'
+import deepEqual from 'fast-deep-equal'
 
 const updateCartStart = () => {
     return {
@@ -166,11 +167,14 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
         }
 
         if(qty === 0) {
-            carts = carts.filter(cart => cart._id != product._id)
+            carts = carts.filter(cart => 
+                cart._id != product._id || 
+                (cart._id === cartDto._id && !deepEqual(cart.variations, product.variations))
+            )
         }
-        else if(carts.some(cart => cart._id === product._id)) {
+        else if(carts.some(cart => cart._id === product._id && deepEqual(cart.variations, product.variations))) {
             carts = carts.map(cart => {
-                if(cart._id === product._id) {
+                if(cart._id === product._id && deepEqual(cart.variations, product.variations)) {
                   cart = updateObject(cart, { qty })
                 }
                 

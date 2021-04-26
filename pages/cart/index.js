@@ -31,7 +31,7 @@ const index = () => {
           <div className={classes.items}>
             {cartProds.map(cartProduct => (
               <CartRow
-                key={cartProduct._id}
+                key={cartProduct._id + JSON.stringify(cartProduct.variations)}
                 product={cartProduct}
               />
             ))}
