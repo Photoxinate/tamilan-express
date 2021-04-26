@@ -53,6 +53,18 @@ const ProductDetail = ({ product, ...props }) => {
 
       <div className={classes.prodName}>{product.name}</div>
 
+      <div className={classes.itemWrap}>
+        {isStock ? (
+          <Label color='green' horizontal>
+          In Stock
+        </Label>
+        ) : (
+          <Label color='red' horizontal>
+          Out of Stock
+        </Label>
+        )}
+      </div>
+
       <ProductPrice price={product.price} discount={product.discount} />
 
       {product.type === 'buy 1 get 1 free' ? (
@@ -70,14 +82,6 @@ const ProductDetail = ({ product, ...props }) => {
           </Label>
         </div>
       ) : null}
-
-      <div className={classes.itemWrap}>
-        {isStock ? (
-          <span className={classes.prodStock}> In Stock </span>
-        ) : (
-          <span className={classes.prodNoStock}> Out of Stock </span>
-        )}
-      </div>
 
       {product.weight && (
         <div className={classes.itemWrap}>

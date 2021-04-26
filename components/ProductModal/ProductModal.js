@@ -33,31 +33,36 @@ const ProductModal = ({ setShow }) => {
     return null;
   }
   return (
-    <div className={classes.wrap}>
-      <div className={classes.productModal}>
-      {product.type === 'buy 1 get 1 free' ? (
-              <Label as="a" color="red" ribbon className={classes.customLabel}>
-                Buy 1 get 1 free
-              </Label>
-          ) : null}
+    <div className={classes.background}>
+      <div className={classes.container}>
+        {product.type === 'buy 1 get 1 free' ? (
+          <Label as="a" color="red" ribbon className={classes.customLabel}>
+            Buy 1 get 1 free
+          </Label>
+        ) : null}
 
-          {product.type === 'buy 1 get 2nd off' ? (
-              <Label as="a" color="red" ribbon className={classes.customLabel}>
-                Buy 1 get 2nd {product.offDiscount} off
-              </Label>
-          ) : null}
+        {product.type === 'buy 1 get 2nd off' ? (
+          <Label as="a" color="red" ribbon className={classes.customLabel}>
+            Buy 1 get 2nd {product.offDiscount} off
+          </Label>
+        ) : null}
         <button className={classes.closeBtn} onClick={closeModal}>
           <X size="18" color="white" />
         </button>
-        <div className={classes.imgWrap}>
-          <img
-              src={"https://media.tamilanexpress.ca/product/thumb400/" + product.image}
+        <div className={classes.productModal}>
+          <div className={classes.imgWrap}>
+            <img
+              src={
+                'https://media.tamilanexpress.ca/product/thumb400/' +
+                product.image
+              }
               alt={'image of ' + product.name}
-              width='150px'
-              height='150px'
-          />
+              width="150px"
+              height="150px"
+            />
+          </div>
+          <ProductDetail product={product} setShow={setShow} />
         </div>
-        <ProductDetail product={product} setShow={setShow} />
       </div>
     </div>
   );

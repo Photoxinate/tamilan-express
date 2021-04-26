@@ -22,25 +22,30 @@
 
   .itemWrap {
     margin: 10px 5px;
-
-    .prodStock {
-      font-weight: 600;
-      color: #30b619;
-    }
-
-    .prodNoStock {
-      font-weight: 600;
-      color: var(--text-light);
-    }
   }
 
   .btnWrap {
     border-top: 1px solid var(--text-lighter);
     padding: 10px 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     button {
       margin: 5px 5px;
+    }
+  }
+}
+
+@media(max-width:768px){
+  .prodDetail{
+    .btnWrap{
+      flex-direction: column;
+
+      button{
+        padding: 10px !important;
+        width: 100%;
+      }
     }
   }
 }
