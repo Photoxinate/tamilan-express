@@ -17,7 +17,7 @@ const SubTotal = () => {
     <div className={classes.wrap}>
       
       <div className={classes.row}>
-        <div className={classes.col}>Sub-total</div>
+        <div className={classes.col}>{t('common:sub-total')}</div>
         <div className={classes.col}>${total}</div>
       </div>
       <div className={classes.btnWrap}>

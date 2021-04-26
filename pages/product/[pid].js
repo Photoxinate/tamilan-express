@@ -35,8 +35,8 @@ const index = ({product}) => {
 
 export const getStaticProps = async ctx => {
   const id = ctx.params.pid;
-  // const response = await fetch(`products/${id}`)
-  const response = await fetch(`products/${id}`)
+  
+  const response = await fetch(`products/${id}?populate=category`)
   const product = { ...response.data }
   
   return {
