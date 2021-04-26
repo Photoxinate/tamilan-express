@@ -66,7 +66,7 @@ const ProductDetail = ({ product, ...props }) => {
       {product.type === 'buy 1 get 2nd off' ? (
         <div className={classes.itemWrap}>
           <Label as="a" color="red" tag>
-            Buy 1 get 2nd {product.offDiscount} off
+            Buy 1 get 2nd {product.offDiscount}% off
           </Label>
         </div>
       ) : null}
