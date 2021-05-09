@@ -1,41 +1,54 @@
-import React from 'react';
+import { useSession } from 'next-auth/client';
+import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import InputText from '../../UI/Input/Input';
+import { useToasts } from 'react-toast-notifications';
+import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Input from '../../UI/Input/Input';
 import classes from './ContactForm.module.scss';
 
 const ContactFrom = () => {
-  const methods = useForm();
 
-  const { handleSubmit, reset } = methods;
+  const [ session ] = useSession()
 
-  const onSubmit = async (data) => {
-    console.log('DATA>>>>', data);
-    // setLoading(true)
-    // try {
-    //   await saveFormData(data);
-    //   setLoading(false)
-    //   toast('Message successfully sent. We will contact you ASAP!')
-    //   reset()
-    // } catch (e) {
-    //   setLoading(false)
-    //   toast.dark('Something went wrong. Try again!')
-    // }
-  };
+  const [loading, setLoading] = useState(false)
+
+  const methods = useForm()
+
+  const { addToast } = useToasts()
+
+  const { handleSubmit } = methods
+
+  const formSubmitHandler = data => {
+        
+    const headers = { Authorization: `Bearer ${session.accessToken}` }
+
+    setLoading(true)
+    axios.patch('users', data, { headers })
+        .then(res => {
+            addToast('Contact info successfully updated!', { appearance: 'success' })
+            setLoading(false)
+            onCancel('contact', res.data)
+        })
+        .catch(err => {
+            setLoading(false)
+            addToast(err.response.data.message, { appearance: 'error' })
+        })
+}
 
   return (
     <div className={classes.wrap}>
       <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(formSubmitHandler)}>
           <div className={classes.inputWrapper}>
-            <InputText name="name" placeHolder="Name" max="100" />
-            <InputText name="email" placeHolder="E-mail" max="50" />
-            <InputText name="phone" placeHolder="Phone" max="20" />
-            <InputText name="message" placeHolder="Message" max="150" />
+            <Input name="name" helperText="Enter valid name" placeholder="Name" form required/>
+            <Input name="email" placeholder="E-mail" form required />
+            <Input name="phone" placeholder="Phone" form required/>
+            <Input name="message" placeholder="Message" form required max="150" />
           </div>
-        </form>
+          <Form.Button primary type='submit' disabled={loading} > {loading ? 'LOADING..' : 'SUBMIT'} </Form.Button>
+        </Form>
       </FormProvider>
-      <Button content="Submit" primary />
     </div>
   );
 };

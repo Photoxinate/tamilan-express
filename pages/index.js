@@ -4,6 +4,7 @@ import React from 'react';
 import Banner from '../components/Banner/Banner';
 import Category from '../components/Category/Category';
 import HomeItemContainer from '../components/HomeItemContainer/HomeItemContainer';
+import Popup from '../components/Popup/Popup';
 import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
 import { banners as configBanners } from '../config/config';
 import fetch from '../config/fetch';
@@ -11,6 +12,8 @@ import fetch from '../config/fetch';
 const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, buy1get2Prods, banners }) => {
 
   const { t } = useTranslation('common')
+
+  // typeof window != 'undefined'?localStorage.setItem('isPopup', true):null
 
   return (
     <>
@@ -22,6 +25,8 @@ const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, bu
         <Category categories={categories} />
       </HomeItemContainer>
 
+      <Popup/>
+      {/* {typeof window != 'undefined' && (!localStorage.getItem('isPopup') || localStorage.getItem('isPopup') === true) && <Popup image={dealProds}/>} */}
       {dealProds && dealProds.length > 0 && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')}/>}
       {buy1get1Prods && buy1get1Prods.length > 0 &&  <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')}/>}
       {buy1get2Prods && buy1get2Prods.length > 0 &&  <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')}/>}
