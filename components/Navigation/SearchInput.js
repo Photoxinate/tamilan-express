@@ -34,7 +34,7 @@ const SearchInput = () => {
     return (
         <form onSubmit={submitHandler}>
             <Form.Input 
-                defaultValue={search}
+                value={search}
                 maxLength={40}
                 onChange={inputChangeHandler}
                 action={{ icon: <Search aria-label='search' color='#fff' size={16} strokeWidth={3} />, primary: true }} 

@@ -348,7 +348,7 @@ export const getServerSideProps = async (ctx) => {
   const headers = { Authorization: `Bearer ${session.accessToken}` }
   const user = await fetch('users/me', { headers })
 
-  const settings = await fetch('settings')
+  const settings = await fetch('settings/shippingCharge')
 
   return {
     props: {
