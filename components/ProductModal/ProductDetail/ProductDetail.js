@@ -92,12 +92,14 @@ const ProductDetail = ({ product }) => {
       <div className={classes.btnWrap}>
         <Button
           content={t('add-to-cart')}
+          disabled={!isStock}
           onClick={() => addToCart(false)}
           primary
           compact
         />
         <Button 
           content={t('Buy-now')} 
+          disabled={!isStock}
           onClick={() => addToCart(true)} 
           compact 
         />

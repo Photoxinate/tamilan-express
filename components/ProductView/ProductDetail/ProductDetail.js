@@ -89,6 +89,12 @@ const ProductDetail = ({ product, ...props }) => {
           Weight : <span className={classes.prodWeight}>{product.weight}</span>
         </div>
       )}
+
+      {product.dimensions && (
+        <div className={classes.itemWrap}>
+          Dimension : <span className={classes.prodWeight}>{product.dimensions}</span>
+        </div>
+      )}
       {product.variation && (
         <div className={classes.itemWrap}>
           <ProductVariation

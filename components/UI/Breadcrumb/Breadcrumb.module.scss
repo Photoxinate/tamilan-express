@@ -1,3 +1,7 @@
+@import '../../../styles/common';
+
 .wrap{
-    margin: 20px 10px;
+    @extend %maxWidth;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
