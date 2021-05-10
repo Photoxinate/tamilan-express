@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown'
 import Link from 'next/link'
 import { Globe, Dollar } from '../Icons/Icons'
 import { useRouter } from 'next/router'
 import { contact } from '../../config/config'
+import { fetchCart } from '../../store/actions/shipping'
+import { useDispatch, useSelector } from 'react-redux'
 
 import classes from './Header.module.scss'
 
 const Header = () => {
 
     const { asPath, locale } = useRouter()
+
+    const minGta = useSelector(state => state.shipping.minGta)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchCart())
+    }, [])
 
     const handleLanguageChange = lang => {
         document.cookie = 'NEXT_LOCALE=' + lang + ';max-age=31536000;samesite=lax;path=/'
@@ -21,8 +31,8 @@ const Header = () => {
         <div className={classes.header}>
             <div className={classes.container}>
                 <p>
-                    <span style={{color: '#aaa'}}>Email:</span> <a href={'mailto:' + contact.email} >{contact.email}</a> | 
-                    Free Shipping for all order above $99
+                    <span style={{color: '#aaa'}}>Email:</span> <a href={'mailto:' + contact.email} >{contact.email}</a> 
+                    {minGta && ` | Free Shipping for all order above $${minGta}`}
                 </p>
                 <div className={classes.options}>
                     <Dropdown button labeled compact value={locale} text={lang} aria-label='Select language' title='Select language' icon={<i className={'icon ' + classes.icon}><Globe size={17} color='#eee' /></i>} className={'header-op icon ' + classes.select}>

@@ -15,4 +15,6 @@ export const FETCH_CART = 'FETCH_CART';
 export const CLEAR_CART = 'CLEAR_CART';
 export const UPDATE_TOTAL = 'UPDATE_TOTAL';
 export const UPDATE_COUNT = 'UPDATE_COUNT';
+
+export const FETCH_SHIPPING = 'FETCH_SHIPPING';
  
