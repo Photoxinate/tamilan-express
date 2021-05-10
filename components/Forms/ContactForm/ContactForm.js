@@ -24,9 +24,9 @@ const ContactFrom = () => {
     const headers = { Authorization: `Bearer ${session.accessToken}` }
 
     setLoading(true)
-    axios.patch('users', data, { headers })
+    axios.post('email/contact', data, { headers })
         .then(res => {
-            addToast('Contact info successfully updated!', { appearance: 'success' })
+            addToast('Submitted Successfully!', { appearance: 'success' })
             setLoading(false)
             onCancel('contact', res.data)
         })
@@ -44,7 +44,7 @@ const ContactFrom = () => {
             <Input name="name" helperText="Enter valid name" placeholder="Name" form required/>
             <Input name="email" placeholder="E-mail" form required />
             <Input name="phone" placeholder="Phone" form required/>
-            <Input name="message" placeholder="Message" form required max="150" />
+            <Input name="message" placeholder="Message" form required multiline rows={5} max="150" />
           </div>
           <Form.Button primary type='submit' disabled={loading} > {loading ? 'LOADING..' : 'SUBMIT'} </Form.Button>
         </Form>
