@@ -18,6 +18,22 @@
   .items {
     width: 70%;
     margin-right: 15px;
+
+    .clear {
+      display: block;
+      margin-left: auto;
+      margin-top: 15px;
+      margin-right: 10px;
+      background-color: transparent;
+      border: none;
+      color: var(--primary);
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(.6);
+      }
+    } 
   }
 
   .totals {

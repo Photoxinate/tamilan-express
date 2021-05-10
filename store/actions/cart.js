@@ -169,7 +169,7 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
         if(qty === 0) {
             carts = carts.filter(cart => 
                 cart._id != product._id || 
-                (cart._id === cartDto._id && !deepEqual(cart.variations, product.variations))
+                (cart._id === product._id && !deepEqual(cart.variations, product.variations))
             )
         }
         else if(carts.some(cart => cart._id === product._id && deepEqual(cart.variations, product.variations))) {
@@ -193,6 +193,23 @@ export const updateCart = (product, qty = 1, type = undefined) => async dispatch
 
 }
 
-export const clearCart = () => dispatch => {
-    dispatch(clearCartSuccess())
+export const clearCart = () => async dispatch => {
+    const session = await getSession()
+    dispatch(updateCartStart())
+
+    if(session) {
+        const headers = { Authorization: `Bearer ${session.accessToken}` }
+        
+        axios.delete('users/cart', { headers })
+            .then(res => {
+                dispatch(clearCartSuccess())
+            })
+            .catch(err => {
+                dispatch(updateCartFail(err))
+            })
+    }
+    else {
+        localStorage.removeItem('cartProducts')
+        dispatch(clearCartSuccess())
+    }
 }

@@ -39,6 +39,7 @@ const ProductDetail = ({ product, ...props }) => {
           push('/cart')
       }
     } else {
+      product.variations = undefined
       dispatch(updateCart(product, qty));
       
       if(now) 
