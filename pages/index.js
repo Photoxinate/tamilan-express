@@ -1,5 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import Head from 'next/head';
+import { stringify } from 'qs';
 import React from 'react';
 import Banner from '../components/Banner/Banner';
 import Category from '../components/Category/Category';
@@ -35,7 +36,15 @@ export const getStaticProps = async () => {
 
   let categories = []
 
-  const categoriesResponse = await fetch('categories?limit=10&sort=parent')
+  const categoryQuery = {
+    limit: 10,
+    sort: 'parent',
+    filter: {
+      parent: { $exists: false }
+    }
+  }
+
+  const categoriesResponse = await fetch(`categories?${stringify(categoryQuery, { encode: false })}`)
   const homeProdResponse = await fetch('products?home=true')
   const bannersResponse = await fetch('settings/banners')
 

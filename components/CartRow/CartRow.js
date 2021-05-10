@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import { updateCart } from '../../store/actions/cart';

@@ -41,7 +41,7 @@ const ProductDetail = ({ product }) => {
           push('/cart')
       }
     } else {
-      product.variations = variation
+      product.variations = undefined
       dispatch({ type: actionTypes.CLOSE_MODAL });
       dispatch(updateCart(product, qty));
 
