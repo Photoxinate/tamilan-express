@@ -11,8 +11,19 @@
 
     .imgWrap {
       width: 50%;
-      padding: 20px;
+      padding: 10px;
+      margin: 10px;
       text-align: center;
+    }
+
+    .prodDetailWrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 50%;
+      padding: 10px;
+      margin: 10px;
     }
   }
   .carouselWrap{
@@ -25,6 +36,9 @@
     .productFlex {
       flex-direction: column;
       .imgWrap {
+        width: 100%;
+      }
+      .prodDetailWrap{
         width: 100%;
       }
     }

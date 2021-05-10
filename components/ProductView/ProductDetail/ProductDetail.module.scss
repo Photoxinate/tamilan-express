@@ -1,13 +1,5 @@
 .prodDetail {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex: 50%;
-  padding: 10px;
-  margin: 10px;
 
-  
   .prodName {
     font-size: 28px;
     font-weight: 600;
@@ -44,9 +36,7 @@
 }
 
 @media(max-width:768px){
-  .prodDetail{
-    flex: 100%;
-    
+  .prodDetail{    
     .productBuy{
       button{
         font-size: 15px !important;
