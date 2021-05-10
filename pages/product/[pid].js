@@ -31,7 +31,9 @@ const index = ({ product, relatedProds }) => {
             name={product.name}
           />
         </div>
-        <ProductDetail product={product} />
+        <div className={classes.prodDetailWrap}>
+          <ProductDetail product={product} />
+        </div>
       </div>
       <ProductDescription
         description={product.description}

@@ -52,10 +52,9 @@ const ProductModal = ({ setShow }) => {
         <div className={classes.productModal}>
           <div className={classes.imgWrap}>
             <img
-              src={
-                'https://media.tamilanexpress.ca/product/thumb400/' +
-                product.image
-              }
+              src={`https://media.tamilanexpress.ca/product/thumb400/${
+                Array.isArray(product.image) ? product.image[0] : product.image
+              }`}
               alt={'image of ' + product.name}
               width="150px"
               height="150px"

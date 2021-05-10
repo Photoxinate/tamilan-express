@@ -9,7 +9,7 @@ import ProductCarousel from '../components/ProductCarousel/ProductCarousel';
 import { banners as configBanners } from '../config/config';
 import fetch from '../config/fetch';
 
-const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, buy1get2Prods, banners }) => {
+const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, buy1get2Prods, banners, popup }) => {
 
   const { t } = useTranslation('common')
 
@@ -23,13 +23,12 @@ const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, bu
         <Category categories={categories} />
       </HomeItemContainer>
 
-      {/* <Popup/> */}
-      {typeof window != 'undefined' && !localStorage.getItem('isPopup') && <Popup image={dealProds}/>}
       {dealProds && dealProds.length > 0 && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')}/>}
       {buy1get1Prods && buy1get1Prods.length > 0 &&  <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')}/>}
       {buy1get2Prods && buy1get2Prods.length > 0 &&  <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')}/>}
       {recentProds && recentProds.length > 0 &&  <ProductCarousel products={recentProds} carouselTitle={t('Caro-New')}/>}
       {cartProds && cartProds.length > 0 &&  <ProductCarousel products={cartProds} carouselTitle={t('add-to-cart')}/>}
+      {popup && (typeof window != 'undefined') && !localStorage.getItem('isPopup') && <Popup popup={popup}/>}
     </>
   );
 };
@@ -41,9 +40,12 @@ export const getStaticProps = async () => {
   const categoriesResponse = await fetch('categories?limit=10&sort=parent')
   const homeProdResponse = await fetch('products?home=true')
   const bannersResponse = await fetch('settings/banners')
+  const popupResponse = await fetch('settings/popup')
 
   const error = categoriesResponse.error
   const data = categoriesResponse.data
+
+  const popup = popupResponse.data
 
   let banners = configBanners
 
@@ -62,6 +64,7 @@ export const getStaticProps = async () => {
       error,
       ...homeProdResponse.data,
       banners,
+      popup
     },
     revalidate: 60,
   };
