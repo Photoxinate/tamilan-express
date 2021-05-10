@@ -7,6 +7,7 @@ import PageContainer from '../../../components/PageContainer/PageContainer'
 import ProductContainer from '../../../components/ProductContainer/ProductContainer'
 import ViewMore from '../../../components/ViewMore/ViewMore'
 import { stringify } from 'qs';
+import ComingSoon from '../../../components/ComingSoon/ComingSoon';
 
 
 const index = ({ category, subCategories, products }) => {
@@ -23,7 +24,7 @@ const index = ({ category, subCategories, products }) => {
         <ItemContainer id='products' >
             <ProductContainer products={products} />
         </ItemContainer>
-    ) : null
+    ) : <ComingSoon/>
 
     let viewMore = null
 

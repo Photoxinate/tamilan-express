@@ -7,7 +7,7 @@ export const Popup = ({ image }) => {
   const [showPopup, setshowPopup] = useState(true)
 
   const onClose = () => {
-    // (typeof window != 'undefined')?localStorage.setItem('isPopup', false):null
+    (typeof window != 'undefined')?localStorage.setItem('isPopup', false):null
     setshowPopup(false)
   }
   return (

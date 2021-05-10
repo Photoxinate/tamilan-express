@@ -13,8 +13,6 @@ const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, bu
 
   const { t } = useTranslation('common')
 
-  // typeof window != 'undefined'?localStorage.setItem('isPopup', true):null
-
   return (
     <>
       <Head>
@@ -25,8 +23,8 @@ const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, bu
         <Category categories={categories} />
       </HomeItemContainer>
 
-      <Popup/>
-      {/* {typeof window != 'undefined' && (!localStorage.getItem('isPopup') || localStorage.getItem('isPopup') === true) && <Popup image={dealProds}/>} */}
+      {/* <Popup/> */}
+      {typeof window != 'undefined' && !localStorage.getItem('isPopup') && <Popup image={dealProds}/>}
       {dealProds && dealProds.length > 0 && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')}/>}
       {buy1get1Prods && buy1get1Prods.length > 0 &&  <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')}/>}
       {buy1get2Prods && buy1get2Prods.length > 0 &&  <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')}/>}
