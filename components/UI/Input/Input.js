@@ -29,19 +29,19 @@ const validations = {
   },
   phone: {
     pattern: {
-      value: /^([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4,5}$/,
+      value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
       message: "That doesn't look like a mobile number",
     },
   },
   mobile: {
     pattern: {
-      value: /^([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4,5}$/,
+      value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
       message: "That doesn't look like a mobile number",
     },
   },
   contact: {
     pattern: {
-      value: /^([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4,5}$/,
+      value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
       message: "That doesn't look like a mobile number",
     },
   },

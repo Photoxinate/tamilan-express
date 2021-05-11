@@ -7,6 +7,7 @@ import ProductCarousel from '../../components/ProductCarousel/ProductCarousel';
 import classes from './ProductView.module.scss';
 import BreadCrumb from '../../components/UI/Breadcrumb/Breadcrumb';
 import Link from 'next/link';
+import { stringify } from 'qs';
 
 const index = ({ product, relatedProds }) => {
   const sections = [
@@ -39,13 +40,13 @@ const index = ({ product, relatedProds }) => {
         description={product.description}
         warranty={product.warranty}
       />
-      <div className={classes.carouselWrap}>
+      {relatedProds && <div className={classes.carouselWrap}>
         <ProductCarousel
           className={classes.carouselWrap}
           products={relatedProds}
           carouselTitle="Related Products"
         />
-      </div>
+      </div>}
     </div>
   );
 };
@@ -58,12 +59,12 @@ export const getStaticProps = async (ctx) => {
 
   const relatedProdsFilter = {
     filter: {
-      category: product.category,
+      category: product.category._id,
     },
   };
 
   const relatedProdsresponse = await fetch(
-    `products/?${JSON.stringify(relatedProdsFilter)}&populate=category`
+    `products/?${stringify(relatedProdsFilter)}&populate=category`
   );
   const relatedProds = [...relatedProdsresponse.data.docs];
 

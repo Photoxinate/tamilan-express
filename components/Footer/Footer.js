@@ -40,9 +40,9 @@ const Footer = () => {
                     <div className={classes.nav}>
                         <h3>{t('Footer-Prod')} </h3>
                         <Link href='/categories'><a>{t('Footer-Cat')}</a></Link>
-                        <Link href='/shop/deal-of-the-day'><a>{t('Footer-DoD')}</a></Link>
-                        <Link href='/shop/new-arrivals'><a>{t('Footer-NewArrival')}</a></Link>
-                        <Link href='/shop/featured-products'><a>{t('Footer-Featured')}</a></Link>
+                        <Link href='/#deals'><a>{t('Footer-DoD')}</a></Link>
+                        <Link href='/#recentproducts'><a>{t('Footer-NewArrival')}</a></Link>
+                        <Link href='/#buy1get1'><a>{t('Footer-Buy1get1')}</a></Link>
                     </div>
                     <div className={classes.nav}>
                         <h3>{t('Footer-Company')}</h3>

@@ -24,10 +24,10 @@ const Home = ({ categories, cartProds, recentProds, dealProds, buy1get1Prods, bu
         <Category categories={categories} />
       </HomeItemContainer>
 
-      {dealProds && dealProds.length > 0 && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')}/>}
-      {buy1get1Prods && buy1get1Prods.length > 0 &&  <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')}/>}
-      {buy1get2Prods && buy1get2Prods.length > 0 &&  <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')}/>}
-      {recentProds && recentProds.length > 0 &&  <ProductCarousel products={recentProds} carouselTitle={t('Caro-New')}/>}
+      {dealProds && dealProds.length > 0 && <ProductCarousel products={dealProds} carouselTitle={t('Caro-DOD')} title='deals'/>}
+      {buy1get1Prods && buy1get1Prods.length > 0 &&  <ProductCarousel products={buy1get1Prods} carouselTitle={t('home:buy1-get1')} title='buy1get1'/>}
+      {buy1get2Prods && buy1get2Prods.length > 0 &&  <ProductCarousel products={buy1get2Prods} carouselTitle={t('home:buy1-get2')} title='buy1get2'/>}
+      {recentProds && recentProds.length > 0 &&  <ProductCarousel products={recentProds} carouselTitle={t('Caro-New')} title='recentproducts'/>}
       {cartProds && cartProds.length > 0 &&  <ProductCarousel products={cartProds} carouselTitle={t('add-to-cart')}/>}
       {popup && (typeof window != 'undefined') && !localStorage.getItem('isPopup') && <Popup popup={popup}/>}
     </>

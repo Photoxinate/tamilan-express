@@ -31,6 +31,7 @@ const Quantity = ({ setQty, qty, max }) => {
         name="quantity"
         type="number"
         value={qty}
+        onChange={()=>{}}
         min="1"
         size="2"
         max={max}

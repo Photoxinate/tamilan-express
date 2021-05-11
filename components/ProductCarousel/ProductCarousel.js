@@ -12,7 +12,7 @@ import SwiperNav from '../SwiperNav/SwiperNav';
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-const ProductCarousel = ({ products, carouselTitle }) => {
+const ProductCarousel = ({ products, carouselTitle, title }) => {
 
   const { width } = useWindowSize();
 
@@ -34,7 +34,7 @@ const ProductCarousel = ({ products, carouselTitle }) => {
   }
 
   return (
-    <div className={classes.carouselWrap}>
+    <div className={classes.carouselWrap} id={title}>
       <h2>{carouselTitle}</h2>
       <Swiper
       spaceBetween={spaceBetween}

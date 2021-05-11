@@ -5,7 +5,6 @@ import classes from './Popup.module.scss';
 export const Popup = ({ popup }) => {
 
   const [showPopup, setshowPopup] = useState(true)
-  console.log("popup image", popup);
   const onClose = () => {
     (typeof window != 'undefined')?localStorage.setItem('isPopup', false):null
     setshowPopup(false)

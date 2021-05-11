@@ -18,17 +18,17 @@ const ContactFrom = () => {
 
   const { addToast } = useToasts()
 
-  const { handleSubmit } = methods
+  const { handleSubmit, reset } = methods
 
-  const formSubmitHandler = data => {
+  const formSubmitHandler = (data) => {
         
-    const headers = { Authorization: `Bearer ${session.accessToken}` }
-
     setLoading(true)
-    axios.post('email/contact', data, { headers })
+    axios.post('email/contact', data)
         .then(res => {
             addToast('Submitted Successfully!', { appearance: 'success' })
             setLoading(false)
+
+            reset()
         })
         .catch(err => {
             setLoading(false)
