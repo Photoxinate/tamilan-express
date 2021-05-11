@@ -1,5 +1,5 @@
 .wrap{
-    padding: 3rem;
+    padding: 1rem;
 
     h2{
         font-size: 40px;
@@ -8,8 +8,12 @@
         padding: 20px 0;
     }
     width: 70%;
-        margin: 10px auto;
-        text-align: center;
+    margin: 10px auto;
+    text-align: center;
+
+    .inputWrapper{
+      margin: 20px 0px;
+    }
 
 }
 
@@ -17,8 +21,7 @@
 
   @media (max-width: 800px) {
     .wrap{
-        padding: 3rem 2rem;
-        
+        padding: 1rem 2rem;   
         width: 90%;
     
     }
@@ -27,8 +30,7 @@
 
   @media (max-width: 550px) {
     .wrap{
-        padding: 3rem 1rem;
-        
+        padding: 1rem 1rem;
         width: 100%;
     
     }

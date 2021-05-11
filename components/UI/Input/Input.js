@@ -67,6 +67,14 @@ const validations = {
   },
   state: {
     required: 'Please select your state'
+  },
+
+  message:{
+    // pattern:{
+    //   value: /^[A-Za-z0-9 \'\"\!\@\#\$\%\&\*\(\)\_\-\+\=\.\?\,]+$/gm,
+    //   message: "Invalid characters found in message!",
+    // }
+
   }
 }
 
@@ -107,6 +115,19 @@ const InputText = ({ label, name, helper, max, type, placeHolder, defaultValue, 
         defaultValue={defaultVal}
         render={({onChange, value}) => (
           <Form.Select fluid error={isError} label={label} onChange={(e, { value }) => { onChange(value) }} value={value} {...rest} />
+        )}
+      />
+    )
+
+  if(form && type === 'textArea')
+    return (
+      <Controller
+        control={control}
+        name={name}
+        rules={validations[name]}
+        defaultValue={defaultVal}
+        render={({onChange, value}) => (
+          <Form.TextArea fluid error={isError} label={label} onChange={(e, { value }) => { onChange(value) }} value={value} {...rest} />
         )}
       />
     )

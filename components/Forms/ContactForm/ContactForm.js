@@ -5,6 +5,7 @@ import { useToasts } from 'react-toast-notifications';
 import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Input from '../../UI/Input/Input';
+import axios from '../../../axios'
 import classes from './ContactForm.module.scss';
 
 const ContactFrom = () => {
@@ -28,7 +29,6 @@ const ContactFrom = () => {
         .then(res => {
             addToast('Submitted Successfully!', { appearance: 'success' })
             setLoading(false)
-            onCancel('contact', res.data)
         })
         .catch(err => {
             setLoading(false)
@@ -44,7 +44,7 @@ const ContactFrom = () => {
             <Input name="name" helperText="Enter valid name" placeholder="Name" form required/>
             <Input name="email" placeholder="E-mail" form required />
             <Input name="phone" placeholder="Phone" form required/>
-            <Input name="message" placeholder="Message" form required multiline rows={5} max="150" />
+            <Input name="message" placeholder="Message" form type="textArea" required multiline rows={5} max="150" />
           </div>
           <Form.Button primary type='submit' disabled={loading} > {loading ? 'LOADING..' : 'SUBMIT'} </Form.Button>
         </Form>

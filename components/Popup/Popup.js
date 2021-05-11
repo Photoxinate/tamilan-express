@@ -5,7 +5,7 @@ import classes from './Popup.module.scss';
 export const Popup = ({ popup }) => {
 
   const [showPopup, setshowPopup] = useState(true)
-
+  console.log("popup image", popup);
   const onClose = () => {
     (typeof window != 'undefined')?localStorage.setItem('isPopup', false):null
     setshowPopup(false)
@@ -20,7 +20,7 @@ export const Popup = ({ popup }) => {
           <X size="18" color="white" />
         </button>
         <img
-          src={'https://media.tamilanexpress.ca/pop/original/' + popup}
+          src={'https://media.tamilanexpress.ca/popup/original/' + popup.popup}
           alt="popup image"
         />
       </div>
