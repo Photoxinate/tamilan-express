@@ -38,6 +38,10 @@
 
   .totals {
     width: 30%;
+
+    &.marg {
+      margin-top: 35px;
+    }
   }
 }
 
@@ -52,6 +56,10 @@
 
     .totals {
       width: 100%;
+
+      &.marg {
+        margin-top: 0px;
+      }
     }
   }
 }

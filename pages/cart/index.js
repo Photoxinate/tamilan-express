@@ -33,6 +33,8 @@ const index = () => {
     )
   } 
 
+  const totalClass = cartProds.length > 1 ? [classes.totals, classes.marg].join(' ') : classes.totals
+
   return (
     <PageContainer title={t('cart-title')} id={'cart'} >
         <div className={classes.container}>
@@ -45,7 +47,7 @@ const index = () => {
               />
             ))}
           </div>
-          <div className={classes.totals}>
+          <div className={totalClass}>
             <SubTotal />
           </div>
         </div>

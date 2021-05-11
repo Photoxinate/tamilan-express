@@ -19,7 +19,10 @@ const initialState = {
     show: false,
     product: null,
   },
-  categories: []
+  categories: [],
+  shipping: {
+    minGta: 100
+  }
 }
 
 const initStore = (preloadedState = initialState) => {
