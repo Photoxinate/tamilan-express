@@ -1,9 +1,15 @@
-import React from 'react';
+import React from 'react'
+import Head from 'next/head'
+
 import classes from './index.module.scss'
 
 const index = () => {
     return (
         <section>
+            <Head>
+                <title>Tamilan Express - Terms and Conditions</title>
+                <meta name='description' content='Terms and conditions of Tamilan Express' />
+            </Head>
             <div className={classes.wrap}>
                 <h1>Terms and Conditions</h1>
 

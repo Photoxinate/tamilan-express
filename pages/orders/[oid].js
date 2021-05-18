@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
-import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
-import Table from 'semantic-ui-react/dist/commonjs/collections/Table';
-import Item from 'semantic-ui-react/dist/commonjs/views/Item';
-import classes from './OrderView.module.scss';
-import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/client';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import Table from 'semantic-ui-react/dist/commonjs/collections/Table';
+import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
+import Item from 'semantic-ui-react/dist/commonjs/views/Item';
 import axios from '../../axios';
 import Loading from '../../components/UI/Loading/Loading';
+import classes from './OrderView.module.scss';
 
 const OrderView = () => {
   const router = useRouter();

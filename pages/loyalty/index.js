@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/client'
 import React from 'react'
-import PageContainer from '../../components/PageContainer/PageContainer'
+import PageContainer from '../../hoc/PageContainer/PageContainer'
 import fetch from '../../config/fetch'
 
 import classes from './index.module.scss'

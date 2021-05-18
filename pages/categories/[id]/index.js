@@ -3,7 +3,7 @@ import React from 'react';
 import fetch from '../../../config/fetch';
 import ItemContainer from '../../../components/ItemContainer/ItemContainer'
 import Category from '../../../components/Category/Category'
-import PageContainer from '../../../components/PageContainer/PageContainer'
+import PageContainer from '../../../hoc/PageContainer/PageContainer'
 import ProductContainer from '../../../components/ProductContainer/ProductContainer'
 import ViewMore from '../../../components/ViewMore/ViewMore'
 import { stringify } from 'qs';

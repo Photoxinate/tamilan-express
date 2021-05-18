@@ -5,7 +5,7 @@ import ProductContainer from '../../components/ProductContainer/ProductContainer
 import { useRouter } from 'next/router'
 import fetch from '../../config/fetch'
 import { stringify, parse } from 'qs'
-import PageContainer from '../../components/PageContainer/PageContainer'
+import PageContainer from '../../hoc/PageContainer/PageContainer'
 import NoResult from '../../components/NoResult/NoResult'
 import useSWR from 'swr'
 import deepEqual from 'fast-deep-equal'

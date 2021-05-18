@@ -3,9 +3,10 @@ import Link from 'next/link';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CartRow from '../../components/CartRow/CartRow';
-import PageContainer from '../../components/PageContainer/PageContainer';
+import PageContainer from '../../hoc/PageContainer/PageContainer';
 import SubTotal from '../../components/SubTotal/SubTotal';
 import { clearCart } from '../../store/actions/cart';
+import Head from 'next/head'
 
 import classes from './index.module.scss';
 
@@ -37,20 +38,24 @@ const index = () => {
 
   return (
     <PageContainer title={t('cart-title')} id={'cart'} >
-        <div className={classes.container}>
-          <div className={classes.items}>
-            {cartProds.length > 1 && <button className={classes.clear} onClick={clearCartHandler}>Clear all</button>}
-            {cartProds.map(cartProduct => (
-              <CartRow
-                key={cartProduct._id + JSON.stringify(cartProduct.variations)}
-                product={cartProduct}
-              />
-            ))}
-          </div>
-          <div className={totalClass}>
-            <SubTotal />
-          </div>
+      <Head>
+          <title>Tamilan Express - Your Cart</title>
+          <meta name='description' content='Cart details' />
+      </Head>
+      <div className={classes.container}>
+        <div className={classes.items}>
+          {cartProds.length > 1 && <button className={classes.clear} onClick={clearCartHandler}>Clear all</button>}
+          {cartProds.map(cartProduct => (
+            <CartRow
+              key={cartProduct._id + JSON.stringify(cartProduct.variations)}
+              product={cartProduct}
+            />
+          ))}
         </div>
+        <div className={totalClass}>
+          <SubTotal />
+        </div>
+      </div>
     </PageContainer>
   )
   

@@ -65,10 +65,10 @@ const NewsLetter = () => {
             <div className={classes.news}>
                 <div className={classes.text}>
                     <h2>
-                    {t('NewsLetter')} 
+                        {t('NewsLetter')} 
                     </h2>
                     <p>
-                        Be the first to know. Sign up for the newsletter today.
+                        {t('be-first')} 
                     </p>
                 </div>
                 <form className={classes.form} onSubmit={handleSubmit(formSubmitHandler)}>

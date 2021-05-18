@@ -39,7 +39,7 @@
 
     "Footer-Account":"கணக்கு",
     "Footer-MyAcc":"என் கணக்கு",
-    "Footer-Orders":"நீங்கள் வாங்கியவை ",
+    "Footer-Orders":"நான் வாங்கியவை ",
     "Footer-Mycart":"என் கார்ட்",
 
     "find-all-categories": "எல்லா பிரிவுகளையும் இங்கே காணலாம்",
@@ -57,5 +57,10 @@
     "order-total": "மொத்தம்",
     "shipping": "டெலிவரி",
     "coupon-discount": "கூப்பன் தள்ளுபடி",
-    "loyalty-points": "லயல்டி புள்ளிகள்"
+    "loyalty-points": "லயல்டி புள்ளிகள்",
+
+    "be-first": "முதலில் தெரிந்து கொள்ளுங்கள். செய்திமடலுக்கு இன்று பதிவு செய்க.",
+
+    "free-above-pre": "",
+    "free-above-post": "மேலே அனைத்து ஆர்டர்களுக்கும் இலவச விநியோகம்."
 }

@@ -56,6 +56,11 @@
     "order-total": "Order Total",
     "shipping": "Shipping",
     "coupon-discount": "Coupon Discount",
-    "loyalty-points": "Loyalty Points"
+    "loyalty-points": "Loyalty Points",
+
+    "be-first": "Be the first to know. Sign up for the newsletter today.",
+
+    "free-above-pre": "Free Shipping for all orders above",
+    "free-above-post": ""
     
 }

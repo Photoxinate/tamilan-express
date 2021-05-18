@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/client';
 import useTranslation from 'next-translate/useTranslation';
 import React from 'react';
-import PageContainer from '../../components/PageContainer/PageContainer';
+import PageContainer from '../../hoc/PageContainer/PageContainer';
 import ReceiptProduct from '../../components/ReceiptProduct/ReceiptProduct';
 import fetch from '../../config/fetch';
 

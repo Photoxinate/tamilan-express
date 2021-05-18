@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { contact } from '../../config/config'
 import { fetchCart } from '../../store/actions/shipping'
 import { useDispatch, useSelector } from 'react-redux'
+import useTranslation from 'next-translate/useTranslation'
 
 import classes from './Header.module.scss'
 
@@ -16,6 +17,8 @@ const Header = () => {
     const minGta = useSelector(state => state.shipping.minGta)
 
     const dispatch = useDispatch()
+
+    const { t } = useTranslation('common')
 
     useEffect(() => {
         dispatch(fetchCart())
@@ -31,8 +34,8 @@ const Header = () => {
         <div className={classes.header}>
             <div className={classes.container}>
                 <p>
-                    <span style={{color: '#aaa'}}>Email:</span> <a href={'mailto:' + contact.email} >{contact.email}</a> 
-                    {minGta && ` | Free Shipping for all order above $${minGta}`}
+                    <span style={{color: '#aaa'}}>{t('Footer-Email')}</span> <a href={'mailto:' + contact.email} >{contact.email}</a> 
+                    {minGta && ` | ${t('free-above-pre')} $${minGta} ${t('free-above-post')}`}
                 </p>
                 <div className={classes.options}>
                     <Dropdown button labeled compact value={locale} text={lang} aria-label='Select language' title='Select language' icon={<i className={'icon ' + classes.icon}><Globe size={17} color='#eee' /></i>} className={'header-op icon ' + classes.select}>

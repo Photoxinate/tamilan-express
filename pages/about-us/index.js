@@ -5,6 +5,7 @@ import { contact } from '../../config/config'
 import { Clock, Location, Mail, Phone } from '../../components/Icons/Icons'
 import ContactForm from '../../components/Forms/ContactForm/ContactForm'
 import useTranslation from 'next-translate/useTranslation'
+import Head from 'next/head'
 
 import classes from './index.module.scss'
 
@@ -14,6 +15,10 @@ const index = () => {
 
     return (
         <div className={classes.index}>
+            <Head>
+                <title>Tamilan Express - About Us</title>
+                <meta name='description' content='' />
+            </Head>
             <div className={classes.banner}>
                 <img src='/images/team.jpg' alt='Members of Tamilan Express' height={500} width={900} />
             </div>

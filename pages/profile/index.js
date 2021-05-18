@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
-import PageContainer from '../../components/PageContainer/PageContainer'
+import PageContainer from '../../hoc/PageContainer/PageContainer'
 import useTranslation from 'next-translate/useTranslation'
 import { getSession } from 'next-auth/client'
 import { useToasts } from 'react-toast-notifications'

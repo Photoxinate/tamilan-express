@@ -2,11 +2,11 @@ import Head from 'next/head';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCart } from '../../store/actions/cart';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import Navigation from '../Navigation/Navigation';
-import ProductModal from '../ProductModal/ProductModal';
-import WhyUs from '../WhyUs/WhyUs';
+import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
+import Navigation from '../../components/Navigation/Navigation';
+import ProductModal from '../../components/ProductModal/ProductModal';
+import WhyUs from '../../components/WhyUs/WhyUs';
 import styles from './Layout.module.css';
 
 
@@ -49,7 +49,8 @@ const Layout = (props) => {
                 <meta name='theme-color' content='#FFFFFF' />
 
                 <meta name="google-signin-client_id" content="871485404239-c8vjp41smf7d13ecc07ndkp9qbq23bec.apps.googleusercontent.com.apps.googleusercontent.com" />
-                <title>Tamilan Express</title>
+                <title>Tamilan Express - We Make your shopping easy!</title>
+                <meta name='description' content='' />
             </Head>
             
             <Header />

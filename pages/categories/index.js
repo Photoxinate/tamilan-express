@@ -1,9 +1,9 @@
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import Category from '../../components/Category/Category'
-import PageContainer from '../../components/PageContainer/PageContainer'
+import PageContainer from '../../hoc/PageContainer/PageContainer'
 import fetch from '../../config/fetch'
-
+import Head from 'next/head'
 
 const index = ({ categories }) => {
 
@@ -11,6 +11,10 @@ const index = ({ categories }) => {
 
     return (
         <PageContainer title={t('find-all-categories')} id={'categories'} >
+            <Head>
+                <title>Tamilan Express - Categories</title>
+                <meta name='description' content='' />
+            </Head>
             <div style={{ marginBottom: 80 }}>
                 <Category categories={categories} />
             </div>

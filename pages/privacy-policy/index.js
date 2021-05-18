@@ -1,10 +1,16 @@
-import React from 'react';
+import React from 'react'
+import Head from 'next/head'
+
 import classes from './index.module.scss'
 
 
 const index = () => {
     return (
         <section>
+            <Head>
+                <title>Tamilan Express - Privacy Policy</title>
+                <meta name='description' content='Privacy policy of Tamilan Express' />
+            </Head>
             <div className={classes.wrap}>
                 <h1>Privacy Policy</h1>
                 <p>
@@ -18,7 +24,7 @@ We reserve the right, in our sole discretion, to modify, update, add to, discont
 
 If you provide information to us or access or use the Website in any way after this Privacy Policy has been changed, you will be deemed to have unconditionally consented and agreed to such changes.  The most current version of this Privacy Policy will be available on the Website and will supersede all previous versions of this Privacy Policy.<br/><br/>
 
-If you have any questions regarding this Privacy Policy, you should contact our Customer Service Department by email at help@tamilanexpress.com
+If you have any questions regarding this Privacy Policy, you should contact our Customer Service Department by email at info@tamilanexpress.ca
 
 </p>
             </div>
