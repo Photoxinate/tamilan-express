@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import PageContainer from '../../hoc/PageContainer/PageContainer'
 import useTranslation from 'next-translate/useTranslation'
+import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal'
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
 import { getSession } from 'next-auth/client'
 import { useToasts } from 'react-toast-notifications'
 import fetch from '../../config/fetch'
@@ -26,6 +28,7 @@ const index = ({ data }) => {
     const [editPersonal, setEditPersonal] = useState(false)
     const [editDelivery, setEditDelivery] = useState(false)
     const [editContact, setEditContact] = useState(false)
+    const [deactivateAccount, setdeactivateAccount] = useState(false)
 
     const personalRef = useRef(null)
     const deliveryRef = useRef(null)
@@ -174,6 +177,31 @@ const index = ({ data }) => {
                         {delivery}
                     </div>
                     <span role='button' aria-label='edit delivery information' className={classes.edit} onClick={() => toggleHandler('delivery')}> { editDelivery ? 'Cancel' : 'Edit' } </span>
+                </section>
+                <section className={classes.section}>
+                    <span role='button' aria-label='deactivate account' className={classes.edit} onClick={() => setdeactivateAccount(true)}> Deactivate your account </span>
+                    <Modal
+                        centered={true}
+                        onClose={() => setdeactivateAccount(false)}
+                        open={deactivateAccount}
+                        >
+                        <Modal.Header>Deactivate Account</Modal.Header>
+                        <Modal.Content>
+                            <p>Are you sure you want deactivate you account? All your data will be deleted!</p>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button
+                            content='Deactivate Account'
+                            onClick={() => setdeactivateAccount(false)}
+                            color='red'
+                            />
+                            <Button
+                            content='Cancel'
+                            onClick={() => setdeactivateAccount(false)}
+                            color='grey'
+                            />
+                        </Modal.Actions>
+                    </Modal>
                 </section>
             </div>
         </PageContainer>
