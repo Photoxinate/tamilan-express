@@ -9,10 +9,11 @@ const fetch = async (path, config) => await axios.get(path, config)
     }
   })
   .catch(err => {
-    
+
     return {
       error: true,
       data: null,
+      status: err.response?.status
     }
   });
 

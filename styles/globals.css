@@ -174,7 +174,7 @@ strong {
   font-size: 14px;
 }
 
-.ui.items>.item>.content>.header {
+.ui.items>.item>.content>.header, .ui.modal>.header {
   font-family: 'Poppins', 'Mukta Malar', sans-serif, -apple-system !important;
 }
 

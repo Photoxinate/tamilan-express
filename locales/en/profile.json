@@ -1,7 +1,20 @@
 {
 
-    "profile-Contact": "Contact Info",
-    "profile-personal": "Personal Info",
-    "profile-delivery": "Delivery Info"
+    "contact": "Contact Info",
+    "personal": "Personal Info",
+    "delivery": "Delivery Info",
+    "settings": "Settings",
+    "my-deactivate": "Deactivate my account",
+    "deactivate": "Deactivate Account",
+    "deactivate-msg": "Are you sure you want to deactivate your account? All your data will be deleted!",
+    "cancel": "Cancel",
+    "deact": "Deactivate Account",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "owner": "Owner Name",
+    "address": "Address",
+    "name": "Name",
+    "contact-no": "Contact Number",
+    "edit": "Edit"
 
 }

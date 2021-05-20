@@ -4,9 +4,10 @@ import PageContainer from '../../hoc/PageContainer/PageContainer'
 import useTranslation from 'next-translate/useTranslation'
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal'
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button'
-import { getSession } from 'next-auth/client'
+import { getSession, signOut, useSession } from 'next-auth/client'
 import { useToasts } from 'react-toast-notifications'
 import fetch from '../../config/fetch'
+import axios from '../../axios'
 
 import classes from './index.module.scss'
 
@@ -14,11 +15,18 @@ const ContactForm = dynamic(() => import('../../components/Forms/ProfileForms/Co
 const PersonalForm = dynamic(() => import('../../components/Forms/ProfileForms/PersonalForm'), { loading: () => <p>Loading...</p> })
 const DeliveryForm = dynamic(() => import('../../components/Forms/ProfileForms/DeliveryForm'), { loading: () => <p>Loading...</p> })
 
-const index = ({ data }) => {
+const index = ({ data, status }) => {
 
     const { t } = useTranslation('profile')
 
     const { addToast } = useToasts()
+
+    const [session] = useSession()
+
+    if(status && status === 401) {
+        signOut()
+        return null
+    }
     
     const [info, setInfo] = useState(data)
 
@@ -28,7 +36,7 @@ const index = ({ data }) => {
     const [editPersonal, setEditPersonal] = useState(false)
     const [editDelivery, setEditDelivery] = useState(false)
     const [editContact, setEditContact] = useState(false)
-    const [deactivateAccount, setdeactivateAccount] = useState(false)
+    const [deactivateAccount, setDeactivateAccount] = useState(false)
 
     const personalRef = useRef(null)
     const deliveryRef = useRef(null)
@@ -40,6 +48,19 @@ const index = ({ data }) => {
                 { appearance: 'warning' })
         }
     }, [])
+
+    const deactivateHandler = () => {
+        const headers = { Authorization: `Bearer ${session.accessToken}` }
+
+        axios.delete('users/me', { headers })
+            .then(() => {
+                setDeactivateAccount(false)
+                signOut()
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     const toggleHandler = (type, info = null) => {
         if(type === 'personal') {
@@ -88,11 +109,11 @@ const index = ({ data }) => {
     let contact = (
         <>
             <div className={classes.field}>
-                <label>Email Address</label>
+                <label>{t('email')}</label>
                 <span>{info.email}</span>
             </div>
             <div className={classes.field}>
-                <label>Phone Number</label>
+                <label>{t('phone')}</label>
                 <span>{info.mobile ? info.mobile : <p style={{color: 'orangered'}}>Provide your mobile number</p>}</span>
             </div>
         </>
@@ -101,11 +122,11 @@ const index = ({ data }) => {
     let personal = (
         <>
             <div className={classes.field}>
-                <label>Owner Name</label>
+                <label>{t('owner')}</label>
                 <span>{`${info.firstName} ${info.middleName ? info.middleName : ''} ${info.lastName ? info.lastName : ''}`}</span>
             </div>
             <div className={classes.field}>
-                <label>Address</label>
+                <label>{t('address')}</label>
                 <span>{addressValue}</span>
             </div>
         </>
@@ -114,15 +135,15 @@ const index = ({ data }) => {
     let delivery = deliveryAddress && !deliveryAddress.isSame ? (
         <>
             <div className={classes.field}>
-                <label>Name</label>
+                <label>{t('name')}</label>
                 <span>{deliveryAddress.name}</span>
             </div>
             <div className={classes.field}>
-                <label>Address</label>
+                <label>{t('address')}</label>
                 <span>{deliveryAddressValue}</span>
             </div>
             <div className={classes.field}>
-                <label>Contact Number</label>
+                <label>{t('contact-no')}</label>
                 <span>{deliveryContact}</span>
             </div>
         </>
@@ -158,48 +179,52 @@ const index = ({ data }) => {
         <PageContainer title='Profile' id='profile'>
             <div className={classes.profile}>
                 <section className={classes.section} ref={contactRef}>
-                    <div className={classes.title}> {t('profile-Contact')} </div>
+                    <div className={classes.title}> {t('contact')} </div>
                     <div className={classes.fields}>
                         {contact}
                     </div>
-                    <span role='button' aria-label='edit contact information' className={classes.edit} onClick={() => toggleHandler('contact')}> { editContact ? 'Cancel' : 'Edit' } </span>
+                    <span role='button' tabIndex='0' aria-label='edit contact information' className={classes.edit} onClick={() => toggleHandler('contact')}> { editContact ? t('cancel') : t('edit') } </span>
                 </section>
                 <section className={classes.section} ref={personalRef}>
-                    <div className={classes.title}> {t('profile-personal')} </div>
+                    <div className={classes.title}> {t('personal')} </div>
                     <div className={classes.fields}>
                         {personal}
                     </div>
-                    <span role='button' aria-label='edit personal information' className={classes.edit} onClick={() => toggleHandler('personal')}> { editPersonal ? 'Cancel' : 'Edit' } </span>
+                    <span role='button' tabIndex='0' aria-label='edit personal information' className={classes.edit} onClick={() => toggleHandler('personal')}> { editPersonal ? t('cancel') : t('edit') } </span>
                 </section>
                 <section className={classes.section} ref={deliveryRef}>
-                    <div className={classes.title}> {t('profile-delivery')} </div>
+                    <div className={classes.title}> {t('delivery')} </div>
                     <div className={classes.fields}>
                         {delivery}
                     </div>
-                    <span role='button' aria-label='edit delivery information' className={classes.edit} onClick={() => toggleHandler('delivery')}> { editDelivery ? 'Cancel' : 'Edit' } </span>
+                    <span role='button' tabIndex='0' aria-label='edit delivery information' className={classes.edit} onClick={() => toggleHandler('delivery')}> { editDelivery ? t('cancel') : t('edit') } </span>
                 </section>
                 <section className={classes.section}>
-                    <span role='button' aria-label='deactivate account' className={classes.edit} onClick={() => setdeactivateAccount(true)}> Deactivate your account </span>
+                    <div className={classes.title}> {t('settings')} </div>
+                    <div className={classes.fields}>
+                        <span role='button' tabIndex='0' aria-label='deactivate account' className={classes.edit} onClick={() => setDeactivateAccount(true)}>
+                            {t('my-deactivate')}
+                        </span>
+                    </div>
                     <Modal
                         centered={true}
-                        onClose={() => setdeactivateAccount(false)}
+                        onClose={() => setDeactivateAccount(false)}
                         open={deactivateAccount}
                         >
-                        <Modal.Header>Deactivate Account</Modal.Header>
+                        <Modal.Header>{t('deactivate')}</Modal.Header>
                         <Modal.Content>
-                            <p>Are you sure you want deactivate you account? All your data will be deleted!</p>
+                            <p>{t('deactivate-msg')}</p>
                         </Modal.Content>
                         <Modal.Actions>
                             <Button
-                            content='Deactivate Account'
-                            onClick={() => setdeactivateAccount(false)}
-                            color='red'
-                            />
+                                content={t('deact')}
+                                onClick={deactivateHandler}
+                                color='red'
+                                />
                             <Button
-                            content='Cancel'
-                            onClick={() => setdeactivateAccount(false)}
-                            color='grey'
-                            />
+                                content={t('cancel')}
+                                onClick={() => setDeactivateAccount(false)}
+                                />
                         </Modal.Actions>
                     </Modal>
                 </section>
