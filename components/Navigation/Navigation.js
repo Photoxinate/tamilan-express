@@ -54,7 +54,7 @@ const Navigation = () => {
             <div className={classes.navigation}>
                 <nav className={classes.container}>
                     <Link href='/'>
-                        <a className={classes.logo}> <img src='/logo/logo.png' width={180} alt='Tamilan express logo, a smart phone along with a shop' /> </a>
+                        <a className={classes.logo}> <img src='/logo/logo.png' width={180} height={74.33} alt='Tamilan express logo, a smart phone along with a shop' /> </a>
                     </Link>
                     <div className={classes.search}>
                         <SearchInput />

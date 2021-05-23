@@ -13,7 +13,6 @@ const index = ({ categories }) => {
         <PageContainer title={t('find-all-categories')} id={'categories'} >
             <Head>
                 <title>Tamilan Express - Categories</title>
-                <meta name='description' content='' />
             </Head>
             <div style={{ marginBottom: 80 }}>
                 <Category categories={categories} />

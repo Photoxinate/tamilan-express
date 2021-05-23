@@ -7,6 +7,8 @@ import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import ProductModal from '../../components/ProductModal/ProductModal';
 import WhyUs from '../../components/WhyUs/WhyUs';
+import { Messenger } from 'react-live-chat-loader';
+
 import styles from './Layout.module.css';
 
 
@@ -15,26 +17,7 @@ const Layout = (props) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-
         dispatch(fetchCart())
-        
-        if (typeof window !== 'undefined') {
-            window.fbAsyncInit = function() {
-                FB.init({
-                    xfbml            : true,
-                    version          : 'v10.0'
-                });
-            };
-
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        }
-
     }, [])
 
     return (
@@ -45,12 +28,17 @@ const Layout = (props) => {
                 <link rel='icon' type='image/png' sizes='16x16' href='/favicons/favicon-16x16.png' />
                 <link rel='manifest' href='/site.webmanifest' />
                 <link rel='mask-icon' href='/favicons/safari-pinned-tab.svg' color='#FF582A' />
+
+                <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin/>
+                <link rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap' />
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
+
                 <meta name='msapplication-TileColor' content='#FFC40D' />
                 <meta name='theme-color' content='#FFFFFF' />
 
                 <meta name="google-signin-client_id" content="871485404239-c8vjp41smf7d13ecc07ndkp9qbq23bec.apps.googleusercontent.com.apps.googleusercontent.com" />
                 <title>Tamilan Express - We Make your shopping easy!</title>
-                <meta name='description' content='' />
+                <meta name='description' content='Tamilan Express the premium Tamil online shopping site in Canada. Shop for trendy men’s wear, women’s wear, kids wear, Grocery, Kitchenware & many more with great price all across Canada.' />
             </Head>
             
             <Header />
@@ -65,13 +53,8 @@ const Layout = (props) => {
                 <Footer />
             </footer>
 
-            <div id="fb-root"></div>
+            <Messenger themeColor='#F93800' color='#F93800' />
 
-            <div className="fb-customerchat"
-                attribution="setup_tool"
-                page_id="193409722177221"
-                theme_color="#F93800">
-            </div>
             <ProductModal />
         </div>
     );

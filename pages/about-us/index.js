@@ -17,7 +17,7 @@ const index = () => {
         <div className={classes.index}>
             <Head>
                 <title>Tamilan Express - About Us</title>
-                <meta name='description' content='' />
+                <meta name='description' content='Tamilanexpress.ca is canada’s largest tamil e-commerce organization. Grab the Biggest Deals, Offers and promotions on over 100 brands. We provide a large variety of international products across Canada.' />
             </Head>
             <div className={classes.banner}>
                 <img src='/images/team.jpg' alt='Members of Tamilan Express' height={500} width={900} />

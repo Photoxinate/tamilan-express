@@ -24,7 +24,7 @@ const Footer = () => {
             <div className={classes.container}>
                 <div className={classes.links}>
                     <div className={classes.intro}>
-                        <img src='/logo/logo.png' alt='Tamilan express logo, a smart phone along with a shop' />
+                        <img src='/logo/logo.png' alt='Tamilan express logo, a smart phone along with a shop' width={272} height={112} />
                         <div className={classes.contact}>
                             <div className={classes.item}>
                                 <strong>{t('Footer-Add')} </strong> {contact.address}
@@ -68,7 +68,7 @@ const Footer = () => {
                                 &nbsp; {t('powered-by-pre')} <a href='https://photoxinate.com'>{t('photoxinate')}</a> {t('powered-by-post')}
                             </p>
                         </div>
-                        <img className={classes.paypal} src="/Credit-Card-Icons.svg" border="0" alt="Available payments - paypal" />
+                        <img className={classes.paypal} src="/Credit-Card-Icons.svg" width={207} height={32} alt="Available payments - paypal" />
                     </div>
                 </div>
         

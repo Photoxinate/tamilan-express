@@ -8,6 +8,7 @@ import classes from './ProductView.module.scss';
 import BreadCrumb from '../../components/UI/Breadcrumb/Breadcrumb';
 import Link from 'next/link';
 import { stringify } from 'qs';
+import Head from 'next/head'
 
 const index = ({ product, relatedProds }) => {
   const sections = [
@@ -23,6 +24,10 @@ const index = ({ product, relatedProds }) => {
 
   return (
     <div className={classes.productContainer}>
+      <Head>
+        <title>{product.name} - Tamilan Express</title>
+        <meta name='description' content={product.description.replace(/(&nbsp;|<([^>]+)>)/ig, '')} />
+      </Head>
       <BreadCrumb sections={sections} />
       <div className={classes.productFlex}>
         <div className={classes.imgWrap}>

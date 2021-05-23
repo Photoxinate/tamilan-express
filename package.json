@@ -20,6 +20,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-hook-form": "^6.15.3",
+    "react-live-chat-loader": "^2.3.3",
     "react-range": "^1.8.7",
     "react-redux": "^7.2.2",
     "react-toast-notifications": "^2.4.3",

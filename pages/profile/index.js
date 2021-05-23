@@ -199,7 +199,7 @@ const index = ({ data, status }) => {
                     </div>
                     <span role='button' tabIndex='0' aria-label='edit delivery information' className={classes.edit} onClick={() => toggleHandler('delivery')}> { editDelivery ? t('cancel') : t('edit') } </span>
                 </section>
-                <section className={classes.section}>
+                <section className={classes.section} id='settings'>
                     <div className={classes.title}> {t('settings')} </div>
                     <div className={classes.fields}>
                         <span role='button' tabIndex='0' aria-label='deactivate account' className={classes.edit} onClick={() => setDeactivateAccount(true)}>

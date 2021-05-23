@@ -6,8 +6,9 @@ import Category from '../../../components/Category/Category'
 import PageContainer from '../../../hoc/PageContainer/PageContainer'
 import ProductContainer from '../../../components/ProductContainer/ProductContainer'
 import ViewMore from '../../../components/ViewMore/ViewMore'
-import { stringify } from 'qs';
-import ComingSoon from '../../../components/ComingSoon/ComingSoon';
+import { stringify } from 'qs'
+import ComingSoon from '../../../components/ComingSoon/ComingSoon'
+import Head from 'next/head'
 
 
 const index = ({ category, subCategories, products }) => {
@@ -45,6 +46,10 @@ const index = ({ category, subCategories, products }) => {
 
     return (
         <PageContainer title={category.name} id={category.name} >
+            <Head>
+                <title>{category.name} - Tamilan Express</title>
+                <meta name='description' content={category.name + ' - Category of Tamilan Express'} />
+            </Head>
             {subCategoriesHTML}
             {productsHTML}
             {viewMore}

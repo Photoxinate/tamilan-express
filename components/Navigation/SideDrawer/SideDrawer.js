@@ -57,7 +57,7 @@ const SideDrawer = ({ click, toggle, categories }) => {
     return (
         <>
             <Backdrop clicked={click} show={toggle} />
-            <div className={classes.drawer} style={style} >
+            <div className={classes.drawer} style={style} id='sidedrawer' >
                 <div className={classes.container}>
                     <div className={classes.close} onClick={click} aria-label='Close mobile menu' role='button' >
                         <ArrowRight />

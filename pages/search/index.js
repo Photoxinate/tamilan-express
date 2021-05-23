@@ -10,6 +10,7 @@ import NoResult from '../../components/NoResult/NoResult'
 import useSWR from 'swr'
 import deepEqual from 'fast-deep-equal'
 import Loading from '../../components/UI/Loading/Loading'
+import Head from 'next/head'
 
 import classes from './index.module.scss'
 import swrFetch from '../../config/swrFetch';
@@ -56,9 +57,11 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
     }
 
     return (
-        <PageContainer 
-            id='search' 
-            title={searchTerm} >
+        <PageContainer id='search' title={searchTerm} >
+            <Head>
+                <title>{searchTerm} - Tamilan Express Search</title>
+                <meta name='description' content={searchTerm + ' - Product, Category, and Brand search with multiple filters including price range in Tamilan Express.'} />
+            </Head>
             <div className={classes.search}>
                 <div className={classes.body}>
                     <Filter
