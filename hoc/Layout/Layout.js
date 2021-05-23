@@ -1,15 +1,14 @@
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchCart } from '../../store/actions/cart';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import ProductModal from '../../components/ProductModal/ProductModal';
 import WhyUs from '../../components/WhyUs/WhyUs';
-import { Messenger } from 'react-live-chat-loader';
-
+import { fetchCart } from '../../store/actions/cart';
 import styles from './Layout.module.css';
+
 
 
 const Layout = (props) => {
@@ -53,7 +52,7 @@ const Layout = (props) => {
                 <Footer />
             </footer>
 
-            <Messenger themeColor='#F93800' color='#F93800' />
+            {/* <Messenger themeColor='#F93800' color='#F93800' /> */}
 
             <ProductModal />
         </div>

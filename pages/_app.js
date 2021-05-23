@@ -1,17 +1,16 @@
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { Provider as AuthProvider } from 'next-auth/client';
 import { Provider } from 'react-redux';
 import { ToastProvider } from 'react-toast-notifications';
-import Layout from '../hoc/Layout/Layout';
-import { useStore } from '../store/store';
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
-import { LiveChatLoaderProvider } from 'react-live-chat-loader';
-
 // Import Swiper styles
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
+import Layout from '../hoc/Layout/Layout';
+import { useStore } from '../store/store';
 import '../styles/globals.css';
+
 
 
 const paypalInitialOptions = {
@@ -30,11 +29,11 @@ const  MyApp = ({ Component, pageProps }) => {
       <AuthProvider session={pageProps.session}>
         <ToastProvider autoDismiss autoDismissTimeout={10000} placement='bottom-left'>
           <PayPalScriptProvider options={paypalInitialOptions} >
-            <LiveChatLoaderProvider provider='messenger' providerKey='193409722177221' color='#F93800' themeCOlor='#F93800'>
+            {/* <LiveChatLoaderProvider provider='messenger' providerKey='193409722177221' color='#F93800' themeCOlor='#F93800'> */}
               <Layout>
                 <Component {...pageProps} />
               </Layout>
-            </LiveChatLoaderProvider>
+            {/* </LiveChatLoaderProvider> */}
           </PayPalScriptProvider>
         </ToastProvider>
       </AuthProvider>
