@@ -9,6 +9,7 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
 import Layout from '../hoc/Layout/Layout';
 import { useStore } from '../store/store';
+import { LiveChatLoaderProvider } from 'react-live-chat-loader';
 import '../styles/globals.css';
 
 
@@ -29,11 +30,11 @@ const  MyApp = ({ Component, pageProps }) => {
       <AuthProvider session={pageProps.session}>
         <ToastProvider autoDismiss autoDismissTimeout={10000} placement='bottom-left'>
           <PayPalScriptProvider options={paypalInitialOptions} >
-            {/* <LiveChatLoaderProvider provider='messenger' providerKey='193409722177221' color='#F93800' themeCOlor='#F93800'> */}
+            <LiveChatLoaderProvider provider='messenger' providerKey='193409722177221' color='#F93800' themeCOlor='#F93800'>
               <Layout>
                 <Component {...pageProps} />
               </Layout>
-            {/* </LiveChatLoaderProvider> */}
+            </LiveChatLoaderProvider>
           </PayPalScriptProvider>
         </ToastProvider>
       </AuthProvider>

@@ -7,6 +7,7 @@ import Navigation from '../../components/Navigation/Navigation';
 import ProductModal from '../../components/ProductModal/ProductModal';
 import WhyUs from '../../components/WhyUs/WhyUs';
 import { fetchCart } from '../../store/actions/cart';
+import { Messenger } from 'react-live-chat-loader';
 import styles from './Layout.module.css';
 
 
@@ -52,7 +53,7 @@ const Layout = (props) => {
                 <Footer />
             </footer>
 
-            {/* <Messenger themeColor='#F93800' color='#F93800' /> */}
+            <Messenger themeColor='#F93800' color='#F93800' />
 
             <ProductModal />
         </div>
