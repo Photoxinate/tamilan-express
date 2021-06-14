@@ -49,6 +49,10 @@ const index = ({ category, subCategories, products }) => {
             <Head>
                 <title>{category.name} - Tamilan Express</title>
                 <meta name='description' content={category.name + ' - Category of Tamilan Express'} />
+                <meta property="og:title" content={`${category.name} - Tamilan Express`} />
+                <meta property="og:description" content={category.name + ' - Category of Tamilan Express'} />
+                <meta name="twitter:description" content={category.name + ' - Category of Tamilan Express'} />
+                <meta name="twitter:title" content={`${category.name} - Tamilan Express`} />
             </Head>
             {subCategoriesHTML}
             {productsHTML}

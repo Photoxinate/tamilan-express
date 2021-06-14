@@ -27,6 +27,14 @@ const index = ({ product, relatedProds }) => {
       <Head>
         <title>{product.name} - Tamilan Express</title>
         <meta name='description' content={product.description.replace(/(&nbsp;|<([^>]+)>)/ig, '')} />
+        <meta property="og:title" content={`${product.name} - Tamilan Express`} />
+        <meta property="og:description" content={product.description.replace(/(&nbsp;|<([^>]+)>)/ig, '')} />
+        <meta name="twitter:description" content={product.description.replace(/(&nbsp;|<([^>]+)>)/ig, '')} />
+        <meta name="twitter:title" content={`${product.name} - Tamilan Express`} />
+        <meta property="og:image" content={"https://media.tamilanexpress.ca/product/original/" + product.image} />
+        <meta property="og:image:secure_url" content={"https://media.tamilanexpress.ca/product/original/" + product.image} />
+        <meta name="twitter:image" content={"https://media.tamilanexpress.ca/product/original/" + product.image} />
+        <meta property="og:image:alt" content={product.description.replace(/(&nbsp;|<([^>]+)>)/ig, '')} />
       </Head>
       <BreadCrumb sections={sections} />
       <div className={classes.productFlex}>

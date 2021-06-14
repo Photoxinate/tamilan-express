@@ -11,6 +11,10 @@ const index = () => {
             <Head>
                 <title>Tamilan Express - Privacy Policy</title>
                 <meta name='description' content='Privacy policy of Tamilan Express' />
+                <meta property="og:title" content={'Tamilan Express - Privacy Policy'} />
+                <meta property="og:description" content={'Privacy policy of Tamilan Express'} />
+                <meta name="twitter:description" content={'Privacy policy of Tamilan Express'} />
+                <meta name="twitter:title" content={'Tamilan Express - Privacy Policy'} />
             </Head>
             <div className={classes.wrap}>
                 <h1>Privacy Policy</h1>

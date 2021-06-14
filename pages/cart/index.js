@@ -41,6 +41,10 @@ const index = () => {
       <Head>
           <title>Tamilan Express - Your Cart</title>
           <meta name='description' content='Cart details' />
+          <meta property="og:title" content={'Tamilan Express - Your Cart'} />
+          <meta property="og:description" content={'Cart details'} />
+          <meta name="twitter:description" content={'Cart details'} />
+          <meta name="twitter:title" content={'Tamilan Express - Your Cart'} />
       </Head>
       <div className={classes.container}>
         <div className={classes.items}>

@@ -6,16 +6,39 @@ import { contact } from '../../config/config'
 
 import classes from './Footer.module.scss'
 import useTranslation from 'next-translate/useTranslation'
+import { useState } from 'react'
 
 
 const Footer = () => {
 
     const { t } = useTranslation('common')
 
+    const [showInstall, setShowInstall] = useState(false)
+
+    let defferedPrompt;
 
     const goTopHandler = () => {
         if(typeof window !== 'undefined')
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0)
+    }
+
+    const installHandler = async () => {
+        deferredPrompt.prompt()
+        setShowInstall(false)
+        const { outcome } = await defferedPrompt.userChoice
+        defferedPrompt = null
+    }
+
+    if(typeof window != 'undefined') {
+        window.addEventListener('beforeinstallprompt', e => {
+            defferedPrompt = e
+            setShowInstall(true)
+        })
+
+        window.addEventListener('appinstalled', () => {
+            setShowInstall(false)
+            defferedPrompt = null
+        })
     }
 
     return (
@@ -58,6 +81,11 @@ const Footer = () => {
                         <Link href='/cart'><a>{t('Footer-Mycart')}</a></Link>
                     </div>
                 </div>
+                {showInstall && <div className={classes.install}>
+                    <button aria-label='install for android and ios' onClick={installHandler}>
+                        <img src='/images/install-img.png' width={200} height={50} />
+                    </button>
+                </div>}
                 <div className={classes.copyright}>
                     <div className={classes.content}>
                         <div>

@@ -61,6 +61,10 @@ const index = ({ docs, total, totalPages, page, pagingCounter, categories, types
             <Head>
                 <title>{searchTerm} - Tamilan Express Search</title>
                 <meta name='description' content={searchTerm + ' - Product, Category, and Brand search with multiple filters including price range in Tamilan Express.'} />
+                <meta property="og:title" content={`${searchTerm} - Tamilan Express Search`} />
+                <meta property="og:description" content={searchTerm + ' - Product, Category, and Brand search with multiple filters including price range in Tamilan Express.'} />
+                <meta name="twitter:description" content={searchTerm + ' - Product, Category, and Brand search with multiple filters including price range in Tamilan Express.'} />
+                <meta name="twitter:title" content={`${searchTerm} - Tamilan Express Search`} />
             </Head>
             <div className={classes.search}>
                 <div className={classes.body}>
