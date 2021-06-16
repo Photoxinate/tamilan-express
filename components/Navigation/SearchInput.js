@@ -34,6 +34,7 @@ const SearchInput = () => {
     return (
         <form onSubmit={submitHandler}>
             <Form.Input 
+                type='search'
                 value={search}
                 maxLength={40}
                 onChange={inputChangeHandler}
