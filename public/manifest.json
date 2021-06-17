@@ -21,17 +21,17 @@
     ],
     "screenshots": [
         {
-          "src": "/images/screenshot1.png",
+          "src": "/screenshots/screenshot1.png",
           "type": "image/png",
           "sizes": "1530x2892"
         },
         {
-          "src": "/images/screenshot2.png",
+          "src": "/screenshots/screenshot2.png",
           "type": "image/png",
           "sizes": "1530x2892"
         },
         {
-          "src": "/images/screenshot3.png",
+          "src": "/screenshots/screenshot3.png",
           "type": "image/png",
           "sizes": "1530x2892"
         },
@@ -69,5 +69,6 @@
     "background_color": "#ffffff",
     "display": "fullscreen",
     "orientation": "portrait",
+    "scope": "/",
     "start_url": "/"
 }
