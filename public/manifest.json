@@ -11,8 +11,60 @@
             "src": "/favicons/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/favicons/maskable_icon_x192.png",
+            "sizes": "196x196",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
+    "screenshots": [
+        {
+          "src": "/images/screenshot1.png",
+          "type": "image/png",
+          "sizes": "1530x2892"
+        },
+        {
+          "src": "/images/screenshot2.png",
+          "type": "image/png",
+          "sizes": "1530x2892"
+        },
+        {
+          "src": "/images/screenshot3.png",
+          "type": "image/png",
+          "sizes": "1530x2892"
+        },
+        {
+          "src": "/images/screenshot4.png",
+          "type": "image/png",
+          "sizes": "1530x2892"
+        }
+        
+    ],
+    "shortcuts": [
+        {
+          "name": "Home",
+          "short_name": "Home",
+          "description": "Tamilan Express Home - Explore Products",
+          "url": "/",
+          "icons": [{ "src": "/favicons/maskable_icon_x192.png", "sizes": "192x192" }]
+        },
+        {
+          "name": "My Orders",
+          "short_name": "Orders",
+          "description": "My orders",
+          "url": "/orders",
+          "icons": [{ "src": "/favicons/maskable_icon_x192.png", "sizes": "192x192" }]
+        },
+        {
+          "name": "My Profile",
+          "short_name": "Profile",
+          "description": "My Profile",
+          "url": "/profile",
+          "icons": [{ "src": "/favicons/maskable_icon_x192.png", "sizes": "192x192" }]
+        }
+      ],
     "theme_color": "#F93800",
     "background_color": "#ffffff",
     "display": "fullscreen",
