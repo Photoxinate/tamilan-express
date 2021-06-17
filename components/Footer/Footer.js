@@ -9,13 +9,13 @@ import useTranslation from 'next-translate/useTranslation'
 import { useState } from 'react'
 
 
+let defferedPrompt;
+
 const Footer = () => {
 
     const { t } = useTranslation('common')
 
     const [showInstall, setShowInstall] = useState(false)
-
-    let defferedPrompt;
 
     const goTopHandler = () => {
         if(typeof window !== 'undefined')
@@ -23,7 +23,7 @@ const Footer = () => {
     }
 
     const installHandler = async () => {
-        deferredPrompt.prompt()
+        defferedPrompt.prompt()
         setShowInstall(false)
         const { outcome } = await defferedPrompt.userChoice
         defferedPrompt = null
