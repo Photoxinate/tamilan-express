@@ -38,7 +38,7 @@ const index = ({ user, shippingCharge }) => {
   const commentRef = useRef()
 
   const [userInfo, setUserInfo] = useState(user)
-  const [addrAvailability, setAddrAvailability] = useState(user.hasOwnProperty('address'))
+  const [addrAvailability, setAddrAvailability] = useState(user.hasOwnProperty('address') && user.address)
   const [redeemedLoyalty, setRedeemedLoyalty] = useState(0)
   const [appliedCoupon, setAppliedCoupon] = useState()
   const [shippingMethod, setShippingMethod] = useState('gta')
@@ -53,7 +53,7 @@ const index = ({ user, shippingCharge }) => {
 
   const userInfoChangeHandler = data => {
     setUserInfo(data)
-    setAddrAvailability(data.hasOwnProperty('address'))
+    setAddrAvailability(data.hasOwnProperty('address') && data.address)
   }
 
   const loyaltyRedeemHandler = e => {

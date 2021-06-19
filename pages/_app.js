@@ -15,10 +15,9 @@ import '../styles/globals.css';
 
 
 const paypalInitialOptions = {
-  // "client-id": "AQReEd8nU21jcTrjIBpnMWucHSjFX8Adf9CrXull6QaprE7_xc5CGej-LFvgEJKILvaW1tZ6b0zRGcd0",
-  "client-id": "AWSeXUSMxbwnoWXvPS1XjDH1lbd0IgglkOW4tRbyJ6e3r6vhjQ8EUOa-SVYL_rhWtBDu2C-tuQuobwWZ",
+  "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
   currency: "CAD",
-  "buyer-country": "CA"
+  // "buyer-country": "CA"
 }
 
 const  MyApp = ({ Component, pageProps }) => {
