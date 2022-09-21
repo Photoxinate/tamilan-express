@@ -6,7 +6,7 @@ const baseUrl =
 export const contact = {
   phone: {text: '+1-647-675-7777', link: '+16476757777'},
   email: 'info@tamilanexpress.ca',
-  address: '200 Riverbank Dr, Pefferlaw ON, L0E 1N0, Canada',
+  address: 'O/N Tamilan Express, Unit D3-2900 Markham Rd, Scarborough, ON M1X 1E6',
   openHours: {
     weekdays: 'Mon-Fri: 08:00 - 20:00',
     weekend: 'Sat-Sun: 08:00 - 20:00',
